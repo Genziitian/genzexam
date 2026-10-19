@@ -1,0 +1,512 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 8",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q1_prompt_p3.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Scores\" dataset. What will the values of A and B represent at the end of the execution?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q1_option1_p3.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q1_option2_p3.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q1_option3_p3.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q1_option4_p3.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q2_prompt_p4.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Scores\" dataset. What will the value of B represent at the end of execution?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of repeated marks in Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Minimum marks in Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum marks in Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Most frequent marks in Physics"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Use the following standard Scores dataset from the supplied Week1 booklet."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/shared/scores_p3.png",
+          "alt": "Original standard Scores dataset, including student city and subject marks."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/shared/scores_p4.png",
+          "alt": "Original standard Scores dataset, including student city and subject marks."
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q2_code0_p4.png",
+          "alt": "q2 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q3_prompt_p5.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Scores\" dataset. What will be the value of B at the end of the execution?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "numerical_answer": 10.0,
+      "numerical_tolerance": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q4_prompt_p6.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Shopping Bills\" dataset. At the end of the execution, the variable D captures the following information: for each customer Z, D[Z][\"Shop\"] stores the shops visited by Z, and D[Z][\"Category\"] stores the categories of the items purchased by Z. But the pseudocode may have mistakes. Identify all such mistakes (if any)."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 13"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 14"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 16"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/context0_p6.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/context0_p7.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q5_prompt_p7.png",
+          "alt": "Original question: The following pseudocode is executed using the \"station wise\" cards of the \"Train\" dataset. At the end of the execution, STN captures the following information: for a station X, and a day of a week A, STN[X][A] stores the number of trains running through X on the day A. [Note: Assume that for each station, the train list is given in a single card.] Choose the correct code fragment to complete the "
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q5_option1_code0_p7.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q5_option2_code0_p7.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q5_option3_code0_p7.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q5_option4_code0_p7.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/context0_p6.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/context0_p7.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q5_code0_p7.png",
+          "alt": "q5 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q6_prompt_p8.png",
+          "alt": "Original question: The following pseudocode is executed using the \"station wise\" cards of the \"Train\" dataset. Consider the dictionary STN computed in the previous question. Choose the correct statement(s) from the options based on the pseudocode."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Keys of the dictionary Z is integer"
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q6_option2_p8.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All values of the dictionary Z are non-zero"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of keys in Z is 8"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/context0_p6.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/context0_p7.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q5_code0_p7.png",
+          "alt": "q5 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q7_prompt_p9.png",
+          "alt": "Original question: Consider the dictionary STN computed in the previous question. Choose the correct pseudocode to compute the number of stations which have trains passing through all days of a week."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q7_option1_code0_p9.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q7_option2_code0_p9.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q7_option3_code0_p9.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q4_code0_p6.png",
+          "alt": "q4 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q8_prompt_p10.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Words\" table. What will D represent at the end of the execution?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Frequency count of each alphabet in the table"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Frequency count of each word in the table"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Most frequent alphabet in the table"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Frequency count of each alphabet in each part of speech"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q4_code0_p6.png",
+          "alt": "q4 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q8_code0_p10.png",
+          "alt": "q8 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q9_prompt_p11.png",
+          "alt": "Original question: Consider the dictionary D and the procedure updateDictionary() in the previous question (Question 8). Let POS be a list that contains all part of speeches. Assume that given a dictionary D, there exists a procedure max such that max(D) returns a list of keys which are mapped to the maximum value. Choose the correct statement(s) from the options based on the following pseudocode."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "length(keys(C)) is same as the number of different part of speeches in the input dataset"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "C captures the list of most frequent alphabet occurred overall in the dataset as well as for each part\nof speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "C captures the most frequent alphabet occurred overall in the dataset as well as for each part of\nspeech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "length(keys(C)) is one more than the number of different part of speeches in the dataset"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q4_code0_p6.png",
+          "alt": "q4 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q8_code0_p10.png",
+          "alt": "q8 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q10_prompt_p12.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Shopping bills\" dataset. What will D represent at the end of the execution?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q10_option1_p12.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q10_option2_p12.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q10_option3_p12.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/0f8b6dbaa984/q10_option4_p12.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

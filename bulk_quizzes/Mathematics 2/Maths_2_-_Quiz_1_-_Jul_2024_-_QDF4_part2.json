@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Jul 2024 · QDF4 · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the determinant of $A$ is $-2$, find the determinant of $A^T A$."
+        }
+      ],
+      "numerical_answer": 4,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\det(A^T A) = \\det(A^T) \\det(A) = (\\det A)^2 = (-2)^2 = 4$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A = \\begin{bmatrix} 2 & -1 \\\\ 4 & 3 \\end{bmatrix}$ and $\\alpha, \\beta \\in \\mathbb{R}$ such that $A^2 - \\alpha A + \\beta I = 0$. Find the value of $\\alpha$."
+        }
+      ],
+      "numerical_answer": 5,
+      "numerical_tolerance": 0.01,
+      "marks": 1.5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By the Cayley-Hamilton theorem, $A^2 - \\text{tr}(A)A + \\det(A)I = 0$. Here $\\alpha = \\text{tr}(A) = 2 + 3 = 5$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A = \\begin{bmatrix} 2 & -1 \\\\ 4 & 3 \\end{bmatrix}$ and $\\alpha, \\beta \\in \\mathbb{R}$ such that $A^2 - \\alpha A + \\beta I = 0$. Find the value of $\\beta$."
+        }
+      ],
+      "numerical_answer": 10,
+      "numerical_tolerance": 0.01,
+      "marks": 1.5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\beta = \\det(A) = (2)(3) - (-1)(4) = 6 + 4 = 10$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the dimension of the vector space $U = \\{(a, b, c, d, e) \\in \\mathbb{R}^5 : a + b + c + d + e = 0\\}$."
+        }
+      ],
+      "numerical_answer": 4,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "One non-trivial linear constraint on $\\mathbb{R}^5$ gives dimension $5 - 1 = 4$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the dimension of the vector space $V = \\left\\{ \\begin{bmatrix} a & b \\\\ c & a+b \\end{bmatrix} : a, b, c \\in \\mathbb{R} \\right\\}$."
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The entries are parameterized by the 3 independent parameters $a, b, c$. Thus $\\dim(V) = 3$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the dimension of the subspace $W = \\text{span}\\{(1, 1, 1), (1, 0, -1), (2, 1, 0)\\}$."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Notice $(2, 1, 0) = (1, 1, 1) + (1, 0, -1)$. The third vector is redundant, and the first two are independent, so $\\dim(W) = 2$."
+        }
+      ]
+    }
+  ]
+}

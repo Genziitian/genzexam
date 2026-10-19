@@ -1,0 +1,406 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 3 · Part 3",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nSelect all the data processing pattern(s) found in the given code."
+        },
+        {
+          "kind": "code",
+          "value": "n = int(input())\nfor i in range(n):\n   print(int(input())*2)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nSelect all the data processing pattern(s) found in the given code."
+        },
+        {
+          "kind": "code",
+          "value": "n = int(input())\nfor i in range(n):\n num = int(input())\n if len(str(num))<2:\n     print(num)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nSelect all the data processing pattern(s) found in the given code."
+        },
+        {
+          "kind": "code",
+          "value": "n = int(input())\nvalue = None\nfor i in range(n):\n num = int(input())\n if len(str(num))<2:\n     value = num\nprint(value)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The condition filters single-digit inputs, and repeatedly replacing value reduces those matches to the last matching number (or None if none match)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nSelect all the data processing pattern(s) found in the given code."
+        },
+        {
+          "kind": "code",
+          "value": "n = int(input())\nvalue = None\nfor i in range(n):\n num = int(input())\n if value is None:\n     value = num\n elif num < value:\n     value = num\nprint(value)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nSelect all the data processing pattern(s) found in the given code."
+        },
+        {
+          "kind": "code",
+          "value": "n = int(input())\nvalue = None\nfor i in range(n):\n num = len(input())/2\n if value is None:\n     value = num\n elif num < value:\n     value = num\nprint(value)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below python code.\nSelect all the possible outputs of the above code for any possible valid integer as input.\nHint: To solve this question you might want to try out with different values of num or\nautomate that with another loop with different values for num. What range of values do\nyou use for this automation?"
+        },
+        {
+          "kind": "code",
+          "value": "num = int(input())\ni = num\nresult = 0\nwhile True:\n   i -= 4\n   if i>10:\n       continue\n   if i<-10:\n       break\n   result += i\nprint(result)",
+          "language": "python"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-11"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-13"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        8
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below python code.\nSelect all the possible outputs of the above code for any possible valid integer as input.\nHint: To solve this question you might want to try out with different values of num or\nautomate that with another loop with different values for num. What range of values do\nyou use for this automation?"
+        },
+        {
+          "kind": "code",
+          "value": "num = int(input())\ni = num\nresult = 0\nwhile True:\n   i -= 5\n   if i>15:\n       continue\n   if i<-15:\n       break\n   result -= i\nprint(result)",
+          "language": "python"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "-9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "9"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        5,
+        7,
+        9
+      ]
+    }
+  ]
+}

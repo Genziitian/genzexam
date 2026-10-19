@@ -3,153 +3,28 @@
   "quiz_title": "English 2 · Graded Assignment · Week 12",
   "subject": "English 2",
   "section": "practice_graded",
-  "week": 12,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Choose the most professional and clear email subject line for an intra-college event:"
+          "value": "If the recipient is unknown, what should be the best salutation in a professional mail?"
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Regarding intra-college quiz competition: Registration & Dates"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "notice for students"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "information for students"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Important!!"
-          }
-        ]
-      ],
-      "correct_answer": 0,
       "marks": 1,
       "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "An effective subject line is specific, professional, and summarizes the email content."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "Choose the most appropriate salutation when writing a formal email to a group of university peers:"
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Hey friends"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Dear All / Hello everyone"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Howdy folks"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Yo team"
-          }
-        ]
-      ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Dear All’ or ‘Hello everyone’ is respectful, inclusive, and professional."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "Choose the most appropriate professional sign-off title for a course representative in official correspondence:"
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Student Representative"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Student Officer"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Student Bro"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Campus VIP"
-          }
-        ]
-      ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Student Representative’ clearly communicates the sender's official role to faculty and peers."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "If the specific recipient is unknown, what is the standard professional salutation in formal correspondence?"
-        }
-      ],
       "options": [
         [
           {
             "kind": "text",
             "value": "Dear Sir/Madam"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hello"
           }
         ],
         [
@@ -161,78 +36,60 @@
         [
           {
             "kind": "text",
-            "value": "Hello buddy"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "To the guy in charge"
+            "value": "Dear"
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Dear Sir/Madam’ or ‘Dear Hiring Team / Committee’ is standard when the recipient's name is not available."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "If you are advancing a thesis, presenting claims, and countering opposing views, what kind of research report are you writing?"
+          "value": "If you are arguing a conclusion, what kind of research report are you writing?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "Analytical"
+            "value": "analytical"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Expository"
+            "value": "expository"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Argumentative"
+            "value": "prepository"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Descriptive"
+            "value": "argumentative"
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "An argumentative report evaluates divergent perspectives and defends a justified conclusion with reasoned premises."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In sociolinguistics and communication models, what are the forms and styles of speech (written vs. spoken, dialect) called?"
+          "value": "What are forms and styles of speech called?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -259,24 +116,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "In Dell Hymes's SPEAKING model, 'I' stands for Instrumentalities (channels, registers, and styles of speech)."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In Dell Hymes's acronym SPEAKING model of communication, what does the letter 'A' refer to?"
+          "value": "What does A in the acronym SPEAKING refer to?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -299,28 +150,22 @@
         [
           {
             "kind": "text",
-            "value": "Appraisal"
+            "value": "Audience"
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "In the SPEAKING model: S = Setting, P = Participants, E = Ends, A = Act sequence (form and order of events)."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Organizational hierarchy leading to communication breakdown is classified as a/an:"
+          "value": "Hierarchy is a/an:"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -347,29 +192,23 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Rigid departmental stratification and bureaucratic layers represent organizational barriers to open communication."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Which of the following are common psychological and behavioral challenges during an interview?"
+          "value": "Which of the following are challenges when you face an interview?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "Anxiety and stress"
+            "value": "Anxiety"
           }
         ],
         [
@@ -391,24 +230,18 @@
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Interview performance is commonly impaired by cognitive anxiety, lack of preparation, and attentional distractions."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Faulty translation or misinterpretation of technical jargon is classified as a/an:"
+          "value": "Bad translation is a/an:"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -425,25 +258,17 @@
         [
           {
             "kind": "text",
-            "value": "Language / Semantic barrier"
+            "value": "Language/Semantic barrier"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Environmental barrier"
+            "value": "Personal barrier"
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Semantic barriers arise from misunderstandings of symbols, vocabulary, translation differences, or jargon."
-        }
-      ]
+      "correct_answer": 2
     }
   ]
 }

@@ -3,104 +3,17 @@
   "quiz_title": "English 2 · Graded Assignment · Week 9",
   "subject": "English 2",
   "section": "practice_graded",
-  "week": 9,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In the narrative, 'Dhri' appears to be whose nickname?"
+          "value": "What is the meaning of acceptability?"
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Draupadi’s"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Dhai Ma’s"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Dhrishtadyumna’s"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Drupad’s"
-          }
-        ]
-      ],
-      "correct_answer": 2,
       "marks": 1,
       "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Dhri’ is the affectionate familiar nickname used for her brother Dhrishtadyumna in Chitra Banerjee Divakaruni's 'The Palace of Illusions'."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "What is the meaning of the narrator's name (Draupadi / Panchaali)?"
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Light of the Universe"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Celestial Victor"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Destroyer of Enemies"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Daughter of Drupad"
-          }
-        ]
-      ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "The patronymic name signifies 'Daughter of Drupad' (King of Panchal)."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "What is the standard meaning of the noun 'acceptability'?"
-        }
-      ],
       "options": [
         [
           {
@@ -111,13 +24,13 @@
         [
           {
             "kind": "text",
-            "value": "The quality of being allowed, welcomed, or tolerated"
+            "value": "The quality of being allowed or tolerated"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Ability to accept everything blindly"
+            "value": "Ability to accept everything"
           }
         ],
         [
@@ -127,68 +40,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Acceptability’ refers to the state or quality of being considered acceptable, satisfactory, or tolerable."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Whom does the narrator consider to be stubborn and egoistic?"
+          "value": "What is the meaning of celestial?"
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Her brother"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "His sister"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Her father"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Their mother"
-          }
-        ]
-      ],
-      "correct_answer": 2,
       "marks": 1,
       "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "In the novel, Draupadi observes her father King Drupad's rigid pride and vengeful ego against Drona."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "What is the meaning of the adjective 'celestial'?"
-        }
-      ],
       "options": [
         [
           {
@@ -199,7 +62,7 @@
         [
           {
             "kind": "text",
-            "value": "Relating to heaven or the sky"
+            "value": "Relating to heaven"
           }
         ],
         [
@@ -215,29 +78,23 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Celestial’ pertains to the sky, the heavens, or divine beings."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In the phrase 'You have been stranded thousands of miles from home', what does 'stranded' mean?"
+          "value": "In “You have been stranded thousands of miles from home”, what does stranded mean?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "Left in a helpless or isolated position"
+            "value": "Left alone"
           }
         ],
         [
@@ -251,81 +108,25 @@
             "kind": "text",
             "value": "Confused"
           }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Imprisoned"
-          }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "To be stranded means to be left without the means to move from somewhere or return home."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Fill in the blank: “Such a ___________ would make many people despair and curse their awful fate.”"
+          "value": "In “It became the foundation of his life’s work and legacy”, what does legacy mean?"
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Prediction"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Predicament"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Predatory"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Predecessor"
-          }
-        ]
-      ],
-      "correct_answer": 1,
       "marks": 1,
       "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "A ‘predicament’ is a difficult, unpleasant, or embarrassing situation."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "In the phrase 'It became the foundation of his life’s work and legacy', what is the meaning of 'legacy'?"
-        }
-      ],
       "options": [
         [
           {
             "kind": "text",
-            "value": "A set of property, values, or impact left behind after one’s departure"
+            "value": "A set of property or values left after one’s departure."
           }
         ],
         [
@@ -337,78 +138,22 @@
         [
           {
             "kind": "text",
-            "value": "An unseen buried treasure"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "A short-lived fame"
+            "value": "An unseen treasure."
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "A ‘legacy’ denotes something transmitted by or received from an ancestor, predecessor, or past era."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Fill in the blank: “He _________ into a bookshop and became intrigued by reading about Socrates.”"
+          "value": "What is the meaning of intrigued?"
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Wanted"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Wandered"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Pondered"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Faltered"
-          }
-        ]
-      ],
-      "correct_answer": 1,
       "marks": 1,
       "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Wandered’ means walked or strolled in a casual or leisurely way."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "What is the meaning of the word ‘intrigued’?"
-        }
-      ],
       "options": [
         [
           {
@@ -419,7 +164,7 @@
         [
           {
             "kind": "text",
-            "value": "Fascinated and curious"
+            "value": "Interested"
           }
         ],
         [
@@ -427,23 +172,9 @@
             "kind": "text",
             "value": "Involved"
           }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Distracted"
-          }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "To be ‘intrigued’ means to have one's interest, wonder, or curiosity strongly aroused."
-        }
-      ]
+      "correct_answer": 1
     }
   ]
 }

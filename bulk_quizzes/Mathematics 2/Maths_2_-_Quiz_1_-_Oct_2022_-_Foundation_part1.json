@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Oct 2022 · Foundation · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following subsets of $\\mathbb{R}^3$ are subspaces of $\\mathbb{R}^3$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(x, y, z) \\in \\mathbb{R}^3 : x + y + z = 1\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(x, y, z) \\in \\mathbb{R}^3 : x - 2y = 0 \\text{ and } y + z = 0\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(x, y, z) \\in \\mathbb{R}^3 : x = 0\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(x, y, z) \\in \\mathbb{R}^3 : x + y + z = 0\\}$"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        3
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Subsets defined by homogeneous linear equations are subspaces. Subset A does not contain $(0, 0, 0)$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Define addition and scalar multiplication on $V = \\mathbb{R}^2$ by:\n$$\\text{Addition}: (x_1, y_1) + (x_2, y_2) = (0, 0)$$\n$$\\text{Scalar multiplication}: c(x, y) = (cx, cy)$$\nConsider the vector space axioms:\n1. Existence of additive identity\n2. Commutativity of addition\n3. Associativity of addition\n4. Distributivity $c(u + v) = cu + cv$\nWhich axiom is NOT satisfied? Enter the serial number."
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For an additive identity $0_V$ to exist, $v + 0_V = v$ must hold for all $v$. But here $v + w = (0, 0) \\neq v$ for any non-zero $v$. Thus axiom 1 fails."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the two statements:\n**P**: $V = \\mathbb{R}^2$ with $(x_1, y_1) + (x_2, y_2) = (x_1 x_2, y_1 y_2)$ and $c(x, y) = (cx, cy)$ is a vector space.\n**Q**: If $u, v, w \\in V$ satisfy $au + bv + cw = 0$ with $ac \\neq 0$, then $\\text{span}\\{u, v\\} = \\text{span}\\{v, w\\}$.\nConsider the options:\n1. P is true, but Q is false.\n2. Q is true, but P is false.\n3. Both P and Q are true.\n4. Both P and Q are false.\nEnter the serial number of the correct statement."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "P is false because $(x, y) + (0, 0) = (0, 0) \\neq (x, y)$, so no additive identity exists for all of $\\mathbb{R}^2$. Q is true because $ac \\neq 0$ implies $w$ can be expressed in terms of $u, v$ and $u$ can be expressed in terms of $v, w$, so their spans are identical. Thus Statement 2 is correct."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the matrix $A = \\begin{bmatrix} a/2 & -a/2 \\\\ a/2 & a/2 \\end{bmatrix}$ for some real number $a$. If $A^4 = \\frac{\\beta}{4} a^4 I$, what is the value of $\\beta$?"
+        }
+      ],
+      "numerical_answer": -1,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$A = \\frac{a}{\\sqrt{2}} \\begin{bmatrix} 1/\\sqrt{2} & -1/\\sqrt{2} \\\\ 1/\\sqrt{2} & 1/\\sqrt{2} \\end{bmatrix} = \\frac{a}{\\sqrt{2}} R_{\\pi/4}$. Then $A^4 = \\frac{a^4}{4} R_{\\pi} = \\frac{a^4}{4} (-I) = -\\frac{a^4}{4} I$. Thus $\\beta = -1$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the matrix $A = \\begin{bmatrix} a/2 & -a/2 \\\\ a/2 & a/2 \\end{bmatrix}$, find the value of $a + \\lambda$ for which $\\det(A - \\lambda I) = 0$, where $\\lambda$ is a real number (treat $a$ as a variable)."
+        }
+      ],
+      "numerical_answer": 0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The characteristic polynomial is $(\\lambda - a/2)^2 + a^2/4 = 0$. For $\\lambda$ to be real, the only solution occurs when $a = 0$ and $\\lambda = 0$, giving $a + \\lambda = 0$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the subset of $\\mathbb{R}^3$: Subset 1: $W = \\{(x, y, z) \\in \\mathbb{R}^3 : x^2 + y^2 = 0\\}$. Subset 1 is a subspace of dimension ___."
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$x^2 + y^2 = 0 \\iff x = 0$ and $y = 0$. Thus $W = \\{(0, 0, z) : z \\in \\mathbb{R}\\}$, which is the z-axis (dimension 1)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the subset of $\\mathbb{R}^3$: Subset 2: $W = \\{(x, y, z) \\in \\mathbb{R}^3 : x = -z\\}$. Subset 2 is a subspace of dimension ___."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A single linear constraint $x + z = 0$ in $\\mathbb{R}^3$ defines a plane passing through the origin, which has dimension $3 - 1 = 2$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the subset of $\\mathbb{R}^3$: Subset 3: $W = \\{(x, y, z) \\in \\mathbb{R}^3 : x = 2y + z \\text{ and } x + z = 2y\\}$. Subset 3 is a subspace of dimension ___."
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Subtracting the equations gives $z = -z \\implies z = 0$, so $x = 2y$. This is a line through the origin, which has dimension 1."
+        }
+      ]
+    }
+  ]
+}

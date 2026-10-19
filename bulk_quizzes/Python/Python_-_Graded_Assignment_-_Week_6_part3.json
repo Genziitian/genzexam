@@ -1,0 +1,554 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 6 · Part 3",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume d is a variable of type dict , what is the type of the expression\nd.update({5:6}) ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "dict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume d is a variable of type dict , what is the type of the expression\nd.update([(5,6)]) ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "dict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume d is a variable of type dict , what is the type of the expression d.add(5,6) ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "dict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 5
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Use Python 3.9 or later, which supports dictionary union with |."
+        },
+        {
+          "kind": "text",
+          "value": "Assume d is a variable of type dict , what is the type of the expression d | {5:6} ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "dict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Use Python 3.9 or later, which supports dictionary union with |."
+        },
+        {
+          "kind": "text",
+          "value": "Assume d is a variable of type dict , what is the type of the expression (d |\n{5:6}).pop() ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "dict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 5
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Use Python 3.9 or later, which supports dictionary union with |."
+        },
+        {
+          "kind": "text",
+          "value": "Assume d is a variable of type dict , what is the type of the expression (d |\n{5:6}).pop(5) ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "dict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Use Python 3.9 or later, which supports dictionary union with |."
+        },
+        {
+          "kind": "text",
+          "value": "Assume d is a variable of type dict , what is the type of the expression (d |\n{5:{5:6}}).pop(5)[5] ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "dict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume d is a variable of type dict , what is the type of the expression d.values() ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "dict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the Above"
+          }
+        ]
+      ],
+      "correct_answer": 6
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume d is a variable of type dict , what is the type of the expression\nlist(d.items())[0] ?\nAlso assume d is non empty."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "tuple"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "dict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the Above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume d is a variable of type dict , what is the type of the expression d.popitem() ?\nAlso assume d is non empty."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "tuple"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "dict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the Above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    }
+  ]
+}

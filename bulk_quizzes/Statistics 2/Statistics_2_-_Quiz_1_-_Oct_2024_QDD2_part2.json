@@ -1,0 +1,441 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 1 · Oct 2024 · QDD2 · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nSuppose that a factory manufactures electronic gadgets every day. A quality control team tracks the number\nof defective gadgets found in daily production runs. Let 𝑋 be the number of defective gadgets produced on\nany given day. The mean and variance of 𝑋 are 50 and 81, respectively.\nBased on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "Using Chebyshev's inequality, find a lower bound on the probability that on a given day production will be\nbetween 30 and 70."
+        },
+        {
+          "kind": "text",
+          "value": "9"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Chebyshev gives P(|X−50|≥20)≤81/400. Consequently P(30≤X≤70)≥1−81/400=319/400, option C."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q12_option-1-1_p6.png",
+            "alt": "Original option 1 1 for Statistics 2 question 12."
+          },
+          {
+            "kind": "text",
+            "value": "81"
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q12_option-2-1_p6.png",
+            "alt": "Original option 2 1 for Statistics 2 question 12."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q12_option-2-2_p6.png",
+            "alt": "Original option 2 2 for Statistics 2 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q12_option-3-1_p6.png",
+            "alt": "Original option 3 1 for Statistics 2 question 12."
+          },
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q12_option-4-1_p6.png",
+            "alt": "Original option 4 1 for Statistics 2 question 12."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q13_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 13."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "Find the value of 𝑘. Enter the answer correct to two decimal places."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q13_solution-1_p7.png",
+          "alt": "Original solution 1 for Statistics 2 question 13."
+        }
+      ],
+      "acceptable_answers": [
+        "0.08 (±0.03)"
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q14_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 14."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "Calculate the probability that the length of a randomly selected rod is between 2 cm and 4 cm. Enter the\nanswer correct to two decimal places."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q14_solution-1_p7.png",
+          "alt": "Original solution 1 for Statistics 2 question 14."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q14_solution-2_p7.png",
+          "alt": "Original solution 2 for Statistics 2 question 14."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        }
+      ],
+      "acceptable_answers": [
+        "0.32 (±0.03)"
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q15_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 15."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q15_prompt-1_p8.png",
+          "alt": "Original prompt 1 for Statistics 2 question 15."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q15_solution-1_p8.png",
+          "alt": "Original solution 1 for Statistics 2 question 15."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q16_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 16."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q16_prompt-1_p8.png",
+          "alt": "Original prompt 1 for Statistics 2 question 16."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q16_prompt-2_p8.png",
+          "alt": "Original prompt 2 for Statistics 2 question 16."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q16_solution-1_p8.png",
+          "alt": "Original solution 1 for Statistics 2 question 16."
+        },
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nRajat and Meenal are playing a game. Rajat will roll a fair six-sided die, and Meenal will flip a fair coin as\nmany times as the number shown on the die. Let 𝑋 be the number displayed on the die, and 𝑌 be the\nnumber of heads obtained by Meenal.\nBased on the above data, answer the given subquestions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q16_option-1-1_p8.png",
+            "alt": "Original option 1 1 for Statistics 2 question 16."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q16_option-1-2_p8.png",
+            "alt": "Original option 1 2 for Statistics 2 question 16."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q16_option-2-1_p8.png",
+            "alt": "Original option 2 1 for Statistics 2 question 16."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q16_option-3-1_p8.png",
+            "alt": "Original option 3 1 for Statistics 2 question 16."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q16_option-3-2_p8.png",
+            "alt": "Original option 3 2 for Statistics 2 question 16."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q16_option-4-1_p8.png",
+            "alt": "Original option 4 1 for Statistics 2 question 16."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nRajat and Meenal are playing a game. Rajat will roll a fair six-sided die, and Meenal will flip a fair coin as\nmany times as the number shown on the die. Let 𝑋 be the number displayed on the die, and 𝑌 be the\nnumber of heads obtained by Meenal.\nBased on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q17_prompt-1_p9.png",
+          "alt": "Original prompt 1 for Statistics 2 question 17."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q17_solution-1_p9.png",
+          "alt": "Original solution 1 for Statistics 2 question 17."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q17_option-1-1_p9.png",
+            "alt": "Original option 1 1 for Statistics 2 question 17."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q17_option-2-1_p9.png",
+            "alt": "Original option 2 1 for Statistics 2 question 17."
+          },
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q17_option-3-1_p9.png",
+            "alt": "Original option 3 1 for Statistics 2 question 17."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q17_option-4-1_p9.png",
+            "alt": "Original option 4 1 for Statistics 2 question 17."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nRajat and Meenal are playing a game. Rajat will roll a fair six-sided die, and Meenal will flip a fair coin as\nmany times as the number shown on the die. Let 𝑋 be the number displayed on the die, and 𝑌 be the\nnumber of heads obtained by Meenal.\nBased on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q18_prompt-1_p9.png",
+          "alt": "Original prompt 1 for Statistics 2 question 18."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q18_solution-1_p9.png",
+          "alt": "Original solution 1 for Statistics 2 question 18."
+        }
+      ],
+      "acceptable_answers": [
+        "0.26 (±0.03)"
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nRajat and Meenal are playing a game. Rajat will roll a fair six-sided die, and Meenal will flip a fair coin as\nmany times as the number shown on the die. Let 𝑋 be the number displayed on the die, and 𝑌 be the\nnumber of heads obtained by Meenal.\nBased on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "A tech company develops a new software system. The time until the system experiences its first major failure\nis modeled by an exponential distribution with an average failure time of 5 years. Find the value of 𝑘 such\nthat there is a 95% chance the system will fail within 𝑘 years."
+        },
+        {
+          "kind": "text",
+          "value": "1"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q19_solution-1_p9.png",
+          "alt": "Original solution 1 for Statistics 2 question 19."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q19_option-1-1_p9.png",
+            "alt": "Original option 1 1 for Statistics 2 question 19."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q19_option-2-1_p9.png",
+            "alt": "Original option 2 1 for Statistics 2 question 19."
+          },
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q19_option-3-1_p9.png",
+            "alt": "Original option 3 1 for Statistics 2 question 19."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q19_option-4-1_p9.png",
+            "alt": "Original option 4 1 for Statistics 2 question 19."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nRajat and Meenal are playing a game. Rajat will roll a fair six-sided die, and Meenal will flip a fair coin as\nmany times as the number shown on the die. Let 𝑋 be the number displayed on the die, and 𝑌 be the\nnumber of heads obtained by Meenal.\nBased on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "The joint PMF of two discrete random variables 𝑋 and 𝑌 is given in the following table:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q20_prompt-2_p10.png",
+          "alt": "Original prompt 2 for Statistics 2 question 20."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q20_prompt-3_p10.png",
+          "alt": "Original prompt 3 for Statistics 2 question 20."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/46c71a712ec1_q20_prompt-4_p10.png",
+          "alt": "Original prompt 4 for Statistics 2 question 20."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Summing the joint table gives E[X]=0.8, E[Y]=1.05, and E[XY]=0.85. Hence Cov(X,Y)=0.85−0.8×1.05=0.01."
+        }
+      ],
+      "acceptable_answers": [
+        "0.01 (±0.01)"
+      ]
+    }
+  ]
+}

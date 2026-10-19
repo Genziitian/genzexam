@@ -289,48 +289,6 @@
         },
         {
           "kind": "text",
-          "value": "Which among the following is not the function of a supporting sentence?"
-        }
-      ],
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Supporting sentences explain, elaborate and justify the topic sentence; 'reinforce' is the role of a concluding\nsentence."
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "To explain or elaborate"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "To justify"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "To reinforce"
-          }
-        ]
-      ],
-      "correct_answer": 2
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
-        },
-        {
-          "kind": "text",
           "value": "In formal academic writing the word 'overall' can be used to express certainty."
         }
       ],

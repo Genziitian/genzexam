@@ -30,7 +30,7 @@
     if (
       typeof value !== "string" ||
       value.length > 2048 ||
-      /[\u0000-\u0020\\]/.test(value)
+      /[\u0000-\u0020\\<>]/.test(value)
     )
       return null;
     if (
@@ -77,12 +77,19 @@
     const parts = String(text)
       .slice(0, MAX_CONTENT_LENGTH)
       .split(
-        /(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$(?!\$)[^\n$]+\$)/g,
+        /(`[^`\n]{1,500}`|!\[(?:\\.|[^\]\\\n])*\]\((?:<[^<>\n]+>|[^\s()<>]+)\)|\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$(?!\$)[^\n$]+\$)/g,
       );
     return parts
       .map((part) => {
         let display = false;
         let tex = part;
+        if (part.startsWith("`") && part.endsWith("`")) {
+          return "<code>" + escapeHtml(part.slice(1, -1)) + "</code>";
+        }
+        const image = part.match(/^!\[((?:\\.|[^\]\\\n])*)\]\((?:<([^<>\n]+)>|([^\s()<>]+))\)$/);
+        if (image) {
+          return renderBlock({ kind: "image", url: image[2] || image[3], alt: image[1].replace(/\\([\\\[\]])/g, "$1") });
+        }
         if (part.startsWith("$$") && part.endsWith("$$")) {
           display = true;
           tex = part.slice(2, -2);
@@ -195,7 +202,7 @@
         '<figure class="exam-rich-image"><img src="' +
         escapeHtml(url) +
         '" alt="' +
-        escapeHtml(block.alt || "") +
+        escapeHtml(block.alt || "Question image") +
         '" loading="lazy" referrerpolicy="no-referrer">' +
         caption +
         "</figure>"

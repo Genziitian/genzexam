@@ -1,0 +1,276 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Graded Assignment · Week 8",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q1_prompt_p2.png",
+          "alt": "Original Statistics 1 question 1 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q1_option-1_p2.png",
+            "alt": "Original option 1 for Statistics 1 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q1_option-2_p2.png",
+            "alt": "Original option 2 for Statistics 1 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q1_option-3_p2.png",
+            "alt": "Original option 3 for Statistics 1 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q1_option-4_p2.png",
+            "alt": "Original option 4 for Statistics 1 question 1."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Factory A produces x times as many items as factory B, while B and C produce equal numbers. Their defective proportions are p%,q%,r%, respectively. All items are pooled and one item is selected randomly.\nWhat is the probability that the item is defective?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "(x*p+q+r)/(100*(x+2))",
+        "(xp+q+r)/(100(x+2))"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Factory production weights are x:1:1. Apply the law of total probability to the defect percentages."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Factory A produces x times as many items as factory B, while B and C produce equal numbers. Their defective proportions are p%,q%,r%, respectively. All items are pooled and one item is selected randomly.\nGiven that the item is defective, what is the probability that factory B produced it?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "q/(x*p+q+r)",
+        "q/(xp+q+r)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Bayes’ formula divides the defective contribution from factory B by the total defective contribution."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A particular task is given to three persons, Manoj, Kalpana and Ananya whose proba-\nbilities of completing it are a\nb,c\nd and e\nf respectively, independent of each other. What\nis the probability that the task will be completed? \nConditions: 1 ≤a ≤3, a + 1 < b ≤6, 2 ≤c ≤5, c + 1 ≤d ≤9, 1 ≤e ≤4 and\ne + 1 ≤f ≤8."
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "1-(1-a/b)*(1-c/d)*(1-e/f)",
+        "1-(1-a/b)(1-c/d)(1-e/f)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The task is unfinished only if all three independent people fail."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If A and B are two independent events such that P(Ac) = m and P(Bc) = x and\nP(A ∪ B) = n, then calculate the value of x. \nConditions: 0.5 ≤m ≤0.8 and 0.6 ≤n ≤0.9"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "(1-n)/m"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Independence gives P(Aᶜ∩Bᶜ)=P(Aᶜ)P(Bᶜ)=mx. This is the complement of the given union, with probability 1−n."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q11_prompt_p6.png",
+          "alt": "Original Statistics 1 question 11 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q11_option-1_p6.png",
+            "alt": "Original option 1 for Statistics 1 question 11."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q11_option-2_p6.png",
+            "alt": "Original option 2 for Statistics 1 question 11."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q11_option-3_p6.png",
+            "alt": "Original option 3 for Statistics 1 question 11."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q11_option-4_p6.png",
+            "alt": "Original option 4 for Statistics 1 question 11."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q12_prompt_p6.png",
+          "alt": "Original Statistics 1 question 12 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q12_option-1_p6.png",
+            "alt": "Original option 1 for Statistics 1 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q12_option-2_p6.png",
+            "alt": "Original option 2 for Statistics 1 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q12_option-3_p6.png",
+            "alt": "Original option 3 for Statistics 1 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q12_option-4_p6.png",
+            "alt": "Original option 4 for Statistics 1 question 12."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A university has 52 students, including exactly 4 international students and 48 domes-\ntic students . The students are randomly partitioned into 4 distinct orientation groups\nof 13 students each . What is the probability that each orientation group contains\nexactly one international student ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "acceptable_answers": [],
+      "numerical_answer": 0.10549819927971188,
+      "numerical_tolerance": 0.001
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mr.Chandra creates35%of quiz papers and Ms.Sharma65%. Their passing rates are20%and80%,respectively. What is the probability that a student passes a randomly chosen quiz?"
+        }
+      ],
+      "numerical_answer": 0.59,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mr.Chandra creates35%of quiz papers and Ms.Sharma65%. Their passing rates are20%and80%,respectively. Given that the student passes, what is the probability that Mr.Chandra created the quiz?"
+        }
+      ],
+      "numerical_answer": 0.11864406779661017,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

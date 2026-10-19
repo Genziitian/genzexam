@@ -3,16 +3,17 @@
   "quiz_title": "English 2 · Graded Assignment · Week 11",
   "subject": "English 2",
   "section": "practice_graded",
-  "week": 11,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘-s’ and ‘-ies’ in ‘dogs’ and ‘babies’ are:"
+          "value": "‘-s’ and ‘-ies’ in dogs and babies are:"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -39,24 +40,18 @@
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "They are inflectional morphemes that signify nominal plurality."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Reduction of a word to one of its parts without changing its meaning is called:"
+          "value": "Reduction of a word to one of its parts is called:"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -75,23 +70,9 @@
             "kind": "text",
             "value": "Borrowing"
           }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Compounding"
-          }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Clipping is the morphological process of shortening a word (e.g. ad from advertisement)."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
@@ -101,6 +82,8 @@
           "value": "Which of the following is an example of middle clipping?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -127,24 +110,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Flu’ is clipped from both ends of ‘influenza’."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘He did not break down when he heard the grave news. Rather, he became very stoic and appeared to bear it quite normally.’ The connecting discourse word is:"
+          "value": "“He did not break down when he heard the grave news. Rather, he became very stoic and appeared to bear it quite normally.” The connecting word/phrase is:"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -171,68 +148,18 @@
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Rather’ functions as an adversative/substitutive discourse connector indicating 'instead'."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In the context above, ‘rather’ means the same as:"
+          "value": "“He did not break down when he heard the grave news. Rather, he became very stoic and appeared to bear it quite normally.” Here, rather means the same as instead."
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Instead"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Completely"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Slowly"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Because"
-          }
-        ]
-      ],
-      "correct_answer": 0,
       "marks": 1,
       "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Rather’ is used here to introduce an alternative course of action or demeanor."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "Modern English contains many prefixes and suffixes borrowed from Greek and Latin."
-        }
-      ],
       "options": [
         [
           {
@@ -247,24 +174,44 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "A large portion of formal, scientific, and academic English morphology derives from classical Greek and Latin affixes."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘Bungalow’, ‘loot’, and ‘pyjamas’ are English words borrowed from:"
+          "value": "English has many prefixes and suffixes from Greek and Latin."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Bungalow, loot, and pyjamas are English words from:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -291,24 +238,18 @@
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "These are historical loanwords originating from Hindi, Sanskrit, and Urdu during colonial interactions."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘The business tycoon who made billions with his hotel chain has been found dead.’ Here, 'tycoon' means:"
+          "value": "“The business tycoon who made billions with his hotel chain Resorta, has been found dead.” Here tycoon means:"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -331,28 +272,22 @@
         [
           {
             "kind": "text",
-            "value": "A wealthy and powerful businessperson"
+            "value": "A wealthy and powerful person"
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "A tycoon is an influential, wealthy person in business or industry."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "The word 'tycoon' was borrowed into English from which language?"
+          "value": "Tycoon is a word borrowed from which language?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -379,29 +314,23 @@
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Tycoon’ comes from the Japanese word 'taikun' (great prince/commander)."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘The music club auditions allow candidates to have a karaoke to the song they’ll be singing.’ Here, 'karaoke' means:"
+          "value": "“The music club auditions allow candidates to have a karaoke to the song they’ll be singing.” Here karaoke means:"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "Lyrics sheet"
+            "value": "Lyrics"
           }
         ],
         [
@@ -413,25 +342,17 @@
         [
           {
             "kind": "text",
-            "value": "Pre-recorded instrumental backing track"
+            "value": "Pre-recorded backing tracks"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Acapella vocal"
+            "value": "Funny noises"
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Karaoke (from Japanese 'empty orchestra') refers to recorded backing music without the lead vocal."
-        }
-      ]
+      "correct_answer": 2
     }
   ]
 }

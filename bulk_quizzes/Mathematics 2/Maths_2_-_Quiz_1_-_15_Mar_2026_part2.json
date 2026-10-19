@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · 15 Mar 2026 · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A$ be a $3 \\times 3$ matrix of rank 2. What is the dimension of the null space (nullity) of $A$?"
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By the Rank-Nullity theorem: $\\text{rank}(A) + \\text{nullity}(A) = 3 \\implies 2 + \\text{nullity} = 3 \\implies \\text{nullity} = 1$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $W$ be the subspace of $\\mathbb{R}^4$ defined by $W = \\{(x_1, x_2, x_3, x_4) \\in \\mathbb{R}^4 : x_1 + x_2 + x_3 + x_4 = 0 \\text{ and } x_1 - x_4 = 0\\}$. What is the dimension of $W$?"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Two linearly independent linear constraints on $\\mathbb{R}^4$ yield a subspace of dimension $4 - 2 = 2$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the matrix:\n$$A = \\begin{bmatrix} 3 & 4 & -1 & 3 \\\\ 5 & 2 & 7 & 1 \\\\ 7 & k_1 & 15 & k_2 \\end{bmatrix}$$\nIf the rank of $A$ is 2, find the value of $k_1$."
+        }
+      ],
+      "numerical_answer": 0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Row 3 must be a linear combination of Row 1 and Row 2. $R_3 = -R_1 + 2R_2$. For column 2: $k_1 = -1(4) + 2(2) = 0$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the matrix:\n$$A = \\begin{bmatrix} 3 & 4 & -1 & 3 \\\\ 5 & 2 & 7 & 1 \\\\ 7 & k_1 & 15 & k_2 \\end{bmatrix}$$\nIf the rank of $A$ is 2, find the value of $k_2$."
+        }
+      ],
+      "numerical_answer": -1,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "With $R_3 = -R_1 + 2R_2$, column 4 gives $k_2 = -(3) + 2(1) = -1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $W = \\{(x, y) \\in \\mathbb{R}^2 : x > 0, y > 0\\}$. Define vector addition $\\oplus$ and scalar multiplication $\\odot$ on $W$ by:\n$$(x_1, y_1) \\oplus (x_2, y_2) = (x_1 x_2, y_1 y_2)$$\n$$c \\odot (x, y) = (x^c, y^c) \\quad \\text{for } c \\in \\mathbb{R}$$\nWhat is the additive identity (zero vector) of the vector space $(W, \\oplus, \\odot)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(0, 0)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(0, 1)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(1, 1)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(e, e)$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For any $(x, y) \\in W$, $(x, y) \\oplus (e_1, e_2) = (x e_1, y e_2) = (x, y) \\implies e_1 = 1, e_2 = 1$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $W = \\{(x, y) \\in \\mathbb{R}^2 : x > 0, y > 0\\}$ be the vector space over $\\mathbb{R}$ with operations:\n$$(x_1, y_1) \\oplus (x_2, y_2) = (x_1 x_2, y_1 y_2) \\quad \\text{and} \\quad c \\odot (x, y) = (x^c, y^c)$$\nWhat is the dimension of this vector space $W$?"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Under the coordinate map $(x, y) \\mapsto (\\ln x, \\ln y)$, $W$ is isomorphic to the standard vector space $\\mathbb{R}^2$, so $\\dim(W) = 2$."
+        }
+      ]
+    }
+  ]
+}

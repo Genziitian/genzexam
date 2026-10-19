@@ -1,0 +1,4790 @@
+{
+  "sources": [
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+    "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf"
+  ],
+  "source_question_headers": 143,
+  "exported_questions": 120,
+  "paper_count": 17,
+  "exports": [
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_1_part1.json",
+      "questions": 6,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 2
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 3
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 4
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 5
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 6
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_1_part2.json",
+      "questions": 5,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 7
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 8
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 9
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 10
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 11
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_10.json",
+      "questions": 7,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 3
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 6
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 7
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 8
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 9
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 10
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_11_part1.json",
+      "questions": 8,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 2
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 3
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 4
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 5
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 6
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 7
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 9
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_11_part2.json",
+      "questions": 8,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 10
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 11
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 12
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 13
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 15
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": "14(i)"
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": "14(ii)"
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": "15(ii)"
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_12.json",
+      "questions": 8,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 4
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 5
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 6
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 7
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 8
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 9
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 10
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_2_part1.json",
+      "questions": 6,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 2
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 3
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 4
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 5
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 6
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_2_part2.json",
+      "questions": 6,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 7
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 9
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 10
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 11
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 12
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 13
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_3.json",
+      "questions": 7,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 2
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 3
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 4
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 8
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": "11(i)"
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": "11(ii)"
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_4.json",
+      "questions": 7,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 7
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 8
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 9
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 10
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 11
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 12
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 13
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_5_part1.json",
+      "questions": 6,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 2
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 3
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 4
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 5
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 6
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_5_part2.json",
+      "questions": 6,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 7
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 9
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 10
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 11
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 12
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 13
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_6.json",
+      "questions": 10,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 2
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 3
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 4
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 5
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 6
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 7
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 8
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 9
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 10
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_7_part1.json",
+      "questions": 6,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 2
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 4
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 5
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 6
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 7
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_7_part2.json",
+      "questions": 5,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 8
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 9
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 12
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": "11(i)"
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": "11(ii)"
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_8.json",
+      "questions": 10,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 3
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 4
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 5
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 6
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 11
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 12
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 13
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": "14(i)"
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": "14(ii)"
+        }
+      ]
+    },
+    {
+      "file": "bulk_quizzes/Statistics 1/Statistics_1_Graded_Assignment_Week_9.json",
+      "questions": 9,
+      "source_questions": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 1
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 4
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 5
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 6
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 7
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 8
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 9
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 10
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+          "question_number": 11
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "notes": [
+        "Removed an irrelevant truncated experiment; the complete defined transformation is sufficient for this expectation/variance question."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "notes": [
+        "The source asks statement/s; both≥and>are always true. Corrected MCQ to multi-select, restored inline option f and keysC,D."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 15,
+      "notes": [
+        "Removed the stem and following subquestion accidentally stored as choices; corrected distribution key to Binomial(5,0.4)."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": "14(i)",
+      "notes": [
+        "Recovered a genuine compound numerical subquestion that the booklet stored inside an incorrectly formatted MCQ/solution block."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": "14(ii)",
+      "notes": [
+        "Recovered a genuine compound numerical subquestion that the booklet stored inside an incorrectly formatted MCQ/solution block."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": "15(ii)",
+      "notes": [
+        "Recovered a genuine compound numerical subquestion that the booklet stored inside an incorrectly formatted MCQ/solution block."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "notes": [
+        "Corrected mode key to Insufficient data because three category counts are unspecified."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": "11(i)",
+      "notes": [
+        "Recovered a genuine compound numerical subquestion that the booklet stored inside an incorrectly formatted MCQ/solution block."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": "11(ii)",
+      "notes": [
+        "Recovered a genuine compound numerical subquestion that the booklet stored inside an incorrectly formatted MCQ/solution block."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "notes": [
+        "Made the nonzero-variance condition explicit so Pearson correlation is defined."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": "11(i)",
+      "notes": [
+        "Recovered a genuine compound numerical subquestion that the booklet stored inside an incorrectly formatted MCQ/solution block."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": "11(ii)",
+      "notes": [
+        "Recovered a genuine compound numerical subquestion that the booklet stored inside an incorrectly formatted MCQ/solution block."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match.",
+        "Restored the exact factory scenario misplaced under source questions5/6."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match.",
+        "Restored the exact factory scenario misplaced under source questions5/6."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "notes": [
+        "Computed missing key using the explicit group-allocation probabilities in the adjacent original solution."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": "14(i)",
+      "notes": [
+        "Recovered a genuine compound numerical subquestion that the booklet stored inside an incorrectly formatted MCQ/solution block."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": "14(ii)",
+      "notes": [
+        "Recovered a genuine compound numerical subquestion that the booklet stored inside an incorrectly formatted MCQ/solution block."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "notes": [
+        "Separated inline source option f from option e; corrected key to include the discrete no-show count."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "notes": []
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "notes": [
+        "Corrected a parameter-only numerical item to short_answer; accepted formula variants use only the original parameters. Formula grading is exact-match."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "notes": [
+        "Computed missing key by enumerating the hypergeometric probabilities: X=0has the least probability."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "notes": [
+        "Normalization gives5k²−3k−2=0; the positive admissible solution is1."
+      ]
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "notes": []
+    }
+  ],
+  "gaps": [
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "reason": "The first part of the shared sign-sequence experiment is absent; the context starts mid-sentence “last sign”."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "reason": "The random-walk context omits the probability of moving right and starts mid-sentence. The keyed 1.4 is not determined."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "reason": "The random-walk context omits the probability of moving right; the keyed variance 6.72 is not determined."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "reason": "The referenced Binomial probability table needed to determine p is absent."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 14,
+      "reason": "Compound numerical subquestions incorrectly formatted as MCQ; recovered separately."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "reason": "Single-choice options B and D are identical n³−m³; the source therefore has two correct alternatives."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "reason": "The conditional-uniform formula depends on the relative order and support of m and n, which are not specified; the keyed formula assumes unstated ordering."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "reason": "All three source options are actually blank; the charts were omitted from their choice rows."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "reason": "No observation values or percentile convention are supplied for the symbolic dataset."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "reason": "The actual dataset is absent; numerical IQR cannot be determined."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "reason": "The actual dataset is absent; numerical outlier count cannot be determined."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "reason": "Required stem-and-leaf plot is absent; the source attaches a card-frequency table instead."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "reason": "Required ratings plot is absent; the source attaches a card-frequency table instead."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 100,
+      "reason": "Phantom Q100 starts inside a previous solution; genuine embedded production subquestions are recovered separately."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "reason": "Only symbolic sales a,c,e,g,i,k,m are provided; no numeric sales or source formula answer are supplied."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "reason": "Only symbolic sales b,d,f,h,j,l,n are provided; no numeric sales or source formula answer are supplied."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "reason": "Numeric covariance requires actual sales values; only symbolic placeholders and a blank key are present."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "reason": "Numeric correlation requires actual sales values; only symbolic placeholders and a blank key are present."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "reason": "The claimed strength of correlation cannot be established from a table containing only arbitrary letters."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "reason": "Influence of dealer location cannot be established from a table containing only arbitrary letters."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "reason": "The source introduces an undefined z in the denominator but gives an answer independent of z; the intended expression cannot be uniquely recovered."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "reason": "The stated marginal prediction probabilities do not determine joint success probabilities; independence is not stated."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "reason": "Disjoint events need not satisfy any of the offered inequalities between P(A) and P(B). No option is always true."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "reason": "Compound numerical subquestions incorrectly formatted as MCQ; recovered separately."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "reason": "The probability of matching wrong scores is not specified as conditional on both predictions being wrong, but the source key requires that additional interpretation."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "reason": "The referenced researchers/intelligence-level contingency table is absent from the source."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "reason": "The referenced researchers/intelligence-level contingency table is absent from the source."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "reason": "The referenced researchers/intelligence-level contingency table is absent from the source."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 51,
+      "reason": "Phantom Q51 starts inside a previous solution; genuine embedded teacher-quiz subquestions are recovered separately."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "reason": "The lucky-draw prize/ticket values are missing or garbled in the stem, so the intended probability is not determined."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "reason": "The number of possible photographer counts depends on n,x,m; the keyed m+1 requires unstated bounds ensuring enough photographers and journalists."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "reason": "The options are bare unexplained numbers 17,21,17,23 rather than probability mass functions."
+    }
+  ],
+  "assets": [
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q1_option-1_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.66405980566405,
+        328.7587952233837,
+        554.95999,
+        372.0087933796337
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q1_option-2_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.37548576768798,
+        373.0087933796337,
+        554.95999,
+        416.2587915358837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q1_option-3_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.30370846067869,
+        417.2587915358837,
+        554.95999,
+        459.7644880926498
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q1_option-4_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        69.61051009657511,
+        460.7644880926498,
+        554.95999,
+        507.38802125333586
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q1_prompt_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        44.621999249999995,
+        195.3856151620182,
+        559.2623905999999,
+        327.7587952233837
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q2_option-1_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "page": 3,
+      "box": [
+        68.66405980566405,
+        253.7587983483836,
+        554.95999,
+        279.7644955926497
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q2_option-2_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "page": 3,
+      "box": [
+        69.61051009657511,
+        280.7644955926497,
+        554.95999,
+        310.1380294720858
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q2_prompt_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "page": 3,
+      "box": [
+        44.621999249999995,
+        70.13562038076816,
+        559.2623905999999,
+        252.7587983483836
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q3_option-1_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 3,
+      "box": [
+        68.66405980566405,
+        511.7587875983837,
+        554.95999,
+        537.7644848426496
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q3_option-2_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 3,
+      "box": [
+        69.61051009657511,
+        538.7644848426496,
+        554.95999,
+        568.1380187220857
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q3_prompt_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 3,
+      "box": [
+        44.621999249999995,
+        378.38560753701813,
+        559.2623905999999,
+        510.7587875983837
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q4_option-1_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "page": 4,
+      "box": [
+        68.66405980566405,
+        349.7587943483835,
+        554.95999,
+        375.7587932233836
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q4_option-2_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "page": 4,
+      "box": [
+        68.37548576768798,
+        376.7587932233836,
+        554.95999,
+        402.01449049889976
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q4_option-3_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        403.01449049889976,
+        554.95999,
+        429.7644893426498
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q4_option-4_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        430.7644893426498,
+        554.95999,
+        457.50878981713356
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q4_option-5_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "page": 4,
+      "box": [
+        67.88769289801269,
+        458.50878981713356,
+        554.95999,
+        487.88802206583574
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q4_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        70.13562038076816,
+        559.2623905999999,
+        348.7587943483835
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q5_option-1_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 5,
+      "box": [
+        68.66405980566405,
+        349.7587943483835,
+        554.95999,
+        375.01449162389946
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q5_option-2_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 5,
+      "box": [
+        69.61051009657511,
+        376.01449162389946,
+        554.95999,
+        402.7587920983832
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q5_option-3_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 5,
+      "box": [
+        68.30370846067869,
+        403.7587920983832,
+        554.95999,
+        430.5087909421335
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q5_option-4_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 5,
+      "box": [
+        68.80761459968261,
+        431.5087909421335,
+        554.95999,
+        460.1380232220857
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q5_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        348.7587943483835
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q6_option-1_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 6,
+      "box": [
+        68.66405980566405,
+        349.7587943483835,
+        554.95999,
+        375.01449162389946
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q6_option-2_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 6,
+      "box": [
+        69.61051009657511,
+        376.01449162389946,
+        554.95999,
+        402.75879209838365
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q6_option-3_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 6,
+      "box": [
+        68.30370846067869,
+        403.75879209838365,
+        554.95999,
+        429.7644893426498
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q6_option-4_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 6,
+      "box": [
+        69.61051009657511,
+        430.7644893426498,
+        554.95999,
+        460.1380232220857
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q6_prompt_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 6,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        348.7587943483835
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q7_option-1_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 7,
+      "box": [
+        68.66405980566405,
+        349.75879434838396,
+        554.95999,
+        375.75879322338403
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q7_option-2_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 7,
+      "box": [
+        68.37548576768798,
+        376.75879322338403,
+        554.95999,
+        402.7587920983841
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q7_option-3_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 7,
+      "box": [
+        68.30370846067869,
+        403.7587920983841,
+        554.95999,
+        429.7644893426503
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q7_option-4_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 7,
+      "box": [
+        69.61051009657511,
+        430.7644893426503,
+        554.95999,
+        460.13802322208613
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q7_prompt_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 7,
+      "box": [
+        44.621999249999995,
+        70.13562038076884,
+        559.2623905999999,
+        348.75879434838396
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q8_option-1_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 8,
+      "box": [
+        69.61051009657511,
+        349.01449274890075,
+        554.95999,
+        375.7587932233845
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q8_option-2_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 8,
+      "box": [
+        68.37548576768798,
+        376.7587932233845,
+        554.95999,
+        405.3880255033362
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q8_prompt_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 8,
+      "box": [
+        44.621999249999995,
+        70.13562038076884,
+        559.2623905999999,
+        348.01449274890075
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q9_option-1_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 8,
+      "box": [
+        68.66405980566405,
+        518.5087873171341,
+        554.95999,
+        544.5144845614002
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q9_option-2_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 8,
+      "box": [
+        69.61051009657511,
+        545.5144845614002,
+        554.95999,
+        574.888018440836
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q9_prompt_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 8,
+      "box": [
+        44.621999249999995,
+        473.63560356826906,
+        559.2623905999999,
+        517.5087873171341
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q10_option-1_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 9,
+      "box": [
+        69.61051009657511,
+        97.0145032488997,
+        554.95999,
+        124.50880369213326
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q10_option-2_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 9,
+      "box": [
+        68.37548576768798,
+        125.50880369213326,
+        554.95999,
+        151.50880256713378
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q10_option-3_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 9,
+      "box": [
+        68.30370846067869,
+        152.50880256713378,
+        554.95999,
+        178.5144998113999
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q10_option-4_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 9,
+      "box": [
+        69.61051009657511,
+        179.5144998113999,
+        554.95999,
+        208.88803369083575
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q10_prompt_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 9,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        96.0145032488997
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q11_option-1_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 9,
+      "box": [
+        68.66405980566405,
+        523.7587870983833,
+        554.95999,
+        549.7587859733839
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q11_option-2_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 9,
+      "box": [
+        68.37548576768798,
+        550.7587859733839,
+        554.95999,
+        576.76448321765
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q11_option-3_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 9,
+      "box": [
+        69.61051009657511,
+        577.76448321765,
+        554.95999,
+        604.5087836921338
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q11_option-4_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 9,
+      "box": [
+        68.80761459968261,
+        605.5087836921338,
+        554.95999,
+        634.1380159720854
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q11_prompt_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 1 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 9,
+      "box": [
+        44.621999249999995,
+        277.13561175576774,
+        559.2623905999999,
+        522.7587870983833
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q1_prompt_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        44.621999249999995,
+        195.3856151620182,
+        559.2623905999999,
+        305.63802965958575
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q3_option-1_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 3,
+      "box": [
+        68.66405980566405,
+        218.50879981713365,
+        554.95999,
+        243.76449709264978
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q3_option-2_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 3,
+      "box": [
+        69.61051009657511,
+        244.76449709264978,
+        554.95999,
+        272.2587975358837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q3_option-3_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 3,
+      "box": [
+        68.30370846067869,
+        273.2587975358837,
+        554.95999,
+        299.25879641088363
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q3_option-4_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 3,
+      "box": [
+        68.80761459968261,
+        300.25879641088363,
+        554.95999,
+        326.2644936551497
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q3_option-5_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 3,
+      "box": [
+        69.61051009657511,
+        327.2644936551497,
+        554.95999,
+        356.6380275345858
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q6_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        360.38560828701816,
+        559.2623905999999,
+        436.8880241908358
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q7_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        505.13560225576816,
+        559.2623905999999,
+        600.3880173783357
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q8_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        668.6355954432681,
+        559.2623905999999,
+        711.3880127533355
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q9_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        129.3880370033355
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q10_option-1_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.66405980566405,
+        242.50879881713342,
+        554.95999,
+        268.5087976921335
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q10_option-2_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.37548576768798,
+        269.5087976921335,
+        554.95999,
+        295.5144949363996
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q10_option-3_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        69.61051009657511,
+        296.5144949363996,
+        554.95999,
+        323.2587954108834
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q10_option-4_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.80761459968261,
+        324.2587954108834,
+        554.95999,
+        353.63802765958536
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/139741f1c70e_q10_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 10 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        197.63561506826795,
+        559.2623905999999,
+        241.50879881713342
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q1_option-1_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        69.61051009657511,
+        256.01449662389973,
+        554.95999,
+        283.50879706713374
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q1_option-2_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.37548576768798,
+        284.50879706713374,
+        554.95999,
+        310.5087959421337
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q1_option-3_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.30370846067869,
+        311.5087959421337,
+        554.95999,
+        338.2587947858837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q1_option-4_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.80761459968261,
+        339.2587947858837,
+        554.95999,
+        367.88802706583584
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q1_prompt_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        44.621999249999995,
+        195.3856151620182,
+        559.2623905999999,
+        255.01449662389973
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q2_prompt_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "page": 2,
+      "box": [
+        44.621999249999995,
+        436.1356051307682,
+        559.2623905999999,
+        480.0087888796337
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q7_option-1_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        68.66405980566405,
+        97.75880484838365,
+        554.95999,
+        123.76450209264976
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q7_option-2_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        124.76450209264976,
+        554.95999,
+        151.50880256713356
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q7_option-3_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        68.30370846067869,
+        152.50880256713356,
+        554.95999,
+        178.51449981139967
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q7_option-4_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        179.51449981139967,
+        554.95999,
+        208.88803369083575
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q7_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        70.13562038076816,
+        559.2623905999999,
+        96.75880484838365
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q9_option-1_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        583.0144829988997,
+        554.95999,
+        610.5087834421337
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q9_option-2_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        68.37548576768798,
+        611.5087834421337,
+        554.95999,
+        637.5087823171338
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q9_option-3_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        68.30370846067869,
+        638.5087823171338,
+        554.95999,
+        664.5087811921334
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q9_option-4_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        68.80761459968261,
+        665.5087811921334,
+        554.95999,
+        694.8880134408357
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q9_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        472.1356036307682,
+        559.2623905999999,
+        582.0144829988997
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q10_option-1_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.66405980566405,
+        131.50880344213317,
+        554.95999,
+        157.5145006863993
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q10_option-2_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        69.61051009657511,
+        158.5145006863993,
+        554.95999,
+        185.25880116088354
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q10_option-3_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.30370846067869,
+        186.25880116088354,
+        554.95999,
+        212.25880003588316
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q10_option-4_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.80761459968261,
+        213.25880003588316,
+        554.95999,
+        242.6380322845855
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q10_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        130.50880344213317
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q11_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        310.88561034951795,
+        559.2623905999999,
+        370.1380269720856
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q12_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        438.38560503701797,
+        559.2623905999999,
+        555.3880192533354
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q13_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 11 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        623.6355973182679,
+        559.2623905999999,
+        739.8880115658355
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q4_prompt_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "page": 3,
+      "box": [
+        44.621999249999995,
+        214.88561434951816,
+        559.2623905999999,
+        274.13803097208574
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q5_option-1_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        69.61051009657511,
+        419.51448981139976,
+        554.95999,
+        449.0116126639898
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q5_option-2_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        68.37548576768798,
+        450.0116126639898,
+        554.95999,
+        478.26161144523985
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q5_option-3_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        68.30370846067869,
+        479.26161144523985,
+        554.95999,
+        508.2616101952399
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q5_option-4_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        68.80761459968261,
+        509.2616101952399,
+        554.95999,
+        540.3880198783359
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q5_prompt_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        44.621999249999995,
+        342.3856090370182,
+        559.2623905999999,
+        418.51448981139976
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q6_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        70.13562038076816,
+        559.2623905999999,
+        297.38803000333564
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q7_option-1_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        68.66405980566405,
+        444.25879041088353,
+        554.95999,
+        469.5144876863997
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q7_option-2_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        470.5144876863997,
+        554.95999,
+        498.0087881296337
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q7_option-3_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        68.30370846067869,
+        499.0087881296337,
+        554.95999,
+        525.0087870046335
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q7_option-4_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        68.80761459968261,
+        526.0087870046335,
+        554.95999,
+        555.3880192533356
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q7_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        365.6356080682681,
+        559.2623905999999,
+        443.25879041088353
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q9_option-1_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        68.66405980566405,
+        251.5087984421333,
+        554.95999,
+        277.50879731713337
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q9_option-2_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        68.37548576768798,
+        278.50879731713337,
+        554.95999,
+        304.5144945613995
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q9_option-3_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        69.61051009657511,
+        305.5144945613995,
+        554.95999,
+        332.2587950358833
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q9_option-4_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        68.80761459968261,
+        333.2587950358833,
+        554.95999,
+        362.6380272845857
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q9_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        250.5087984421333
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q10_option-1_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.66405980566405,
+        475.0087891296333,
+        554.95999,
+        501.0144863738995
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q10_option-2_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        69.61051009657511,
+        502.0144863738995,
+        554.95999,
+        528.7587868483832
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q10_option-3_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.30370846067869,
+        529.7587868483832,
+        554.95999,
+        556.5087856921335
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q10_option-4_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.80761459968261,
+        557.5087856921335,
+        554.95999,
+        586.1380179720852
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/49b99120b323_q10_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 12 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        430.8856053495181,
+        559.2623905999999,
+        474.0087891296333
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q1_option-1_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        69.61051009657511,
+        223.01449799889974,
+        554.95999,
+        266.25879778588376
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q1_option-2_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.37548576768798,
+        267.25879778588376,
+        554.95999,
+        309.76449434264975
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q1_option-3_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        69.61051009657511,
+        310.76449434264975,
+        554.95999,
+        338.2587947858837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q1_option-4_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.80761459968261,
+        339.2587947858837,
+        554.95999,
+        367.88802706583584
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q1_prompt_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        44.621999249999995,
+        195.3856151620182,
+        559.2623905999999,
+        222.01449799889974
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q2_prompt_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "page": 3,
+      "box": [
+        44.621999249999995,
+        70.13562038076816,
+        559.2623905999999,
+        397.1380258470859
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q3_option-1_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 4,
+      "box": [
+        68.66405980566405,
+        382.7587929733837,
+        554.95999,
+        408.75879184838357
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q3_option-2_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 4,
+      "box": [
+        68.37548576768798,
+        409.75879184838357,
+        554.95999,
+        435.01448912389975
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q3_option-3_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        436.01448912389975,
+        554.95999,
+        462.7644879676498
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q3_option-4_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        463.7644879676498,
+        554.95999,
+        493.13802184708567
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q3_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        70.13562038076816,
+        559.2623905999999,
+        381.7587929733837
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q5_option-1_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 6,
+      "box": [
+        68.66405980566405,
+        335.5087949421335,
+        554.95999,
+        361.50879381713355
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q5_option-2_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 6,
+      "box": [
+        68.37548576768798,
+        362.50879381713355,
+        554.95999,
+        388.5087926921336
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q5_option-3_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 6,
+      "box": [
+        68.30370846067869,
+        389.5087926921336,
+        554.95999,
+        415.5144899363998
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q5_option-4_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 6,
+      "box": [
+        69.61051009657511,
+        416.5144899363998,
+        554.95999,
+        443.25879041088353
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q5_option-5_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 6,
+      "box": [
+        67.88769289801269,
+        444.25879041088353,
+        554.95999,
+        473.6380226595855
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q5_prompt_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 6,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        334.5087949421335
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q6_option-1_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 7,
+      "box": [
+        68.66405980566405,
+        335.50879494213393,
+        554.95999,
+        360.76449221765034
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q6_option-2_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 7,
+      "box": [
+        69.61051009657511,
+        361.76449221765034,
+        554.95999,
+        388.5087926921341
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q6_option-3_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 7,
+      "box": [
+        68.30370846067869,
+        389.5087926921341,
+        554.95999,
+        416.2587915358839
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q6_option-4_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 7,
+      "box": [
+        68.80761459968261,
+        417.2587915358839,
+        554.95999,
+        443.258790410884
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q6_option-5_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 7,
+      "box": [
+        67.88769289801269,
+        444.258790410884,
+        554.95999,
+        473.6380226595864
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q6_prompt_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 7,
+      "box": [
+        44.621999249999995,
+        70.13562038076884,
+        559.2623905999999,
+        334.50879494213393
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q7_option-1_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 8,
+      "box": [
+        68.66405980566405,
+        352.00879425463415,
+        554.95999,
+        378.0087931296347
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q7_option-2_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 8,
+      "box": [
+        68.37548576768798,
+        379.0087931296347,
+        554.95999,
+        405.75879197338406
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q7_option-3_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 8,
+      "box": [
+        68.30370846067869,
+        406.75879197338406,
+        554.95999,
+        432.0144892489005
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q7_option-4_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 8,
+      "box": [
+        69.61051009657511,
+        433.0144892489005,
+        554.95999,
+        463.1380230970861
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q7_prompt_p8.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 8,
+      "box": [
+        44.621999249999995,
+        70.13562038076884,
+        559.2623905999999,
+        351.00879425463415
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q9_option-1_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 9,
+      "box": [
+        68.66405980566405,
+        97.75880484838387,
+        554.95999,
+        123.76450209264999
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q9_option-2_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 9,
+      "box": [
+        69.61051009657511,
+        124.76450209264999,
+        554.95999,
+        168.75880184838377
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q9_option-3_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 9,
+      "box": [
+        68.30370846067869,
+        169.75880184838377,
+        554.95999,
+        195.7588007233834
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q9_option-4_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 9,
+      "box": [
+        68.80761459968261,
+        196.7588007233834,
+        554.95999,
+        225.38803300333598
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q9_prompt_p9.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 9,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        96.75880484838387
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q10_prompt_p10.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 10,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        793.92
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q10_prompt_p11.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 11,
+      "box": [
+        44.621999249999995,
+        25,
+        559.2623905999999,
+        274.2320928231022
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q11_prompt_p12.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 12,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        793.92
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q11_prompt_p13.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 13,
+      "box": [
+        44.621999249999995,
+        25,
+        559.2623905999999,
+        274.13803097208506
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q12_option-1_p14.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 14,
+      "box": [
+        69.61051009657511,
+        341.5144930613995,
+        554.95999,
+        368.25879353588414
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q12_option-2_p14.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 14,
+      "box": [
+        68.37548576768798,
+        369.25879353588414,
+        554.95999,
+        395.25879241088285
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q12_option-3_p14.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 14,
+      "box": [
+        68.30370846067869,
+        396.25879241088285,
+        554.95999,
+        423.00879125463314
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q12_option-4_p14.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 14,
+      "box": [
+        68.80761459968261,
+        424.00879125463314,
+        554.95999,
+        451.00879012963367
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q12_prompt_p14.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 14,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        340.5144930613995
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q13_option-1_p15.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 15,
+      "box": [
+        69.61051009657511,
+        503.514486311399,
+        554.95999,
+        530.2587867858837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q13_option-2_p15.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 15,
+      "box": [
+        68.37548576768798,
+        531.2587867858837,
+        554.95999,
+        557.2587856608842
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q13_option-3_p15.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 15,
+      "box": [
+        68.30370846067869,
+        558.2587856608842,
+        554.95999,
+        585.0087845046345
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q13_option-4_p15.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 15,
+      "box": [
+        68.80761459968261,
+        586.0087845046345,
+        554.95999,
+        614.6380167845862
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/61a8b8304deb_q13_prompt_p15.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 2 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 15,
+      "box": [
+        44.621999249999995,
+        318.3856100370174,
+        559.2623905999999,
+        502.514486311399
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_option-1_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        148.01450112389966,
+        554.95999,
+        174.01449999889974
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_option-2_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        175.01449999889974,
+        554.95999,
+        201.75880047338353
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_option-3_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 4,
+      "box": [
+        68.30370846067869,
+        202.75880047338353,
+        554.95999,
+        229.5087993171336
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_option-4_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 4,
+      "box": [
+        68.80761459968261,
+        230.5087993171336,
+        554.95999,
+        256.50879819213367
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_option-5_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 4,
+      "box": [
+        67.88769289801269,
+        257.50879819213367,
+        554.95999,
+        286.8880304408358
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 3 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        70.13562038076816,
+        559.2623905999999,
+        147.01450112389966
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q12_option-1_p10.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 10,
+      "box": [
+        68.66405980566405,
+        466.00878950463346,
+        554.95999,
+        492.75878834838375
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q12_option-2_p10.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 10,
+      "box": [
+        68.37548576768798,
+        493.75878834838375,
+        554.95999,
+        519.0144856239001
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q12_option-3_p10.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 10,
+      "box": [
+        69.61051009657511,
+        520.0144856239001,
+        554.95999,
+        546.7587860983839
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q12_option-4_p10.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 10,
+      "box": [
+        68.80761459968261,
+        547.7587860983839,
+        554.95999,
+        577.1380183470862
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q12_prompt_p10.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 10,
+      "box": [
+        44.621999249999995,
+        370.885607849518,
+        559.2623905999999,
+        465.00878950463346
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q13_option-1_p11.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 11,
+      "box": [
+        69.61051009657511,
+        316.76449409265,
+        554.95999,
+        343.5087945671338
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q13_option-2_p11.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 11,
+      "box": [
+        68.37548576768798,
+        344.5087945671338,
+        554.95999,
+        369.7644918426502
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q13_option-3_p11.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 11,
+      "box": [
+        69.61051009657511,
+        370.7644918426502,
+        554.95999,
+        398.2587922858837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q13_option-4_p11.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 11,
+      "box": [
+        68.80761459968261,
+        399.2587922858837,
+        554.95999,
+        427.88802456583636
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q13_prompt_p11.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 4 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 11,
+      "box": [
+        44.621999249999995,
+        70.13562038076884,
+        559.2623905999999,
+        315.76449409265
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q5_prompt_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        44.621999249999995,
+        299.6356108182682,
+        559.2623905999999,
+        375.38802675333574
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q6_option-1_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 3,
+      "box": [
+        68.66405980566405,
+        505.0087878796336,
+        554.95999,
+        531.0144851238997
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q6_option-2_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 3,
+      "box": [
+        69.61051009657511,
+        532.0144851238997,
+        554.95999,
+        558.7587855983837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q6_option-3_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 3,
+      "box": [
+        68.30370846067869,
+        559.7587855983837,
+        554.95999,
+        586.5087844421336
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q6_option-4_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 3,
+      "box": [
+        68.80761459968261,
+        587.5087844421336,
+        554.95999,
+        616.1380167220857
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q6_prompt_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "page": 3,
+      "box": [
+        44.621999249999995,
+        443.6356048182681,
+        559.2623905999999,
+        504.0087878796336
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q9_option-1_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        68.66405980566405,
+        360.2587939108836,
+        554.95999,
+        385.51449118639977
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q9_option-2_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        386.51449118639977,
+        554.95999,
+        414.0087916296337
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q9_option-3_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        68.30370846067869,
+        415.0087916296337,
+        554.95999,
+        441.00879050463357
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q9_option-4_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        68.80761459968261,
+        442.00879050463357,
+        554.95999,
+        470.63802278458576
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q9_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        281.63561156826813,
+        559.2623905999999,
+        359.2587939108836
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_option-1_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        69.61051009657511,
+        130.76450184264945,
+        554.95999,
+        157.5145006863993
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_option-2_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        69.61051009657511,
+        158.5145006863993,
+        554.95999,
+        185.25880116088354
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_option-3_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.30370846067869,
+        186.25880116088354,
+        554.95999,
+        212.25880003588316
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_option-4_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        68.80761459968261,
+        213.25880003588316,
+        554.95999,
+        239.26449728014927
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_option-5_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        69.61051009657511,
+        240.26449728014927,
+        554.95999,
+        268.0087977546335
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        129.76450184264945
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q11_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        474.3856035370179,
+        559.2623905999999,
+        533.6380201595855
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q13_option-1_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 6,
+      "box": [
+        69.61051009657511,
+        114.26450253014968,
+        554.95999,
+        141.00880300463348
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q13_option-2_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 6,
+      "box": [
+        68.37548576768798,
+        142.00880300463348,
+        554.95999,
+        168.7588018483833
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q13_option-3_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 6,
+      "box": [
+        68.30370846067869,
+        169.7588018483833,
+        554.95999,
+        195.7588007233834
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q13_option-4_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 6,
+      "box": [
+        68.80761459968261,
+        196.7588007233834,
+        554.95999,
+        225.38803300333552
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q13_prompt_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 5 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "page": 6,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        113.26450253014968
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q1_option-1_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.66405980566405,
+        240.25879891088368,
+        554.95999,
+        265.5144961863998
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q1_option-2_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        69.61051009657511,
+        266.5144961863998,
+        554.95999,
+        294.0087966296337
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q1_option-3_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.30370846067869,
+        295.0087966296337,
+        554.95999,
+        321.0087955046338
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q1_option-4_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.80761459968261,
+        322.0087955046338,
+        554.95999,
+        351.38802775333585
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q1_prompt_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        44.621999249999995,
+        195.3856151620182,
+        559.2623905999999,
+        239.25879891088368
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q5_option-1_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        69.61051009657511,
+        628.0144811238997,
+        554.95999,
+        655.5087815671337
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q5_option-2_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        68.37548576768798,
+        656.5087815671337,
+        554.95999,
+        682.5087804421336
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q5_option-3_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        68.30370846067869,
+        683.5087804421336,
+        554.95999,
+        710.2587792858836
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q5_option-4_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        68.80761459968261,
+        711.2587792858836,
+        554.95999,
+        739.8880115658358
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q5_prompt_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        44.621999249999995,
+        584.6355989432682,
+        559.2623905999999,
+        627.0144811238997
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q7_option-1_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        68.66405980566405,
+        208.75880022338367,
+        554.95999,
+        235.5087990671335
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q7_option-2_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        68.37548576768798,
+        236.5087990671335,
+        554.95999,
+        262.5087979421336
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q7_option-3_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        68.30370846067869,
+        263.5087979421336,
+        554.95999,
+        288.7644952176497
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q7_option-4_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        69.61051009657511,
+        289.7644952176497,
+        554.95999,
+        319.8880290658358
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q7_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        181.13561575576819,
+        559.2623905999999,
+        207.75880022338367
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q8_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        388.1356071307682,
+        559.2623905999999,
+        497.63802165958583
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q9_prompt_p4.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 4,
+      "box": [
+        44.621999249999995,
+        565.8855997245182,
+        559.2623905999999,
+        608.6380170345858
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/bd284679516b_q10_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 6 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        129.3880370033355
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q1_option-1_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.66405980566405,
+        256.7587982233837,
+        554.95999,
+        282.7644954676498
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q1_option-2_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        69.61051009657511,
+        283.7644954676498,
+        554.95999,
+        310.5087959421337
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q1_option-3_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.30370846067869,
+        311.5087959421337,
+        554.95999,
+        338.2587947858837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q1_option-4_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.80761459968261,
+        339.2587947858837,
+        554.95999,
+        367.88802706583584
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q1_prompt_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        44.621999249999995,
+        195.3856151620182,
+        559.2623905999999,
+        255.75879822338368
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q9_option-1_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        68.66405980566405,
+        478.0087890046333,
+        554.95999,
+        503.26448628014924
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q9_option-2_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        69.61051009657511,
+        504.26448628014924,
+        554.95999,
+        531.7587867233832
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q9_option-3_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        68.30370846067869,
+        532.7587867233832,
+        554.95999,
+        558.7587855983833
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q9_option-4_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        68.80761459968261,
+        559.7587855983833,
+        554.95999,
+        588.3880178783354
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q9_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        197.63561506826795,
+        559.2623905999999,
+        477.0087890046333
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q12_option-1_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 7,
+      "box": [
+        68.66405980566405,
+        215.50879994213426,
+        554.95999,
+        242.2587987858841
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q12_option-2_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 7,
+      "box": [
+        68.37548576768798,
+        243.2587987858841,
+        554.95999,
+        268.5144960614
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q12_option-3_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 7,
+      "box": [
+        69.61051009657511,
+        269.5144960614,
+        554.95999,
+        296.25879653588424
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q12_option-4_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 7,
+      "box": [
+        68.80761459968261,
+        297.25879653588424,
+        554.95999,
+        325.0087953796341
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q12_prompt_p7.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 7 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 7,
+      "box": [
+        44.621999249999995,
+        70.13562038076884,
+        559.2623905999999,
+        214.50879994213426
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q1_option-1_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        69.61051009657511,
+        289.7644952176497,
+        554.95999,
+        317.2587956608837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q1_option-2_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.37548576768798,
+        318.2587956608837,
+        554.95999,
+        344.2587945358837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q1_option-3_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.30370846067869,
+        345.2587945358837,
+        554.95999,
+        371.2587934108837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q1_option-4_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        68.80761459968261,
+        372.2587934108837,
+        554.95999,
+        401.6380256595859
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q1_prompt_p2.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "page": 2,
+      "box": [
+        44.621999249999995,
+        195.3856151620182,
+        559.2623905999999,
+        288.7644952176497
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q11_option-1_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 6,
+      "box": [
+        68.66405980566405,
+        299.50879644213353,
+        554.95999,
+        325.5144936863997
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q11_option-2_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 6,
+      "box": [
+        69.61051009657511,
+        326.5144936863997,
+        554.95999,
+        353.25879416088344
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q11_option-3_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 6,
+      "box": [
+        68.30370846067869,
+        354.25879416088344,
+        554.95999,
+        380.2587930358835
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q11_option-4_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 6,
+      "box": [
+        68.80761459968261,
+        381.2587930358835,
+        554.95999,
+        410.63802528458547
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q11_prompt_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 6,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        298.50879644213353
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q12_option-1_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 6,
+      "box": [
+        68.66405980566405,
+        590.5087843171335,
+        554.95999,
+        616.5144815613996
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q12_option-2_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 6,
+      "box": [
+        69.61051009657511,
+        617.5144815613996,
+        554.95999,
+        644.2587820358834
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q12_option-3_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 6,
+      "box": [
+        68.30370846067869,
+        645.2587820358834,
+        554.95999,
+        672.0087808796337
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q12_option-4_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 6,
+      "box": [
+        68.80761459968261,
+        673.0087808796337,
+        554.95999,
+        701.6380131595854
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/6cf90cdf4620_q12_prompt_p6.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 8 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "page": 6,
+      "box": [
+        44.621999249999995,
+        478.88560334951785,
+        559.2623905999999,
+        589.5087843171335
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q4_prompt_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "page": 3,
+      "box": [
+        44.621999249999995,
+        70.13562038076816,
+        559.2623905999999,
+        96.0145032488997
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q5_option-1_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        68.66405980566405,
+        399.2587922858837,
+        554.95999,
+        425.2644895301499
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q5_option-2_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        69.61051009657511,
+        426.2644895301499,
+        554.95999,
+        453.0087900046336
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q5_option-3_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        68.30370846067869,
+        454.0087900046336,
+        554.95999,
+        480.7587888483837
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q5_option-4_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        68.80761459968261,
+        481.7587888483837,
+        554.95999,
+        510.3880211283358
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q5_prompt_p3.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "page": 3,
+      "box": [
+        44.621999249999995,
+        321.38560991201814,
+        559.2623905999999,
+        398.2587922858837
+      ],
+      "option_background_normalized": false
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q11_option-1_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 5,
+      "box": [
+        68.66405980566405,
+        131.50880344213317,
+        554.95999,
+        158.25880228588346
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q11_option-2_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 5,
+      "box": [
+        68.37548576768798,
+        159.25880228588346,
+        554.95999,
+        184.51449956139936
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q11_option-3_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 5,
+      "box": [
+        69.61051009657511,
+        185.51449956139936,
+        554.95999,
+        212.25880003588316
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q11_option-4_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 5,
+      "box": [
+        68.80761459968261,
+        213.25880003588316,
+        554.95999,
+        242.6380322845855
+      ],
+      "option_background_normalized": true
+    },
+    {
+      "url": "/assets/exam-examples/question-crops/statistics-1/4c1b97e90e4e_q11_prompt_p5.png",
+      "source": "/Users/tusharrrsingh/Downloads/all/Stats 1/GA Week 9 - Statistics for Data Science-1 - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "page": 5,
+      "box": [
+        44.621999249999995,
+        70.13562038076793,
+        559.2623905999999,
+        130.50880344213317
+      ],
+      "option_background_normalized": false
+    }
+  ],
+  "crop_policy": "Original diagrams retained. Source answer-key lines excluded. Choice circles and correctness labels excluded. Only pale pixels with all RGB channels>=210 are whitened uniformly across option crops; dark graph/legend colours remain intact."
+}

@@ -1,0 +1,493 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 9 · Part 2",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context1_p4.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q8_prompt_p9.png",
+          "alt": "Original question: Using the matrix colab computed from the previous problem: What is the correct option for variable aVar? Option Description Table (for Q4-Q11) Option   Description"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of collaborators among all authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author with the maximum number of publications"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A pair of authors who have collaborated most often"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author who has the maximum number of collaborators"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any pair of authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of authors who have just one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors who have exactly one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any author"
+          }
+        ]
+      ],
+      "correct_answer": 7
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context1_p4.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q9_prompt_p10.png",
+          "alt": "Original question: Using the matrix colab computed from the previous problem: What is the correct option for variable bVar? Option Description Table (for Q4-Q11) Option   Description"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of collaborators among all authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author with the maximum number of publications"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A pair of authors who have collaborated most often"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author who has the maximum number of collaborators"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any pair of authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of authors who have just one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors who have exactly one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any author"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context1_p4.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q10_prompt_p11.png",
+          "alt": "Original question: Using the matrix colab computed from the previous problem: What is the correct option for variable aVar? Option Description Table (for Q4-Q11)| 4   An author who has the maximum number of collaborators"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of collaborators among all authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author with the maximum number of publications"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A pair of authors who have collaborated most often"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author who has the maximum number of collaborators"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any pair of authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of authors who have just one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors who have exactly one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any author"
+          }
+        ]
+      ],
+      "correct_answer": 6
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context1_p4.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q11_prompt_p12.png",
+          "alt": "Original question: Using the matrix colab computed from the previous problem: What is the correct option for variable bVar? Option Description Table (for Q4-Q11)| 4   An author who has the maximum number of collaborators"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of collaborators among all authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author with the maximum number of publications"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A pair of authors who have collaborated most often"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author who has the maximum number of collaborators"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any pair of authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of authors who have just one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors who have exactly one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any author"
+          }
+        ]
+      ],
+      "correct_answer": 5
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context1_p4.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q12_prompt_p13.png",
+          "alt": "Original question: Continuing with the previous question, authors is a list of authors. isClique is a procedure that determines if every pair of authors in this list have collaborated at least once. It returns False if at least one pair of authors haven't collaborated, and True if every pair of authors have collaborated at least once. Select the correct code fragment(s) to complete the pseudocode. It is a Multiple S"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q12_option1_code0_p13.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q12_option2_code0_p13.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q12_option3_code0_p13.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q12_option4_code0_p13.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q12_option5_code0_p13.png",
+            "alt": "Original option 5 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context2_p14.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q13_prompt_p14.png",
+          "alt": "Original question: For the case of n = 5, which of the following is a possible representation of the graph?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option B"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option C"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option D"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context2_p14.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q14_prompt_p15.png",
+          "alt": "Original question: Continuing with the previous question, for a pair of attendees (i, j) other than the host, we say that i is the ancestor of j if their messages are identical and i has accepted the invitation before j. Note that each invitation sent out by the host is a unique text message. Assume that the matrix A representing the graph has already been computed. isAncestor is a procedure that accepts the matrix "
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q14_option1_code0_p15.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q14_option2_code0_p15.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q14_option3_code0_p15.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

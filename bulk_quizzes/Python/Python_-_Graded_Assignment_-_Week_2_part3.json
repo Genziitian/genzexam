@@ -1,0 +1,444 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 2 · Part 3",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the expression 0.0 or \"2\" or 4 ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "\"2\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises Error"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the expression \"2\" and 4 and None ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "\"2\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises Error"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the given code.\nSelect the code block(s) that is/are equivalent to the above code."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if a:\n   if b:\n       print('ab')\nelif c:\n   print('c')"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "if a or b:\n    print('ab')\nelif c:\n    print('c')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "if not (not a or not b):\n    print('ab')\nelif c:\n    print('c')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "if a:\n    if b:\n        print('ab')\nif c:\n    print('c')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "if a and b:\n    print('ab')\nelif c:\n    print('c')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "if a and b:\n    print('ab')\nif c:\n    print('ac')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "if a and b:\n    print('ab')\nif c:\n    if not(a and b):\n        print('c')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "if a and b:\n    print('ab')\nif c:\n    if not a:\n        print('c')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "if a and b:\n    print('ab')\nif not a and c:\n    print('c')"
+          }
+        ]
+      ],
+      "correct_answers": [
+        6,
+        7
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The original prints ab only when a and b are True, and prints c only when a is False and c is True. Only options 7 and 8 preserve both conditions for all Boolean inputs."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all the code snippet(s) that execute without any error."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "import pi from math"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "import pi from math"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "import * from math"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "from math import pi as math_pi"
+          }
+        ]
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The valid syntax is from math import pi as math_pi. The other listed import forms are syntax errors."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct implementation of a piece of code that accepts a sentence as input\nand prints the number of words in it. A sentence is just a sequence of words with a\nspace between consecutive words. You can assume that the sentence will not have any\nother punctuation marks. You can also assume that the input string will have at least\none word. Sample test cases follow:\nthis is a sentence 4\nthis sentence is not true 5"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "sentence = input()\nspace = ' '# there is a single space between the quotes\nnum_words = sentence.count(space)\nprint(num_words)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "sentence = input()\nspace = ' '# there is a single space between the quotes\nnum_words = sentence.count(space) + 1\nprint(num_words)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "sentence = int(input())\nspace = ' '# there is a single space between the quotes\nnum_words = sentence.count(space)\nprint(num_words)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "sentence = input()\nnum_words = len(sentence)\nprint(num_words)"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Exploratory Problem: This problem is meant to encourage you to try certain things\noutside the lectures.\nConsider the following snippet of code.\nWhat is the output of this code for the following input? Feel free to use the Python\ninterpreter for exploratory questions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a, b, c, d = input()\nprint(a)\nprint(b)\nprint(c)\nprint(d)"
+        },
+        {
+          "kind": "text",
+          "value": "Input: 1234"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Unpacking the four-character input assigns \"1\", \"2\", \"3\", \"4\" to a, b, c, d; each print writes its character on a separate line."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "text",
+            "value": "1234\n1234\n1234\n1234"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "text",
+            "value": "1\n2\n3\n4"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "text",
+            "value": "1\n1\n1\n1"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "text",
+            "value": "4\n4\n4\n4"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A three-digit number is a sandwich number if the sum of its first and last digits equals its middle digit. Select the program that reads such a number and prints \"sandwich\" when this condition holds, and \"plain\" otherwise. Examples: 143 → sandwich; 118 → plain."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "num = int(input())\nfirst, middle, last = num[0], num[1], num[2]\nif first + last == middle:\n    print('sandwich')\nelse:\n    print('plain')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "num = input()\nfirst, middle, last = num[0], num[1], num[2]\nif first + last == middle:\n    print('sandwich')\nelse:\n    print('plain')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "num = input()\nfirst, middle, last = int(num[0]), int(num[1]), int(num[2])\nif first + last == middle:\n    print('sandwich')\nelse:\n    print('plain')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "num = int(input())\nfirst, middle, last = int(num[0]), int(num[1]), int(num[2])\nif first + last == middle:\n    print('sandwich')\nelse:\n    print('plain')"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A word is valid when the following program prints True for that word as input. Select all valid words."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "word = input()\nvalid = False\n# both 'a' and 'z' are in lower case\nif'a' <= word[0] <= 'z':\n   if word[0] == word[-1]:\n       valid = True\nprint(valid)"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "There are two conditional statements, one within the other (nested). These conditions correspond\nto the following questions: Does the word begin with a lower case letter? Are the first and last characters the\nsame? Now, here are two follow-up questions. What happens if the order of the conditions is reversed? Will the\nmeaning of this code-snippet change? Is there a way to replace the nested block with a single conditional\nstatement?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "tacit"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "trumpet"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ease"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "TrumpeT"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "TaciT"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

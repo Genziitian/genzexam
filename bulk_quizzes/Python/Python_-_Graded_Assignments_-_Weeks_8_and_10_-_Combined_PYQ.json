@@ -1,0 +1,306 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignments · Weeks 8 and 10 · Combined PYQ",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following code-snippet?"
+        },
+        {
+          "kind": "code",
+          "value": "D = {'Anita': 23, 'Ashwin': 43,\n    'Ahana': '24',\n    'Adarsh': 30, 'Archana': 15}\ntry:\n   # iterates through the keys from left to right\n   for key in D:\n       value = D[key]\n       if type(value) == str:\n           raise'Error'\n       print(f'{key}:{value}')\nexcept:\n   print(\"Values cannot be strings\")",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We are raising an error if the type of any one of the values of the dictionary is a string. The\nprogram terminates gracefully by raising an exception that is caught by the block. This exception occurs after the\nfirst string-value is encountered."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "Anita:23\nAshwin:43\nAhana:24\nAdarsh:30\nArchna:15",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Anita:23\nAshwin:43",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Values cannot be strings"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Anita:23\nAshwin:43",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Anita:23\nAshwin:43\nValues cannot be strings",
+            "language": "text"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "L = [1, 3, -1, 4, -2, 5, 3]\ntry:\n   n = 10\n   for i in range(n):\n       if L[i] < 0:\n           L[i] = 0\nexcept IndexError:\n   for i in range(n - len(L)):\n       L.append(0)\nfinally:\n   print(L)",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "will be raised. Then the block gets into action. block is always executed at the end."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "[1, 3, -1, 4, -2, 5, 3]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "[1, 3, 0, 4, 0, 5, 3]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "[1, 3, 0, 4, 0, 5, 3, 0, 0, 0]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code doesn't print anything to the console."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume the current directory is writable and opening numbers.txt in write mode succeeds."
+        },
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "try:\n   L = [x for x in range(10)]\n   f = open('numbers.txt', 'w')\n   for x in L:\n       f.write(x)\nexcept FileNotFoundError:\n   print('File was not found')\nexcept:\n   print('This is some other error')\nfinally:\n   print('The file has been closed')\n   f.close()",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Opening a file in write mode creates a new file. So, we can never get the when writing to files. It\ncould only occur when files are opened in read mode. The block is always executed. Here, it has an important\npurpose. The file that was opened in the block is closed in the block."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "File was not found"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "File was not found\nThe file has been closed",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This is some other error"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "This is some other error\nThe file has been closed",
+            "language": "text"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "All the files that we will work with are non-empty. That is, each file will have at least one line of\nnon-empty text in it. The last line in any given file will not have a '\\n' at the end. That is, the last\ncharacter of the last line of the file will not be a '\\n' . We request learners to follow this\nconvention while writing to files as well.\nscores.csv is a CSV file that has the following contents:\nAnswer questions (1) to (4) based on this data. Points to know.\nIf f represents a file object opened in read-mode, then f.readline() will read one line of the file\nand then move to the next line. Many times, we may want to ignore the header, so we just call\nf.readline() without assigning this line to any variable. This is as good as skipping the header\nand starting from the second line of the file.\nWhat is the output of the following snippet of code? (NAT)"
+        },
+        {
+          "kind": "text",
+          "value": "Contents of scores.csv:"
+        },
+        {
+          "kind": "code",
+          "language": "text",
+          "value": "SeqNo,Name,Gender,CT,Python,PDSA\n0,Ram,M,80,90,100\n1,Sahana,F,90,80,70\n2,Ritvik,M,80,100,80\n3,Suchitra,F,100,100,100\n4,Praful,M,60,70,85\n5,Aisha,F,85,95,90\n6,Andrew,M,100,65,75\n7,Soundarya,F,85,75,65\n8,Krishnan,M,95,85,90\n9,Brinda,F,65,95,85"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def do_something(filename, sub):\n    f = open(filename, 'r')\n    # Ignore the header\n    f.readline()\n    # we are now at the beginning of the second line of the file\n    val, count = 0, 0\n    for line in f:\n        sno, name, gender, ct, python, pdsa = line.strip().split(',')\n        sno, ct, python, pdsa = int(sno), int(ct), int(python), int(pdsa)\n        if sub == 'CT':\n            val = val + ct\n        elif sub == 'Python':\n            val = val + python\n        elif sub == 'PDSA':\n            val = val + pdsa\n        count = count + 1\n    f.close()\n    return val / count\n# Hint: int(1.5) is 1\nprint(int(do_something('scores.csv', 'Python')))"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "computes the average marks of students in Python. It returns a float value, but to make things\nsimple, it is converted into an integer in line-23 of the code."
+        }
+      ],
+      "numerical_answer": 85.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?\nFor what value of x does get_scores('scores.csv', x) return a list of the marks scored by\nthe students in CT? (NAT)"
+        },
+        {
+          "kind": "text",
+          "value": "Contents of scores.csv (final line has no trailing newline):"
+        },
+        {
+          "kind": "code",
+          "language": "text",
+          "value": "SeqNo,Name,Gender,CT,Python,PDSA\n0,Ram,M,80,90,100\n1,Sahana,F,90,80,70\n2,Ritvik,M,80,100,80\n3,Suchitra,F,100,100,100\n4,Praful,M,60,70,85\n5,Aisha,F,85,95,90\n6,Andrew,M,100,65,75\n7,Soundarya,F,85,75,65\n8,Krishnan,M,95,85,90\n9,Brinda,F,65,95,85"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def get_scores(filename, index):\n    f = open(filename, 'r')\n    # Ignore the header\n    f.readline()\n    # we are now at the beginning of the second line of the file\n    scores = [ ]\n    line = f.readline()\n    while line != '':\n        L = line.strip().split(',')\n        scores.append(int(L[index]))\n        line = f.readline()\n    f.close()\n    return scores"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "returns the list of scores of students in the subject CT."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let us reuse the function get_scores from question-2. What is the output of the following\nsnippet of code? (NAT)"
+        },
+        {
+          "kind": "text",
+          "value": "Contents of scores.csv (final line has no trailing newline):"
+        },
+        {
+          "kind": "code",
+          "language": "text",
+          "value": "SeqNo,Name,Gender,CT,Python,PDSA\n0,Ram,M,80,90,100\n1,Sahana,F,90,80,70\n2,Ritvik,M,80,100,80\n3,Suchitra,F,100,100,100\n4,Praful,M,60,70,85\n5,Aisha,F,85,95,90\n6,Andrew,M,100,65,75\n7,Soundarya,F,85,75,65\n8,Krishnan,M,95,85,90\n9,Brinda,F,65,95,85"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def get_scores(filename, index):\n    f = open(filename, 'r')\n    # Ignore the header\n    f.readline()\n    # we are now at the beginning of the second line of the file\n    scores = [ ]\n    line = f.readline()\n    while line != '':\n        L = line.strip().split(',')\n        scores.append(int(L[index]))\n        line = f.readline()\n    f.close()\n    return scores"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def do_something(L):\n    L.sort()\n    mid = len(L) // 2\n    if len(L) % 2 == 0:\n        return (L[mid] + L[mid - 1]) // 2\n    else:\n        return L[mid]\nprint(do_something(get_scores('scores.csv', 4)))"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "returns the median score (in Python) of students in the class."
+        }
+      ],
+      "numerical_answer": 87.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What are the complete contents of out.csv after the following program executes?"
+        },
+        {
+          "kind": "text",
+          "value": "Contents of scores.csv (final line has no trailing newline):"
+        },
+        {
+          "kind": "code",
+          "language": "text",
+          "value": "SeqNo,Name,Gender,CT,Python,PDSA\n0,Ram,M,80,90,100\n1,Sahana,F,90,80,70\n2,Ritvik,M,80,100,80\n3,Suchitra,F,100,100,100\n4,Praful,M,60,70,85\n5,Aisha,F,85,95,90\n6,Andrew,M,100,65,75\n7,Soundarya,F,85,75,65\n8,Krishnan,M,95,85,90\n9,Brinda,F,65,95,85"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def do_something(infile, gender, outfile):\n    f = open(infile, 'r')\n    g = open(outfile, 'w')\n    header = f.readline()\n    # we are now at the beginning of the second line of the file\n    # 'good,M,great'.replace(',M,', ',')\n    # returns 'good,great'\n    header = header.replace(',Gender,', ',')\n    g.write(header)\n    for line in f.readlines():\n        fields = line.strip().split(',')\n        gender_in_file = fields[2]\n        if gender_in_file == gender:\n            out_line = line.replace(f',{gender},', ',')\n            g.write(out_line)\n    f.close()\n    g.close()\ndo_something('scores.csv', 'F', 'out.csv')"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "acceptable_answers": [
+        "SeqNo,Name,CT,Python,PDSA\n1,Sahana,90,80,70\n3,Suchitra,100,100,100\n5,Aisha,85,95,90\n7,Soundarya,85,75,65\n9,Brinda,65,95,85"
+      ]
+    }
+  ]
+}

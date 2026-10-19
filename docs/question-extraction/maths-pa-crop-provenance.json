@@ -1,0 +1,5085 @@
+[
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q1-prompt-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      194.58010880000006,
+      564,
+      213.00710880000008
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q1-option1-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      214.00710880000008,
+      564,
+      232.4341088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q1-option2-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      233.4341088000001,
+      564,
+      251.86110880000012
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q1-option3-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      252.86110880000012,
+      564,
+      271.2891088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q1-option4-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      272.2891088000001,
+      564,
+      290.7161088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q1-option5-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      291.7161088000001,
+      564,
+      308.2159628000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q1-solution-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      311.2159628000001,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q1-solution-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      20,
+      564,
+      485.05610880000035
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q2-prompt-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      487.05610880000035,
+      564,
+      719
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q2-prompt-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      20,
+      564,
+      195.35410880000018
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q2-option1-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      196.35410880000018,
+      564,
+      214.7811088000002
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q2-option2-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      215.7811088000002,
+      564,
+      234.20810880000022
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q2-option3-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      235.20810880000022,
+      564,
+      268.08110880000027
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q2-option4-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      269.08110880000027,
+      564,
+      301.95410880000026
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q2-option5-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      302.95410880000026,
+      564,
+      319.4539628000003
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q2-solution-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      322.4539628000003,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q2-solution-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      20,
+      564,
+      355.5301088000009
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q3-prompt-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      357.5301088000009,
+      564,
+      375.5141088000009
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q3-option1-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      376.5141088000009,
+      564,
+      394.0541088000009
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q3-option2-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      395.0541088000009,
+      564,
+      412.5951088000009
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q3-option3-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      413.5951088000009,
+      564,
+      445.5821088000009
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q3-option4-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      446.5821088000009,
+      564,
+      477.0839628000009
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q3-solution-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      480.0839628000009,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q3-solution-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      20,
+      564,
+      192.43880000000013
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q4-prompt-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      194.43880000000013,
+      564,
+      229.63110880000022
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q4-option1-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      230.63110880000022,
+      564,
+      249.05810880000024
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q4-option2-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      250.05810880000024,
+      564,
+      268.48510880000026
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q4-option3-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      269.48510880000026,
+      564,
+      287.9121088000002
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q4-option4-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      288.9121088000002,
+      564,
+      307.3401088000002
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q4-option5-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      308.3401088000002,
+      564,
+      324.83996280000025
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q4-solution-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      327.83996280000025,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q4-solution-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      20,
+      564,
+      537.4291088000003
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q5-prompt-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      539.4291088000003,
+      564,
+      659.1541088000004
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q5-option1-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      660.1541088000004,
+      564,
+      678.4721088000003
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q5-option2-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      679.4721088000003,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q5-option3-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      89.9341088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q5-option4-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      90.9341088000001,
+      564,
+      107.02796279999995
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q5-solution-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      110.02796279999995,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q5-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      20,
+      564,
+      102.54210880000005
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q6-prompt-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      104.54210880000005,
+      564,
+      122.96910880000007
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q6-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      125.96910880000007,
+      564,
+      300.1120994
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q7-prompt-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      302.1120994,
+      564,
+      319.73796280000005
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q7-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      322.73796280000005,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q7-solution-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      20,
+      564,
+      614.0571087999999
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q8-prompt-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      616.0571087999999,
+      564,
+      634.4841088
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q8-option1-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      635.4841088,
+      564,
+      653.9111088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q8-option2-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      654.9111088,
+      564,
+      672.2120993999999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q8-option3-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      673.2120993999999,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q8-option4-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      71.19309940000005,
+      564,
+      88.47596279999993
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q8-context-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      68.07938760000002,
+      564,
+      615.0571087999999
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q8-solution-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      91.47596279999993,
+      564,
+      515.4951088
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q9-prompt-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      517.4951088,
+      564,
+      535.5781088
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q9-option1-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      536.5781088,
+      564,
+      583.2101088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q9-option2-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      584.2101088000001,
+      564,
+      616.3951088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q9-option3-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      617.3951088,
+      564,
+      649.5811088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q9-option4-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      650.5811088,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q9-option5-p13.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 13,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      117.71096280000006
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q9-context-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      68.07938760000002,
+      564,
+      615.0571087999999
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q9-solution-p13.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 13,
+    "box": [
+      55,
+      120.71096280000006,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q9-solution-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      20,
+      564,
+      151.42110880000007
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q10-prompt-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      153.42110880000007,
+      564,
+      170.72109939999996
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q10-option1-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      171.72109939999996,
+      564,
+      190.14809939999998
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q10-option2-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      191.14809939999998,
+      564,
+      209.5760994000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q10-option3-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      210.5760994000001,
+      564,
+      230.12910880000015
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q10-option4-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      231.12910880000015,
+      564,
+      247.62896280000007
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q10-context-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      68.07938760000002,
+      564,
+      615.0571087999999
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa5/q10-solution-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      250.62896280000007,
+      564,
+      715
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-prompt-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      365.390425,
+      564,
+      719
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-prompt-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      20,
+      564,
+      475.34754816000003
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-option1-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      476.34754816000003,
+      564,
+      494.7745449216
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-option2-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      495.7745449216,
+      564,
+      514.2015416832
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-option3-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      515.2015416832,
+      564,
+      533.6285384447999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-option4-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      534.6285384447999,
+      564,
+      553.0565394431999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-option5-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      554.0565394431999,
+      564,
+      572.4835362047999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-option6-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      573.4835362047999,
+      564,
+      600.9149730047999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-solution-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      603.9149730047999,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-solution-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q1-solution-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q2-prompt-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      72.98860000000002,
+      564,
+      242.3917587712
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q2-solution-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      245.3917587712,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q2-solution-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q3-prompt-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      73.00055520000001,
+      564,
+      90.06642499999998
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q3-option1-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      91.06642499999998,
+      564,
+      125.28859676160005
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q3-option2-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      126.28859676160005,
+      564,
+      159.16158771200003
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q3-option3-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      160.16158771200003,
+      564,
+      193.0345786624
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q3-option4-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      194.0345786624,
+      564,
+      212.46159999999998
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q3-option5-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      213.46159999999998,
+      564,
+      255.35099200000002
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q3-solution-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      258.350992,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q3-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q3-solution-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q4-prompt-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      73.00055520000001,
+      564,
+      91.4155967616
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q4-option1-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      92.4155967616,
+      564,
+      125.28858771199998
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q4-option2-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      126.28858771199998,
+      564,
+      159.16157866239996
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q4-option3-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      160.16157866239996,
+      564,
+      207.48056380160006
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q4-option4-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      208.48056380160006,
+      564,
+      270.7847092863999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q4-solution-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      273.7847092863999,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q4-solution-p13.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 13,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q4-solution-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      20,
+      564,
+      100.90542500000004
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q5-prompt-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      102.90542500000004,
+      564,
+      160.58998618880003
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q5-solution-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      163.58998618880003,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q6-prompt-p15.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 15,
+    "box": [
+      55,
+      71.63942499999996,
+      564,
+      120.84774938879991
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q6-solution-p15.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 15,
+    "box": [
+      55,
+      123.84774938879991,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q7-prompt-p16.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 16,
+    "box": [
+      55,
+      71.63942499999996,
+      564,
+      120.84775519999994
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q7-solution-p16.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 16,
+    "box": [
+      55,
+      123.84775519999994,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q7-solution-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      20,
+      564,
+      176.359549056
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q8-prompt-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      178.359549056,
+      564,
+      196.78654581759997
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q8-option1-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      197.78654581759997,
+      564,
+      230.65953676799995
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q8-option2-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      231.65953676799995,
+      564,
+      264.5325519616
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q8-option3-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      265.5325519616,
+      564,
+      298.4055519616
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q8-option4-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      299.4055519616,
+      564,
+      332.8067461504
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q8-context-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      69.06066540000006,
+      564,
+      177.359549056
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q8-solution-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      335.8067461504,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q8-solution-p18.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 18,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q9-prompt-p19.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 19,
+    "box": [
+      55,
+      72.98860000000002,
+      564,
+      106.4017493888
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q9-context-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      69.06066540000006,
+      564,
+      177.359549056
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q9-solution-p19.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 19,
+    "box": [
+      55,
+      109.4017493888,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q10-prompt-p20.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 20,
+    "box": [
+      55,
+      71.63942499999996,
+      564,
+      120.30759095040003
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q10-option1-p20.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 20,
+    "box": [
+      55,
+      121.30759095040003,
+      564,
+      139.73459676159996
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q10-option2-p20.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 20,
+    "box": [
+      55,
+      140.73459676159996,
+      564,
+      159.16159676159998
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q10-option3-p20.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 20,
+    "box": [
+      55,
+      160.16159676159998,
+      564,
+      178.5885967616
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q10-option4-p20.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 20,
+    "box": [
+      55,
+      179.5885967616,
+      564,
+      207.03199200000006
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa8/q10-solution-p20.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+    "page": 20,
+    "box": [
+      55,
+      210.03199200000006,
+      564,
+      715
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-prompt-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      208.2465552,
+      564,
+      397.72060491519994
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-option1-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      398.72060491519994,
+      564,
+      417.1476016767999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-option2-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      418.1476016767999,
+      564,
+      436.5745984383999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-option3-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      437.5745984383999,
+      564,
+      456.0015951999999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-option4-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      457.0015951999999,
+      564,
+      475.42859196159986
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-option5-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      476.42859196159986,
+      564,
+      494.85558872319984
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-option6-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      495.85558872319984,
+      564,
+      514.2825854847998
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-option7-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      515.2825854847998,
+      564,
+      533.7105864831999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-option8-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      534.7105864831999,
+      564,
+      562.1420232831998
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-solution-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      565.1420232831998,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q1-solution-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q2-prompt-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      73.00055520000001,
+      564,
+      91.4155967616
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q2-option1-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      92.4155967616,
+      564,
+      125.28858771199998
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q2-option2-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      126.28858771199998,
+      564,
+      159.16157866239996
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q2-option3-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      160.16157866239996,
+      564,
+      178.58857542399994
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q2-option4-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      179.58857542399994,
+      564,
+      213.00172481279992
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q2-solution-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      216.00172481279992,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q3-prompt-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      73.00055520000001,
+      564,
+      105.8735519615999
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q3-option1-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      106.8735519615999,
+      564,
+      125.30054872319988
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q3-option2-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      126.30054872319988,
+      564,
+      144.72754548479986
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q3-option3-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      145.72754548479986,
+      564,
+      164.15554648319983
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q3-option4-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      165.15554648319983,
+      564,
+      184.11074648319982
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q3-solution-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      187.11074648319982,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q3-solution-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      20,
+      564,
+      103.21159999999998
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q4-prompt-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      105.21159999999998,
+      564,
+      228.18740000000003
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q4-solution-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      231.18740000000003,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q4-solution-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q5-prompt-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      71.27042500000005,
+      564,
+      121.63252499999999
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q5-solution-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      124.63252499999999,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q6-prompt-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      71.63942499999996,
+      564,
+      114.86603679999996
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q6-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      117.86603679999996,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q6-solution-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      20,
+      564,
+      160.54855553279992
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q7-prompt-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      162.54855553279992,
+      564,
+      180.96359709439992
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q7-option1-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      181.96359709439992,
+      564,
+      200.3905938559999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q7-option2-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      201.3905938559999,
+      564,
+      219.81759061759988
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q7-option3-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      220.81759061759988,
+      564,
+      239.24458737919986
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q7-option4-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      240.24458737919986,
+      564,
+      267.6760368
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q7-context-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      69.06066540000006,
+      564,
+      161.54855553279992
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q7-solution-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      270.6760368,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q7-solution-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q8-prompt-p13.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 13,
+    "box": [
+      55,
+      71.27042500000005,
+      564,
+      95.67939999999999
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q8-context-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      69.06066540000006,
+      564,
+      161.54855553279992
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q8-solution-p13.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 13,
+    "box": [
+      55,
+      98.67939999999999,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q8-solution-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      20,
+      564,
+      114.82460033279995
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q9-prompt-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      116.82460033279995,
+      564,
+      144.25603713279997
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q9-context-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      71.63942499999996,
+      564,
+      115.82460033279995
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q9-solution-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      147.25603713279997,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q10-prompt-p15.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 15,
+    "box": [
+      55,
+      72.98860000000002,
+      564,
+      106.4017493888
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q10-context-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      71.63942499999996,
+      564,
+      115.82460033279995
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa10/q10-solution-p15.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+    "page": 15,
+    "box": [
+      55,
+      109.4017493888,
+      564,
+      715
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-prompt-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      187.1311088000001,
+      564,
+      678.4721088
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-option1-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      679.4721088,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-option2-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      89.99910880000004
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-option3-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      90.99910880000004,
+      564,
+      108.6791088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-option4-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      109.6791088,
+      564,
+      127.35910879999994
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-option5-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      128.35910879999994,
+      564,
+      146.41310879999992
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-solution-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      149.41310879999992,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-solution-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-prompt-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      471.5511088
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-option1-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      472.5511088,
+      564,
+      490.97810880000003
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-option2-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      491.97810880000003,
+      564,
+      510.4061088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-option3-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      511.4061088000001,
+      564,
+      529.8331088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-option4-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      530.8331088,
+      564,
+      549.2601088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-solution-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      552.2601088,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-solution-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      20,
+      564,
+      468.0911088000003
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-prompt-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      470.0911088000003,
+      564,
+      488.51810880000033
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-option1-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      489.51810880000033,
+      564,
+      528.7011088000004
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-option2-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      529.7011088000004,
+      564,
+      593.4581088000003
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-option3-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      594.4581088000003,
+      564,
+      649.0831088000003
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-option4-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      650.0831088000003,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-solution-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      74.3191088000001,
+      564,
+      566.3471088000003
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-prompt-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      568.3471088000003,
+      564,
+      586.7751088000005
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-option1-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      587.7751088000005,
+      564,
+      606.2021088000004
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-option2-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      607.2021088000004,
+      564,
+      625.6291088000004
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-option3-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      626.6291088000004,
+      564,
+      645.0561088000004
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-option4-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      646.0561088000004,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-option5-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      119.63810880000017
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-solution-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      122.63810880000017,
+      564,
+      324.6059200000003
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q5-prompt-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      326.6059200000003,
+      564,
+      387.87110880000034
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q5-solution-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      390.87110880000034,
+      564,
+      634.1839200000004
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q6-prompt-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      636.1839200000004,
+      564,
+      719
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q6-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      74.3191088000001,
+      564,
+      301.8089200000003
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q7-prompt-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      303.8089200000003,
+      564,
+      391.1921088000004
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q7-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      394.1921088000004,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q7-solution-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      20,
+      564,
+      203.39710880000018
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-prompt-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      205.39710880000018,
+      564,
+      238.27010880000023
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-option1-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      239.27010880000023,
+      564,
+      286.58910880000025
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-option2-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      287.58910880000025,
+      564,
+      334.9071088000003
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-option3-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      335.9071088000003,
+      564,
+      383.22610880000036
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-option4-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      384.22610880000036,
+      564,
+      431.54510880000043
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-context-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      68.07938760000002,
+      564,
+      204.39710880000018
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-solution-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      434.54510880000043,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-solution-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      20,
+      564,
+      184.55710880000004
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-prompt-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      186.55710880000004,
+      564,
+      219.43010880000008
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-option1-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      220.43010880000008,
+      564,
+      238.8571088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-option2-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      239.8571088000001,
+      564,
+      258.2851088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-option3-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      259.2851088000001,
+      564,
+      277.71210880000007
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-option4-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      278.71210880000007,
+      564,
+      297.1391088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-option5-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      298.1391088000001,
+      564,
+      321.5471088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-context-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      68.07938760000002,
+      564,
+      204.39710880000018
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-solution-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      324.5471088000001,
+      564,
+      715
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q1-prompt-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      182.49410880000005,
+      564,
+      719
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q1-option1-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      90.68310880000013
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q1-option2-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      91.68310880000013,
+      564,
+      110.04810880000014
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q1-option3-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      111.04810880000014,
+      564,
+      129.41210880000017
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q1-option4-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      130.41210880000017,
+      564,
+      148.7761088000002
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q1-option5-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      149.7761088000002,
+      564,
+      168.17210880000016
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q1-solution-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      171.17210880000016,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q1-solution-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q2-prompt-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      242.08610880000003
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q2-option1-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      243.08610880000003,
+      564,
+      274.96510880000005
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q2-option2-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      275.96510880000005,
+      564,
+      307.84310880000004
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q2-option3-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      308.84310880000004,
+      564,
+      355.1681088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q2-option4-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      356.1681088000001,
+      564,
+      402.9891088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q2-solution-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      405.9891088000001,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q2-solution-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      20,
+      564,
+      314.2641088
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q3-prompt-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      316.2641088,
+      564,
+      334.46410879999996
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q3-option1-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      335.46410879999996,
+      564,
+      367.8841088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q3-option2-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      368.8841088,
+      564,
+      401.3041088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q3-option3-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      402.3041088,
+      564,
+      432.4048
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q3-option4-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      433.4048,
+      564,
+      451.3788
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q3-option5-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      452.3788,
+      564,
+      472.8991088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q3-solution-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      475.8991088,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q3-solution-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      20,
+      564,
+      386.7098000000003
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q4-prompt-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      388.7098000000003,
+      564,
+      545.4471088000005
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q4-solution-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      548.4471088000005,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q4-solution-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      20,
+      564,
+      313.9828000000002
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q5-prompt-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      315.9828000000002,
+      564,
+      363.3018000000003
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q5-solution-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      366.3018000000003,
+      564,
+      564.9880994000002
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q6-prompt-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      566.9880994000002,
+      564,
+      598.6678000000002
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q6-solution-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      601.6678000000002,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q6-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      20,
+      564,
+      203.39710880000018
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q7-prompt-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      205.39710880000018,
+      564,
+      238.27010880000023
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q7-option1-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      239.27010880000023,
+      564,
+      272.1431088000003
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q7-option2-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      273.1431088000003,
+      564,
+      306.01610880000027
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q7-option3-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      307.01610880000027,
+      564,
+      339.8891088000003
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q7-option4-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      340.8891088000003,
+      564,
+      373.76210880000036
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q7-context-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      68.07938760000002,
+      564,
+      204.39710880000018
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q7-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      376.76210880000036,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q7-solution-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      20,
+      564,
+      375.6431087999999
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q8-prompt-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      377.6431087999999,
+      564,
+      719
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q8-context-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      68.07938760000002,
+      564,
+      204.39710880000018
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q8-solution-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      74.3191088000001,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa3/q8-solution-p13.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+    "page": 13,
+    "box": [
+      55,
+      20,
+      564,
+      715
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q1-prompt-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      152.37510880000002,
+      564,
+      413.72410880000007
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q1-option1-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      414.72410880000007,
+      564,
+      432.1781088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q1-option2-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      433.1781088000001,
+      564,
+      450.63110880000005
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q1-option3-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      451.63110880000005,
+      564,
+      469.0841088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q1-option4-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      470.0841088,
+      564,
+      488.0241088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q1-solution-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      491.0241088,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q1-solution-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q1-solution-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      20,
+      564,
+      533.0141088
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q2-prompt-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      535.0141088,
+      564,
+      719
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q2-option1-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      105.19210880000014
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q2-option2-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      106.19210880000014,
+      564,
+      139.0651088000002
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q2-option3-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      140.0651088000002,
+      564,
+      172.93810880000024
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q2-option4-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      173.93810880000024,
+      564,
+      206.81110880000028
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q2-solution-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      209.81110880000028,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q2-solution-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      20,
+      564,
+      603.5941088000001
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q3-prompt-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      605.5941088000001,
+      564,
+      624.0211088000001
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q3-option1-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      625.0211088000001,
+      564,
+      657.8941088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q3-option2-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      658.8941088000001,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q3-option3-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      105.19210880000014
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q3-option4-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      106.19210880000014,
+      564,
+      153.51110880000022
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q3-option5-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      154.51110880000022,
+      564,
+      187.38410880000015
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q3-solution-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      190.38410880000015,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q3-solution-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-prompt-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      444.1401088
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option1-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      445.1401088,
+      564,
+      462.8161088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option2-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      463.8161088,
+      564,
+      481.4931088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option3-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      482.4931088,
+      564,
+      500.1691088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option4-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      501.1691088,
+      564,
+      518.8461088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option5-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      519.8461088,
+      564,
+      537.5221088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option6-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      538.5221088000001,
+      564,
+      556.1981088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option7-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      557.1981088,
+      564,
+      574.8751088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option8-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      575.8751088,
+      564,
+      593.5511088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option9-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      594.5511088,
+      564,
+      612.2281088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option10-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      613.2281088,
+      564,
+      630.9041087999999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option11-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      631.9041087999999,
+      564,
+      664.0261088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option12-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      665.0261088,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-option12-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      20,
+      564,
+      84.02210880000007
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-solution-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      87.02210880000007,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q4-solution-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q5-prompt-p13.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 13,
+    "box": [
+      55,
+      65.84492000000012,
+      564,
+      145.98610880000024
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q5-solution-p13.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 13,
+    "box": [
+      55,
+      148.98610880000024,
+      564,
+      443.7831088
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q6-prompt-p13.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 13,
+    "box": [
+      55,
+      445.7831088,
+      564,
+      579.2251088
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q6-solution-p13.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 13,
+    "box": [
+      55,
+      582.2251088,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q6-solution-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      20,
+      564,
+      496.4759199999999
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q7-prompt-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      498.4759199999999,
+      564,
+      604.07592
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q7-solution-p14.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 14,
+    "box": [
+      55,
+      607.07592,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q7-solution-p15.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 15,
+    "box": [
+      55,
+      20,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q7-solution-p16.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 16,
+    "box": [
+      55,
+      20,
+      564,
+      596.1671087999997
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q8-prompt-p16.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 16,
+    "box": [
+      55,
+      598.1671087999997,
+      564,
+      614.8250993999998
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q8-option1-p16.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 16,
+    "box": [
+      55,
+      615.8250993999998,
+      564,
+      632.9680993999997
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q8-option2-p16.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 16,
+    "box": [
+      55,
+      633.9680993999997,
+      564,
+      665.6701087999996
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q8-option3-p16.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 16,
+    "box": [
+      55,
+      666.6701087999996,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q8-option3-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      20,
+      564,
+      83.92210880000016
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q8-option4-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      84.92210880000016,
+      564,
+      116.98110880000024
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q8-context-p16.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 16,
+    "box": [
+      55,
+      68.07938760000002,
+      564,
+      597.1671087999997
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q8-solution-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      119.98110880000024,
+      564,
+      483.1031088000002
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q9-prompt-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      485.1031088000002,
+      564,
+      531.5550994
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q9-option1-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      532.5550994,
+      564,
+      552.4771088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q9-option2-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      553.4771088,
+      564,
+      571.9041088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q9-option3-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      572.9041088,
+      564,
+      591.3321088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q9-option4-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      592.3321088,
+      564,
+      610.7591087999999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q9-context-p16.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 16,
+    "box": [
+      55,
+      68.07938760000002,
+      564,
+      597.1671087999997
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q9-solution-p17.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 17,
+    "box": [
+      55,
+      613.7591087999999,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q9-solution-p18.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 18,
+    "box": [
+      55,
+      20,
+      564,
+      484.46810880000004
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q10-prompt-p18.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 18,
+    "box": [
+      55,
+      486.46810880000004,
+      564,
+      548.0201087999999
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q10-option1-p18.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 18,
+    "box": [
+      55,
+      549.0201087999999,
+      564,
+      595.3610994000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q10-option2-p18.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 18,
+    "box": [
+      55,
+      596.3610994000001,
+      564,
+      645.8921088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q10-option3-p18.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 18,
+    "box": [
+      55,
+      646.8921088,
+      564,
+      678.4721088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q10-option4-p18.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 18,
+    "box": [
+      55,
+      679.4721088,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q10-option5-p19.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 19,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      90.02110880000009
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q10-option6-p19.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 19,
+    "box": [
+      55,
+      91.02110880000009,
+      564,
+      109.08610880000015
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q10-context-p16.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 16,
+    "box": [
+      55,
+      68.07938760000002,
+      564,
+      597.1671087999997
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q10-solution-p19.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 19,
+    "box": [
+      55,
+      112.08610880000015,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa2/q10-solution-p20.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+    "page": 20,
+    "box": [
+      55,
+      20,
+      564,
+      715
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q1-prompt-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      191.96010880000006,
+      564,
+      659.4191088
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q1-option1-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      660.4191088,
+      564,
+      678.4721088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q1-option2-p3.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 3,
+    "box": [
+      55,
+      679.4721088,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q1-option3-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      89.12310880000007
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q1-option4-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      90.12310880000007,
+      564,
+      106.92710880000004
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q1-option5-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      107.92710880000004,
+      564,
+      125.54210880000005
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q1-solution-p4.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 4,
+    "box": [
+      55,
+      128.54210880000005,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q2-prompt-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      90.32210880000014
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q2-option1-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      91.32210880000014,
+      564,
+      123.34510880000016
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q2-option2-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      124.34510880000016,
+      564,
+      162.2160994000002
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q2-option3-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      163.2160994000002,
+      564,
+      203.34010880000017
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q2-option4-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      204.34010880000017,
+      564,
+      236.78810880000026
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q2-solution-p5.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 5,
+    "box": [
+      55,
+      239.78810880000026,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q2-solution-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      20,
+      564,
+      375.6751087999998
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q3-prompt-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      377.6751087999998,
+      564,
+      395.8801087999998
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q3-option1-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      396.8801087999998,
+      564,
+      429.30810879999984
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q3-option2-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      430.30810879999984,
+      564,
+      448.29110879999985
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q3-option3-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      449.29110879999985,
+      564,
+      467.2731087999999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q3-option4-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      468.2731087999999,
+      564,
+      500.7021087999999
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q3-option5-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      501.7021087999999,
+      564,
+      534.3521088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q3-solution-p6.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 6,
+    "box": [
+      55,
+      537.3521088,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q3-solution-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      20,
+      564,
+      532.2071088000006
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q4-prompt-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      534.2071088000006,
+      564,
+      610.4171088000005
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q4-option1-p7.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 7,
+    "box": [
+      55,
+      611.4171088000005,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q4-option2-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      139.23110880000013
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q4-option3-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      140.23110880000013,
+      564,
+      187.5501088000002
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q4-option4-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      188.5501088000002,
+      564,
+      235.86910880000028
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q4-option5-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      236.86910880000028,
+      564,
+      284.1881088000003
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q4-option6-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      285.1881088000003,
+      564,
+      332.50610880000033
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q4-solution-p8.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 8,
+    "box": [
+      55,
+      335.50610880000033,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q4-solution-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      20,
+      564,
+      156.94710880000002
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q5-prompt-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      158.94710880000002,
+      564,
+      494.48510880000003
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q5-option1-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      495.48510880000003,
+      564,
+      574.5181088
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q5-option2-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      575.5181088,
+      564,
+      654.5511088000001
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q5-option3-p9.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 9,
+    "box": [
+      55,
+      655.5511088000001,
+      564,
+      719
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q5-option4-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      72.3191088000001,
+      564,
+      192.19910880000032
+    ],
+    "role": "option",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q5-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      195.19910880000032,
+      564,
+      523.2401088000003
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q6-prompt-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      525.2401088000003,
+      564,
+      572.5581088000002
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q6-solution-p10.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 10,
+    "box": [
+      55,
+      575.5581088000002,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q7-prompt-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      65.84492000000012,
+      564,
+      132.11292000000014
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q7-solution-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      135.11292000000014,
+      564,
+      481.43710880000015
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q8-prompt-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      483.43710880000015,
+      564,
+      574.0931088000002
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q8-context-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      302.78238759999994,
+      564,
+      482.43710880000015
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q8-solution-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      577.0931088000002,
+      564,
+      719
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q8-solution-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      20,
+      564,
+      213.56810880000057
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q9-prompt-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      215.56810880000057,
+      564,
+      233.9951088000006
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q9-context-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      302.78238759999994,
+      564,
+      482.43710880000015
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q9-solution-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      236.9951088000006,
+      564,
+      392.36010880000055
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q10-prompt-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      394.36010880000055,
+      564,
+      441.6791088000006
+    ],
+    "role": "prompt",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q10-context-p11.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 11,
+    "box": [
+      55,
+      302.78238759999994,
+      564,
+      482.43710880000015
+    ],
+    "role": "context",
+    "redacts_inline_answer": true
+  },
+  {
+    "url": "/assets/exam-examples/question-crops/mathematics-2/pa1/q10-solution-p12.png",
+    "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+    "page": 12,
+    "box": [
+      55,
+      444.6791088000006,
+      564,
+      715
+    ],
+    "role": "solution",
+    "redacts_inline_answer": false
+  }
+]

@@ -1,0 +1,73 @@
+{
+  "output": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_1_-_May_2024.json",
+  "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Graded Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+  "source_questions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visually_reviewed_pages": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "editorial_notes": [
+    {
+      "question": 1,
+      "note": "Attached the exact source table including all three geometric diagrams. First option is an exact source crop; all six choices and original keys are preserved."
+    },
+    {
+      "question": 3,
+      "note": "Source stem omits I on the RHS, but its worked solution uses I+mA and derives m=-3. Restored the I from that solution and made the identity apply to every idempotent A."
+    },
+    {
+      "question": 7,
+      "note": "Normalized the source 1i+3j to i+3j; source matrix entries and determinant are preserved."
+    }
+  ],
+  "default_fields": {
+    "marks": 1,
+    "difficulty": "medium"
+  },
+  "checks": [
+    "Schema and 5-to-10 size validation",
+    "Exact rational determinant and weighted-score checks",
+    "All source questions retained; no supplement questions"
+  ],
+  "crop_assets": [
+    {
+      "file": "assets/exam-examples/question-crops/mathematics-2/ga1/q1-table.png",
+      "source_page": 3,
+      "pdf_box": [
+        120,
+        195,
+        491,
+        487
+      ],
+      "answer_excluded": true
+    },
+    {
+      "file": "assets/exam-examples/question-crops/mathematics-2/ga1/q1-option1.png",
+      "source_page": 3,
+      "pdf_box": [
+        55,
+        518,
+        157,
+        539
+      ],
+      "answer_excluded": true
+    }
+  ]
+}

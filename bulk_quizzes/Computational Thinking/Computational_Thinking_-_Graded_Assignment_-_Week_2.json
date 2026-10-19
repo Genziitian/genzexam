@@ -1,0 +1,520 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 2",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "text",
+          "value": "The following procedure counts the number of students from Bengaluru whose total marks are less than the\naverage total marks from the \"Scores\" dataset and stores it in variable A. Let avgT be the average total\nmarks. The programmer may have made mistakes in one or more steps. Identify all such steps (if any)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variable A to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If X.CityTown == \"Bengaluru\" and X.Total > avgT then add 1 to A\nStep 6: Move the current card to another pile called Pile 2 and repeat from Step 2"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Step 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No mistake"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "text",
+          "value": "At the end of the execution of the given procedure on the \"Scores\" dataset, what will A and B represent?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain two variables A, B and initialize A to 101 and B to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If A > Chemistry marks, then store Chemistry marks in A\nStep 6: If B < Mathematics marks, then store Mathematics marks in B\nStep 7: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q2_option1_p4.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q2_option2_p4.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q2_option3_p4.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q2_option4_p4.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "text",
+          "value": "The following procedure took data from the \"Scores\" dataset and A represents the number of male students\nwhose Physics marks are less than the Mathematics marks but equal to their Chemistry marks. The\nprogrammer may have made mistakes in one or more steps. Identify all such steps (if any)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variable A to 1\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Gender is 'M' and Physics marks = Mathematics marks and Chemistry marks > Physics marl\nStep 6: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Step 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No mistake"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At the end of the execution of the given procedure on the \"Words\" dataset, what will A represent?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain two variables A, B and initialize A to 1000 and B to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep Add Letter Count to variable B\nStep 6: If Word does not end with a full stop then execute Step 9\nStep 7: If Word ends with a full stop and B < A then store B in A\nStep 8: Re-initialize the variable B to 0\nStep 9: Move the current card to another pile called Pile 2 and repeat from Step 3\nWords Dataset\nSerialNumber   Word   PartOfSpeech LetterCount\nit   Pronoun   2\nwas   Verb\n2   Monday   Noun   6\nmorning.   Noun\n4   Swaminathan   Noun   11\n5   was   Verb   З\n6   reluctant   Adjective   9\n7   to   Preposition   2\nopen   Verb\n9   his   Pronoun   З\n10   eyes.   Noun\n11   He   Pronoun   2\n12   considered   Verb   10\n13   Monday   Noun\n14   specially   Adverb   9\n15   unpleasant   Adjective   10\n16   in   Preposition   2\n17   the   Article   З\n18   calendar.   Noun   8\n19   After   Preposition   5\n20   the   Article   З\n21   delicious   Adjective   9\n22   freedom   Noun   7\n23   of   Preposition   2\n24   Saturday   Noun\nSerialNumber   Word   PartOfSpeech LetterCount\n25   And   Conjunction   З\n26   Sunday,   Noun   6\n27   it   Pronoun\n28   was   Verb   З\n29   difficult   Adjective   9\n30   to   Preposition   2\n31   get   Verb   З\n32   into   Preposition   4\n33   the   Article   З\n34   Monday   Noun   6\n35   mood   Noun   4\n36   of   Preposition   2\n37   work   Noun   4\n38   and   Conjunction\n39   discipline.   Noun   10\n40   He   Pronoun   2\n41   shuddered   Verb   9\n42   at   Preposition   2\n43   the   Article   З\n44   very   Adverb   4\n45   thought   Noun   7\n46   of   Preposition   2\n47   school:   Noun   6\n48   the   Article\n49   dismal   Adjective\n50   yellow   Adjective   6\n51   building;   Noun   8\n52   the   Article   З\n53   fire-eyed   Adjective   8\n54   Vedanayagam, Noun   11\n55   his   Pronoun   З\n56   class   Noun\n57   teacher,   Noun   7\n58   and   Conjunction\n59   headmaster   Noun   10\nEcosystem - genziitath.in/ecosystem PreigSttSolutions 4 exam.genziitian.in | YouTube - youtube.com/@Gen-ZilTian\nSerialNumber   Word   PartOfSpeech LetterCount\n61   his   Pronoun   З\n62   thin   Adjective   4\n63   long   Adjective   4\n64   cane...   Noun   4"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Length of the shortest sentence based on the number of words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Length of the longest sentence based on the number of words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Length of the longest sentence based on the number of letters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Length of the shortest sentence based on the number of letters"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume that a, b, and c are three distinct integers. What will X represent after the execution of the following\nprocedure?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Maintain variable X and initialize it to 0\nStep 2: If a < b then go to step 4\nStep 3: If b < c then store b in X else store c in X and stop the procedure\nStep 4: If a < c then store a in X else store c in X"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Largest among a, b, and c"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Smallest among a, b, and c"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "X will always be 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Second smallest among a, b, and c"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "text",
+          "value": "What will be the value of X after the execution of the following procedure using the \"Scores\" dataset? (Note:\nConsider the same sequence as given in the Scores dataset.)"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain variables A, B, C, D, Y and initialize them all to 0 except Y. Initialize Y to :\nStep 3: Maintain a variable X and initialize it to \"None\"\nStep 4: If Pile 1 is empty then stop the iteration\nStep 5: Read the top card in Pile 1\nStep 6: If the Town/City is \"Chennai\" then add one to A. If A < Y then store A in Y and \"Chennai\nStep 7: If the Town/City is \"Bengaluru\" then add one to B. If B < Y then store B in Y and \"Benga\nStep 8: If the Town/City is \"Madurai\" then add one to C. If C < Y then store C in Y and \"Madurai\nStep 9: If the Town/City is \"Vellore\" then add one to D. If D < Y then store D in Y and \"Vellore\nStep 10: Move the current card to another pile called Pile 2 and repeat from Step 4"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Chennai"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bengaluru"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Madurai"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vellore"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q7_prompt_p10.png",
+          "alt": "Original question: The following flowchart is executed using the \"Scores\" dataset. Assume that Rida and Siddharth both have scored the lowest total marks across the whole dataset which is 173. Let cards be arranged in such a way that Rida's card is below Siddharth's card. What will the values of A and B be at the end of the execution?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q7_option1_p10.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q7_option2_p10.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q7_option3_p10.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q7_option4_p10.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q8_prompt_p11.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Scores\" dataset. What will count represent at the end of the execution of the pseudocode?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who scored less than 80 marks in at least two subjects"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who scored more than 80 marks in exactly two subjects"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who scored more than 80 marks in all three subjects"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who scored less than 80 marks in at least one subject"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will (A - B) represent after execution of the following procedure using the \"Shopping Bills\" dataset?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A and B to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If the bill contains an item \"Bananas\" then add 1 to A\nStep 6: If Total < 600 and the bill contains an item \"Bananas\" then add 1 to B\nStep 7: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills that contain the item \"Bananas\" and total is more than or equal to 600"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills that contain the item \"Bananas\" and total is less than 600"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills that do not contain the item \"Bananas\" and total is more than 600"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills that do not contain the item \"Bananas\" and total is less than 600"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q10_prompt_p12.png",
+          "alt": "Original question: The given pseudocode is executed using the \"Scores\" dataset. At the end of the execution, C will be True if there are more female students from Chennai than male students from Bengaluru. Choose the correct option to complete the pseudocode."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q10_option1_p12.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q10_option2_p12.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q10_option3_p12.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/f0bf72894028/q10_option4_p12.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

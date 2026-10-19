@@ -1,0 +1,284 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Practice Assignment · Week 9",
+  "subject": "English 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What are the three main elements of a good presentation?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Slides"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Delivery"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Message"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Charisma"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The three listed presentation components are slides, delivery, and message; the source asks for three elements rather than one."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The primary objective of an AIDA presentation is:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Persuading the audience to do something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Impressing the audience"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gaining attention of the audience"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Suggesting solutions to the audience"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the section header slide do?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Signposts which point in the presentation the presenter has reached"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gives a much-needed break to the audience between sections"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Uses pictures to attract the audience’s attention"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Uses data visualisation to communicate data more easily"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many people are generally involved in a single iteration of a group discussion?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "8-10 members"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "More than 10 members"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Less than 5 members"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5 members only"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Generally, the candidates being tested in a group discussion have __________."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The same degrees"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The same technical background"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Similar political views"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Similar academic and professional standing"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\" Small business are an important life line of India's cities. Discuss .\" What kind of topic is this?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Abstract"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "General"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Argumentative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Case-study based"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "When you want to agree with someone in a GD, but with some reservations, which of the following phrases can be used?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I'd like to note here that…"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I completely disagree with you…"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I'm glad you mentioned that..."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I see where you're coming from, and I agree, but..."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    }
+  ]
+}

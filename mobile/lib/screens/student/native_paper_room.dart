@@ -6,6 +6,7 @@ import 'package:flutter_math_fork/flutter_math.dart';
 
 import '../../api/api.dart';
 import '../../api/offline_paper_store.dart';
+import '../../api/paper_content.dart';
 import '../../api/pro_access_guard.dart';
 import 'pro_locked_view.dart';
 import '../../widgets/app_ux_components.dart';
@@ -1908,22 +1909,63 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
         ),
       );
 
-  Widget _paperImage(String source) {
+  Widget _paperImage(String source, {String alt = 'Question image'}) {
     Widget unavailable(BuildContext context, Object error, StackTrace? stack) =>
         const Text(
           'This image is unavailable. Download the paper again while online.',
         );
-    if (source.startsWith('data:image/')) {
+    final resolved = paperImageUri(
+      source,
+      apiBaseUrl: widget.apiClient.dio.options.baseUrl,
+      allowEmbedded: true,
+    );
+    if (resolved == null) return const Text('Image unavailable.');
+    Widget image;
+    if (resolved.startsWith('data:image/')) {
       try {
-        return Image.memory(
-          base64Decode(source.substring(source.indexOf(',') + 1)),
+        image = Image.memory(
+          base64Decode(resolved.substring(resolved.indexOf(',') + 1)),
+          semanticLabel: alt,
           errorBuilder: unavailable,
         );
       } catch (_) {
         return const Text('Saved image could not be read.');
       }
+    } else {
+      image = Image.network(
+        resolved,
+        semanticLabel: alt,
+        errorBuilder: unavailable,
+      );
     }
-    return Image.network(source, errorBuilder: unavailable);
+    return Tooltip(
+      message: 'Enlarge image',
+      child: InkWell(
+        onTap: () => showDialog<void>(
+          context: context,
+          builder: (context) => Dialog(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    tooltip: 'Close image',
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(Icons.close),
+                  ),
+                ),
+                Flexible(child: InteractiveViewer(maxScale: 8, child: image)),
+              ],
+            ),
+          ),
+        ),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minWidth: 44, minHeight: 44),
+          child: image,
+        ),
+      ),
+    );
   }
 
   List<Widget> _richWidgets(dynamic content) {
@@ -1949,19 +1991,24 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
         case 'code':
           return [_codeBlock(value)];
         case 'image':
-          final uri = _safeImageUri(
+          final uri = paperImageUri(
             (content['url'] ??
                     content['asset'] ??
                     content['src'] ??
                     content['value'] ??
                     '')
                 .toString(),
+            apiBaseUrl: widget.apiClient.dio.options.baseUrl,
+            allowEmbedded: true,
           );
           return [
             if (uri != null)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: _paperImage(uri),
+                child: _paperImage(
+                  uri,
+                  alt: content['alt']?.toString() ?? 'Question image',
+                ),
               )
             else
               const Text('Image unavailable.'),
@@ -1984,6 +2031,32 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
       }
     }
     final text = content?.toString() ?? '';
+    final widgets = <Widget>[];
+    var cursor = 0;
+    for (final match in paperContentPattern.allMatches(text)) {
+      if (match.start > cursor) {
+        widgets.addAll(_plainRichText(text.substring(cursor, match.start)));
+      }
+      final image = match.group(5) ?? match.group(6);
+      if (match.group(1) != null) {
+        widgets.add(_codeBlock(match.group(3)!.trimRight()));
+      } else if (image != null) {
+        widgets.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: _paperImage(image, alt: match.group(4) ?? 'Question image'),
+          ),
+        );
+      } else {
+        widgets.addAll(_plainRichText(match.group(0)!));
+      }
+      cursor = match.end;
+    }
+    widgets.addAll(_plainRichText(text.substring(cursor)));
+    return widgets;
+  }
+
+  List<Widget> _plainRichText(String text) {
     final plain = text
         .replaceAll(RegExp(r'<br\s*/?>', caseSensitive: false), '\n')
         .replaceAll(
@@ -2054,15 +2127,6 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     return [
       Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: widgets),
     ];
-  }
-
-  String? _safeImageUri(String value) {
-    if (value.startsWith('data:image/')) return value;
-    final parsed = Uri.tryParse(value.trim());
-    if (parsed == null) return null;
-    if (parsed.scheme == 'https') return parsed.toString();
-    if (value.startsWith('/')) return 'https://labapi.genziitian.in$value';
-    return null;
   }
 
   Widget _codeBlock(String code) => Container(

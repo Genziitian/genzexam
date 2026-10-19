@@ -1,0 +1,297 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 1 · Oct 2022 · QUIZ1 · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q8_context-1-1_p5.png",
+          "alt": "Original context 1 1 for Statistics 2 question 8."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q8_prompt-1_p6.png",
+          "alt": "Original prompt 1 for Statistics 2 question 8."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: When X=1, the possible outcomes are (X=1,Y=1) and (X=1,Y=2), both with Y≥1. So P(Y≥1|X=1) = 1."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q8_solution-2_p6.png",
+          "alt": "Original solution 2 for Statistics 2 question 8."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q9_context-1-1_p6.png",
+          "alt": "Original context 1 1 for Statistics 2 question 9."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q9_prompt-1_p7.png",
+          "alt": "Original prompt 1 for Statistics 2 question 9."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q9_prompt-2_p7.png",
+          "alt": "Original prompt 2 for Statistics 2 question 9."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: F_X(k) = P(max(X1,X2,X3) ≤ k) = P(X1 ≤ k) × P(X2 ≤ k) × P(X3 ≤ k) = (k/6)^3 by independence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q9_option-1-1_p7.png",
+            "alt": "Original option 1 1 for Statistics 2 question 9."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q9_option-1-2_p7.png",
+            "alt": "Original option 1 2 for Statistics 2 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q9_option-2-1_p7.png",
+            "alt": "Original option 2 1 for Statistics 2 question 9."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q9_option-2-2_p7.png",
+            "alt": "Original option 2 2 for Statistics 2 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q9_option-3-1_p7.png",
+            "alt": "Original option 3 1 for Statistics 2 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q9_option-4-1_p7.png",
+            "alt": "Original option 4 1 for Statistics 2 question 9."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q10_context-1-1_p6.png",
+          "alt": "Original context 1 1 for Statistics 2 question 10."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q10_prompt-1_p7.png",
+          "alt": "Original prompt 1 for Statistics 2 question 10."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(X=3) = F_X(3) - F_X(2) = (3/6)^3 - (2/6)^3 = 1/8 - 8/216 = 27/216 - 8/216 = 19/216 ≈ 0.088.\nAnswer range: 0.085–0.089."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q10_solution-2_p7.png",
+          "alt": "Original solution 2 for Statistics 2 question 10."
+        }
+      ],
+      "acceptable_answers": [
+        "0.088 (±0.002)"
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q11_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 11."
+        },
+        {
+          "kind": "text",
+          "value": "If Aman is asked two questions during the interview, what is the probability that he will answer only one\ncorrect? Enter the answer correct to two decimal places."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q11_solution-1_p7.png",
+          "alt": "Original solution 1 for Statistics 2 question 11."
+        }
+      ],
+      "acceptable_answers": [
+        "0.32 (±0.02)"
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q12_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 12."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q12_prompt-1_p8.png",
+          "alt": "Original prompt 1 for Statistics 2 question 12."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(X=Y) = P(X=1,Y=1) + P(X=2,Y=2) + P(X=3,Y=3) = (1/3)(1/5) + (1/3)(1/5)^2 + (1/3)(1/5)^3 = (1/3)\n(1/5 + 1/25 + 1/125) = (1/3)(31/125) = 31/375 ≈ 0.0827. Answer range: 0.081–0.084."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q12_solution-2_p8.png",
+          "alt": "Original solution 2 for Statistics 2 question 12."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q12_solution-3_p8.png",
+          "alt": "Original solution 3 for Statistics 2 question 12."
+        }
+      ],
+      "acceptable_answers": [
+        "0.083 (±0.002)"
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q13_context-1-1_p8.png",
+          "alt": "Original context 1 1 for Statistics 2 question 13."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q13_context-1-2_p8.png",
+          "alt": "Original context 1 2 for Statistics 2 question 13."
+        },
+        {
+          "kind": "text",
+          "value": "Among the options below, for what values of 𝑎 and 𝑏, is the function 𝑓 a valid density function?"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: For a valid PDF: f(x) ≥ 0 for all x, and ∫f(x)dx = 1. On [-1,0): 1/b > 0 requires b > 0. On [0,1]: ax(x+1)\n(x-1) = ax(x²-1). For 0 ≤ x ≤ 1, x ≥ 0 and (x²-1) ≤ 0, so we need a < 0. Integration: 1/b × 1 + ∫₀¹ ax(x²-1)dx = 1. ∫₀¹\nx(x²-1)dx = [x⁴/4 - x²/2]₀¹ = 1/4 - 1/2 = -1/4. So 1/b + a(-1/4) = 1, i.e., 1/b - a/4 = 1. With a=-3: 1/b + 3/4 = 1, so\n1/b = 1/4, b=4. Check: a=-3, b=4."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q13_option-1-1_p8.png",
+            "alt": "Original option 1 1 for Statistics 2 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q13_option-2-1_p8.png",
+            "alt": "Original option 2 1 for Statistics 2 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q13_option-3-1_p8.png",
+            "alt": "Original option 3 1 for Statistics 2 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q13_option-4-1_p8.png",
+            "alt": "Original option 4 1 for Statistics 2 question 13."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q14_context-1-1_p8.png",
+          "alt": "Original context 1 1 for Statistics 2 question 14."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q14_context-1-2_p8.png",
+          "alt": "Original context 1 2 for Statistics 2 question 14."
+        },
+        {
+          "kind": "text",
+          "value": "For this question, use a=−3 and b=4, the values satisfying the preceding density-function question."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q14_prompt-1_p9.png",
+          "alt": "Original prompt 1 for Statistics 2 question 14."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q14_solution-1_p9.png",
+          "alt": "Original solution 1 for Statistics 2 question 14."
+        },
+        {
+          "kind": "text",
+          "value": "EXAM.GENZIITIAN.IN GENZIITIAN.IN/ECOSYSTEM YOUTUBE"
+        }
+      ],
+      "numerical_answer": 0.125,
+      "numerical_tolerance": 0.01
+    }
+  ]
+}

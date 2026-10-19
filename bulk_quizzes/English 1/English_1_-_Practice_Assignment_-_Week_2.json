@@ -1,0 +1,344 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Practice Assignment · Week 2",
+  "subject": "English 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the verb from the following sentence. I have never eaten pasta before."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Never"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Eaten"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Before"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct pronoun. The Children are eating ________ lunch."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "His"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Her"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Their"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the appropriate option. He began to tell them _______ about his life in Chennai, particularly in Anna Nagar."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A little"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Little"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjective in the following sentence. A little puppy fell into the river."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Puppy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Little"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "River"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suman often makes mistakes . The word ‘ often ’ is an adverb of ___________."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Time"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Place"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Frequency"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. She confided ________ me."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "About"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. Let us play________ chess."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of meanwhile in: Tom was talking to Jim; meanwhile, Harry was making lunch."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Preposition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conjunction"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Meanwhile functions as a conjunctive adverb linking the two clauses."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The lines on the inside of your wrist have ___ name."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

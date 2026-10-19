@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignments · Combined PYQ",
+  "subject": "English 2",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For this sentence classification, count finite clauses."
+        },
+        {
+          "kind": "text",
+          "value": "‘Fatima takes the bus to go to work.’ is a simple sentence."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Joe buys a cup of coffee from the canteen everyday.’ This sentence has"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2 clauses"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3 clauses"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4 clauses"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The hall of archives is a huge place.’ The complement is"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The hall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Of archives"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is a huge place"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A huge place"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the clause “The hall of archives is a huge place”, which option is a clause-level adjunct?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The hall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Of archives"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No adjuncts"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A huge place"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Numbers, except single digits, can be given in words instead of numerals in précis writing to keep the words under control."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following should be kept in mind while writing a précis?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Be clear and concise"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Be coherent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Express only the main theme"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All the above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Précis writing is the same as paraphrasing a passage."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

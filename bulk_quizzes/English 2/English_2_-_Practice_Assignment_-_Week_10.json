@@ -3,104 +3,55 @@
   "quiz_title": "English 2 · Practice Assignment · Week 10",
   "subject": "English 2",
   "section": "practice",
-  "week": 10,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘He makes a living by teaching.’ In this sentence:"
+          "value": "‘He makes a living by teaching.’ In this sentence, i) ‘Teaching’ is a gerund ii) ‘Living’ is a verb iii) ‘By teaching’ is an adjunct iv) ‘Living’ is a gerund."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "‘Teaching’ is a gerund; ‘by teaching’ is an adjunct prepositional phrase; ‘living’ functions as a noun."
+            "value": "Only (ii) is correct"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "‘Teaching’ is a finite verb."
+            "value": "Only (iI) and (iv) are correct"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "‘Living’ is the finite verb in past tense."
+            "value": "Only (ii), (iii), (iv) are correct"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "There are no non-finite forms."
+            "value": "Only (i), (iii), and (iv) are correct"
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Teaching’ is the non-finite gerund object of the preposition ‘by’; ‘a living’ is a nominal object."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In the sentence ‘The displayed ornaments glittered in the dazzling lights’, count the finite verbs and participles:"
+          "value": "‘The table legs will not give way under such a heavy load of books.’ The tense and negation are separate in this negative sentence."
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "1 finite verb, 2 participles"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "0 finite verbs, 3 participles"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "3 finite verbs, 0 participles"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "2 finite verbs, 1 participle"
-          }
-        ]
-      ],
-      "correct_answer": 0,
       "marks": 1,
       "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "1 finite verb ('glittered') and 2 participles ('displayed', 'dazzling')."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "‘The table legs will not give way under such a heavy load of books.’ In this negative sentence, the tense auxiliary and the negation are separate words."
-        }
-      ],
       "options": [
         [
           {
@@ -115,24 +66,18 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "The modal tense marker 'will' and the negative particle 'not' are distinct words."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In the construction ‘will not give way’, the negative particle ‘not’ appears between the auxiliary and the lexical verb."
+          "value": "‘Did anyone see my scarf?’ is a negative sentence."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -147,24 +92,50 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Standard English clausal negation places 'not' directly after the first auxiliary verb and before the lexical verb."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘Did anyone see my scarf?’ is a grammatically negative sentence."
+          "value": "The reported clause is a/an ___ clause."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Independent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dependent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can be both"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Quantifiers can be used to quantify verbs in large quantities. Is this statement true or false?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -179,100 +150,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "It is an interrogative sentence containing an NPI ('anyone'), but it contains no grammatical negation ('not')."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "A reported clause in indirect speech (e.g. 'She said that she was leaving') is a/an:"
+          "value": "There are ____ suppliers in the market."
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Independent clause"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Dependent / Subordinate clause"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Coordinate main clause"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Parenthetical expletive"
-          }
-        ]
-      ],
-      "correct_answer": 1,
       "marks": 1,
       "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "The reported clause is an embedded dependent content clause serving as the object of the reporting verb."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "Quantifiers can be used to quantify finite verbs in large quantities (e.g. *'She many walked')."
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "True"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "False"
-          }
-        ]
-      ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Quantifiers modify nominals or noun phrases, not verbs; verbs are modified by adverbs."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "Complete the sentence: ‘There are ____ suppliers in the market.’"
-        }
-      ],
       "options": [
         [
           {
@@ -289,34 +178,28 @@
         [
           {
             "kind": "text",
-            "value": "Both (a) and (b)"
+            "value": "Too much"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Much"
+            "value": "both (a) and (b)"
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Both 'many' and 'too many' can grammatically modify plural countable nouns ('suppliers')."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘They will get the slots if they pay upfront.’ This is an example of a:"
+          "value": "They will get the slots if they pay it upfront. This is a ___ sentence."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -339,19 +222,11 @@
         [
           {
             "kind": "text",
-            "value": "Third conditional"
+            "value": "Mixed conditional"
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "If + present simple ('pay'), will + base verb ('will get') is a canonical First Conditional sentence."
-        }
-      ]
+      "correct_answer": 1
     }
   ]
 }

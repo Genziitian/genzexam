@@ -1,0 +1,409 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 1 · Jul 2023 · QPE3 · Part 1",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The joint PMF of two discrete random variables 𝑋 and 𝑌 is given in the following table:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q1_prompt-2_p2.png",
+          "alt": "Original prompt 2 for Statistics 2 question 1."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q1_prompt-3_p2.png",
+          "alt": "Original prompt 3 for Statistics 2 question 1."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: From the table: a + b = 1/3 - 1/6 = 1/6. c + d = 2/3 - 1/9 = 5/9. Column X=0: 1/6 + c = 1/2 so c =\n1/3. Column X=1: a + d = 1/3. Column X=2: b + 1/9 = 1/6 so b = 1/18. Then a = 1/6 - 1/18 = 2/18 = 1/9. d = 1/3\n- 1/9 = 2/9. Check: 6a = 6/9 = 2/3, 12b = 12/18 = 2/3, 2c = 2/3, 3d = 6/9 = 2/3. So 6a = 12b = 2c = 3d."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q1_option-1-1_p2.png",
+            "alt": "Original option 1 1 for Statistics 2 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q1_option-2-1_p2.png",
+            "alt": "Original option 2 1 for Statistics 2 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q1_option-3-1_p2.png",
+            "alt": "Original option 3 1 for Statistics 2 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q1_option-4-1_p2.png",
+            "alt": "Original option 4 1 for Statistics 2 question 1."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q2_prompt-1_p3.png",
+          "alt": "Original prompt 1 for Statistics 2 question 2."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "np=2 and np(1−p)=3/2 imply p=1/4 and n=8. Thus P(X=2)=C(8,2)(1/4)²(3/4)⁶=7×3⁶/4⁷, option A."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q2_option-1-1_p3.png",
+            "alt": "Original option 1 1 for Statistics 2 question 2."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q2_option-2-1_p3.png",
+            "alt": "Original option 2 1 for Statistics 2 question 2."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q2_option-3-1_p3.png",
+            "alt": "Original option 3 1 for Statistics 2 question 2."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q2_option-4-1_p3.png",
+            "alt": "Original option 4 1 for Statistics 2 question 2."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q3_context-1-1_p3.png",
+          "alt": "Original context 1 1 for Statistics 2 question 3."
+        },
+        {
+          "kind": "text",
+          "value": "Find the range of 𝑈."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q3_solution-1_p3.png",
+          "alt": "Original solution 1 for Statistics 2 question 3."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q3_option-1-1_p3.png",
+            "alt": "Original option 1 1 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q3_option-2-1_p3.png",
+            "alt": "Original option 2 1 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q3_option-3-1_p3.png",
+            "alt": "Original option 3 1 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q3_option-4-1_p3.png",
+            "alt": "Original option 4 1 for Statistics 2 question 3."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q4_context-1-1_p3.png",
+          "alt": "Original context 1 1 for Statistics 2 question 4."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q4_prompt-1_p4.png",
+          "alt": "Original prompt 1 for Statistics 2 question 4."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q4_prompt-2_p4.png",
+          "alt": "Original prompt 2 for Statistics 2 question 4."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "X=4 and U=X+Y−1=8 require Y=5. Independent fair dice give P(X=4,Y=5)=1/36, option C."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q4_option-1-1_p4.png",
+            "alt": "Original option 1 1 for Statistics 2 question 4."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q4_option-1-2_p4.png",
+            "alt": "Original option 1 2 for Statistics 2 question 4."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q4_option-2-1_p4.png",
+            "alt": "Original option 2 1 for Statistics 2 question 4."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q4_option-3-1_p4.png",
+            "alt": "Original option 3 1 for Statistics 2 question 4."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q4_option-3-2_p4.png",
+            "alt": "Original option 3 2 for Statistics 2 question 4."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q4_option-4-1_p4.png",
+            "alt": "Original option 4 1 for Statistics 2 question 4."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q5_context-1-1_p3.png",
+          "alt": "Original context 1 1 for Statistics 2 question 5."
+        },
+        {
+          "kind": "text",
+          "value": "The probability mass function of a random variable 𝑋 is given as"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q5_prompt-2_p4.png",
+          "alt": "Original prompt 2 for Statistics 2 question 5."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q5_prompt-3_p4.png",
+          "alt": "Original prompt 3 for Statistics 2 question 5."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: E[Y] = E[(2X+1)^2]. When X=-3: (2(-3)+1)^2 = (-5)^2 = 25. When X=6: (13)^2 = 169. When X=9:\n(19)^2 = 361. E[Y] = 25(1/6) + 169(1/2) + 361(1/3) = 25/6 + 169/2 + 361/3 = 25/6 + 507/6 + 722/6 = 1254/6 =\n209."
+        }
+      ],
+      "numerical_answer": 209.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q6_context-1-1_p3.png",
+          "alt": "Original context 1 1 for Statistics 2 question 6."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q6_prompt-1_p5.png",
+          "alt": "Original prompt 1 for Statistics 2 question 6."
+        },
+        {
+          "kind": "text",
+          "value": "Find the value of 𝑘. Enter the answer correct to two decimal places."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q6_prompt-3_p5.png",
+          "alt": "Original prompt 3 for Statistics 2 question 6."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: ∫₀⁴ k/(1+x)² dx = 1. Using the hint with a=1, b=1: [-k/(1+x)]₀⁴ = -k/5 + k/1 = k(1 - 1/5) = 4k/5 = 1.\nSo k = 5/4 = 1.25. Answer range: 1.23–1.27."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q6_solution-2_p5.png",
+          "alt": "Original solution 2 for Statistics 2 question 6."
+        }
+      ],
+      "acceptable_answers": [
+        "1.25 (±0.02)"
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q7_context-1-1_p5.png",
+          "alt": "Original context 1 1 for Statistics 2 question 7."
+        },
+        {
+          "kind": "text",
+          "value": "Identify the correct joint PMF table of 𝑋 and 𝑌."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The columns must be X=0,1,2,3 and rows Y=0,1. Applying f(x,y)=(x²+y)/32 gives row Y=0: 0,1/32,4/32,9/32 and row Y=1: 1/32,2/32,5/32,10/32. Only option D has both these values and the correct Y\\X axis labels. The booklet incorrectly keys A, whose axes are reversed."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q7_option-1-1_p6.png",
+            "alt": "Original option 1 1 for Statistics 2 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q7_option-2-1_p6.png",
+            "alt": "Original option 2 1 for Statistics 2 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q7_option-3-1_p6.png",
+            "alt": "Original option 3 1 for Statistics 2 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q7_option-4-1_p6.png",
+            "alt": "Original option 4 1 for Statistics 2 question 7."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q8_context-1-1_p5.png",
+          "alt": "Original context 1 1 for Statistics 2 question 8."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q8_prompt-1_p6.png",
+          "alt": "Original prompt 1 for Statistics 2 question 8."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q8_solution-1_p6.png",
+          "alt": "Original solution 1 for Statistics 2 question 8."
+        },
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nTen students from classes 9 and 10 have been nominated to form the school committee. The table below\nprovides the number of boys and girls selected from each class:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/1a22c0960b64_q8_solution-3_p7.png",
+          "alt": "Original solution 3 for Statistics 2 question 8."
+        },
+        {
+          "kind": "text",
+          "value": "The committee will consist of four students, with two students selected from each class uniformly at random.\nStudents nominated"
+        },
+        {
+          "kind": "text",
+          "value": "Class 9 Class 10\nBoys 1 5\nGirls 3 1"
+        }
+      ],
+      "acceptable_answers": [
+        "0.32 (±0.02)"
+      ]
+    }
+  ]
+}

@@ -860,12 +860,27 @@ body:has(#ep-app) {
 }
 #ep-app .exam-rich-image img {
   display: block;
-  min-height: 100px;
   object-fit: contain;
 }
 #ep-app .exam-rich-image figcaption {
   font-size: 12px;
   color: #627087;
+  margin-top: 8px;
+}
+.exam-rich-image {
+  max-width: 100%;
+  margin: 12px 0;
+  overflow-x: auto;
+}
+.exam-rich-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #fff;
+}
+.exam-rich-image figcaption {
+  font-size: 12px;
   margin-top: 8px;
 }
 /* Draft setup: copy questions from an existing paper. */

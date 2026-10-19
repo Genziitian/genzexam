@@ -1,0 +1,466 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 6 · Part 1",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume the elements are mutually comparable wherever sorting is required."
+        },
+        {
+          "kind": "text",
+          "value": "Assume l is a variable of type list , what is the type of the expression l.sort() ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume l is a variable of type list , what is the type of the expression l.append(5) ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume l is a variable of type list , what is the type of the expression l+[5] ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume l is a variable of type list , what is the type of the expression l.append([5]) ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume l is a variable of type list , what is the type of the expression l.extend((5)) ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume l is a variable of type list and has elements of type str , what is the type of the\nexpression l.index('hi') if 'hi' is present in the list?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "l is a list of strings. What types can be returned by the expression below as l varies?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "l.index('hi') if 'hi' in l else None"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        4
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume l is a variable of type list and has elements of type str , what is the type of the\nexpression l.remove(1) if the list has more than 2 elements?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume l is a variable of type list and has elements of type str , what is the type of the\nexpression l.pop('hi') if 'hi' is present in the list?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume l is a variable of type list and has elements of type str , what is the type of the\nexpression l.pop() if the list has more than 2 elements?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (Raises Error)"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

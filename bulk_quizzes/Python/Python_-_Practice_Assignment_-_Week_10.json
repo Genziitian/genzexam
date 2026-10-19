@@ -1,0 +1,468 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Practice Assignment · Week 10",
+  "subject": "Python",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the exception raised by the following snippet of code? Assume that this is a stand-alone\npiece of code."
+        },
+        {
+          "kind": "code",
+          "value": "for x in range(n):\n   if x % n == 0:\n       print(x)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Execute the code and note the error."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ValueError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NameError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ZeroDivisionError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This program is error free."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If L is some non-empty list that has already been defined, what is the exception raised by the\nfollowing snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "flag = True\nfor i in range(len(L)):\n   if L[i] > L[i + 1]:\n       flag = False",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ValueError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IndexError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "KeyError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This program is error free."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the exception raised by the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "print(int('1.2'))",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Execute the code and note the error."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ValueError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IndexError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "KeyError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This program is error free."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the exception raised by the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "D = dict()\nwords = ['good', 'grea', 'genuine', 'gone', 'given', 'gift']\nfor word in words:\n   D[word] = len(word)\nprint(D['gifts'])",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Execute the code and note the error."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ValueError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IndexError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "KeyError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This program is error free."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the exception raised by the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "S = set()\nfor x in range(1, 101):\n   if x % 3 == 0:\n       S.append(x)\nprint(S)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Execute the code and note the error."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "IndexError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "AttributeError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "KeyError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This program is error free."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the exception raised by the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "def rectangles(n):\n   pairs = [ ]\n   for x in range(1, n + 1):\n       if n % x == 0:\n           pairs.append((x, n // x))\nfor a, b in rectangles(100):\n   print(a, b)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The function is not returning anything. But we are trying to loop through the value it returns ( in\nthis case). This throws a ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "IndexError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "AttributeError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "TypeError"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This program is error free."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "D = {'mom': True, 'dad': True, 'malayalam': True, 'work': False}\nL = ['mom', 'dad', 'non', 'work']\nfor word in L:\n   try:\n       if D[word]:\n           print('This is a palindrome')\n       else:\n           print('This is not a palindrome')\n   except:\n       print('This key is not present in the dict')",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "is not a key of the dictionary. So, will raise a . The except-block catches this. is the third element in\nthe list. Therefore, the third line in the output comes from the except-block. First second and fourth lines are\nfrom the try-block."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "This is a palindrome\nThis is a palindrome\nThis is a palindrome",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "This key is not present in the dict\nThis key is not present in the dict\nThis key is not present in the dict",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "This is a palindrome\nThis is a palindrome\nThis key is not present in the dict",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "This is a palindrome\nThis is a palindrome\nThis key is not present in the dict\nThis is not a palindrome",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "This is a palindrome\nThis is a palindrome\nThis is not a palindrome",
+            "language": "text"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We are not sure if the file file.txt exists in the current directory. Select all error-free\nimplementations of a program that reads this file and prints one line of the file at a time. If the file\ndoesn't exist, the code should terminate gracefully. [MSQ]"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A missing file raises FileNotFoundError. The first, second, and fourth alternatives catch it; except ValueError does not."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "try:\n   f = open('file.txt', 'r')\n   for line in f:\n       print(line.strip())\nexcept FileNotFoundError:\n   print('This file does not exist')",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "try:\n   f = open('file.txt', 'r')\n   for line in f:\n       print(line.strip())\nexcept:\n   print('This file does not exist')",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "try:\n   f = open('file.txt', 'r')\n   for line in f:\n       print(line.strip())\nexcept ValueError:\n   print('This file does not exist')",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "try:\n   f = open('file.txt', 'r')\n   for line in f:\n       print(line.strip())\nexcept FileNotFoundError:\n   print('This file does not exist')\nexcept:\n   print('This is for all other errors that might come up')",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "def quotient(a, b):\n   try:\n       q = a // b\n       return q\n   except TypeError:\n       print('Cannot divide strings')\n   except ZeroDivisionError:\n       print('Division by 0 is not allowed')\n   finally:\n       print('I will always be executed')\nx = quotient('10', '5')\nx = quotient(10, 0)\nx = quotient(10, 5)\nprint(x)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "Cannot divide strings\nDivision by 0 is not allowed\n2",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Division by 0 is not allowed\n2",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "I will always be executed\nI will always be executed\nI will always be executed\n2",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Cannot divide strings\nI will always be executed\nDivision by 0 is not allowed\nI will always be executed\nI will always be executed\n2",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Cannot divide strings\nI will always be executed\nDivision by 0 is not allowed\nI will always be executed\nI will always be executed",
+            "language": "text"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The first two calls print their error messages; finally prints after every call, including the successful third call, and the final print outputs 2."
+        }
+      ]
+    }
+  ]
+}

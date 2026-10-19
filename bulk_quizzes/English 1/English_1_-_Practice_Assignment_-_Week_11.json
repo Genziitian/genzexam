@@ -1,0 +1,240 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Practice Assignment · Week 11",
+  "subject": "English 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the grammatically correct sentence from the options given."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ram doesn't listen me."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ram doesn't listen to me."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the grammatically correct sentence from the options given."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It is more cold now."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is colder now."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the grammatically correct sentence from the options given."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Vedansh was married with Vidya."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vedansh was married to Vidya."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the grammatically correct sentence from the options given."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I shot the lion but missed."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I shot at the lion but missed."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Raman has decided to stay up ------- 4:30 in the office."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Since"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Until"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Can you assemble the components ------- this device?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "About"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "My friend lives -------- Dhandeeswaram road."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Rahul is so busy in his office; he never seems to be ------ home."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

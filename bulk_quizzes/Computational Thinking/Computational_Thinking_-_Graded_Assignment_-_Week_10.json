@@ -1,0 +1,615 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 10",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q1_prompt_p3.png",
+          "alt": "Original question: If matrixPh[i]j] = 1, then"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "i scored at most 10 and at least 20 more marks in Physics than j"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i scored at least 10 and at most 20 more marks in Physics than j"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "j scored at least 10 and at most 20 more marks in Physics than i"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "j scored at most 10 and at least 20 more marks in Physics than i"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q2_prompt_p3.png",
+          "alt": "Original question: Choose the correct statement based on the above pseudocode."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q2_option1_p3.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q2_option2_p3.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q2_option3_p3.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q2_option4_p3.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q2_option5_p3.png",
+            "alt": "Original option 5 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q3_prompt_p4.png",
+          "alt": "Original question: Consider the dictionary D, and the matrices matrixPh, matrixCh and matrixMa computed in the previous question. The following pseudocode generates the adjacency matrix matrixHelp. Let i and j be indices of two students. Choose the correct statement(s) from the given options. It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q3_option1_p4.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q3_option2_p4.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q3_option3_p4.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q3_option4_p4.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q3_option5_p4.png",
+            "alt": "Original option 5 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q3_code0_p4.png",
+          "alt": "q3 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q4_prompt_p5.png",
+          "alt": "Original question: At the end of the following pseudocode, A captures the number of distinct pairs of students who can help each other in at least one subject, and B captures the number of distinct pairs of students where one can help the other in all subjects. Choose the correct code fragment to complete the pseudocode."
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q4_option1_code0_p5.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q4_option2_code0_p5.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q4_option3_code0_p5.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q4_option4_code0_p5.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context1_p6.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context1_p7.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q5_prompt_p7.png",
+          "alt": "Original question: The following pseudocode generates a graph G from books. Each node corresponds to an author. There is an edge between two different authors i and j if they have co-authored a book, and the edge is labeled with the number of books they have co-authored. Choose the correct code fragment to complete the following pseudocode."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q5_option1_code0_p7.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q5_option2_code0_p7.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q5_option3_code0_p7.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q5_option4_code0_p7.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context1_p6.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context1_p7.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q5_code0_p7.png",
+          "alt": "q5 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q6_prompt_p8.png",
+          "alt": "Original question: The following pseudocode creates adjacency matrix matrix2 of another graph H from books. For two different authors i and j, what does the value matrix2 [i][] represent at the end of the execution?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "List of authors who have co-authored a book with both i and j"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of authors who have co-authored a book with either i or j"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of authors who have co-authored at least two books with both i and j"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of authors who have co-authored at least two books with either i or j"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context1_p6.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context1_p7.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q5_code0_p7.png",
+          "alt": "q5 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q6_code0_p8.png",
+          "alt": "q6 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q7_prompt_p9.png",
+          "alt": "Original question: Which of the following combinations of entries in matrix and matrix2 is possible for two different authors i and j? It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q7_option1_code0_p9.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q7_option2_code0_p9.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q7_option3_code0_p9.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q7_option4_code0_p9.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context1_p6.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context1_p7.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q5_code0_p7.png",
+          "alt": "q5 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q6_code0_p8.png",
+          "alt": "q6 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q8_prompt_p10.png",
+          "alt": "Original question: Consider the matrices matrix and matrix2 constructed in the previous questions. findAuthor(matrix) finds an author who has the maximum number of co-authors. Choose the correct implementation of the procedure findAuthor. It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q8_option1_code0_p10.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q8_option2_code0_p10.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q8_option3_code0_p11.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q8_option4_code0_p11.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context2_p12.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context2_p13.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q5_code0_p7.png",
+          "alt": "q5 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q9_prompt_p13.png",
+          "alt": "Original question: Consider the adjacency matrix matrix constructed above. Assume there exists a procedure removeDuplicate which receives a list as input and removes all duplicate elements in the list. When will findGoodSet(matrix) return True?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If there exists three customers who have visited all three shops."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If there exist three customers such that every pair of customers among them have visited only one\nand the same shop in common."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If there exists three customers who have visited exactly one shop."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If there exists three customers where each pair among them have visited exactly one shop in\ncommon."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context2_p12.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/context2_p13.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q5_code0_p7.png",
+          "alt": "q5 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q10_prompt_p14.png",
+          "alt": "Original question: For a pair of customers i and j, j is said to be a shopping partner of i if i and j have visited at least two shops in common. findTopCustomer(matrix) finds a customer who has the maximum number of shopping partners. Choose the correct implementation of findTopCustomer."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q10_option1_code0_p14.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q10_option2_code0_p14.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q10_option3_code0_p15.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/394d5c8cbd57/q10_option4_code0_p15.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 4 · Part 1",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume that L is a non-empty list of positive integers. Also assume that the list is a distinct\ncollection of numbers, i.e., no two numbers are alike. Consider the following code. Answer questions\n3 and 4 based on this code.\nIf flag is True at the end of execution of the code given above, which of the following statements\nare true? Note that the options should be true for any list L that satisfies the conditions given in the\ncommon data. Multiple options could be correct."
+        },
+        {
+          "kind": "code",
+          "value": "S = 0\nfor x in L:\n   S += x\nflag = False\ny = -1\nfor x in L:\n   if x * len(L) == S:\n       flag = True\n       y = x\n       break",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "flag becomes True only when y belongs to L and y × len(L) equals the sum of L; hence y is the arithmetic mean."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "y is an element in the list L"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "y is the smallest number in the list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "y is the greatest number in the list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "y is the average (arithmetic mean) of the numbers in the list"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "y is the element at index len(L) // 2 in the list L",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let L contain the first n positive integers, with n > 0. Under what condition will flag be True after the following code?"
+        },
+        {
+          "kind": "code",
+          "value": "S = 0\nfor x in L:\n   S += x\nflag = False\ny = -1\nfor x in L:\n   if x * len(L) == S:\n       flag = True\n       y = x\n       break",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "When does becomes ? What is the arithmetic mean of the first positive integers? The answers to\nthese two questions will help you figure out why has to be odd."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "n is an odd integer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n is an even integer"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?\n(1) If L = [1, 2, 3, 4, 5] , then L[1: 3] is the list [2, 3] . Slicing a list is very similar to\nslicing a string. All the rules that you have learned about string-slicing apply to list-slicing.\n(2) If P = [1, 2, 3] and Q = [4, 5, 6] then P + Q is the list [1, 2, 3, 4, 5, 6] . Again,\nlist concatenation is very similar to string concatenation."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [90, 47, 8, 18, 10, 7]\nS = [L[0]] # list containing just one element\nfor i in range(1, len(L)):\n   flag = True\n   for j in range(len(S)):\n      if L[i] < S[j]:\n           before_j = S[: j] # elements in S before index j\n           new_j = [L[i]] # list containing just one element\n           after_j = S[j: ] # elements in S starting from index j\n          # what is the size of S now?\n           S = before_j + new_j + after_j\n          # what is the size of S now?\n           flag = False\n           break\n   if flag:\n       S.append(L[i])\nprint(S)"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Observe closely as to how we are arranging the elements of list in . For , what can you say about\nthe expression ? What do you conclude from this? If you work through the code, you will see that the list is being\nsorted in ascending order. Do you see why that is the case?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "text",
+            "value": "[90, 47, 8, 18, 10, 7]"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "text",
+            "value": "[7, 10, 18, 8, 47, 90]"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "text",
+            "value": "[7, 8, 10, 18, 47, 90]"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "text",
+            "value": "[90, 47, 18, 10, 8, 7]"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "text",
+            "value": "[90, 7, 8, 10, 18 47]"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The grid contains integer points (x, y) with 0 ≤ x ≤ 4 and 0 ≤ y ≤ 4. Create a list named points whose elements are coordinate tuples (x, y). Select all correct programs."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option-(a) is syntactically wrong. Option-(b) is wrong as it appends a list and not a tuple to .\nOption-(c) is wrong as it initializes to be a tuple Option-(d) is correct"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "points = [ ]\nfor x in range(0, 5):\n    for y in range(0, 5):\n        points.append(x, y)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "points = [ ]\nfor x in range(0, 5):\n    for y in range(0, 5):\n        points.append([x, y])"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "points = ( )\nfor x in range(0, 5):\n    for y in range(0, 5):\n        points.append((x, y))"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "points = [ ]\nfor x in range(0, 5):\n    for y in range(0, 5):\n        points.append((x, y))"
+          }
+        ]
+      ],
+      "correct_answers": [
+        3
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following codes are equivalent to the above code? [MSQ]"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [y - x for x in [1, 2, 3] for y in [3, 4, 5] if y > x]"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "L = [ ]\nfor x in [1, 2, 3]:\n    for y in [3, 4, 5]:\n        if y > x:\n            L.append(y - x)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "L = [ ]\nfor y in [3, 4, 5]:\n    for x in [1, 2, 3]:\n        if y > x:\n            L.append(y - x)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "L = [ ]\nfor x in [1, 2, 3]:\n    for y in [3, 4, 5]:\n        if y > x:\n            L += [y - x]"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "L = []\nfor y in [3, 4, 5]:\n    for x in [1, 2, 3]:\n        if y > x:\n            L += [y -x]"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all programs that store in triplets every integer tuple (x, y, z) satisfying x² + y² = z² and 0 < x < y < z < 100."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "triplets = [(x, y, z) for x in range(1, 100)\n                    for y in range(x + 1, 100)\n                   for z in range(y + 1, 100)\n                   if x ** 2 + y ** 2 == z ** 2]"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "triplets = [ ]\nfor x in range(1, 100):\n    for y in range(x + 1, 100):\n        for z in range(y + 1, 100):\n            if x ** 2 + y ** 2 == z ** 2:\n                triplets.append((x, y, z))"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "triplets = [(x, y, z) for x in range(1, 100)\n                    for y in range(1, 100)\n                   for z in range(1, 100)\n                   if x ** 2 + y ** 2 == z ** 2 and x < y < z]"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

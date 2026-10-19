@@ -3,16 +3,17 @@
   "quiz_title": "English 2 · Graded Assignment · Week 3",
   "subject": "English 2",
   "section": "practice_graded",
-  "week": 3,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Indicative, subjunctive, and imperative are types of:"
+          "value": "Indicative, subjunctive and imperative are types of:"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -39,24 +40,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Indicative, subjunctive, and imperative are the primary grammatical moods in English."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Simple, progressive, and perfect are types of:"
+          "value": "Simple, progressive, and perfect are types of"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -83,24 +78,18 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Simple, continuous/progressive, and perfect are grammatical aspects expressing how an action extends over time."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Which of the following is the most appropriate and polite way of requesting additional academic support?"
+          "value": "Choose the most polite expression for requesting additional academic support."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -111,7 +100,7 @@
         [
           {
             "kind": "text",
-            "value": "I am struggling with this and was wondering whether you would be able to support me, if you have the time."
+            "value": "I am struggling with this and was wondering whether you would be able to support me, if\nyou have the time."
           }
         ],
         [
@@ -127,24 +116,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Polite requests use modal distancing ('was wondering whether you would be able to...') and acknowledge the recipient's time constraints."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Which of the following is the most polite and professional way of clarifying a doubt during a lecture?"
+          "value": "Choose the most polite expression for clarifying a doubt."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -171,15 +154,45 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
         {
           "kind": "text",
-          "value": "Using 'Could you please...' with an honest, respectful explanation is polite academic communication."
+          "value": "Choose the most polite expression for requesting lecture notes."
         }
-      ]
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Please share notes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We will not be able to study without your notes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would it be possible for us to get lecture notes after the class? It will help us prepare\nbetter."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I beg of you to share your lecture notes"
+          }
+        ]
+      ],
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
@@ -189,6 +202,8 @@
           "value": "Which of the following is an example of middle clipping?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -215,110 +230,22 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Flu’ is formed by clipping both the front and back of ‘influenza’ (middle clipping)."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Which of the following is the most appropriate way of requesting lecture notes from an instructor?"
+          "value": "‘-s’ and ‘-ies’ in ‘dogs’ and ‘babies’ are"
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Please share notes"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "We will not be able to study without your notes"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Would it be possible for us to get lecture notes after the class? It will help us prepare better."
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "I beg of you to share your lecture notes"
-          }
-        ]
-      ],
-      "correct_answer": 2,
       "marks": 1,
       "difficulty": "medium",
       "explanation": [
         {
           "kind": "text",
-          "value": "Formal academic requests use indirect inquiry ('Would it be possible...') stating constructive rationale."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "Which word formation process creates 'flu' from 'influenza'?"
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "blending"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "clipping"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "borrowing"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "compounding"
-          }
-        ]
-      ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Clipping is the word formation process of shortening a polysyllabic word without changing its meaning."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "‘-s’ and ‘-ies’ in ‘dogs’ and ‘babies’ are:"
+          "value": "‘-s’ and ‘-ies’ in ‘dogs’ and ‘babies’ are plural markers as they convey the plurality (number) of\nthe nouns. Plural markers such as ‘-s’ and ‘-ies’ are inflectional morphemes. Therefore, both\noptions - (a) and (b) - apply, making (c) the most appropriate answer."
         }
       ],
       "options": [
@@ -347,59 +274,7 @@
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "They are inflectional morphemes that function as plural markers."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "‘Conceive, congregate, consult, convivial’ are words formed with:"
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Prefixes"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Infixes"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Suffixes"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "None of the above"
-          }
-        ]
-      ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "All four words share the Latin prefix 'con-' (meaning together or with)."
-        }
-      ]
+      "correct_answer": 2
     }
   ]
 }

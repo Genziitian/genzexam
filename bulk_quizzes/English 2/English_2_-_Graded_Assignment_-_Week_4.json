@@ -3,16 +3,17 @@
   "quiz_title": "English 2 · Graded Assignment · Week 4",
   "subject": "English 2",
   "section": "practice_graded",
-  "week": 4,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "A good essay needs revision."
+          "value": "A good essay needs revision"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -27,24 +28,18 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Revision is an indispensable stage in academic writing to polish flow, cohesion, and grammatical precision."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "20–25 percent of time and words may be given to illustrations and supporting examples while writing an essay."
+          "value": "20-25 percent of time and words may be given to illustrations while writing an essay."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -59,15 +54,7 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Substantial essay weight is dedicated to evidence, examples, and illustrations to substantiate claims."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
@@ -77,6 +64,8 @@
           "value": "Sentences and paragraphs must not remain connected while writing an essay."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -91,24 +80,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Essays require strong coherence, transitions, and cohesive links between sentences and paragraphs."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "A good essay must not have a synopsis or outline."
+          "value": "A good essay must not have synopsis."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -123,24 +106,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Planning an outline/synopsis before drafting is an established academic writing best practice."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "When we write to argue, the final part usually takes an overview and reaches an acceptable conclusion."
+          "value": "When we write to argue, the final part usually takes an overview and reaches an\nacceptable conclusion."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -155,15 +132,7 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Argumentative writing synthesizes the evaluated perspectives in the conclusion to deliver a well-reasoned judgment."
-        }
-      ]
+      "correct_answer": 0
     }
   ]
 }

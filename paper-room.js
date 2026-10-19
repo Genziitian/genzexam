@@ -160,9 +160,9 @@
 
   /* ---------------------------- content ---------------------------- */
   function clean(value) {
-    let text = String(value == null ? "" : value)
-      .replace(/\\r\\n/g, "\n")
-      .replace(/\\n(?![a-zA-Z])/g, "\n");
+    let text = String(value == null ? "" : value);
+    if (/```|!\[[^\n]*?\]\(/.test(text)) return text.trim();
+    text = text.replace(/\\r\\n/g, "\n").replace(/\\n(?![a-zA-Z])/g, "\n");
     if (/<\/?[a-z][\s\S]*>/i.test(text))
       text = text
         .replace(/<br\s*\/?>/gi, "\n")
@@ -266,7 +266,7 @@
     let lang = q.stem_code_language || "pseudocode";
     let outro = "";
 
-    if (!code && stemText) {
+    if (!code && stemText && !/```|!\[[^\n]*?\]\(/.test(stemText)) {
       const parsed = extractProcedureSteps(clean(stemText));
       if (parsed) {
         stemText = parsed.intro;
@@ -289,6 +289,7 @@
   }
   function looksLikeCode(text) {
     const t = String(text || "").trim();
+    if (/```|!\[[^\n]*?\]\(/.test(t)) return false;
     const keyword = /\b(if|else|while|for|return|print|Procedure|End)\s*[({\s]/.test(t);
     return (/[{}]/.test(t) && keyword) || (keyword && /[<>!]=?\s*\w+\s*[({]/.test(t));
   }

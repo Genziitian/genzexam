@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Graded Assignment · Week 7 · Part 1",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q1_prompt_p2.png",
+          "alt": "Original Statistics 1 question 1 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q1_option-1_p2.png",
+            "alt": "Original option 1 for Statistics 1 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q1_option-2_p2.png",
+            "alt": "Original option 2 for Statistics 1 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q1_option-3_p2.png",
+            "alt": "Original option 3 for Statistics 1 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q1_option-4_p2.png",
+            "alt": "Original option 4 for Statistics 1 question 1."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a Multiple Select Question, there are m options of which one or more can be correct.\nLet us define an event E that the option ‘A’ is correct. What is the cardinality of E?\nCondition: 3 ≤m ≤8"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "2^(m-1)",
+        "2**(m-1)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A must be included, while each of the remaining m−1 options can independently be included or omitted."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are a total of n students who are part of badminton, table tennis and tennis team\nof the college. Of which x% of students play table tennis, p% play tennis and a% play\nbadminton. It is also noticed that all students who play tennis also play table tennis\nbut not badminton. Now a student is selected at random, what is the probability that\nhe/she is the part of table tennis team only?\nCondition: 120 ≤n ≤250, n%2 = 0, 4 ≤y ≤7, x = 10y, p = 10q, 1 ≤q ≤3 ,\n5 ≤b ≤8 and a = 10b"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "1-(a+p)/100"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Tennis players are contained in table tennis and excluded from badminton. Since the given n students belong to the union of the three teams, table-tennis-only students form the complement of badminton and tennis."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The probability of clearing Quiz 1 is a/b, clearing both Quiz 1 and Quiz 2 is c/d, and clearing at least one quiz is e/f. What is the probability of clearing Quiz 2?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "e/f-a/b+c/d"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Use P(Q1∪Q2)=P(Q1)+P(Q2)−P(Q1∩Q2), then solve for P(Q2)."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If P(A) = x and P(B) = y and probability of the complement of (A ∪ B) is z, then\ncalculate P(A ∪ B)?\nConditions: 0.1 ≤x ≤0.8 ; 0.2 ≤y ≤0.8 and 0.3 ≤z ≤0.8"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "1-z"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The probability of a union and its complement sum to one."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pramod goes to a shop to buy some clothes. Shopkeeper shows him x shirts, y pants\nand z t-shirts. If he selects three clothes at random, then find the probability that:\nConditions: 5 ≤x ≤10 ; 4 ≤y ≤8 ; 10 ≤z ≤15.\n(i) Randomly chosen clothes are of different type."
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "x*y*z/binom(x+y+z,3)",
+        "xyz/binom(x+y+z,3)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Choose one shirt, one pair of pants and one T-shirt, divided by all unordered choices of three clothes."
+        }
+      ]
+    }
+  ]
+}

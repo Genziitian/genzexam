@@ -1,0 +1,502 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 6",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q1_prompt_p2.png",
+          "alt": "Original question: In the \"Scores\" table, let S be the list of sequence numbers of rows which have marks greater than 75 in at least one subject. What does the variable count represent at the end of the execution of the pseudocode given below?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who have scored less than 75 in both Mathematics and Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who have scored more than 75 in Chemistry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who have scored less than 75 in both Mathematics and Physics, but more than\n75 in Chemistry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who have scored less than 75 in all three subjects"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q2_prompt_p3.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Words\" dataset. Assume that the rows in Table 1 are sorted in the increasing order of sequence number. What does the list L contain at the end of execution?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The list of nouns that come immediately after an adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of adjectives that come immediately after a noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of nouns that come immediately before an adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of adjectives that come immediately before a noun"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q3_prompt_p4.png",
+          "alt": "Original question: We have a non-empty list called authList that stores the names of all authors in the \"Library\" table sorted in alphabetical order of author names. There is one element corresponding to each book in the table. This results in many duplicates. The following procedure attempts to extract the unique list of authors, while preserving the sorted order. The pseudocode may have mistakes. Identify all such"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q4_prompt_p5.png",
+          "alt": "Original question: The procedure visitedShop returns the list of names of people who have visited a particular shop in the \"Shopping Bills\" dataset. It accepts the shop's name as a parameter. Additionally, each customer must be represented exactly once in the returned list. The following pseudocode may have mistakes. Identify all such mistakes (if any)."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 16"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 18"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 19"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q5_prompt_p6.png",
+          "alt": "Original question: stations is a list that contains the sequence of stations visited by a train from the \"Trains\" dataset. Each element in stations is a list: [Name, Distance], the first entry is the name of the station, while the second entry is the distance of this station from the first station in the list. minDist is a procedure that accepts stations as a parameter and returns the names of a pair of consecutive "
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q5_option1_code0_p6.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q5_option2_code0_p6.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q5_option3_code0_p6.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q5_option4_code0_p6.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q5_code0_p6.png",
+          "alt": "q5 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q6_prompt_p7.png",
+          "alt": "Original question: stations is a list that contains the sequence of stations visited by a train from the \"Trains\" dataset. Each element in stations is a list: [Name, Distance], the first entry is the name of the station, while the second entry is the distance of this station from the first station in the list. minDist is a procedure that accepts stations as a parameter and returns the names of a pair of consecutive "
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q6_option1_code0_p7.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q6_option2_code0_p7.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q6_option3_code0_p7.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q6_option4_code0_p7.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q7_prompt_p8.png",
+          "alt": "Original question: stns is a list that contains information about the sequence of stations visited by a train. Specifically, each element in this list is itself a list [Arrival, Departure]. The first element in stns corresponds to the starting station for the train and the last element corresponds to the ending station for the train. waitTime(arr, dep) is a procedure that accepts the arrival time and departure time "
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error"
+          }
+        ]
+      ],
+      "correct_answers": [
+        5
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/context0_p9.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q8_prompt_p9.png",
+          "alt": "Original question: Using the \"trains\" pseudocode shown above, which of the following statements about the variable flag1 is True at the end of execution of the above pseudocode?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It is True if and only if stn is a starting or ending station for at least one train in the list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is False if and only if stn is a starting or ending station for at least one train in the list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is True if and only if stn is a starting station for one train and ending station for some other train\nin the list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is False if and only if stn is a starting station for one train and ending station for some other train\nin the list"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/context0_p9.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q1_code0_p2.png",
+          "alt": "q1 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q7_code0_p8.png",
+          "alt": "q7 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q9_prompt_p10.png",
+          "alt": "Original question: Using the \"trains\" pseudocode shown above, what does the variable count represent at the end of execution of the above pseudocode?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It is number of trains associated with stn"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is the number of trains for which stn is a starting station"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is the number of trains for which stn is an ending station"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is the number of trains for which stn is neither a starting nor an ending station"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/context0_p9.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/22c13b3deb9f/q10_prompt_p10.png",
+          "alt": "Original question: Using the \"trains\" pseudocode shown above, at the end of execution of the code given above, what can be said about the values stored by the Boolean variables flag1 and flag2?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "flag1 and flag2 always store the same value"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "flag1 and flag2 always store opposite values"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "flag1 always stores the value True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "flag2 always stores the value True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There is no relationship between these two variables"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

@@ -3,16 +3,17 @@
   "quiz_title": "English 2 · Practice Assignment · Week 6",
   "subject": "English 2",
   "section": "practice",
-  "week": 6,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Convert the statement ‘She listens to music everyday’ into a present simple question:"
+          "value": "Select the grammatically correct yes/no question corresponding to: She listens to music every day."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -39,24 +40,18 @@
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Present simple with third person singular uses auxiliary 'Does' + bare infinitive 'listen'."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Convert the statement ‘He has finished his homework’ into an interrogative sentence:"
+          "value": "Select the grammatically correct yes/no question corresponding to: He has finished his homework."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -83,24 +78,18 @@
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Inversion of the auxiliary 'has' with the subject produces: 'Has he finished his homework?'."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Which of the following is a polite indirect embedded question for ‘Is he a businessman?’"
+          "value": "Select the present-tense embedded question corresponding to: Is he a businessman?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -113,55 +102,37 @@
             "kind": "text",
             "value": "Do you know if he was a businessman?"
           }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Tell me is he a businessman?"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Who is he a businessman?"
-          }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Embedded yes/no questions use 'if' or 'whether' with declarative word order."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Embedded questions are commonly used in English to:"
+          "value": "Embedded questions are used ______."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "Sound more polite and less blunt"
+            "value": "To be more polite"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Inquire about indirect information"
+            "value": "To give more information"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Form indirect speech"
+            "value": "To express reported speech"
           }
         ],
         [
@@ -171,24 +142,18 @@
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Embedding question clauses softens direct inquiries, enhances politeness, and facilitates reported inquiry."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Complete the sentence: ‘I am worried about ______ the presentation was well received.’"
+          "value": "I am worried about ______the presentation was well received."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -207,32 +172,20 @@
             "kind": "text",
             "value": "Both whether and if"
           }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "That"
-          }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "After prepositions (like 'about'), 'whether' is required in standard English; 'if' cannot directly follow a preposition."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Complete the sentence: ‘I am unsure _______ I will be attending the annual function.’"
+          "value": "I am unsure _______ I will be attending the function."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -251,120 +204,20 @@
             "kind": "text",
             "value": "Both whether and if"
           }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Unless"
-          }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Both 'whether' and 'if' can introduce the embedded complement clause after an adjective like 'unsure'."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In the sentence ‘I am unsure whether I will be attending the function’, the embedded clause is a/an:"
+          "value": "“ They want to see what all the fuss is about .” In this sentence, the clause ‘ what all the fuss is about’ is the object of the verb ______________."
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Non-finite clause"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Finite clause"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Verbless clause"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Independent sentence"
-          }
-        ]
-      ],
-      "correct_answer": 1,
       "marks": 1,
       "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "The clause contains the finite auxiliary verb ‘will’, making it a finite clause."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "In the sentence ‘I am unsure whether I will be attending the function’, the embedded clause functions as the ______ of the predicate adjective ‘unsure’."
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Subject"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Complement"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Adjunct of manner"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Direct object of a noun"
-          }
-        ]
-      ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "The clause completes the meaning of the adjective 'unsure' (adjectival complement)."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "In the sentence ‘They want to see what all the fuss is about’, the clause ‘what all the fuss is about’ is the direct object of the verb:"
-        }
-      ],
       "options": [
         [
           {
@@ -391,59 +244,33 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Want’ takes the non-finite clause ‘to see...’ as its object, and ‘see’ takes the interrogative clause ‘what all the fuss is about’ as its object."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "The question ‘When did she return from Germany?’ is what type of question?"
+          "value": "“ When did she return from Germany? ” is a ________ type question."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "Wh- / Content question"
+            "value": "Content"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Yes/no question"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Tag question"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Rhetorical question without answer"
+            "value": "Yes/no"
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Questions introduced by question words (when, where, why, who) seek specific information (content/Wh- questions)."
-        }
-      ]
+      "correct_answer": 0
     }
   ]
 }

@@ -1,0 +1,232 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Oct 2023 · Diploma QPD4 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations:\n$$x + ky = 2$$\n$$kx + y = 2$$\nFind the value of $k$ for which the system of equations has NO solution."
+        }
+      ],
+      "numerical_answer": -1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The determinant of the coefficient matrix is $1 - k^2 = 0 \\implies k = \\pm 1$. For $k = -1$, the equations become $x - y = 2$ and $-x + y = 2 \\implies x - y = -2$, which are inconsistent. Thus $k = -1$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations:\n$$x + ky = 2$$\n$$kx + y = 2$$\nFind the value of $k$ for which the system of equations has INFINITELY MANY solutions."
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For $k = 1$, both equations become $x + y = 2$, which gives a line of infinitely many solutions. Thus $k = 1$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations $x + ky = 2$ and $kx + y = 2$. If the system has a unique solution $(a, b)$, what is $a - b$?"
+        }
+      ],
+      "numerical_answer": 0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By symmetry of the equations $x + ky = 2$ and $kx + y = 2$, subtracting yields $(1-k)x - (1-k)y = 0 \\implies (1-k)(a - b) = 0$. Since $k \\neq \\pm 1$ for a unique solution, $a - b = 0$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $W_1 = \\{(x, y, z) \\in \\mathbb{R}^3 : 2x - y + z = 0\\}$, $W_2 = \\{(x, y, z) \\in \\mathbb{R}^3 : 2x - y + z = 0, \\; 2x + y - 3z = 0\\}$, and $W_3$ be the xy-plane $\\{(x, y, 0) : x, y \\in \\mathbb{R}\\}$. Choose the correct option(s):"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The set $\\{(1, 0, -2), (0, 1, 1)\\}$ forms a basis for $W_1$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$W_2$ is the set of all solutions of $AX = 0$ where $A = \\begin{pmatrix} 2 & 2 \\\\ -1 & 1 \\\\ 1 & -3 \\end{pmatrix}$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The intersection of $W_1$ and $W_3$ is the line $y = 2x$ in the xy-plane."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The intersection of $W_1$ and $W_3$ is spanned by the vector $(2, 1, 0)$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$W_2$ is the straight line in $\\mathbb{R}^3$ passing through the origin and the vector $(1, 4, 2)$."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        4
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For $W_1$, $z = y - 2x$, so $(1, 0, -2)$ and $(0, 1, 1)$ form a basis. In $W_3$, $z = 0 \\implies 2x - y = 0 \\iff y = 2x$. Solving $W_2$ gives direction vector $(1, 4, 2)$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $W_1 = \\{(x, y, z) \\in \\mathbb{R}^3 : 2x - y + z = 0\\}$, $W_2 = \\{(x, y, z) \\in \\mathbb{R}^3 : 2x - y + z = 0, \\; 2x + y - 3z = 0\\}$, and $W_3$ be the xy-plane. Find $\\dim(W_1 + W_2)$."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since $W_2 \\subseteq W_1$ by definition, $W_1 + W_2 = W_1$. Since $W_1$ is a plane in $\\mathbb{R}^3$, $\\dim(W_1) = 2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following images representing systems of linear equations:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/quiz1/oct2023_q7_systems.png",
+          "alt": "Geometric systems of linear equations (a), (b), (c), (d)"
+        },
+        {
+          "kind": "text",
+          "value": "Choose the correct option(s) from the following statements:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The figures (a) and (d) represent systems with unique solution."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The figures (b) and (c) represent systems with no solution."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The figures (b) and (d) represent systems with infinitely many solutions."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The figures (a) and (d) represent consistent systems of linear equations."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In (b) the three planes form a triangular prism with no common line/point (no solution). In (c) two parallel lines have no intersection (no solution). In (a) three planes meet, and in (d) two intersecting lines meet in a point, representing consistent systems."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A$ be a $3 \\times 3$ matrix such that $A^T = -A$. Then $\\det(A) =$"
+        }
+      ],
+      "numerical_answer": 0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\det(A) = \\det(A^T) = \\det(-A) = (-1)^3 \\det(A) = -\\det(A) \\implies 2\\det(A) = 0 \\implies \\det(A) = 0$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A$ be a $3 \\times 3$ matrix such that $\\det(A) = 2$. If $B$ is a matrix obtained from $A$ by swapping the second and third row, and then multiplying the first row by $-3$, then $\\det(B) =$"
+        }
+      ],
+      "numerical_answer": 6,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Swapping two rows multiplies the determinant by $-1$. Scaling one row by $-3$ multiplies the determinant by $-3$. Thus $\\det(B) = 2 \\times (-1) \\times (-3) = 6$."
+        }
+      ]
+    }
+  ]
+}

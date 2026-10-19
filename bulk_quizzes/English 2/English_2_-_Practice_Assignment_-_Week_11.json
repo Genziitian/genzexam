@@ -3,16 +3,17 @@
   "quiz_title": "English 2 · Practice Assignment · Week 11",
   "subject": "English 2",
   "section": "practice",
-  "week": 11,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Reduction of a longer word to one of its parts (e.g. 'dorm' from 'dormitory') is called:"
+          "value": "Reduction of a word to one of its parts is called ____."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -31,32 +32,20 @@
             "kind": "text",
             "value": "Borrowing"
           }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Back-formation"
-          }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Clipping shortens a polysyllabic word without altering its grammatical category or core meaning."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘He has been unhappy since his cat disappeared.’ How many derivational prefixes are present in the italicized words?"
+          "value": "‘He has been unhappy since his cat disappeared.’ This sentence has __prefixes."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -67,7 +56,7 @@
         [
           {
             "kind": "text",
-            "value": "2 (un- in unhappy, dis- in disappeared)"
+            "value": "2"
           }
         ],
         [
@@ -83,24 +72,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "The negative prefix 'un-' in 'unhappy' and the reversative prefix 'dis-' in 'disappeared' total 2 prefixes."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Pick the odd one out among the following words: 'Though, eventually, is, but'"
+          "value": "Pick the odd one out Though, eventually, is, but"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -127,29 +110,29 @@
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Is’ is a finite copular verb, whereas 'though', 'eventually', and 'but' are discourse markers / conjunctions / adverbs."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Which of the following is a set of words popularized through internet culture and digital media?"
+          "value": "Which of the following is a set of words derived from new media?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
             "value": "Browse, collect, mend"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Browse, surf, cycle"
           }
         ],
         [
@@ -161,34 +144,22 @@
         [
           {
             "kind": "text",
-            "value": "Cycle, steer, brake"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Harvest, plow, sow"
+            "value": "Surf, scroll, sight"
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Browse’, ‘surf’, and ‘scroll’ took on widely recognized computing and web navigation senses."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘Chic’, ‘sentiment’, and ‘royal’ are English words borrowed historically from:"
+          "value": "'Chic', 'sentiment', and ' royal' are words probably from:"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -215,29 +186,23 @@
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "These words entered English from Old French and Anglo-Norman."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "‘The movie plot was so cliché: boy loves girl, girl loves best friend.’ Here, 'cliché' means:"
+          "value": "‘The movie was so cliche: boy loves girl, girl loves his best friend. I wish something different would be made.’ Here, cliche means_______."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "Overused, stereotyped, and lacking originality"
+            "value": "Overused and uninteresting"
           }
         ],
         [
@@ -249,34 +214,28 @@
         [
           {
             "kind": "text",
-            "value": "Melancholy and tragic"
+            "value": "Irritating and sad"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Inspirational and fresh"
+            "value": "Melancholy and anger-inducing"
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "A cliché is an expression or idea that has been overused to the point of losing its original novelty."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "The word 'cliché' was borrowed into English from which language?"
+          "value": "From which language was the English word cliché borrowed?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -288,94 +247,6 @@
           {
             "kind": "text",
             "value": "French"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Italian"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "German"
-          }
-        ]
-      ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Cliché’ is a direct loanword from French (originally a printing term for a stereotype plate)."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "‘The bullet ricocheted off the concrete wall.’ Here, 'ricocheted' means:"
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Buried deep"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Rebounded or bounced off a surface at an angle"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Exploded into fragments"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Melted"
-          }
-        ]
-      ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "To ricochet means to bounce off a surface with glancing deflection."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "The word 'ricochet' is of which linguistic origin?"
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "French"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Latin"
           }
         ],
         [
@@ -391,15 +262,83 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
         {
           "kind": "text",
-          "value": "‘Ricochet’ entered English from French."
+          "value": "‘The bullet ricocheted off the wall behind him and whizzed past his ear.’ Here ricocheted means______."
         }
-      ]
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Buried"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Skipped"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rebounded"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From which language was the English word ricochet borrowed?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Latin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Italian"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Japanese"
+          }
+        ]
+      ],
+      "correct_answer": 1
     }
   ]
 }

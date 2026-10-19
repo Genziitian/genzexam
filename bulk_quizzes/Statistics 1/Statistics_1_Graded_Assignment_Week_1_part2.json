@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Graded Assignment · Week 1 · Part 2",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q7_prompt_p7.png",
+          "alt": "Original Statistics 1 question 7 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q7_option-1_p7.png",
+            "alt": "Original option 1 for Statistics 1 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q7_option-2_p7.png",
+            "alt": "Original option 2 for Statistics 1 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q7_option-3_p7.png",
+            "alt": "Original option 3 for Statistics 1 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q7_option-4_p7.png",
+            "alt": "Original option 4 for Statistics 1 question 7."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q8_prompt_p8.png",
+          "alt": "Original Statistics 1 question 8 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q8_option-1_p8.png",
+            "alt": "Original option 1 for Statistics 1 question 8."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q8_option-2_p8.png",
+            "alt": "Original option 2 for Statistics 1 question 8."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q9_prompt_p8.png",
+          "alt": "Original Statistics 1 question 9 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q9_option-1_p8.png",
+            "alt": "Original option 1 for Statistics 1 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q9_option-2_p8.png",
+            "alt": "Original option 2 for Statistics 1 question 9."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q10_prompt_p9.png",
+          "alt": "Original Statistics 1 question 10 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q10_option-1_p9.png",
+            "alt": "Original option 1 for Statistics 1 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q10_option-2_p9.png",
+            "alt": "Original option 2 for Statistics 1 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q10_option-3_p9.png",
+            "alt": "Original option 3 for Statistics 1 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q10_option-4_p9.png",
+            "alt": "Original option 4 for Statistics 1 question 10."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q11_prompt_p9.png",
+          "alt": "Original Statistics 1 question 11 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q11_option-1_p9.png",
+            "alt": "Original option 1 for Statistics 1 question 11."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q11_option-2_p9.png",
+            "alt": "Original option 2 for Statistics 1 question 11."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q11_option-3_p9.png",
+            "alt": "Original option 3 for Statistics 1 question 11."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/af6fa2cbe363_q11_option-4_p9.png",
+            "alt": "Original option 4 for Statistics 1 question 11."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

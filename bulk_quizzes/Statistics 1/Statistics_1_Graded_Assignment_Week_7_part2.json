@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Graded Assignment · Week 7 · Part 2",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "a cards are drawn at random from a pack of 52 cards. Find the probability that b are\nblack and c are red.\nCondition: 4 ≤a ≤10, 2 ≤b, c ≤5 ; b + c = a"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "binom(26,b)*binom(26,c)/binom(52,a)",
+        "binom(26,b)binom(26,c)/binom(52,a)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Choose b black and c red cards from the 26 cards of each colour, divided by all a-card hands."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q9_prompt_p5.png",
+          "alt": "Original Statistics 1 question 9 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q9_option-1_p5.png",
+            "alt": "Original option 1 for Statistics 1 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q9_option-2_p5.png",
+            "alt": "Original option 2 for Statistics 1 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q9_option-3_p5.png",
+            "alt": "Original option 3 for Statistics 1 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q9_option-4_p5.png",
+            "alt": "Original option 4 for Statistics 1 question 9."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q12_prompt_p7.png",
+          "alt": "Original Statistics 1 question 12 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q12_option-1_p7.png",
+            "alt": "Original option 1 for Statistics 1 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q12_option-2_p7.png",
+            "alt": "Original option 2 for Statistics 1 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q12_option-3_p7.png",
+            "alt": "Original option 3 for Statistics 1 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/b158d8607f16_q12_option-4_p7.png",
+            "alt": "Original option 4 for Statistics 1 question 12."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Among200students,110like Music,130like Sports,and70like both. How many like exactly one activity?"
+        }
+      ],
+      "numerical_answer": 100,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Among200students,110like Music,130like Sports,and70like both. What is the probability that a randomly selected student likes neither activity?"
+        }
+      ],
+      "numerical_answer": 0.15,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

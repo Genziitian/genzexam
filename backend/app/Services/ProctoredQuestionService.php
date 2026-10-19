@@ -346,7 +346,7 @@ class ProctoredQuestionService
         return ['score' => max(0.0, $score), 'total_marks' => $totalMarks, 'breakdown' => $breakdown];
     }
 
-    private function normalizeContent(mixed $content, int $row, string $field, array &$errors): array
+    public function normalizeContent(mixed $content, int $row, string $field, array &$errors): array
     {
         if (is_string($content)) {
             $content = [['kind' => 'text', 'value' => $content]];
@@ -464,7 +464,7 @@ class ProctoredQuestionService
 
     private function isSafeImageUrl(string $url): bool
     {
-        if ($url === '' || strlen($url) > 2048 || preg_match('/[\x00-\x20]/', $url) || str_contains($url, '\\')) {
+        if ($url === '' || strlen($url) > 2048 || preg_match('/[\x00-\x20<>]/', $url) || str_contains($url, '\\')) {
             return false;
         }
         if (str_starts_with($url, '/storage/') || str_starts_with($url, '/uploads/') || str_starts_with($url, '/assets/exam-examples/')) {

@@ -1,0 +1,448 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Practice Assignment · Week 4",
+  "subject": "Mathematics 2",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-prompt-p3.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 1: prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-option1-p3.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 1: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-option2-p4.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 1: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-option3-p4.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 1: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-option4-p4.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 1: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-option5-p4.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 1: option."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        4
+      ],
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-solution-p4.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 1: solution."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q1-solution-p5.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 1: solution."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-prompt-p6.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 2: prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-option1-p6.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 2: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-option2-p6.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 2: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-option3-p6.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 2: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-option4-p6.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 2: option."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-solution-p6.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 2: solution."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q2-solution-p7.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 2: solution."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-prompt-p7.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 3: prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-option1-p7.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 3: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-option2-p7.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 3: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-option3-p7.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 3: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-option4-p7.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 3: option."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q3-solution-p8.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 3: solution."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-prompt-p8.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 4: prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-option1-p8.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 4: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-option2-p8.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 4: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-option3-p8.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 4: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-option4-p8.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 4: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-option5-p9.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 4: option."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3,
+        4
+      ],
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q4-solution-p9.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 4: solution."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q5-prompt-p9.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 5: prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": -1.0,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q5-solution-p9.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 5: solution."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q6-prompt-p9.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 6: prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 0,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q6-solution-p10.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 6: solution."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q7-prompt-p10.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 7: prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q7-solution-p10.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 7: solution."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q7-solution-p11.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 7: solution."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-context-p11.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 8: context."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-prompt-p11.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 8: prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-option1-p11.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 8: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-option2-p11.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 8: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-option3-p11.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 8: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-option4-p11.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 8: option."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-solution-p11.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 8: solution."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q8-solution-p12.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 8: solution."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let S be the span of the four crop-area row vectors for Farmers A, B, C, and D in the passage."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-context-p11.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 9: context."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-prompt-p12.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 9: prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-option1-p12.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 9: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-option2-p12.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 9: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-option3-p12.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 9: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-option4-p12.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 9: option."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-option5-p12.png",
+            "alt": "Original Mathematics 2 practice assignment 4, question 9: option."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/pa4/q9-solution-p12.png",
+          "alt": "Original Mathematics 2 practice assignment 4, question 9: solution."
+        }
+      ]
+    }
+  ]
+}

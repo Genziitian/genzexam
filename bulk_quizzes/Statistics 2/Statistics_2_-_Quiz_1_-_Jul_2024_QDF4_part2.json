@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 1 · Jul 2024 · QDF4 · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nIn a new game designed by a developer, players can choose between two character types: warrior and mage,\nwith probabilities of selection being 0.4 and 0.6, respectively. Players then choose between two types of\nequipment: a sword or a staff. If a player chooses the warrior character, there is a 0.3 chance that they will\nselect a sword, whereas if they choose the mage character, there is a 0.5 chance they will select a staff. Based\non this information, answer the given sub questions."
+        },
+        {
+          "kind": "text",
+          "value": "What is the probability that a player chooses a warrior character with the staff? Enter the answer correct to\ntwo decimal places."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(warrior ∩ staff) = P(staff|warrior)P(warrior) = 0.7 × 0.4 = 0.28."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q9_solution-2_p6.png",
+          "alt": "Original solution 2 for Statistics 2 question 9."
+        }
+      ],
+      "acceptable_answers": [
+        "0.28 (±0.03)"
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q10_context-1-1_p6.png",
+          "alt": "Original context 1 1 for Statistics 2 question 10."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q10_prompt-1_p6.png",
+          "alt": "Original prompt 1 for Statistics 2 question 10."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: X ~ Binomial(40, 3/4). E[X] = 30. Markov: P(X≥35) ≤ 30/35 = 6/7 ≈ 0.857. Values ≥ 0.857 are 0.86\nand 0.90."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.86"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.086"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.75"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.90"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q11_context-1-1_p6.png",
+          "alt": "Original context 1 1 for Statistics 2 question 11."
+        },
+        {
+          "kind": "text",
+          "value": "Using Chebyshev's inequality, find an upper bound to the probability that at least 35 people attended the\ninterview. Enter the answer correct to one decimal place."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Var(X) = 40(3/4)(1/4) = 7.5. P(X≥35) ≤ P(|X-30|≥5) ≤ Var(X)/5² = 7.5/25 = 0.3."
+        },
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nAn urn contains 20 white balls and 12 red balls. 2 balls are selected at random. Let 𝑋 denote the number of\nred balls drawn and let 𝑌 denote the number of white balls drawn. Based on the above data, answer the\ngiven subquestions."
+        }
+      ],
+      "acceptable_answers": [
+        "0.3 (±0.01)"
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nAn urn contains 20 white balls and 12 red balls. 2 balls are selected at random. Let 𝑋 denote the number of\nred balls drawn and let 𝑌 denote the number of white balls drawn. Based on the above data, answer the\ngiven subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q12_prompt-1_p7.png",
+          "alt": "Original prompt 1 for Statistics 2 question 12."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(X=1,Y=1) = C(12,1)C(20,1)/C(32,2) = 240/496 = 15/31 ≈ 0.4839."
+        }
+      ],
+      "acceptable_answers": [
+        "0.48 (±0.02)"
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nAn urn contains 20 white balls and 12 red balls. 2 balls are selected at random. Let 𝑋 denote the number of\nred balls drawn and let 𝑌 denote the number of white balls drawn. Based on the above data, answer the\ngiven subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "Find the expected value of 𝑋. Enter the answer correct to two decimal places."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: E[X] = n × (number of red)/(total) = 2 × 12/32 = 24/32 = 3/4 = 0.75."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q13_solution-2_p7.png",
+          "alt": "Original solution 2 for Statistics 2 question 13."
+        }
+      ],
+      "acceptable_answers": [
+        "0.75 (±0.02)"
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q14_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 14."
+        },
+        {
+          "kind": "text",
+          "value": "What is the probability that exactly one out of the three random variables takes value greater than 4?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(X_i > 4) = P(X_i = 5) = C(5,5)(0.5)^5 = (0.5)^5. Exactly one of three exceeds 4: C(3,1) × (0.5)^5 ×\n[1-(0.5)^5]^2 = 3 × (0.5)^5 × [1-(0.5)^5]^2."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q14_option-1-1_p8.png",
+            "alt": "Original option 1 1 for Statistics 2 question 14."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q14_option-2-1_p8.png",
+            "alt": "Original option 2 1 for Statistics 2 question 14."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q14_option-3-1_p8.png",
+            "alt": "Original option 3 1 for Statistics 2 question 14."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q14_option-4-1_p8.png",
+            "alt": "Original option 4 1 for Statistics 2 question 14."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q15_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 15."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/780f1713b303_q15_prompt-1_p8.png",
+          "alt": "Original prompt 1 for Statistics 2 question 15."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(max > 4) = 1 - P(max ≤ 4) = 1 - P(X₁≤4)³ = 1 - [1-(0.5)^5]³ = 1 - (31/32)³ = 1 - 29791/32768 =\n2977/32768 ≈ 0.0909."
+        },
+        {
+          "kind": "text",
+          "value": "EXAM.GENZIITIAN.IN GENZIITIAN.IN/ECOSYSTEM YOUTUBE"
+        }
+      ],
+      "acceptable_answers": [
+        "0.091 (±0.002)"
+      ]
+    }
+  ]
+}

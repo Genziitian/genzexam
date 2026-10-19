@@ -1,0 +1,326 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 7 · Part 2",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(nums:list):\n return [num*2 for num in nums]",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(n:int):\n   return [num*2 for num in range(n) if len(str(num))<2]",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(n:int):\n   return [num for num in range(n) if len(str(num))<2]",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(n:int):\n   return next((num for num in range(n) if len(str(num))<2), None)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(n:int):\n   result = [num for num in range(n) if len(str(num))<2]\n   return result[-1] if result else None",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume nums is a non-empty list of integers."
+        },
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(nums:list):\n   return min(nums)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume nums is a non-empty list of integers."
+        },
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(nums:list):\n   return min(nums, key= lambda x: len(str(abs(x))))",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

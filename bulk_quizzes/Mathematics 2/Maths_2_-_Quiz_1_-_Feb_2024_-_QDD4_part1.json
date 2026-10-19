@@ -1,0 +1,239 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Feb 2024 · QDD4 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the determinant of the $5 \\times 5$ matrix:\n$$A = \\begin{pmatrix} 0 & 1 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 1 & 0 \\\\ 1 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 1 \\\\ 0 & 0 & 1 & 0 & 0 \\end{pmatrix}$$"
+        }
+      ],
+      "numerical_answer": -1,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "This permutation matrix corresponds to the permutation $(1\\;2\\;4\\;5\\;3)$, which is an odd permutation (3 inversions/swaps), so $\\det(A) = -1$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given that the determinant of the $3 \\times 3$ matrix $\\begin{pmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\end{pmatrix}$ is $2$, find the determinant of the bordered $4 \\times 4$ matrix:\n$$\\begin{pmatrix} a & b & c & 0 \\\\ d & e & f & 0 \\\\ g & h & i & 0 \\\\ 5 & 4 & -5 & 5 \\end{pmatrix}$$"
+        }
+      ],
+      "numerical_answer": 10,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Expanding along the last column: $\\det = 5 \\times \\det\\begin{pmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\end{pmatrix} = 5 \\times 2 = 10$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $V = \\{(x, y, 5) : x, y \\in \\mathbb{R}\\}$. Define addition and scalar multiplication as follows:\n$$\\text{Addition}: (x_1, y_1, 5) + (x_2, y_2, 5) = (x_1 + x_2, y_1 + y_2, 5)$$\n$$\\text{Scalar multiplication}: c(x, y, 5) = (cx, cy, 5) \\quad \\text{for } c \\in \\mathbb{R}$$\nIs the set $V$ closed under addition?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Yes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The sum of any two elements in $V$ has third coordinate 5, which belongs to $V$. Thus $V$ is closed under addition."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $V = \\{(x, y, 5) : x, y \\in \\mathbb{R}\\}$. Define addition and scalar multiplication as follows:\n$$\\text{Addition}: (x_1, y_1, 5) + (x_2, y_2, 5) = (x_1 + x_2, y_1 + y_2, 5)$$\n$$\\text{Scalar multiplication}: c(x, y, 5) = (cx, cy, 5) \\quad \\text{for } c \\in \\mathbb{R}$$\nIs the set $V$ closed under scalar multiplication?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Yes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For any scalar $c$ and $(x, y, 5) \\in V$, $c(x, y, 5) = (cx, cy, 5) \\in V$. Thus $V$ is closed under scalar multiplication."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $V = \\{(x, y, 5) : x, y \\in \\mathbb{R}\\}$ with addition $(x_1, y_1, 5) + (x_2, y_2, 5) = (x_1 + x_2, y_1 + y_2, 5)$ and scalar multiplication $c(x, y, 5) = (cx, cy, 5)$. Which of the following statements is/are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$V$ has no zero element with respect to the given addition."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(0, 0, 0)$ is the zero element of $V$ with respect to the given addition."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(0, 0, 5)$ is the zero element of $V$ with respect to the given addition."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For any real number $c$, we always have $c(0, 1, 5) = (0, 1, 5)$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For each element $v \\in V$ and for each pair $a, b \\in \\mathbb{R}$, $(a + b)v = av + bv$ fails (or axiom check)."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        4
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$(x, y, 5) + (0, 0, 5) = (x, y, 5)$, so $(0, 0, 5)$ is the zero element. Also, axiom $(a+b)v = av + bv$ evaluates to $((a+b)x, (a+b)y, 5) \\neq ((a+b)x, (a+b)y, 10)$, which correctly distinguishes this structure."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A = \\begin{bmatrix} 1 & 1/3 \\\\ c & d \\end{bmatrix}$ such that $A^2 = 0$. Find the value of $c$."
+        }
+      ],
+      "numerical_answer": -3,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$A^2 = \\begin{bmatrix} 1 + c/3 & 1/3 + d/3 \\\\ c + cd & c/3 + d^2 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix} \\implies 1 + c/3 = 0 \\implies c = -3$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A = \\begin{bmatrix} 1 & 1/3 \\\\ c & d \\end{bmatrix}$ such that $A^2 = 0$. Find the value of $d$."
+        }
+      ],
+      "numerical_answer": -1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "From $1/3 + d/3 = 0$, we have $d = -1$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following system of linear equations:\n$$2x - y + 3z = 0$$\n$$ax - y + z = 0$$\n$$4x - 2y + 7z = 0$$\nDoes there exist an $a$ such that the system has infinitely many solutions? If yes, find the value of $a$, else enter 100."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For a homogeneous system to have infinitely many solutions, the determinant must be 0: $\\det \\begin{pmatrix} 2 & -1 & 3 \\\\ a & -1 & 1 \\\\ 4 & -2 & 7 \\end{pmatrix} = 2(-7+2) + 1(7a-4) + 3(-2a+4) = -10 + 7a - 4 - 6a + 12 = a - 2 = 0 \\implies a = 2$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following system of linear equations:\n$$2x - y + 3z = 0$$\n$$ax - y + z = 0$$\n$$4x - 2y + 7z = 0$$\nDoes there exist an $a$ such that the system has no solution? If yes, find the value of $a$, else enter 100."
+        }
+      ],
+      "numerical_answer": 100,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Every homogeneous system $Ax = 0$ is always consistent because $x = (0, 0, 0)$ is always a solution. Thus no solution never occurs; per instructions, enter 100."
+        }
+      ]
+    }
+  ]
+}

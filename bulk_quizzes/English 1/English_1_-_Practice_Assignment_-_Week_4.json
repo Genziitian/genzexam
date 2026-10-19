@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Practice Assignment · Week 4",
+  "subject": "English 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The phrase ‘ hang on ’ (in the context of telephonic conversations) means to wait."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a formal call, the use of the phrase ‘ what’s up ’ should be refrained."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mark the appropriate response. I have been trying to talk to her . Could you please ask her to __________ the call."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Pick up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hang up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Take out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hold on"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mark the appropriate response. Sorry that I made you wait. The call was _________."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Put out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shut out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cut off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pull off"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘ I can hear you on and off. ’ is a response used by the speaker to indicate that the other person is not audible or their voice is not clear enough."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

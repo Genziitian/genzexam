@@ -1,0 +1,440 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 3",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q1_prompt_p2.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Words\" dataset. What will P represent at the end of the execution?"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with an odd letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an odd letter count"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q2_prompt_p3.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Words\" dataset. What will Q represent at the end of the execution?"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an odd letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with any letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with any letter count"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q3_prompt_p3.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, E will be True if:"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "All female students have scores greater than or equal to 60 in either Physics, Chemistry or Maths"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All female students have scores less than 60 in either Physics, Chemistry or Maths"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There is at least one female student with scores less than 60 in Physics, Chemistry or Maths"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All female students have scores greater than or equal to 60 in Physics, Chemistry and Maths"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q4_prompt_p4.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Shopping Bills\" dataset. Procedure checkShoppingBills accepts a card Y and returns True if the minimum total bill amount of shop is greater than the average total bill amount of shop from where the card Y is generated otherwise returns False. Choose the correct code fragments to complete the procedure."
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q4_option1_code0_p4.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q4_option2_code0_p4.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q4_option3_code0_p4.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q4_option4_code0_p4.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q5_prompt_p5.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Scores\" dataset. What will A represent at the end of the execution?"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of students scored above 60 in all three subjects"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students scored below 60 in at least any one subject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A will always be 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students scored exactly 60 in all three subjects"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q6_prompt_p6.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, variable Count captures the number of students whose total marks are more than the average (of total marks) of entire dataset but have scored below the subject average in any two subjects. Choose the correct code fragment to complete the pseudocode."
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q6_option1_code0_p6.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q6_option2_code0_p6.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q6_option3_code0_p6.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q6_option4_code0_p6.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q7_prompt_p7.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, A represents the number of students from Madurai having total marks:"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "greater than the average marks of students"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "greater than the average marks of students from Vellore and Chennai"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "greater than the average marks of students from Vellore but less than that of Chennai"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "greater than the average marks of students from Chennai but less than that of Vellore"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q8_prompt_p8.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, A captures the number of female students who are below average in at least one subject. The pseudocode may have mistakes. Identify all such mistakes (if any)."
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 1: Incorrect initialization of A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 3: Incorrect initialization of B"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 7: Incorrect Update of B"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 13: Incorrect Update of B"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error in the code"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q9_prompt_p9.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Words\" dataset. What does A represent?"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Count the occurrence of word \"the\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Count the occurrence of sentence starting with \"the\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Count the occurrence of sentence ending with \"the\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Count the occurrence of \"the\" in every sentence"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/5d3b7b2d4455/q10_prompt_p10.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Words\" dataset. What will A represent at the end of the execution?"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words that end with a comma."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words that end with a comma and have a letter count greater than ratio of number of\nwords to sum of letter count."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words that end with a comma and have a letter count less than or equal to the average\nletter count of dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words that end with a comma and have a letter count greater than the average letter\ncount of dataset."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    }
+  ]
+}

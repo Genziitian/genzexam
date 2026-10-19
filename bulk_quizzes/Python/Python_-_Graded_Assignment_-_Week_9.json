@@ -1,0 +1,382 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 9",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If n is a positive integer, what does f(n) return? Note that your answer should be applicable for any\npositive integer n , and not just for a specific value."
+        },
+        {
+          "kind": "code",
+          "value": "def f(n):\n    if n < 10:\n        return 1\n    return 1 + f(n // 10)\n\ndef g(n):\n    if n < 10:\n        return n\n    return n % 10 + g(n // 10)\n\ndef h(n):\n    if n <= 1:\n        return n\n    return n * h(n - 1)",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each recursive call removes one decimal digit and adds one, so f counts the digits of a positive integer."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sum of digits in n ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of digits in n ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Product of digits in n ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "First digit in n ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Factorial of n ."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "if n is a positive integer, what does g(n) return? Note that your answer should be applicable for any\npositive integer n , and not just for a specific value."
+        },
+        {
+          "kind": "code",
+          "value": "def f(n):\n    if n < 10:\n        return 1\n    return 1 + f(n // 10)\n\ndef g(n):\n    if n < 10:\n        return n\n    return n % 10 + g(n // 10)\n\ndef h(n):\n    if n <= 1:\n        return n\n    return n * h(n - 1)",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The remainder n % 10 is the final digit, and g recursively sums all earlier digits."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sum of digits in n ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of digits in n ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Product of digits in n ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "First digit in n ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Factorial of n ."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following function calls returns the sum of the digits in\n100!\n100! , where,\nn!\nn ! is the product of the first\nn\nn positive integers?"
+        },
+        {
+          "kind": "code",
+          "value": "def f(n):\n    if n < 10:\n        return 1\n    return 1 + f(n // 10)\n\ndef g(n):\n    if n < 10:\n        return n\n    return n % 10 + g(n // 10)\n\ndef h(n):\n    if n <= 1:\n        return n\n    return n * h(n - 1)",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "h(100) returns 100!, and g then sums its decimal digits."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "f(g(100))"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "f(h(100))"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "g(h(100))"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "h(g(100))"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "h(f(100))"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following function calls returns the number of digits in\n100!\n100! , where,\nn!\nn ! is the product of the first\nn\nn positive integers?"
+        },
+        {
+          "kind": "code",
+          "value": "def f(n):\n    if n < 10:\n        return 1\n    return 1 + f(n // 10)\n\ndef g(n):\n    if n < 10:\n        return n\n    return n % 10 + g(n // 10)\n\ndef h(n):\n    if n <= 1:\n        return n\n    return n * h(n - 1)",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "h(100) returns 100!, and f then counts its decimal digits."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "f(g(100))"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "f(h(100))"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "g(h(100))"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "h(g(100))"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "h(f(100))"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "equality(P, Q) must return True exactly when the two input lists have equal lengths and equal elements at every corresponding index, including empty lists."
+        },
+        {
+          "kind": "text",
+          "value": "Select all correct implementations of the function equality . [MSQ]"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def equality(P, Q):\n    if len(P) != len(Q):\n        return False\n    size = len(P)\n    for i in range(size):\n        if P[i] != Q[i]:\n            return False"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def equality(P, Q):\n    if len(P) != len(Q):\n        return False\n    size = len(P)\n    for i in range(size):\n        if P[i] != Q[i]:\n            return False\n    return True"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def equality(P, Q):\n    size = len(P)\n    for i in range(size):\n        if P[i] != Q[i]:\n            return False\n    return True"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def equality(P, Q):\n     for elem in P:\n         if elem not in Q:\n             return False\n     return True"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def equality(P, Q):\n     if len(P) != len(Q):\n         return False\n     for elem in P:\n         if elem not in Q:\n             return False\n     return True"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def equality(P, Q):\n     return P == Q"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        5
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "equality(P, Q) must return True exactly when the two input lists have equal lengths and equal elements at every corresponding index, including empty lists."
+        },
+        {
+          "kind": "text",
+          "value": "Select all the correct recursive implementation of the function equality . [MSQ]"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def equality(P, Q):\n     if len(P) != len(Q):\n         return False\n     if P[-1] != Q[-1]:\n         return False\n     return equality(P[:-1], Q[:-1])"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def equality(P, Q):\n     if len(P) != len(Q):\n         return False\n     if len(P) == 0:\n         return True\n     if P[0] != Q[0]:\n         return False\n     return equality(P[:-1], Q[:-1])"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def equality(P, Q):\n     if len(P) != len(Q):\n         return False\n     if len(P) == 0:\n         return True\n     if P[0] != Q[0]:\n         return False\n     return equality(P[1: ], Q[1: ])"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def equality(P, Q):\n     if len(P) != len(Q):\n         return False\n     if len(P) == 0:\n         return True\n     if P[-1] != Q[-1]:\n         return False\n     return equality(P[: -1], Q[: -1])"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A binary number is a non-empty string containing only 0 and 1. Select bin_to_dec(bin) that returns its decimal value as an integer. For bits a_1…a_n the value is a_1*2**(n−1) + … + a_n*2**0. For example, \"1011\" represents 11."
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def bin_to_dec(bin):\n    if len(bin) == 1:\n        return int(bin)\n    init = bin[:-1]\n    last = bin[-1]\n    return bin_to_dec(init) * 2 + int(last)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def bin_to_dec(bin):\n    if len(bin) == 1:\n        return int(bin)\n    init = bin[:-1]\n    last = bin[-1]\n    return bin_to_dec(init) + int(last) * 2"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def bin_to_dec(bin):\n    if bin == 0 or bin == 1:\n        return bin\n    init = bin[:-1]\n    last = bin[-1]\n    return bin_to_dec(init) + int(last) * 2"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "def bin_to_dec(bin):\n    if len(bin) == 1:\n        return int(bin)\n    init = bin[:-1]\n    last = bin[-1]\n    return bin_to_dec(init) * 2 + last"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

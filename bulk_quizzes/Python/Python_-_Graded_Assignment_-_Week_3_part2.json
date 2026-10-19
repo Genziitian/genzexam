@@ -1,0 +1,375 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 3 · Part 2",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "word = input()\nvalid = True\nfor i in range(len(word)):\n   char = word[i]\n   if i % 2 == 0 and char not in'aeiou':\n       valid = False\nprint(valid)"
+        },
+        {
+          "kind": "text",
+          "value": "Assume that a ten letter word is passed as input to the code. If the output is True , then\nwhich of the following statements about the input word are true?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Options (a) and (d) are clearly not supported. A good counter example is the string input: ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The word has exactly five vowels."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The word has have at least five vowels."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The letters at even indices are vowels. Assume that we use zero-based indexing."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Every vowel in the word appears only at even indices. Assume that we use zero-based indexing."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all the snippets that prints the sum of the first n odd numbers starting from\n1(including). Assume n is a positive integer and is already defined.\nExample n = 5 , output: 1+3+5+7+9 = 25"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "result = 0\nfor i in range(n):\n    result+=2*i+1\nprint(result)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "result = 0\nfor i in range(1,n+1):\n    result+=2*i-1\nprint(result)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "result = 0\nfor i in range(1,n):\n    result+=2*i+1\nresult+=1\nprint(result)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "result = 0\nfor i in range(1,n):\n    result+=2*i+1\nprint(result)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "result = 0\nfor i in range(-1,-n-1,-1):\n    result-=2*i+1\nprint(result)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "result = 0\nfor i in range(-1,-n):\n    result-=2*i+1\nprint(result)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The correct alternatives sum 1 + 3 + … + (2n−1), which is n². Option 3 includes the missing first term separately; option 5 generates the same odd numbers using negative indices."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nSelect all the data processing pattern(s) found in the given code."
+        },
+        {
+          "kind": "code",
+          "value": "n = int(input())\nvalue = 0\nfor i in range(n):\n num = int(input())\n if len(str(num))<2:\n     value+= num\nprint(value)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "summing to give a single result filtering the numbers with single digit. Output is the sum of single\ndigit numbers"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nSelect all the data processing pattern(s) found in the given code."
+        },
+        {
+          "kind": "code",
+          "value": "n = int(input())\nvalue = 0\nfor i in range(n):\n   value+=int(input())*2\nprint(value)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Summing to give single value doubling each value Output is the sum of twice the input values."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nSelect all the data processing pattern(s) found in the given code."
+        },
+        {
+          "kind": "code",
+          "value": "n = int(input())\nvalue = \"\"\nfor i in range(n):\n   value+=input()*2+\" \"\nprint(value)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "concatenating strings to give a final string. repeating and add space to each element."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nSelect all the data processing pattern(s) found in the given code."
+        },
+        {
+          "kind": "code",
+          "value": "sentence = input()\nfor word in sentence.split():\n   if'a'in word:\n       print(word*2)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nSelect all the data processing pattern(s) found in the given code."
+        },
+        {
+          "kind": "code",
+          "value": "sentence = input()\nvalue = \"\"\nfor char in sentence:\n   if char in'aeiou':\n       value+=chr(ord(char)+1)\n   else:\n       value+=chr(ord(char)-1)\nprint(value)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    }
+  ]
+}

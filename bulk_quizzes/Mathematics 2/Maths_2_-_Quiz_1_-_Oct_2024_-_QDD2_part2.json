@@ -1,0 +1,217 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Oct 2024 · QDD2 · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the dimension of the subspace $W_1 = \\{x \\in \\mathbb{R}^n : Ax = 0 \\text{ where } A \\text{ is an invertible } n \\times n \\text{ matrix}\\}$."
+        }
+      ],
+      "numerical_answer": 0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If $A$ is invertible, $Ax = 0$ has only the trivial solution $x = 0$. The zero subspace $\\{0\\}$ has dimension 0."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the dimension of the subspace $W_2 = \\text{span}\\{(1, -1, 1), (4, 1, 2), (2, 3, 0)\\}$."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The vectors satisfy $2(1, -1, 1) + (2, 3, 0) = (4, 1, 2)$. The third vector is a linear combination of the first two, and the first two are independent, so $\\dim(W_2) = 2$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the dimension of the subspace $W_3$, the set of all $2 \\times 2$ symmetric matrices over $\\mathbb{R}$."
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A symmetric $2 \\times 2$ matrix $\\begin{pmatrix} a & b \\\\ b & c \\end{pmatrix}$ has 3 independent parameters $a, b, c$, so the dimension is 3."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the candidate basis sets for subspaces of $M_{2\\times 2}(\\mathbb{R})$:\n$$\\mathcal{B}_1 = \\left\\{ \\begin{bmatrix} 3 & -3 \\\\ 0 & 0 \\end{bmatrix}, \\begin{bmatrix} 0 & 0 \\\\ -5 & 5 \\end{bmatrix} \\right\\}$$\n$$\\mathcal{B}_2 = \\left\\{ \\begin{bmatrix} 0 & 2 \\\\ -2 & 0 \\end{bmatrix} \\right\\}$$\n$$\\mathcal{B}_3 = \\left\\{ \\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \\end{bmatrix}, \\begin{bmatrix} 0 & -2 \\\\ 0 & 0 \\end{bmatrix}, \\begin{bmatrix} 0 & 0 \\\\ 3 & 0 \\end{bmatrix} \\right\\}$$\nLet $W_1 = \\{A \\in M_{2\\times 2}(\\mathbb{R}) : A^T = -A\\}$. Choose the correct basis for $W_1$:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_3$"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Skew-symmetric $2 \\times 2$ matrices have the form $\\begin{bmatrix} 0 & k \\\\ -k & 0 \\end{bmatrix}$. $\\mathcal{B}_2$ spans this 1-dimensional subspace."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the same candidate basis sets $\\mathcal{B}_1, \\mathcal{B}_2, \\mathcal{B}_3$. Let $W_2$ be the set of all $2 \\times 2$ matrices such that the sum of entries in each row is zero. Choose the correct basis for $W_2$:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_3$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Row-sum-zero matrices are spanned by $\\begin{bmatrix} 1 & -1 \\\\ 0 & 0 \\end{bmatrix}$ and $\\begin{bmatrix} 0 & 0 \\\\ 1 & -1 \\end{bmatrix}$. Scalar multiples of these are given in $\\mathcal{B}_1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the candidate basis sets $\\mathcal{B}_1, \\mathcal{B}_2, \\mathcal{B}_3$. Let $W_3$ be the set of all $2 \\times 2$ matrices such that the sum of diagonal entries is zero (trace zero). Choose the correct basis for $W_3$:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_3$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Trace-zero $2 \\times 2$ matrices form a 3-dimensional subspace spanned by $\\mathcal{B}_3$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the matrix $A = \\begin{bmatrix} 1 & 0 & 5 \\\\ -2 & 3 & -4 \\\\ 1 & 4 & a \\end{bmatrix}$. Find the value of $a$ if the system $Ax = 0$ has infinitely many solutions."
+        }
+      ],
+      "numerical_answer": 13,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For $Ax = 0$ to have infinitely many solutions, $\\det(A) = 0$. $\\det(A) = 1(3a + 16) + 5(-8 - 3) = 3a + 16 - 55 = 3a - 39 = 0 \\implies a = 13$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the matrix $A = \\begin{bmatrix} 1 & 2 & -3 \\\\ -2 & 1 & -4 \\\\ 1 & 0 & 1 \\end{bmatrix}$. Consider the system of linear equations $Ax = \\begin{bmatrix} 3 \\\\ b \\\\ 1 \\end{bmatrix}$. Find the value of $b$ if the system has infinitely many solutions."
+        }
+      ],
+      "numerical_answer": -1,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Notice $R_1 - 2R_3 = (1, 2, -3) - (2, 0, 2) = (-1, 2, -5)$. Also $R_2 + R_1 = (-1, 3, -7)$. Performing row reduction yields the consistency equation $b + 6 = 5 \\implies b = -1$."
+        }
+      ]
+    }
+  ]
+}

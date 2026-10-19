@@ -1,0 +1,177 @@
+{
+  "papers": [
+    {
+      "output": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_1.json",
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 1 (Week 1) - Gen-Z IITian - booklet.pdf",
+      "source_questions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "count": 10
+    },
+    {
+      "output": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_2.json",
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 2 (Week 2) - Gen-Z IITian - booklet.pdf",
+      "source_questions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "count": 10
+    },
+    {
+      "output": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_3.json",
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 3 (Week 3) - Gen-Z IITian - booklet.pdf",
+      "source_questions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "count": 8
+    },
+    {
+      "output": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_4.json",
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 4 (Week 4) - Gen-Z IITian - booklet.pdf",
+      "source_questions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "count": 9
+    },
+    {
+      "output": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_5.json",
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 5 (Week 5) - Gen-Z IITian - booklet.pdf",
+      "source_questions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "count": 10
+    },
+    {
+      "output": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_8.json",
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 8 (Week 8) - Gen-Z IITian - booklet.pdf",
+      "source_questions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "count": 10
+    },
+    {
+      "output": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_10.json",
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 10 (Week 10) - Gen-Z IITian - booklet.pdf",
+      "source_questions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "count": 10
+    }
+  ],
+  "source_questions": 67,
+  "unrecoverable_sources": [
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 6 (Week 6) - Gen-Z IITian - booklet.pdf",
+      "pages": "3 through the last solution page",
+      "reason": "Handwritten worked solutions only. Complete original question stems, full options, and referenced tables or diagrams are absent. Recovering them as questions would require inventing source content."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 7 (Week 7) - Gen-Z IITian - booklet.pdf",
+      "pages": "3 through the last solution page",
+      "reason": "Handwritten worked solutions only. Complete original question stems, full options, and referenced tables or diagrams are absent. Recovering them as questions would require inventing source content."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 9 (Week 9) - Gen-Z IITian - booklet.pdf",
+      "pages": "3 through the last solution page",
+      "reason": "Handwritten worked solutions only. Complete original question stems, full options, and referenced tables or diagrams are absent. Recovering them as questions would require inventing source content."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Maths 2/Maths 2 - Practice Assignment 11 (Week 11) - Gen-Z IITian - booklet.pdf",
+      "pages": "3 through the last solution page",
+      "reason": "Handwritten worked solutions only. Complete original question stems, full options, and referenced tables or diagrams are absent. Recovering them as questions would require inventing source content."
+    }
+  ],
+  "default_fields": {
+    "marks": 1,
+    "difficulty": "medium"
+  },
+  "editorial_notes": [
+    {
+      "week": 2,
+      "question": 6,
+      "note": "Corrected inline530 to515 from source equations and worked solution."
+    },
+    {
+      "week": 1,
+      "question": 7,
+      "note": "Algebraic answer stored as short_answer; the correct source factorization is (x-y)(y-z)(x+z)."
+    },
+    {
+      "week": 10,
+      "question": 1,
+      "note": "Zero vector is not a direction. At a zero gradient every unit direction maximizes the derivative; selected the original nonzero listed direction. Other directional matches checked from gradients."
+    },
+    {
+      "week": 10,
+      "note": "Internal printed title says Week11; the source filename and course topic identify Week10."
+    }
+  ],
+  "checks": [
+    "67 source questions retained without supplements",
+    "Every saved paper5to10",
+    "All source answer-index bounds and asset existence checked",
+    "Inline printed answers redacted from prompt and option crops",
+    "Shared original passages attached to all dependent questions",
+    "Matrix rows above centered question labels retained",
+    "Handwritten worked solutions kept separate from prompts"
+  ]
+}

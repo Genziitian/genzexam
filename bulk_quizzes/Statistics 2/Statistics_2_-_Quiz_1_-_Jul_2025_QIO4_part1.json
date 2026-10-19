@@ -1,0 +1,388 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 1 · Jul 2025 · QIO4 · Part 1",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q3_prompt-1_p3.png",
+          "alt": "Original prompt 1 for Statistics 2 question 3."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q3_solution-1_p3.png",
+          "alt": "Original solution 1 for Statistics 2 question 3."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q3_option-1-1_p3.png",
+            "alt": "Original option 1 1 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q3_option-2-1_p3.png",
+            "alt": "Original option 2 1 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q3_option-3-1_p3.png",
+            "alt": "Original option 3 1 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q3_option-4-1_p3.png",
+            "alt": "Original option 4 1 for Statistics 2 question 3."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q4_prompt-1_p3.png",
+          "alt": "Original prompt 1 for Statistics 2 question 4."
+        },
+        {
+          "kind": "text",
+          "value": "1"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Var(X)=E[X²]−E[X]²=55−49=6. Chebyshev gives P(|X−7|≥3)≤6/9, so the requested lower bound is 1−6/9=1/3=3/9. Therefore option D is correct; the source key B=5/6 is incorrect."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5\n6"
+          },
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "9"
+          },
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "9"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The time (in minutes) a customer spends inside a service center follows an exponential distribution with an\naverage of 10 minutes. What is the probability that a customer has to wait at least 12 more minutes in the\ncenter given that he has already spent 10 minutes in the center? Enter the answer correct to two decimal\nplaces."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q5_solution-1_p4.png",
+          "alt": "Original solution 1 for Statistics 2 question 5."
+        }
+      ],
+      "acceptable_answers": [
+        "0.3 (±0.03)"
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q6_prompt-1_p4.png",
+          "alt": "Original prompt 1 for Statistics 2 question 6."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q6_prompt-2_p4.png",
+          "alt": "Original prompt 2 for Statistics 2 question 6."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q6_solution-1_p4.png",
+          "alt": "Original solution 1 for Statistics 2 question 6."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q6_solution-2_p4.png",
+          "alt": "Original solution 2 for Statistics 2 question 6."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        }
+      ],
+      "acceptable_answers": [
+        "0.6 (±0.2)"
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q7_context-1-1_p4.png",
+          "alt": "Original context 1 1 for Statistics 2 question 7."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q7_prompt-1_p5.png",
+          "alt": "Original prompt 1 for Statistics 2 question 7."
+        },
+        {
+          "kind": "text",
+          "value": "2"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "E[X]=∫₀²x(x/2)dx=4/3 and E[X²]=∫₀²x²(x/2)dx=2. Var(X)=2−(4/3)²=2/9, option A."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "9"
+          },
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          },
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          },
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q8_context-1-1_p4.png",
+          "alt": "Original context 1 1 for Statistics 2 question 8."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q8_prompt-1_p5.png",
+          "alt": "Original prompt 1 for Statistics 2 question 8."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q8_solution-1_p5.png",
+          "alt": "Original solution 1 for Statistics 2 question 8."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q8_solution-2_p5.png",
+          "alt": "Original solution 2 for Statistics 2 question 8."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q8_solution-3_p5.png",
+          "alt": "Original solution 3 for Statistics 2 question 8."
+        }
+      ],
+      "numerical_answer": 1152.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q9_context-1-1_p5.png",
+          "alt": "Original context 1 1 for Statistics 2 question 9."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q9_context-1-2_p5.png",
+          "alt": "Original context 1 2 for Statistics 2 question 9."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q9_prompt-1_p6.png",
+          "alt": "Original prompt 1 for Statistics 2 question 9."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q9_solution-1_p6.png",
+          "alt": "Original solution 1 for Statistics 2 question 9."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q9_option-1-1_p6.png",
+            "alt": "Original option 1 1 for Statistics 2 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q9_option-2-1_p6.png",
+            "alt": "Original option 2 1 for Statistics 2 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q9_option-3-1_p6.png",
+            "alt": "Original option 3 1 for Statistics 2 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q9_option-4-1_p6.png",
+            "alt": "Original option 4 1 for Statistics 2 question 9."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q10_context-1-1_p5.png",
+          "alt": "Original context 1 1 for Statistics 2 question 10."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q10_context-1-2_p5.png",
+          "alt": "Original context 1 2 for Statistics 2 question 10."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q10_prompt-1_p6.png",
+          "alt": "Original prompt 1 for Statistics 2 question 10."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q10_solution-1_p6.png",
+          "alt": "Original solution 1 for Statistics 2 question 10."
+        },
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nThe joint PMF of two discrete random variables 𝑋 and 𝑌 is given in the following table:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q10_solution-3_p6.png",
+          "alt": "Original solution 3 for Statistics 2 question 10."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/c20e821cc900_q10_solution-4_p6.png",
+          "alt": "Original solution 4 for Statistics 2 question 10."
+        }
+      ],
+      "acceptable_answers": [
+        "0.815 (±0.003)"
+      ]
+    }
+  ]
+}

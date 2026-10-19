@@ -3,16 +3,17 @@
   "quiz_title": "English 2 · Graded Assignment · Week 8",
   "subject": "English 2",
   "section": "practice_graded",
-  "week": 8,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Which of the following is NOT true about writing a Statement of Purpose (SOP)?"
+          "value": "Which of the following is NOT true about writing an SOP?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -39,24 +40,18 @@
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "An SOP must be unambiguous, clear, and goal-oriented."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "While writing an SOP, one should give evidence and concrete examples for statements about oneself."
+          "value": "While writing an SOP, one should give evidence for the statements about oneself."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -71,24 +66,18 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Claims of competencies, leadership, or academic passions must be substantiated with tangible projects and achievements."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Creating a compelling narrative and having a defined personal angle is an important part of an SOP."
+          "value": "Creating a narrative and having an angle is an important part of the SOP."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -103,24 +92,18 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "A cohesive personal narrative distinguishes an applicant from peers with similar academic metrics."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Use of unnecessarily complex words and convoluted sentences is one of the key criteria while writing an SOP."
+          "value": "Use of complex words and sentences is one of the key criteria while writing an SOP."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -135,73 +118,23 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Clarity, directness, and precision are valued over sesquipedalian vocabulary or convoluted sentence structure."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In academic writing, 'to write within limits' means:"
+          "value": "The construction complete dedication is considered _______"
         }
       ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "To use fewer words"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "To avoid uncommon words"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "To avoid redundancy and adhere to word limits"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "All the above"
-          }
-        ]
-      ],
-      "correct_answer": 3,
       "marks": 1,
       "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Writing within limits involves conciseness, precision, and adherence to specified length constraints."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "The construction 'complete dedication' in concise writing is often considered _______."
-        }
-      ],
       "options": [
         [
           {
             "kind": "text",
-            "value": "Superfluous / Pleonastic"
+            "value": "Superfluous"
           }
         ],
         [
@@ -219,39 +152,33 @@
         [
           {
             "kind": "text",
-            "value": "Grammatically invalid"
+            "value": "All the above"
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Dedication inherently implies commitment; qualifiers like 'complete' or 'total' can be redundant."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "While writing a précis, one can make it brief by:"
+          "value": "While writing a précis, one can make it brief by"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "Removing redundant words"
+            "value": "Removing the redundant words"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Rewriting direct quotes in concise indirect speech"
+            "value": "Rewriting the sentences in indirect speech"
           }
         ],
         [
@@ -267,24 +194,18 @@
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "A précis condenses the essential thesis by shedding peripheral examples, wordy phrasing, and parenthetical lists."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Coherence between sentences in a paragraph can be established through discourse markers."
+          "value": "Coherence of the sentences can be obtained by means of discourse markers."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -299,41 +220,35 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Discourse markers (transitions) signal logical relationships such as addition, contrast, causation, and sequence."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "While reading a source passage before writing a précis, one must pay attention to:"
+          "value": "While reading the paragraph before writing the précis, one must pay attention to"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "The author’s purpose, arguments, and core insights"
+            "value": "The author’s purpose, arguments, and insights"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "The main ideas of the passage"
+            "value": "The main ideas of the passage/article"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "The evidence and support for the arguments"
+            "value": "The support for the arguments"
           }
         ],
         [
@@ -343,24 +258,18 @@
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Comprehending the overarching thesis and logical framework is required before condensing."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "As a general guideline, a good précis is approximately one-third the length of the original passage without losing core content."
+          "value": "A good précis must be written in one-third of all words in the original passage without losing\nthe content."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -375,15 +284,7 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "The standard target length for a précis in English academic conventions is roughly one-third of the original text."
-        }
-      ]
+      "correct_answer": 0
     }
   ]
 }

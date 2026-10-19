@@ -3,60 +3,55 @@
   "quiz_title": "English 2 · Practice Assignment · Week 12",
   "subject": "English 2",
   "section": "practice",
-  "week": 12,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In formal business email correspondence, what is the standard professional salutation when addressing a recipient with an academic or professional title?"
+          "value": "The correct form of salutation if there is a title before someone’s name is __"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "Title + First name only (e.g. Dr. John)"
+            "value": "Title + first name"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Title + Surname (e.g. Dr. Smith)"
+            "value": "Title + surname"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Title + First name + Surname (e.g. Dr. John Smith)"
+            "value": "Title + first name + surname"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Both (b) and (c) are acceptable in formal English"
+            "value": "both (b) and (c)"
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Using Title + Surname or Title + Full Name is standard in polite professional correspondence."
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Which of the following salutations is acceptable when sending an informal email to a close friend or peer?"
+          "value": "Which one from the following can be used as a salutation while emailing a friend?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -79,61 +74,56 @@
         [
           {
             "kind": "text",
-            "value": "All the above depending on the interpersonal closeness"
+            "value": "all the above"
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Informal communications permit various casual greetings depending on relationship closeness."
-        }
-      ]
+      "correct_answer": 3
     },
     {
-      "type": "mcq_single",
+      "type": "mcq_multi",
       "prompt": [
         {
           "kind": "text",
-          "value": "Choose the most professional closing inquiry line from the following:"
+          "value": "Select all appropriate closing lines from the following."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "I look forward to hearing from you at your earliest convenience."
+            "value": "I look forward to receiving your response"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "What is the cost of your services?"
+            "value": "Thank you for your support"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Reply quickly bro"
+            "value": "What is the cost of your services"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Bye for now"
+            "value": "none of the above"
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
+      "correct_answers": [
+        0,
+        1
+      ],
       "explanation": [
         {
           "kind": "text",
-          "value": "‘I look forward to hearing from you...’ is an established, polite professional closing line."
+          "value": "Both looking forward to a response and thanking the reader are appropriate closing lines; asking the service cost is not a closing formula."
         }
       ]
     },
@@ -142,9 +132,11 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "What is the single sentence that concisely encapsulates the central claim or main focus of a research report called?"
+          "value": "What is a sentence that summarizes the main point of your research report called?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -167,28 +159,22 @@
         [
           {
             "kind": "text",
-            "value": "Abstract footer"
+            "value": "Observation"
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "The thesis statement summarizes the central proposition and roadmap of a research document."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In communication ethnography, what term refers to the physical time and place of a communicative event?"
+          "value": "______ refers to the time and place of a speech act and, in general, to the physical circumstances."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -205,95 +191,83 @@
         [
           {
             "kind": "text",
-            "value": "Act sequence"
+            "value": "Act"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Barrier"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "During a speech, addressees and other hearers are part of the ________"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "audience"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "crew"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "cast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "writer"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the K in the acronym SPEAKING (model) refer to?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Keats"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kipling"
           }
         ],
         [
           {
             "kind": "text",
             "value": "Key"
-          }
-        ]
-      ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Setting’ denotes the physical time, space, and environmental circumstances of a communicative act."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "During a public presentation or formal speech, addressees and listeners constitute the:"
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Audience / Participants"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Cast"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Crew"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Interpreters"
-          }
-        ]
-      ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "In the SPEAKING model, 'P' refers to Participants, specifically the speaker and audience/hearers."
-        }
-      ]
-    },
-    {
-      "type": "mcq_single",
-      "prompt": [
-        {
-          "kind": "text",
-          "value": "In Dell Hymes's SPEAKING model, what does the letter 'K' stand for?"
-        }
-      ],
-      "options": [
-        [
-          {
-            "kind": "text",
-            "value": "Knowledge"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Key (tone, manner, or spirit of the act)"
-          }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Kinship"
           }
         ],
         [
@@ -303,24 +277,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘Key’ refers to the tone, manner, or spirit (e.g. formal, playful, solemn) of the communicative act."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "External environmental noise that prevents clear hearing of a speaker is classified as a:"
+          "value": "External noise is a/an"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -331,13 +299,13 @@
         [
           {
             "kind": "text",
-            "value": "Physical / Mechanical barrier"
+            "value": "Physical/Mechanical barrier"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Semantic barrier"
+            "value": "Language/Semantic barrier"
           }
         ],
         [
@@ -347,41 +315,35 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Acoustic noise, distance, and faulty audio equipment are physical or environmental barriers."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Which of the following are constructive steps to take when preparing for a high-stakes job interview?"
+          "value": "Which of the following are useful things to do before an interview?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
             "kind": "text",
-            "value": "Organise structured information about your experiences and achievements"
+            "value": "Organise information about yourself"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Research the organization's culture, mission, and current projects"
+            "value": "Do your research on the organisation"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "Prepare your documents and review common behavioral questions"
+            "value": "Prepare your documents"
           }
         ],
         [
@@ -391,15 +353,7 @@
           }
         ]
       ],
-      "correct_answer": 3,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Thorough interview preparation synthesizes personal evidence, company knowledge, and document readiness."
-        }
-      ]
+      "correct_answer": 3
     }
   ]
 }

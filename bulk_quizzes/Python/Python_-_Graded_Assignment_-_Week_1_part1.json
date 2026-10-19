@@ -1,0 +1,360 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 1 · Part 1",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression 5 + 2 ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (raises an error)"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression 5 ** 2 ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (raises an error)"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression \"'5' + '2'\" ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (raises an error)"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression \"5\" > \"2\" ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (raises an error)"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression '5' > 2 ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (raises an error)"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression 5 > 2 and 5 < 2 ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (raises an error)"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression 5 == 5 or 2 ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (raises an error)"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression 'True' or 'False' ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (raises an error)"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

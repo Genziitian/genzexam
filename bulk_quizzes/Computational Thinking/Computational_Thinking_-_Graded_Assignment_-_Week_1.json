@@ -1,0 +1,475 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 1",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 4: Read the top card in Pile 1\nStep 7: If Total < 200 then increment C\nStep 8: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/q1_prompt_p4.png",
+          "alt": "Original question: What will the value of A be after executing the following procedure using the \"Scores\" dataset? (A is incremented for each card whose Total > 250.)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 4: Read the top card in Pile 1\nStep 7: If Total < 200 then increment C\nStep 8: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/q2_prompt_p4.png",
+          "alt": "Original question: What will the value of B be after executing the following procedure using the \"Scores\" dataset? (B is incremented for each card whose Total is greater than 200 and less than 250.)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 15.0,
+      "numerical_tolerance": 0
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 4: Read the top card in Pile 1\nStep 7: If Total < 200 then increment C\nStep 8: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/q3_prompt_p4.png",
+          "alt": "Original question: What will the value of C be after executing the following procedure using the \"Scores\" dataset? (C is incremented for each card whose Total < 200.)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the \"Shopping Bills\" dataset. What will X represent at the end of\nexecution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A, B and X to 0\nStep 3: If Pile 1 is empty then stop the iteration and execute Step 7\nStep 4: Read the top card in Pile 1\nStep 5: If the Shop Name is \"SV Stores\" then add total bill amount to A and increment B\nStep 6: Move the current card to another pile called Pile 2 and repeat from Step 3\nStep 7: Divide A by B and store the result in X"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Total bill amount from \"SV Stores\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills from \"SV Stores\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Average of total bill amount from \"SV Stores\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Average of total bill amount from all shops other than \"SV Stores\""
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context1_p6.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context1_p7.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context1_p8.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will A & B represent at the end of\nexecution? (A accumulates Letter Count for Verbs, B accumulates Letter Count for Adverbs.)"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain two variables A, B and initialize them to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If the Part of Speech is \"Verb\" then add Letter Count to variable A\nStep 6: If the Part of Speech is \"Adverb\" then add Letter Count to variable B\nStep 7: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "35 & 13"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "35 & 17"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "32 & 13"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "32 & 17"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 4: Read the top card in Pile 1\nStep 7: If Total < 200 then increment C\nStep 8: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        },
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the \"Scores\" dataset. January to June and July to December are\nknown as first and second half of the year respectively. When will the value of C be 1?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain variables A, B, C and initialize them to 0\nStep 3: If Pile 1 is empty then stop the iteration and go to Step 8\nStep 4: Read the top card in Pile 1\nStep 5: If Date of Birth is from 1st January to 30th June then increment A\nStep 6: If Date of Birth is from 1st July to 31st December then increment B\nStep 7: Move the current card to another pile called Pile 2 and repeat from Step 3\nStep 8: If A < B then set C to 1"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "When there are more students born in the first half than the second half of the year."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When there are more students born in the second half than the first half of the year."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When there are an equal number of students born in both, the first and the second half of the year."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When all students are born in the second half of the year."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will the given procedure compute and store in variable X, if executed on the \"Shopping Bills\" dataset?\nAssume that there are total 3 shops in the dataset."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain four variables A, B, C, X and initialize them to 0\nStep 3: If Pile 1 is empty then stop the iteration and start from Step 9\nStep 4: Read the top card in Pile 1\nStep 5: If the Shop name is \"SV Stores\" and Customer name is \"Neeraja\" then set A equal to 1\nStep 6: If the Shop name is \"Big Bazaar\" and Customer name is \"Neeraja\" then set B equal to 1\nStep 7: If the Shop name is \"Sun General\" and Customer name is \"Neeraja\" then set C equal to 1\nStep 8: Move the current card to another pile called Pile 2 and repeat from Step 3\nStep 9: Update the value of X as X = A + B + C"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills in the dataset which belong to Neeraja"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of times Neeraja has visited Sun General"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of distinct stores which Neeraja has never visited"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of distinct stores which Neeraja has visited"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the \"Shopping Bills\" dataset. At the end of the execution, count\nstores the number of bills generated from \"SV Stores\" with total bill amount more than 500. But the\nprogrammer may have made mistakes in one or more steps. Identify all such steps (if any)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain a variable count and initialize it to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Shop Name is \"SV Stores\" and Total Bill Amount > 500 then increment count\nStep 6: Move the current card to another pile called Pile 2 and repeat from Step 2"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Step 2: Incorrect initialization of the variable count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 3: Incorrect step for stopping the iteration"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 5: Incorrect condition to update count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 6: Incorrect step indicated from where the procedure has to be repeated"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No mistake"
+          }
+        ]
+      ],
+      "correct_answers": [
+        3
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context1_p6.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context1_p7.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context1_p8.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/q9_prompt_p11.png",
+          "alt": "Original question: The given information represents a \"Words\" dataset and it may have some mistakes with respect to the sanity of data. Identify all rows with such mistakes. Data Quality Check Row 3   Part of Speech \"Adjective\" Row 4   Letter Count   -10"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Row 1: Incorrect data type of card number"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 2: Incorrect data type of Word"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 3: Incorrect data type of Part of Speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 3: Invalid value of Part of Speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 4: Incorrect data type of Letter Count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 4: Invalid value of Letter Count"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        5
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context1_p6.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context1_p7.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/32bf75fe48d5/context1_p8.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will A represent at the end of\nexecution? (Uses the \"Words\" dataset shown above.)"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variable A to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If the Word ends with a full stop and Part of Speech is \"Adjective\" then increment A\nStep 6: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Total number of adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adjectives which are at the end of a sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adjectives which are not at the end of a sentence"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

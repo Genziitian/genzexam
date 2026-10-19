@@ -1,0 +1,348 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Practice Assignment · Week 1",
+  "subject": "Python",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the following statement?"
+        },
+        {
+          "kind": "code",
+          "value": "print('15 % 3 * 2 + 2')",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The content within the quotes will be printed. What if you want to print ? Think about it."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "15 % 3 * 2 + 2"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "'15 % 3 * 2 + 2'",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the following statement?"
+        },
+        {
+          "kind": "code",
+          "value": "print(\"a + 'b' + c + '' + d\")",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Similar to question-1. But the new concept here is the use of different types of quotes. If you want\nto print single quotes, then enclose it within double quotes."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a + 'b' + c + '' + d"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "\"a + 'b' + c + '' + d\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a + b + c + '' + d"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a + ''b'' + c + '' + d"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A snippet of code gives the following output when executed:\nThere is exactly one space between any two consecutive integers. Which of the following options\ncorrespond to the correct code snippet? (MSQ)."
+        },
+        {
+          "kind": "code",
+          "value": "1 2 3 4 5",
+          "language": "text"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In option-(d), we see that multiple items can be printed using a single statement. By default, when\nprinting multiple items in this manner, a space is added between consecutive items. Execute the following lines\nand see what you get: print(1, 2) print('1 2') print('a', 'b') print('a b')"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "print(1 2 3 4 5)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "print('1 2 3 4 5') # there is a space between consecutive numbers",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "print(1)\nprint(2)\nprint(3)\nprint(4)\nprint(5)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "print(1, 2, 3, 4, 5)",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the type of the following expressions?\n(A) float\n(B) int\n(C) str\n(D) bool"
+        },
+        {
+          "kind": "code",
+          "value": "13 % 5 // 2 * 30 ** 5\n\"@Python\"\n20 ** 10 / 2 + 25 - 70\n(5 > 3) and False\n20 * 100.0 // 11 % 5",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The division operation will always produce a float value irrespective of the operands involved. For\nexample, in the expression , even if and are integers such that is divisible by , the result will still be a float. Try out\nthe following in your interpreter: print(10 / 5) For any arithmetic operation, even if one of the operands is float,\nthe resulting value is a float. For example, try out the following in your interpreter: print(10 // 5) print(10.0 // 5)\nprint(10 // 5.0)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 - (A), 2 - (C), 3 - (B), 4 - (D), 5 - (A)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 - (B), 2 - (C), 3 - (A), 4 - (D), 5 - (A)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 - (A), 2 - (C), 3 - (B), 4 - (D), 5 - (B)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 - (B), 2 - (C), 3 - (A), 4 - (D), 5 - (B)"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given a string variable word that stores some word in the English language, we wish to create a new\nstring with just two characters:\nThe first character in the new string is the first letter in word .\nThe second character in the new string the last letter in word .\nAssume that word has at least three characters. Which of the following lines of code can be used to\ncreate the new string? (MSQ)."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The last character in a string can be accessed either using the index or the index ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "word[0] + word[1]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "word[0] + word[-1]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "word[0] + word[len(word) - 1]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "word[-1] + word[len(word)]",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code:\nWhat is the output of the code given above for the following input? Try to think about the answer\nwithout executing the code in an interpreter."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = int(input())\ny = int(input())\nz = int(input())\navg = (x + y + z) / 3\nprint(avg)"
+        },
+        {
+          "kind": "text",
+          "value": "Input (one integer per line):"
+        },
+        {
+          "kind": "code",
+          "language": "text",
+          "value": "10\n11\n12"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The sum is 33. Python division by 3 produces the float 11.0."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "11"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "11.0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "33"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "33.0"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Exploratory problem: This problem is meant to encourage you to try certain things outside the\nlectures\nRun this piece of code in the Replit console:\nWhat is the output? What do you think is happening here?"
+        },
+        {
+          "kind": "code",
+          "value": "2 ** 3 ** 0",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "There are two ways of thinking about this expression and both of them return different answers. 2\n** 3 ** 0 The interpreter is following the second way, i.e., the statement is being executed from right to left. This\nkind of execution happens only in the case of the exponentiation operator and the assignment operator. It is\ngood to know that this behavior is a part of the language. However, it is even more important to understand the\nimportance of parentheses while writing mathematical expressions. As a good practice, we encourage learners to\nuse parentheses so as to make expressions completely unambiguous and not leave it to the capricious ways of\nthe interpreter to decipher your intentions."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01
+    }
+  ]
+}

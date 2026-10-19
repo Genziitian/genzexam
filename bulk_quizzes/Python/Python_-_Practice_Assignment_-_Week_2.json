@@ -1,0 +1,568 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Practice Assignment · Week 2",
+  "subject": "Python",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following are valid names for variables in Python? (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "a_, _a, and a_variable are valid identifiers. An identifier cannot begin with a digit or contain spaces."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a_"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "_a"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1a"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a variable"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a_variable"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Execute the the following code-block. Assume that word1 and word2 are strings that have already\nbeen defined.\nSelect the statement that accurately describes the two lines in the output."
+        },
+        {
+          "kind": "code",
+          "value": "# word1, word2 are two strings\nprint(word1 + word2)\nword = word1\nword1 = word2\nword2 = word\nprint(word2 + word1)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Lines 3-5 swap the values of variables and using a temporary variable . Python provides a simpler\nway to swap two variables. Check out: x, y = 1, 2 print(x, y) x, y = y, x print(x, y)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The two lines are always the same."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The two lines are always different."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The two lines are the same if and only if word1 and word2 are equal."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume that a , b and c are three distinct integers. The following code runs without any error.\nSelect all statements that evaluate to True at the end of execution of the code given above. (MSQ)"
+        },
+        {
+          "kind": "code",
+          "value": "x, y, z = a, b, c\nx = y = z",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In the first line, multiple assignment is used in one line. So, after the first line of execution, , and .\nThe operator has what is known as right to left associativity . That is, we move from right to left when there are\nmultiple operators in the same expression. So, the value of which is , will be assigned to and the value of which is\nnow , will be assigned to . So finally, all variables will contain the same value ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "x == y == z"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x == y == z == a"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x == y == z == b"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x == y == z == c"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "x is a variable of type float and is of the form a.bcd , where a, b, c, d are all positive integers\nless than\n10\n10 . What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "print(int(x))\nprint(int(-x))",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "retains the integer part and removes the fractional part."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "a\na",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "a + 1\na + 1",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "a - 1\na - 1",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "a - 1\n-a",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "a\n-a + 1",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "a\n-a",
+            "language": "text"
+          }
+        ]
+      ],
+      "correct_answer": 5
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code blocks:\nTwo blocks of code are said to be equivalent if they produce the same output for a given input. Are\nthe two blocks equivalent?"
+        },
+        {
+          "kind": "text",
+          "value": "Code 1:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "flag = True\nif flag == True:\n   print('works')"
+        },
+        {
+          "kind": "text",
+          "value": "Code 2:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "flag = True\nif flag:\n   print('works')"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The blocks are equivalent. But we encourage you to follow the second convention in all blocks of\ncode that involve checking the truth-value of a Boolean variable. That is, use rather than ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Yes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code-blocks. E is a Boolean expression. Two blocks of code are said to be\nequivalent if they produce the same output for a given input.\nSelect all true statements. (MSQ)"
+        },
+        {
+          "kind": "text",
+          "value": "Block 1:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if E:\n   print('good')\nelse:\n   print('bad')"
+        },
+        {
+          "kind": "text",
+          "value": "Block 2:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if E:\n    print('good')\nprint('bad')"
+        },
+        {
+          "kind": "text",
+          "value": "Block 3:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print('good')\nprint('bad')"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "When E is False, blocks 1 and 2 print only bad. When E is True, blocks 2 and 3 print good followed by bad. No two blocks are equivalent for both Boolean values."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "All three blocks are equivalent to each other."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Exactly two of these three blocks are equivalent to each other."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blocks 1 and 2 print the same output when E evaluates to True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blocks 1 and 2 print the same output when E evaluates to False"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blocks 2 and 3 print the same output when E evaluates to True"
+          }
+        ]
+      ],
+      "correct_answers": [
+        3,
+        4
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "bool_var is a variable of type bool . x is a variable of type int . Assume that both these variables\nhave already been defined. Now, consider the following code-block:\nWhich of the following statements are true at the end of execution of the code-block given above?\n(MSQ)."
+        },
+        {
+          "kind": "code",
+          "value": "if bool_var:\n   x = x + 1\n   bool_var = not bool_var\n   if bool_var:\n       x = x + 1\n   else:\n       x = x - 1\nprint(x)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If bool_var starts True, x is incremented and then decremented after the flag becomes False; otherwise x is unchanged. Thus the final x is independent of the initial flag and line 5 is never executed."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The value of variable x is independent of the value of bool_var"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The value of variable x is dependent on the value of boon_var ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line-5 is never executed."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The variable x is updated exactly two times."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct code snippet that prints a backslash character to the console."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since \\ is an escape character, \\' will mess up with the closing quotes in the print function. So, to\nprint the backslash, we have to escape the backslash itself! The way to do it is to add one more backslash so that\nPython renders that as a backslash character. You can convince yourself that double backslash is indeed a\ncharacter: print(len('\\\\'))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "print(\\)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "print('\\')",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "print('\\\\')",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "print(\"\\\")",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code:\nIf the output of this code is the string This is a valid name , select all possible inputs to the\nprogram. (MSQ)"
+        },
+        {
+          "kind": "code",
+          "value": "# Warning! This code may not make complete sense for certain inputs!\nname = input()\nif name.isalpha():\n   print('This is a valid name')\nelse:\n   print('This is not a valid name')",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Check out the official ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Neeraj"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mirabai"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sindhu"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "X AE A-12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rohit Sharma"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Exploratory Problem: This problem is meant to encourage you to try certain things outside the\nlectures.\nWe have looked at string slicing. Consider the following piece of code:\nWhat is the output? Feel free to use the Python interpreter for exploratory questions."
+        },
+        {
+          "kind": "code",
+          "value": "alphabets = 'abcdefghijklmnopqrstuvwxyz'\neven = alphabets[0: 10: 2]\nprint(even)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "You are already familiar with the idea of slicing a string variable, say in the following manner: . But\nwhat we have here is something like: . Can you guess from the answer what the third index in the slice is doing?\nWe encourage you to search online for a better understanding of what the third index is all about!"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "abcdefghij"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "abcde"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "acegi"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bdfhj"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

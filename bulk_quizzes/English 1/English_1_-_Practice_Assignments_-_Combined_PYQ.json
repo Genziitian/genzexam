@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Practice Assignments · Combined PYQ",
+  "subject": "English 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The plural of crisis is crises."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Radha and Krishna have been married -------- ten years."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Since"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Until"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blanks with the appropriate option. _________ you speak any foreign languages?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the given meaning of the phrases are true or false. (Q3 to Q5) Every dog has his day Meaning: An issue, person, or problem that someone is trying to avoid."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Through thick and thin Meaning: Everyone experiences hard and good times."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which word means not common?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Horrible"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Unusual"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Habitual"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brilliant"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Unusual means not usual or common. This vocabulary question can be answered directly from its original choices; the unavailable listening dependency was removed."
+        }
+      ]
+    }
+  ]
+}

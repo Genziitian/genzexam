@@ -1,0 +1,313 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 1 · Oct 2023 · QPD4 · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q9_context-1-1_p5.png",
+          "alt": "Original context 1 1 for Statistics 2 question 9."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q9_prompt-1_p6.png",
+          "alt": "Original prompt 1 for Statistics 2 question 9."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(X>0) = 1 - P(X=0) = 1 - (0+1/27+2/27) = 1-3/27 = 24/27. P(X+Y≤2, X>0): pairs (1,0)=2/27,\n(2,0)=4/27, (1,1)=3/27. Sum = 9/27. P = (9/27)/(24/27) = 9/24 = 3/8 = 0.375."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q9_solution-2_p6.png",
+          "alt": "Original solution 2 for Statistics 2 question 9."
+        }
+      ],
+      "acceptable_answers": [
+        "0.37 (±0.03)"
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q10_context-1-1_p6.png",
+          "alt": "Original context 1 1 for Statistics 2 question 10."
+        },
+        {
+          "kind": "text",
+          "value": "Find the PMF of 𝑈."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Enumerate all 8 outcomes (HHH, HHT, HTH, HTT, THH, THT, TTH, TTT), compute X, Y, U=XY for\neach. U takes values {0,1,2}. P(U=0)=3/8, P(U=1)=2/8=1/4, P(U=2)=3/8."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q10_option-1-1_p6.png",
+            "alt": "Original option 1 1 for Statistics 2 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q10_option-2-1_p6.png",
+            "alt": "Original option 2 1 for Statistics 2 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q10_option-3-1_p6.png",
+            "alt": "Original option 3 1 for Statistics 2 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q10_option-4-1_p6.png",
+            "alt": "Original option 4 1 for Statistics 2 question 10."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q11_context-1-1_p6.png",
+          "alt": "Original context 1 1 for Statistics 2 question 11."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q11_prompt-1_p6.png",
+          "alt": "Original prompt 1 for Statistics 2 question 11."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q11_solution-1_p6.png",
+          "alt": "Original solution 1 for Statistics 2 question 11."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q11_solution-2_p7.png",
+          "alt": "Original solution 2 for Statistics 2 question 11."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q12_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 12."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q12_prompt-1_p7.png",
+          "alt": "Original prompt 1 for Statistics 2 question 12."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q12_prompt-2_p7.png",
+          "alt": "Original prompt 2 for Statistics 2 question 12."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: F_X(k) = P(max(X₁,X₂) ≤ k) = P(X₁ ≤ k)P(X₂ ≤ k) = (k/6)²."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q12_option-1-1_p7.png",
+            "alt": "Original option 1 1 for Statistics 2 question 12."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q12_option-1-2_p7.png",
+            "alt": "Original option 1 2 for Statistics 2 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q12_option-2-1_p7.png",
+            "alt": "Original option 2 1 for Statistics 2 question 12."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q12_option-2-2_p7.png",
+            "alt": "Original option 2 2 for Statistics 2 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q12_option-3-1_p7.png",
+            "alt": "Original option 3 1 for Statistics 2 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q12_option-4-1_p7.png",
+            "alt": "Original option 4 1 for Statistics 2 question 12."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q13_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 13."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q13_prompt-1_p7.png",
+          "alt": "Original prompt 1 for Statistics 2 question 13."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(X=4) = F_X(4) - F_X(3) = (4/6)² - (3/6)² = 16/36 - 9/36 = 7/36 ≈ 0.194."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q13_solution-2_p7.png",
+          "alt": "Original solution 2 for Statistics 2 question 13."
+        }
+      ],
+      "acceptable_answers": [
+        "0.19 (±0.03)"
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q14_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 14."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q14_prompt-1_p8.png",
+          "alt": "Original prompt 1 for Statistics 2 question 14."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Using Poisson PMF: 3·e^{-λ}λ³/6 = 2·e^{-λ}λ²/2 + 4·e^{-λ}λ. Simplify: λ³/2 = λ² + 4λ → λ² - 2λ - 8 =\n0 → (λ-4)(λ+2)=0 → λ=4."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.5"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q15_context-1-1_p7.png",
+          "alt": "Original context 1 1 for Statistics 2 question 15."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q15_prompt-1_p8.png",
+          "alt": "Original prompt 1 for Statistics 2 question 15."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: By Chebyshev's inequality with k=2: P(|X-μ| ≤ 2σ) ≥ 1 - 1/k² = 1 - 1/4 = 0.75."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q15_solution-2_p8.png",
+          "alt": "Original solution 2 for Statistics 2 question 15."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/d3779c4948b7_q15_solution-3_p8.png",
+          "alt": "Original solution 3 for Statistics 2 question 15."
+        }
+      ],
+      "acceptable_answers": [
+        "0.75 (±0.01)"
+      ]
+    }
+  ]
+}

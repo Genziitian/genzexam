@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Jul 2024 · QDF4 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following subsets of $\\mathbb{R}^4$:\n$$W = \\text{span}\\{(2, -1, 0, 4), (-1, 1, 0, 3), (1, 2, 0, 3), (2, 2, 0, 10)\\}$$\n$$\\mathcal{B}_1 = \\{(1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 0, 1)\\}$$\n$$\\mathcal{B}_2 = \\{(2, -1, 0, 4), (-1, 1, 0, 3), (1, 2, 0, 3)\\}$$\nSelect the correct option:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Both $\\mathcal{B}_1$ and $\\mathcal{B}_2$ are bases for $W$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_1$ is a basis for $W$, but $\\mathcal{B}_2$ is not."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}_2$ is a basis for $W$, but $\\mathcal{B}_1$ is not."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither $\\mathcal{B}_1$ nor $\\mathcal{B}_2$ is a basis for $W$."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Notice the third coordinate is 0 for all vectors in $W$, and the remaining 3 coordinates span a 3-dimensional subspace. Both $\\mathcal{B}_1$ and $\\mathcal{B}_2$ are linearly independent sets of 3 vectors in $W$, so both are bases for $W$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations $Ax = b$ where $A \\in M_{n\\times n}(\\mathbb{R})$. Which of the following conditions guarantees that the system is consistent for any $b \\in \\mathbb{R}^n$? Select all true statements."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$A$ is a diagonal matrix with non-zero diagonal entries."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At least one column of $A$ is a linear combination of two other columns of $A$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$b$ is one of the columns of $A$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The reduced row echelon form of $A$ has no zero rows."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A$ has at least $n - 1$ linearly independent rows."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A diagonal matrix with non-zero diagonal entries has $\\det(A) \\neq 0$, guaranteeing a unique solution for every $b$. RREF with no zero rows means full rank $n$, guaranteeing consistency for all $b$. If $b$ is a column of $A$, $Ax = b$ is always consistent since $b$ lies in the column space."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $Ax = b$ be a system of linear equations, where:\n$$A = \\begin{bmatrix} 1 & 0 & 0 & -1 \\\\ 0 & 0 & 1 & 5 \\\\ 0 & 0 & 0 & 1 \\end{bmatrix}, \\quad x = [x_1, x_2, x_3, x_4]^T, \\quad b \\in \\mathbb{R}^3$$\nWhich of the following statements are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$A$ is in row echelon form."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x_2$ is an independent (free) variable."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "After reducing the system to reduced row echelon form, the value of $x_3$ is dependent on the value of $x_4$ in the solution vector."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When $b = \\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}$, the system has infinitely many solutions."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The system has 2 dependent and 2 independent variables."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$A$ has 3 pivot columns (1, 3, 4) and 1 free column (2), so $x_2$ is free. There are 3 dependent variables and 1 independent variable. The homogeneous system has free variable $x_2$, so it has infinitely many solutions."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $\\mathcal{B} = \\{v_1, v_2, v_3\\}$ be a linearly independent subset of $\\mathbb{R}^3$. Select all linearly independent subsets of $\\mathbb{R}^3$ from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\{v_1 + v_2, v_1 - v_2\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{v_1, v_2, v_3, v_4\\}$, where $v_4$ is some vector in $\\mathbb{R}^3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{v_1 + v_2, v_1 - v_2, v_1 + v_2 + v_3\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{v_1, v_1 + v_2, v_1 - v_2\\}$"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Four vectors in $\\mathbb{R}^3$ are always dependent. $v_1, v_1+v_2, v_1-v_2$ are dependent since $(v_1+v_2) + (v_1-v_2) = 2v_1$. The remaining sets have non-zero determinants relative to $\\mathcal{B}$ and are independent."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A$ be a $3 \\times 3$ matrix. Select all subspaces of $\\mathbb{R}^3$ from the options given below:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$S = \\{v \\in \\mathbb{R}^3 : Av = 0\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$S = \\{v \\in \\mathbb{R}^3 : Av = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$S = \\{(x, y) : x, y \\in \\mathbb{R}\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$S = \\{(x, y, 0) : x, y \\in \\mathbb{R}\\}$"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$Av = 0$ is the null space of $A$, which is always a subspace of $\\mathbb{R}^3$. The xy-plane $\\{(x, y, 0)\\}$ is also a subspace of $\\mathbb{R}^3$. The non-homogeneous set doesn't contain $0$, and $\\mathbb{R}^2$ is not a subset of $\\mathbb{R}^3$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A = (a_{ij}) \\in M_{5\\times 5}(\\mathbb{R})$ be a matrix such that $a_{ij} + a_{ji} = 0$ for all $1 \\le i, j \\le 5$. Find the determinant of $A$."
+        }
+      ],
+      "numerical_answer": 0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$A$ is a skew-symmetric matrix of odd order 5. For any skew-symmetric matrix of odd order, $\\det(A) = 0$."
+        }
+      ]
+    }
+  ]
+}

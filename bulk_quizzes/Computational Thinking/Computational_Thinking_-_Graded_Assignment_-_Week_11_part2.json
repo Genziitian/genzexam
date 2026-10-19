@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 11 · Part 2",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context1_p7.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context1_p8.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q7_prompt_p9.png",
+          "alt": "Original question: matchThem is a non-recursive procedure that accepts players as argument and returns matches. Select the correct implementation of the procedure. (Uses the chess-tournament scenario above.)"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q7_option1_code0_p9.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q7_option2_code0_p9.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q7_option3_code0_p9.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q7_option4_code0_p9.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context2_p10.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context2_p11.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q8_prompt_p11.png",
+          "alt": "Original question: What will be the value of S after executing the following pseudocode? (Uses the graph and DFS procedure above.)"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q8_option1_code0_p11.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q8_option2_code0_p11.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q8_option3_code0_p11.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q8_option4_code0_p11.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context2_p10.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context2_p11.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q9_prompt_p11.png",
+          "alt": "Original question: What will be the value of nodes after executing the following pseudocode? (Uses the graph and DFS procedure above.)"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q9_option1_code0_p11.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q9_option2_code0_p11.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q9_option3_code0_p11.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cannot be determined"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context2_p10.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context2_p11.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q10_prompt_p12.png",
+          "alt": "Original question: Assume that sort is a procedure that accepts a list of integers as input and returns a sorted list in ascending order. If 0 <= start <= 5, which of the following statements are true at the end of execution of the following pseudocode? It is a Multiple Select Question (MSQ). (Uses the graph and DFS procedure above.)"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q10_option1_p12.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q10_option2_p12.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The value of nodes is independent of start"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The value of S is independent of start"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The graph is connected."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The graph is not connected."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context2_p10.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context2_p11.png",
+          "alt": "context2"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q11_prompt_p13.png",
+          "alt": "Original question: Execute the following pseudocode. B is the matrix representation of which of the following graphs? (Uses the graph and DFS procedure above.)"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Graph (a)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Graph (b)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Graph (c)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Graph (d)"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

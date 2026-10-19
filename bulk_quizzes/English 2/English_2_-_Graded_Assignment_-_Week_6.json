@@ -3,16 +3,17 @@
   "quiz_title": "English 2 · Graded Assignment · Week 6",
   "subject": "English 2",
   "section": "practice_graded",
-  "week": 6,
   "questions": [
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Complete the question tag: 'He can speak many languages, ______?'"
+          "value": "He can speak many languages, ______?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -39,24 +40,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "A positive statement with the modal auxiliary 'can' takes a negative tag 'can't he?'."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Complete the question tag: 'John likes ice cream, _____?'"
+          "value": "John likes ice cream, _____?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -83,24 +78,18 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Present simple affirmative with third person singular takes the tag 'doesn't he?'."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In the English language, which of the following does NOT participate in grammatical agreement with the verb?"
+          "value": "In English language, which of the following does NOT participate in agreement?"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -127,24 +116,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "English verbs agree with their subject in person and number (e.g. 3rd person singular -s), but English verbs have no grammatical gender inflection."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In the sentence 'I am not sure when the incident happened', identify the main statement:"
+          "value": "I am not sure when the incident happened. Identify the main statement."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -171,31 +154,19 @@
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘I am not sure’ is the matrix (main) clause containing the primary subject and verb."
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "In the sentence 'I am not sure when the incident happened', identify the embedded subordinate clause:"
+          "value": "I am not sure when the incident happened. Identify the embedded sentence."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
-        [
-          {
-            "kind": "text",
-            "value": "I am not sure"
-          }
-        ],
         [
           {
             "kind": "text",
@@ -205,34 +176,34 @@
         [
           {
             "kind": "text",
-            "value": "not sure when"
+            "value": "I am not sure when"
           }
         ],
         [
           {
             "kind": "text",
-            "value": "the incident"
+            "value": "I am not sure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "the incident happened"
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘when the incident happened’ is the embedded interrogative content clause functioning as the complement."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Complete the sentence: '_______ you score well in the exam, I'll buy you gifts.'"
+          "value": "_____ you score well in the exam, I'll buy you gifts."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -251,23 +222,9 @@
             "kind": "text",
             "value": "Both whether and if"
           }
-        ],
-        [
-          {
-            "kind": "text",
-            "value": "Unless"
-          }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘If’ introduces an open conditional clause; ‘whether’ cannot introduce a standalone conditional antecedent with 'will' in this context."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
@@ -277,6 +234,8 @@
           "value": "Identify the sentence with a finite subordinate clause:"
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -303,15 +262,7 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "‘that Sarah asks a lot of questions’ contains the finite verb ‘asks’ marked for present tense and 3rd person singular agreement."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
@@ -321,6 +272,8 @@
           "value": "Intransitive verbs cannot be recast in passive form."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -335,24 +288,18 @@
           }
         ]
       ],
-      "correct_answer": 0,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "Passive voice requires a direct object to become the grammatical subject; intransitive verbs lack objects and cannot form passive constructions."
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Complete the sentence: 'She bought an _______ sound system.'"
+          "value": "She bought an _______ sound system."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -379,24 +326,18 @@
           }
         ]
       ],
-      "correct_answer": 1,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "The indefinite article 'an' requires a word beginning with a vowel sound, and the syntax requires an attributive adjective ('expensive')."
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "type": "mcq_single",
       "prompt": [
         {
           "kind": "text",
-          "value": "Complete the sentence: 'My cat is sleeping on the _____ roof.'"
+          "value": "My cat is sleeping on the _____ roof."
         }
       ],
+      "marks": 1,
+      "difficulty": "medium",
       "options": [
         [
           {
@@ -423,15 +364,7 @@
           }
         ]
       ],
-      "correct_answer": 2,
-      "marks": 1,
-      "difficulty": "medium",
-      "explanation": [
-        {
-          "kind": "text",
-          "value": "The position between the article 'the' and noun 'roof' requires an attributive adjective ('thin')."
-        }
-      ]
+      "correct_answer": 2
     }
   ]
 }

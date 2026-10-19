@@ -1,0 +1,590 @@
+{
+  "status": "verified batch; remaining extraction in progress",
+  "papers": 115,
+  "questions": 910,
+  "by_subject": {
+    "English 1": 178,
+    "English 2": 159,
+    "Mathematics 2": 193,
+    "Python": 222,
+    "Statistics 2": 158
+  },
+  "assets": 1787,
+  "files": [
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_1.json",
+      "subject": "English 1",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_10.json",
+      "subject": "English 1",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_11.json",
+      "subject": "English 1",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_12.json",
+      "subject": "English 1",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_2.json",
+      "subject": "English 1",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_3.json",
+      "subject": "English 1",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_4.json",
+      "subject": "English 1",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_5.json",
+      "subject": "English 1",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_6.json",
+      "subject": "English 1",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_7.json",
+      "subject": "English 1",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_8.json",
+      "subject": "English 1",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_9.json",
+      "subject": "English 1",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignment_-_Week_1.json",
+      "subject": "English 1",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignment_-_Week_10.json",
+      "subject": "English 1",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignment_-_Week_11.json",
+      "subject": "English 1",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignment_-_Week_12.json",
+      "subject": "English 1",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignment_-_Week_2.json",
+      "subject": "English 1",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignment_-_Week_4.json",
+      "subject": "English 1",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignment_-_Week_5.json",
+      "subject": "English 1",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignment_-_Week_6.json",
+      "subject": "English 1",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignment_-_Week_8.json",
+      "subject": "English 1",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignment_-_Week_9.json",
+      "subject": "English 1",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/English 1/English_1_-_Practice_Assignments_-_Combined_PYQ.json",
+      "subject": "English 1",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_1.json",
+      "subject": "English 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_10.json",
+      "subject": "English 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_11.json",
+      "subject": "English 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_12.json",
+      "subject": "English 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_2.json",
+      "subject": "English 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_3.json",
+      "subject": "English 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_4.json",
+      "subject": "English 2",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_5.json",
+      "subject": "English 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_6.json",
+      "subject": "English 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_7.json",
+      "subject": "English 2",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_8.json",
+      "subject": "English 2",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_9.json",
+      "subject": "English 2",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Practice_Assignment_-_Week_1.json",
+      "subject": "English 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Practice_Assignment_-_Week_10.json",
+      "subject": "English 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Practice_Assignment_-_Week_11.json",
+      "subject": "English 2",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Practice_Assignment_-_Week_12.json",
+      "subject": "English 2",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Practice_Assignment_-_Week_2.json",
+      "subject": "English 2",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Practice_Assignment_-_Week_5.json",
+      "subject": "English 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Practice_Assignment_-_Week_6.json",
+      "subject": "English 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/English 2/English_2_-_Practice_Assignments_-_Combined_PYQ.json",
+      "subject": "English 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_10_-_May_2024_part1.json",
+      "subject": "Mathematics 2",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_10_-_May_2024_part2.json",
+      "subject": "Mathematics 2",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_11_-_May_2024.json",
+      "subject": "Mathematics 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_1_-_May_2024.json",
+      "subject": "Mathematics 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_2_-_May_2024_part1.json",
+      "subject": "Mathematics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_2_-_May_2024_part2.json",
+      "subject": "Mathematics 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_3_-_May_2024.json",
+      "subject": "Mathematics 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_4_-_May_2024_part1.json",
+      "subject": "Mathematics 2",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_4_-_May_2024_part2.json",
+      "subject": "Mathematics 2",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_5_-_May_2024_part1.json",
+      "subject": "Mathematics 2",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_5_-_May_2024_part2.json",
+      "subject": "Mathematics 2",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_6_-_May_2024_part1.json",
+      "subject": "Mathematics 2",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_6_-_May_2024_part2.json",
+      "subject": "Mathematics 2",
+      "questions": 5
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_7_-_May_2024.json",
+      "subject": "Mathematics 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_8_-_May_2024.json",
+      "subject": "Mathematics 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_9_-_May_2024_part1.json",
+      "subject": "Mathematics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Graded_Assignment_-_Week_9_-_May_2024_part2.json",
+      "subject": "Mathematics 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_1.json",
+      "subject": "Mathematics 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_10.json",
+      "subject": "Mathematics 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_2.json",
+      "subject": "Mathematics 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_3.json",
+      "subject": "Mathematics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_4.json",
+      "subject": "Mathematics 2",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_5.json",
+      "subject": "Mathematics 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Mathematics 2/Mathematics_2_-_Practice_Assignment_-_Week_8.json",
+      "subject": "Mathematics 2",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_1_part1.json",
+      "subject": "Python",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_1_part2.json",
+      "subject": "Python",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_1_part3.json",
+      "subject": "Python",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_2_part1.json",
+      "subject": "Python",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_2_part2.json",
+      "subject": "Python",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_2_part3.json",
+      "subject": "Python",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_3_part1.json",
+      "subject": "Python",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_3_part2.json",
+      "subject": "Python",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_3_part3.json",
+      "subject": "Python",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_4_part1.json",
+      "subject": "Python",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_4_part2.json",
+      "subject": "Python",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_5.json",
+      "subject": "Python",
+      "questions": 6
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_6_part1.json",
+      "subject": "Python",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_6_part2.json",
+      "subject": "Python",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_6_part3.json",
+      "subject": "Python",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_7_part1.json",
+      "subject": "Python",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_7_part2.json",
+      "subject": "Python",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_9.json",
+      "subject": "Python",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Graded_Assignments_-_Weeks_8_and_10_-_Combined_PYQ.json",
+      "subject": "Python",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_1.json",
+      "subject": "Python",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_10.json",
+      "subject": "Python",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_2.json",
+      "subject": "Python",
+      "questions": 10
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_4_part1.json",
+      "subject": "Python",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_4_part2.json",
+      "subject": "Python",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_4_part3.json",
+      "subject": "Python",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_5_part1.json",
+      "subject": "Python",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_5_part2.json",
+      "subject": "Python",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Python/Python_-_Practice_Assignments_-_Weeks_3_and_9_-_Combined_PYQ.json",
+      "subject": "Python",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Feb_2024_QDD4_part1.json",
+      "subject": "Statistics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Feb_2024_QDD4_part2.json",
+      "subject": "Statistics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Feb_2025_QDF4_part1.json",
+      "subject": "Statistics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Feb_2025_QDF4_part2.json",
+      "subject": "Statistics 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Jul_2023_QPE3_part1.json",
+      "subject": "Statistics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Jul_2023_QPE3_part2.json",
+      "subject": "Statistics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Jul_2024_QDF4_part1.json",
+      "subject": "Statistics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Jul_2024_QDF4_part2.json",
+      "subject": "Statistics 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Jul_2025_QIO4_part1.json",
+      "subject": "Statistics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Jul_2025_QIO4_part2.json",
+      "subject": "Statistics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Jun_2022_QUIZ1_part1.json",
+      "subject": "Statistics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Jun_2022_QUIZ1_part2.json",
+      "subject": "Statistics 2",
+      "questions": 8
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Oct_2022_QUIZ1_part1.json",
+      "subject": "Statistics 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Oct_2022_QUIZ1_part2.json",
+      "subject": "Statistics 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Oct_2023_QPD4_part1.json",
+      "subject": "Statistics 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Oct_2023_QPD4_part2.json",
+      "subject": "Statistics 2",
+      "questions": 7
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Oct_2024_QDD2_part1.json",
+      "subject": "Statistics 2",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Oct_2024_QDD2_part2.json",
+      "subject": "Statistics 2",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Oct_2025_QIO2_part1.json",
+      "subject": "Statistics 2",
+      "questions": 9
+    },
+    {
+      "path": "bulk_quizzes/Statistics 2/Statistics_2_-_Quiz_1_-_Oct_2025_QIO2_part2.json",
+      "subject": "Statistics 2",
+      "questions": 9
+    }
+  ]
+}

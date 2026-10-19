@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Jul 2023 · Foundation AN4 Exam 2 · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the dimension of the vector space $V_1 = \\{(x, y, z) \\in \\mathbb{R}^3 : 2x + 3y = 0 = 2z + 3x\\}$ with usual addition and scalar multiplication?"
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Two linearly independent linear constraints on $\\mathbb{R}^3$ define a line passing through the origin, so $\\dim(V_1) = 3 - 2 = 1$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the dimension of the vector space $V_2 = \\{A \\in M_3(\\mathbb{R}) : \\text{tr}(A) = 0 \\text{ and the sum of entries in each row is } 0\\}$ with usual matrix addition and scalar multiplication?"
+        }
+      ],
+      "numerical_answer": 5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$M_3(\\mathbb{R})$ has dimension 9. The three row sum constraints are independent (3 constraints). The trace-zero condition is an additional independent constraint, so $\\dim(V_2) = 9 - 4 = 5$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Shivani bought 2 shirts, a T-shirt and 2 pants for Rs. 600. Sruthi bought a T-shirt and a pant for Rs. 400. Smriti bought 2 shirts and a pant for Rs. 300. Let $x_1, x_2, x_3$ denote the price of a shirt, a T-shirt and a pant respectively. Choose the correct matrix representation $Ax = b$ for this system:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$A = \\begin{pmatrix} 2 & 1 & 2 \\\\ 1 & 1 & 0 \\\\ 2 & 0 & 1 \\end{pmatrix}, b = \\begin{pmatrix} 600 \\\\ 400 \\\\ 300 \\end{pmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A = \\begin{pmatrix} 2 & 1 & 2 \\\\ 0 & 1 & 1 \\\\ 2 & 0 & 1 \\end{pmatrix}, b = \\begin{pmatrix} 600 \\\\ 400 \\\\ 300 \\end{pmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A = \\begin{pmatrix} 2 & 1 & 2 \\\\ 0 & 1 & 1 \\\\ 0 & 2 & 1 \\end{pmatrix}, b = \\begin{pmatrix} 600 \\\\ 400 \\\\ 300 \\end{pmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A = \\begin{pmatrix} 1 & 1 & 2 \\\\ 0 & 1 & 1 \\\\ 2 & 0 & 1 \\end{pmatrix}, b = \\begin{pmatrix} 600 \\\\ 400 \\\\ 300 \\end{pmatrix}$"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Shivani: $2x_1 + x_2 + 2x_3 = 600$; Sruthi: $0x_1 + x_2 + x_3 = 400$; Smriti: $2x_1 + 0x_2 + x_3 = 300$. Matrix $A = \\begin{pmatrix} 2 & 1 & 2 \\\\ 0 & 1 & 1 \\\\ 2 & 0 & 1 \\end{pmatrix}$ and $b = \\begin{pmatrix} 600 \\\\ 400 \\\\ 300 \\end{pmatrix}$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations $Ax = b$ from the previous shopping problem where:\n$$A = \\begin{pmatrix} 2 & 1 & 2 \\\\ 0 & 1 & 1 \\\\ 2 & 0 & 1 \\end{pmatrix}, \\quad b = \\begin{pmatrix} 600 \\\\ 400 \\\\ 300 \\end{pmatrix}$$\nHow many solutions does the system $Ax = b$ have?"
+        }
+      ],
+      "numerical_answer": 0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Notice $R_1 - R_2 = (2, 0, 1) = R_3$. However, $b_1 - b_2 = 600 - 400 = 200 \\neq 300 = b_3$. The system is inconsistent and has 0 solutions."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the set $S$ of solutions of the homogeneous system $Ax = 0$, where $A = \\begin{pmatrix} 2 & 1 & 2 \\\\ 0 & 1 & 1 \\\\ 2 & 0 & 1 \\end{pmatrix}$. What is the dimension of the solution space $S$?"
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\text{rank}(A) = 2$. By the Rank-Nullity theorem, $\\dim(S) = 3 - \\text{rank}(A) = 3 - 2 = 1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following forms a basis for $S$, the solution space of $Ax = 0$, where $A = \\begin{pmatrix} 2 & 1 & 2 \\\\ 0 & 1 & 1 \\\\ 2 & 0 & 1 \\end{pmatrix}$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(-1/2, 1, -1), (0, 1, -1)\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(-1/2, 1, -1)\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(-1/2, 1, 1), (0, 1, -1)\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(-1/2, 1, 1)\\}$"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Solving $Ax = 0$: $x_2 + x_3 = 0 \\implies x_2 = -x_3$. $2x_1 + (-x_3) + 2x_3 = 0 \\implies 2x_1 = -x_3 \\implies x_1 = -x_3/2$. Setting $x_3 = -1$ yields $(-1/2, 1, -1)$, which forms a basis."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the rank of the matrix $A = \\begin{pmatrix} 2 & 1 & 2 \\\\ 0 & 1 & 1 \\\\ 2 & 0 & 1 \\end{pmatrix}$?"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Row 3 equals Row 1 minus Row 2, leaving 2 linearly independent rows. Thus $\\text{rank}(A) = 2$."
+        }
+      ]
+    }
+  ]
+}

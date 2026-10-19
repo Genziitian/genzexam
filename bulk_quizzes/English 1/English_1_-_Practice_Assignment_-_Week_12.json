@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Practice Assignment · Week 12",
+  "subject": "English 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "The mail uses a non-objective tone."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "‘ The council would meet to finalise the task sheet for the year 2022-23 .’ ‘ would’ is used in this sentence to express politeness."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "‘The details and agenda for the meeting is attached below.’ is a grammatically correct sentence."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "Which sentence states the main purpose of the email?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The council would meet to finalise the task sheet for the year 2022-23."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am writing to invite you to the 20th Academic Council meeting of VSTP University, Shillong."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I request you to confirm your participation so as to reserve the flight tickets."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Unity of a paragraph refers to ____."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Logical continuity of the sentences"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Singularity of the theme"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Organizational patterns"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Despite, although, and nevertheless are transitional devices that are used to ____."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Add"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conclude"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Contrast"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The manager asked for the file and the recordings of the meeting. It was unavailable.’ What is the type of error in the sentence?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Tense inconsistency"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Subject- verb Agreement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun-antecedent agreement"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In formal academic writing the word 'overall' can be used to express certainty."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In formal academic writing, to show cause which among the following phrases can be used?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In contrary"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Likewise"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Owing to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both owing to and because express cause; neither in contrary nor likewise does so."
+        }
+      ]
+    }
+  ]
+}

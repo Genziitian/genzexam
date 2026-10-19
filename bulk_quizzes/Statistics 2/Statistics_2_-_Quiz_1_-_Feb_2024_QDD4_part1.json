@@ -1,0 +1,359 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 1 · Feb 2024 · QDD4 · Part 1",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Naveen tosses a fair coin twice and Suman tosses another fair coin two times. Let the random variables 𝑋\nand 𝑌 denote the number of heads observed by Naveen and Suman respectively. Identify the correct joint\nPMF table of 𝑋 and 𝑌."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: X ~ Binomial(2,0.5), Y ~ Binomial(2,0.5), independent. Joint PMF = P(X=x)·P(Y=y). P(0)=1/4,\nP(1)=1/2, P(2)=1/4. So f(1,1) = (1/2)(1/2)=1/4, f(0,0)=(1/4)(1/4)=1/16, etc. Option B is correct."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q1_option-1-1_p2.png",
+            "alt": "Original option 1 1 for Statistics 2 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q1_option-2-1_p2.png",
+            "alt": "Original option 2 1 for Statistics 2 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q1_option-3-1_p2.png",
+            "alt": "Original option 3 1 for Statistics 2 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q1_option-4-1_p2.png",
+            "alt": "Original option 4 1 for Statistics 2 question 1."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q2_prompt-1_p3.png",
+          "alt": "Original prompt 1 for Statistics 2 question 2."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q2_prompt-2_p3.png",
+          "alt": "Original prompt 2 for Statistics 2 question 2."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Var(XY) = E[X²Y²] - (E[XY])². Since independent: E[XY]=E[X]E[Y]=200, E[X²]=Var(X)+E[X]²=102,\nE[Y²]=Var(Y)+E[Y]²=404. E[X²Y²]=E[X²]E[Y²]=102×404=41208. Var(XY)=41208-40000=1208."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "40000"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1208"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cannot be determined"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q3_prompt-1_p3.png",
+          "alt": "Original prompt 1 for Statistics 2 question 3."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q3_prompt-2_p3.png",
+          "alt": "Original prompt 2 for Statistics 2 question 3."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(-4 < X ≤ 6) = F_X(6) - F_X(-4) = (1 - e^{-24}) - 0 = 1 - e^{-24}."
+        },
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nAn analyst is responsible for conducting emissions inspections on bikes. During the inspections, the analyst\nfound that 10% of the bikes fail the inspection. Let 𝑋 be a geometric variable which denotes the number of\nbikes the analyst inspects until a bike fails an inspection. Assume that the results of each inspection are\nindependent. Based on the above data, answer the given subquestions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q3_option-1-1_p3.png",
+            "alt": "Original option 1 1 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q3_option-2-1_p3.png",
+            "alt": "Original option 2 1 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q3_option-3-1_p3.png",
+            "alt": "Original option 3 1 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q3_option-4-1_p3.png",
+            "alt": "Original option 4 1 for Statistics 2 question 3."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nAn analyst is responsible for conducting emissions inspections on bikes. During the inspections, the analyst\nfound that 10% of the bikes fail the inspection. Let 𝑋 be a geometric variable which denotes the number of\nbikes the analyst inspects until a bike fails an inspection. Assume that the results of each inspection are\nindependent. Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "What is the range of 𝑋?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Geometric distribution counts trials until first success, starting from 1. Range is {1, 2, ...}."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q4_option-1-1_p4.png",
+            "alt": "Original option 1 1 for Statistics 2 question 4."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q4_option-2-1_p4.png",
+            "alt": "Original option 2 1 for Statistics 2 question 4."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q4_option-3-1_p4.png",
+            "alt": "Original option 3 1 for Statistics 2 question 4."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q4_option-4-1_p4.png",
+            "alt": "Original option 4 1 for Statistics 2 question 4."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nAn analyst is responsible for conducting emissions inspections on bikes. During the inspections, the analyst\nfound that 10% of the bikes fail the inspection. Let 𝑋 be a geometric variable which denotes the number of\nbikes the analyst inspects until a bike fails an inspection. Assume that the results of each inspection are\nindependent. Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "What is the probability that the first failed inspection occurs on the analyst's 5th inspection? Enter the\nanswer correct to three decimal places."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(X=5) = (1-0.1)^4 × 0.1 = 0.9^4 × 0.1 = 0.6561 × 0.1 = 0.0656 ≈ 0.066."
+        }
+      ],
+      "acceptable_answers": [
+        "0.066 (±0.02)"
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nAn analyst is responsible for conducting emissions inspections on bikes. During the inspections, the analyst\nfound that 10% of the bikes fail the inspection. Let 𝑋 be a geometric variable which denotes the number of\nbikes the analyst inspects until a bike fails an inspection. Assume that the results of each inspection are\nindependent. Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q6_prompt-1_p5.png",
+          "alt": "Original prompt 1 for Statistics 2 question 6."
+        },
+        {
+          "kind": "text",
+          "value": "Calculate the expected value of 𝑋. Enter the answer correct to one decimal place."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: E[X] = (-1)(0.2) + (0)(0.3) + (2)(0.2) + (3)(0.3) = -0.2 + 0 + 0.4 + 0.9 = 1.1."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q6_solution-2_p5.png",
+          "alt": "Original solution 2 for Statistics 2 question 6."
+        }
+      ],
+      "acceptable_answers": [
+        "1.1 (±0.01)"
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q7_context-1-1_p5.png",
+          "alt": "Original context 1 1 for Statistics 2 question 7."
+        },
+        {
+          "kind": "text",
+          "value": "Find the PMF of 𝑍."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q7_solution-1_p5.png",
+          "alt": "Original solution 1 for Statistics 2 question 7."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q7_option-1-1_p5.png",
+            "alt": "Original option 1 1 for Statistics 2 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q7_option-2-1_p5.png",
+            "alt": "Original option 2 1 for Statistics 2 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q7_option-3-1_p5.png",
+            "alt": "Original option 3 1 for Statistics 2 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q7_option-4-1_p5.png",
+            "alt": "Original option 4 1 for Statistics 2 question 7."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q8_context-1-1_p5.png",
+          "alt": "Original context 1 1 for Statistics 2 question 8."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q8_prompt-1_p5.png",
+          "alt": "Original prompt 1 for Statistics 2 question 8."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q8_solution-1_p5.png",
+          "alt": "Original solution 1 for Statistics 2 question 8."
+        },
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nKunal and Sanskriti are playing a game. Kunal will roll a fair six-sided die, and Sanskriti will flip a fair coin as\nmany times as the number shown on the die. Let 𝑋 represent the number displayed on the die, and 𝑌\nrepresent the number of heads obtained by Sanskriti. Based on the above data, answer the given\nsubquestions."
+        }
+      ],
+      "acceptable_answers": [
+        "0.5 (±0.1)"
+      ]
+    }
+  ]
+}

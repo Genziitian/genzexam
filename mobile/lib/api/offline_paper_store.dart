@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import 'api_client.dart';
 import 'quiz_service.dart';
 import 'models/quiz_model.dart';
+import 'paper_content.dart';
 
 /// Encrypted on-device copies explicitly downloaded through the Pro endpoint.
 /// Answers are saved after every edit so an OS process kill cannot erase work.
@@ -21,27 +21,33 @@ class OfflinePaperStore {
 
   static String _key(int userId, int quizId) => 'paper_cache_${userId}_$quizId';
 
-  static Future<void> cacheQuiz(int userId, QuizDetail quiz) async {
+  static Future<void> cacheQuiz(
+    int userId,
+    QuizDetail quiz, {
+    Dio? imageClient,
+  }) async {
     // Embed diagrams too: a saved URL alone cannot work in airplane mode.
     // A separate client avoids sending the account token to image hosts.
-    final media = Dio(
-      BaseOptions(
-        connectTimeout: const Duration(seconds: 10),
-        receiveTimeout: const Duration(seconds: 15),
-        responseType: ResponseType.bytes,
-      ),
-    );
+    final media =
+        imageClient ??
+        Dio(
+          BaseOptions(
+            connectTimeout: const Duration(seconds: 10),
+            receiveTimeout: const Duration(seconds: 15),
+            responseType: ResponseType.bytes,
+          ),
+        );
     final images = <String, String>{};
     var totalBytes = 0;
     Future<String> saveImage(String source) async {
       if (source.isEmpty || source.startsWith('data:image/')) return source;
       if (images.containsKey(source)) return images[source]!;
-      final uri = Uri.parse(ApiClient.defaultBaseUrl).resolve(source);
-      if (uri.scheme != 'https')
+      final resolved = paperImageUri(source);
+      if (resolved == null)
         throw const FormatException('Image must use HTTPS.');
       final cancel = CancelToken();
       final response = await media.get<List<int>>(
-        uri.toString(),
+        resolved,
         cancelToken: cancel,
         onReceiveProgress: (received, _) {
           if (received > 5 * 1024 * 1024) cancel.cancel('Image is too large.');
@@ -51,7 +57,13 @@ class OfflinePaperStore {
       totalBytes += bytes.length;
       final mime =
           response.headers.value('content-type')?.split(';').first ?? '';
-      if (!mime.startsWith('image/') || totalBytes > 20 * 1024 * 1024) {
+      if (![
+            'image/png',
+            'image/jpeg',
+            'image/webp',
+            'image/gif',
+          ].contains(mime) ||
+          totalBytes > 20 * 1024 * 1024) {
         throw const FormatException('Paper images could not be saved.');
       }
       return images[source] = 'data:$mime;base64,${base64Encode(bytes)}';
@@ -78,6 +90,19 @@ class OfflinePaperStore {
               : await embed(entry.value);
         }
         return copy;
+      }
+      if (value is String) {
+        final saved = StringBuffer();
+        var cursor = 0;
+        for (final match in paperContentPattern.allMatches(value)) {
+          final image = match.group(5) ?? match.group(6);
+          if (image == null) continue;
+          saved.write(value.substring(cursor, match.start));
+          saved.write('![${match.group(4)}](<${await saveImage(image)}>)');
+          cursor = match.end;
+        }
+        saved.write(value.substring(cursor));
+        return saved.toString();
       }
       return value;
     }

@@ -1,0 +1,223 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Graded Assignment · Week 4",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Table 4.2.G\nBased on the given information answer questions (7), (8), (9), (10) and (11).\nCondition: 50 ≤a ≤70, 80 ≤b ≤120, 50 ≤c ≤90, 120 ≤d ≤150, 50 ≤e ≤70,\n70 ≤f ≤110, 70 ≤g ≤90 and 70 ≤h ≤110\nEconomic Conditions Intelligence level\nBright Average Dull Borderline\nGood a b c d\nPoor e f g h\nWhat proportion of total students are dull?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "(c+g)/(a+b+c+d+e+f+g+h)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Dull students are c+g, divided by all students in the table."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Table 4.2.G\nBased on the given information answer questions (7), (8), (9), (10) and (11).\nCondition: 50 ≤a ≤70, 80 ≤b ≤120, 50 ≤c ≤90, 120 ≤d ≤150, 50 ≤e ≤70,\n70 ≤f ≤110, 70 ≤g ≤90 and 70 ≤h ≤110\nEconomic Conditions Intelligence level\nBright Average Dull Borderline\nGood a b c d\nPoor e f g h\nWhat proportion of total students are poor economic conditions?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "(e+f+g+h)/(a+b+c+d+e+f+g+h)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The poor-economic-condition row has e+f+g+h students, divided by the table total."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Table 4.2.G\nBased on the given information answer questions (7), (8), (9), (10) and (11).\nCondition: 50 ≤a ≤70, 80 ≤b ≤120, 50 ≤c ≤90, 120 ≤d ≤150, 50 ≤e ≤70,\n70 ≤f ≤110, 70 ≤g ≤90 and 70 ≤h ≤110\nEconomic Conditions Intelligence level\nBright Average Dull Borderline\nGood a b c d\nPoor e f g h\nWhat proportion of students of good economic conditions are borderline?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "d/(a+b+c+d)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The denominator includes all students with good economic conditions; the borderline cell is d."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Table 4.2.G\nBased on the given information answer questions (7), (8), (9), (10) and (11).\nCondition: 50 ≤a ≤70, 80 ≤b ≤120, 50 ≤c ≤90, 120 ≤d ≤150, 50 ≤e ≤70,\n70 ≤f ≤110, 70 ≤g ≤90 and 70 ≤h ≤110\nEconomic Conditions Intelligence level\nBright Average Dull Borderline\nGood a b c d\nPoor e f g h\nWhat percentage of bright students are in poor economic conditions?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "100*e/(a+e)",
+        "100e/(a+e)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Among bright students, the poor-economic-condition count is e and the total is a+e."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Table 4.2.G\nBased on the given information answer questions (7), (8), (9), (10) and (11).\nCondition: 50 ≤a ≤70, 80 ≤b ≤120, 50 ≤c ≤90, 120 ≤d ≤150, 50 ≤e ≤70,\n70 ≤f ≤110, 70 ≤g ≤90 and 70 ≤h ≤110\nEconomic Conditions Intelligence level\nBright Average Dull Borderline\nGood a b c d\nPoor e f g h\nWhat percentage of average students are in good economic conditions?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "100*b/(b+f)",
+        "100b/(b+f)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Among average students, the good-economic-condition count is b and the total is b+f."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q12_prompt_p10.png",
+          "alt": "Original Statistics 1 question 12 prompt."
+        },
+        {
+          "kind": "text",
+          "value": "Assume Anjali’s sales are not constant across the six months."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q12_option-1_p10.png",
+            "alt": "Original option 1 for Statistics 1 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q12_option-2_p10.png",
+            "alt": "Original option 2 for Statistics 1 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q12_option-3_p10.png",
+            "alt": "Original option 3 for Statistics 1 question 12."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q12_option-4_p10.png",
+            "alt": "Original option 4 for Statistics 1 question 12."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q13_prompt_p11.png",
+          "alt": "Original Statistics 1 question 13 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q13_option-1_p11.png",
+            "alt": "Original option 1 for Statistics 1 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q13_option-2_p11.png",
+            "alt": "Original option 2 for Statistics 1 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q13_option-3_p11.png",
+            "alt": "Original option 3 for Statistics 1 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/44a0d2980f7f_q13_option-4_p11.png",
+            "alt": "Original option 4 for Statistics 1 question 13."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    }
+  ]
+}

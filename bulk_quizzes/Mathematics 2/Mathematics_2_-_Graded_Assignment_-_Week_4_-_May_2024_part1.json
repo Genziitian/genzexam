@@ -1,0 +1,244 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Graded Assignment · Week 4 · May 2024 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q1-prompt-p3.png",
+          "alt": "Original question 1 from Mathematics 2 graded assignment 4."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q1-option1-p3.png",
+            "alt": "Original option 1 for question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q1-option2-p3.png",
+            "alt": "Original option 2 for question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q1-option3-p3.png",
+            "alt": "Original option 3 for question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q1-option4-p3.png",
+            "alt": "Original option 4 for question 1."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        3
+      ],
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q1-solution1.png",
+          "alt": "Original worked solution for question 1."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q1-solution2.png",
+          "alt": "Original worked solution for question 1."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-prompt-p4.png",
+          "alt": "Original question 2 from Mathematics 2 graded assignment 4."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-prompt-p5.png",
+          "alt": "Original question 2 from Mathematics 2 graded assignment 4."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-option1-p5.png",
+            "alt": "Original option 1 for question 2."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-option2-p5.png",
+            "alt": "Original option 2 for question 2."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-option3-p5.png",
+            "alt": "Original option 3 for question 2."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-option4-p5.png",
+            "alt": "Original option 4 for question 2."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-option5-p5.png",
+            "alt": "Original option 5 for question 2."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-option6-p5.png",
+            "alt": "Original option 6 for question 2."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        4,
+        5
+      ],
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-solution1.png",
+          "alt": "Original worked solution for question 2."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-solution2.png",
+          "alt": "Original worked solution for question 2."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q2-solution3.png",
+          "alt": "Original worked solution for question 2."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q3-prompt-p7.png",
+          "alt": "Original question 3 from Mathematics 2 graded assignment 4."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q3-solution1.png",
+          "alt": "Original worked solution for question 3."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q3-solution2.png",
+          "alt": "Original worked solution for question 3."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q4-prompt-p8.png",
+          "alt": "Original question 4 from Mathematics 2 graded assignment 4."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 2021.0,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q4-solution1.png",
+          "alt": "Original worked solution for question 4."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q4-solution2.png",
+          "alt": "Original worked solution for question 4."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q5-prompt-p9.png",
+          "alt": "Original question 5 from Mathematics 2 graded assignment 4."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q5-solution1.png",
+          "alt": "Original worked solution for question 5."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q6-prompt-p10.png",
+          "alt": "Original question 6 from Mathematics 2 graded assignment 4."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga4/q6-solution1.png",
+          "alt": "Original worked solution for question 6."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 1 · Feb 2025 · QDF4 · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nLet 𝑋 and 𝑌 denote the number of customers arriving at two different service counters (Counter 1 and\nCounter 2) in a bank during a one-hour interval. The random variables 𝑋 and 𝑌 follow Poisson distributions\nwith mean arrival rates of 15 customers per hour at Counter 1 and 25 customers per hour at Counter 2,\nrespectively. Assume that 𝑋 and 𝑌 are independent.\nBased on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "If 𝑍 represents the combined total number of customers arriving at both counters during a one-hour interval,\nthen determine the PMF of 𝑍."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q13_solution-1_p8.png",
+          "alt": "Original solution 1 for Statistics 2 question 13."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q13_option-1-1_p8.png",
+            "alt": "Original option 1 1 for Statistics 2 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q13_option-2-1_p8.png",
+            "alt": "Original option 2 1 for Statistics 2 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q13_option-3-1_p8.png",
+            "alt": "Original option 3 1 for Statistics 2 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q13_option-4-1_p8.png",
+            "alt": "Original option 4 1 for Statistics 2 question 13."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nLet 𝑋 and 𝑌 denote the number of customers arriving at two different service counters (Counter 1 and\nCounter 2) in a bank during a one-hour interval. The random variables 𝑋 and 𝑌 follow Poisson distributions\nwith mean arrival rates of 15 customers per hour at Counter 1 and 25 customers per hour at Counter 2,\nrespectively. Assume that 𝑋 and 𝑌 are independent.\nBased on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "Which of the following option(s) is/are correct?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q14_solution-1_p8.png",
+          "alt": "Original solution 1 for Statistics 2 question 14."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q14_solution-2_p9.png",
+          "alt": "Original solution 2 for Statistics 2 question 14."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q14_option-1-1_p8.png",
+            "alt": "Original option 1 1 for Statistics 2 question 14."
+          },
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q14_option-2-1_p8.png",
+            "alt": "Original option 2 1 for Statistics 2 question 14."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q14_option-2-2_p8.png",
+            "alt": "Original option 2 2 for Statistics 2 question 14."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q14_option-3-1_p8.png",
+            "alt": "Original option 3 1 for Statistics 2 question 14."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q14_option-4-1_p8.png",
+            "alt": "Original option 4 1 for Statistics 2 question 14."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q15_context-1-1_p9.png",
+          "alt": "Original context 1 1 for Statistics 2 question 15."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "Find the value of 𝑎."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q15_solution-1_p9.png",
+          "alt": "Original solution 1 for Statistics 2 question 15."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q16_context-1-1_p9.png",
+          "alt": "Original context 1 1 for Statistics 2 question 16."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "What is the CDF of 𝑋?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q16_solution-1_p9.png",
+          "alt": "Original solution 1 for Statistics 2 question 16."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q16_option-1-1_p9.png",
+            "alt": "Original option 1 1 for Statistics 2 question 16."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q16_option-2-1_p9.png",
+            "alt": "Original option 2 1 for Statistics 2 question 16."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q16_option-3-1_p9.png",
+            "alt": "Original option 3 1 for Statistics 2 question 16."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q16_option-4-1_p9.png",
+            "alt": "Original option 4 1 for Statistics 2 question 16."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q17_context-1-1_p9.png",
+          "alt": "Original context 1 1 for Statistics 2 question 17."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q17_prompt-1_p10.png",
+          "alt": "Original prompt 1 for Statistics 2 question 17."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q17_solution-1_p10.png",
+          "alt": "Original solution 1 for Statistics 2 question 17."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q17_solution-2_p10.png",
+          "alt": "Original solution 2 for Statistics 2 question 17."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q17_option-1-1_p10.png",
+            "alt": "Original option 1 1 for Statistics 2 question 17."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q17_option-2-1_p10.png",
+            "alt": "Original option 2 1 for Statistics 2 question 17."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q17_option-3-1_p10.png",
+            "alt": "Original option 3 1 for Statistics 2 question 17."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q17_option-4-1_p10.png",
+            "alt": "Original option 4 1 for Statistics 2 question 17."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q18_context-1-1_p10.png",
+          "alt": "Original context 1 1 for Statistics 2 question 18."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "Find the probability that the factory will produce at most 3 defective light bulbs in a batch of 5 light bulbs.\nEnter the answer correct to two decimal places."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q18_solution-1_p10.png",
+          "alt": "Original solution 1 for Statistics 2 question 18."
+        }
+      ],
+      "acceptable_answers": [
+        "0.93 (±0.03)"
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q19_context-1-1_p10.png",
+          "alt": "Original context 1 1 for Statistics 2 question 19."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q19_prompt-1_p11.png",
+          "alt": "Original prompt 1 for Statistics 2 question 19."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/32d800288004_q19_solution-1_p11.png",
+          "alt": "Original solution 1 for Statistics 2 question 19."
+        },
+        {
+          "kind": "text",
+          "value": "EXAM.GENZIITIAN.IN GENZIITIAN.IN/ECOSYSTEM YOUTUBE"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01
+    }
+  ]
+}

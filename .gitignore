@@ -25,3 +25,6 @@ _push/
 /backend/public/hot
 output/
 tools/ocr
+
+# Local rendered source pages and OCR scratch files
+tmp_maths2_ocr/

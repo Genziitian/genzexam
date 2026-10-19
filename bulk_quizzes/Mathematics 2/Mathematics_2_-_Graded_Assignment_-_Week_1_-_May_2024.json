@@ -9,14 +9,24 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "Match the systems of linear equations in Column A with their number of solutions in Column B and their geometric representation in Column C. Which of the following are true?\nColumn A:\ni) $x+y=3,\\ x-y=-3$\nii) $x+y+z=1,\\ x+y+z=7$\niii) $z=0,\\ x+y+z=1$\nColumn B: a) Infinite solutions; b) Unique solution; c) No solution.\nColumn C (transcription of the three source diagrams): 1) Two distinct parallel planes; 2) Two planes intersecting in a line; 3) Two straight lines intersecting in a point."
+          "value": "Match the systems of linear equations in Column A with their number of solutions in Column B and their geometric representation in Column C."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/ga1/q1-table.png",
+          "alt": "Original matching table with linear systems, numbers of solutions, and three geometric diagrams."
+        },
+        {
+          "kind": "text",
+          "value": "Which of the following are true?"
         }
       ],
       "options": [
         [
           {
-            "kind": "text",
-            "value": "i) $\\to$ b) $\\to$ 3)"
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/mathematics-2/ga1/q1-option1.png",
+            "alt": "i) maps to b) maps to 3)."
           }
         ],
         [

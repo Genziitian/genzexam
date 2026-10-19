@@ -20,7 +20,9 @@
       "For mcq_multi, provide correct_answers as 0-based option indices.",
       "For short_answer, provide acceptable_answers with at least one value.",
       "For numerical, provide numerical_answer and optional numerical_tolerance.",
-      "Image blocks are allowed in JSON, but images can be added later from admin edit screen if files are not available now."
+      "Image blocks work in prompt, each option, and explanation. Use url with HTTPS or /assets/exam-examples/, /uploads/, or /storage/ paths, plus meaningful alt text.",
+      "Crop original diagrams, charts, equations, or complex options without including answer keys, checked correct-answer markers, or worked solutions in the prompt/options. Deploy the referenced image files with the paper.",
+      "Every saved paper must contain 5 to 10 questions. Split larger papers into balanced parts."
     ],
     "supported_question_types": ["mcq_single", "mcq_multi", "true_false", "short_answer", "numerical"],
     "supported_block_kinds": ["text", "code", "image"]
@@ -40,7 +42,7 @@
           [{ "kind": "text", "value": "<option 1>" }],
           [{ "kind": "text", "value": "<option 2>" }],
           [{ "kind": "text", "value": "<option 3>" }],
-          [{ "kind": "text", "value": "<option 4>" }]
+          [{ "kind": "image", "url": "/assets/exam-examples/option-crop.png", "alt": "<description of original option 4>" }]
         ],
         "correct_answer": 0,
         "marks": 1,

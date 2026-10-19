@@ -1,0 +1,367 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Practice Assignment · Week 5 · Part 1",
+  "subject": "Python",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Write a function named create_matrix that accepts a positive integer n as argument. It should\nreturn a matrix of size\nn×n\nn × n all of whose elements are zeros. Select all correct implementations of this function.(MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option-(a) is wrong mainly because the matrix is not returned. Option-(b) is wrong as is not\nappended to just outside the inner-loop. Option-(c) is wrong as it doesn't accept the argument ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "def create_matrix(n):\n   A = [ ]\n   for i in range(n):\n       row = [ ]\n       for j in range(n):\n           row.append(0)\n       A.append(row)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def create_matrix(n):\n   A = [ ]\n   for i in range(n):\n       row = [ ]\n       for j in range(n):\n           row.append(0)\n   return A",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def create_matrix():\n   A = [ ]\n   for i in range(n):\n       row = [ ]\n       for j in range(n):\n           row.append(0)\n       A.append(row)\n   return A",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def create_matrix(n):\n   A = [ ]\n   for i in range(n):\n       row = [ ]\n       for j in range(n):\n           row.append(0)\n       A.append(row)\n   return A",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What are the different ways to initialize a dictionary?\nSelect all the correct ways to initialize a dictionary D . (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "D = { }",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "D = dict()",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "D = [ ]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "D = ( )",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How do we iterate through the key-value pairs in a dictionary?\nWhat is the output of the following snippet of code? Don't worry about the order in which the outputs\nare produced."
+        },
+        {
+          "kind": "code",
+          "value": "D = {'a': 1, 'ab': 2, 'abc': 3, 'abcd': 4}\n# easiest way to iterate through the keys of a dict\nfor key in D:\n   value = D[key]\n   print(f'{key}:{value}')",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "iterates over the keys of a dictionary. As mentioned in the comment, iterating though the key-value\npairs in a dictionary is as simple as this: for key in D: value = D[key]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "a:1\na:1\na:1\na:1",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "a:1\nab:2\nabc:3\nabcd:4",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "abcd:4\nabcd:4\nabcd:4\nabcd:4",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The code will throw an error."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What happens to a dictionary when the same key is assigned two different values at the time of\ninitialization?\nWhat is the output when the following snippet of code is executed?"
+        },
+        {
+          "kind": "code",
+          "value": "D = {'a': 1, 'b': 2, 'c': 3, 'a': 4, 'a': 5}\nprint(D)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The most recent value corresponding to the key is the one which is retained and the rest are\nabandoned. Think about it this way: D = {'a': 1, 'b': 2, 'c': 3, 'a': 4, 'a': 5} If this is processed from left to right, then it\ncan be equivalently expressed as: D = dict() D['a'] = 1 D['b'] = 2 D['c'] = 3 D['a'] = 4 D['a'] = 5 So, it makes a lot of\nsense to retain the last update to the key ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "{'a': 1, 'b': 2, 'c': 3}",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "{'a': 4, 'b': 2, 'c': 3}",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "{'a': 5, 'b': 2, 'c': 3}",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The code throws a SyntaxError when executed."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Some problems require the creation of a dictionary where each key-value pair is added within a loop,\none pair for every iteration.\nWrite a function named named length_analysis that accepts a list of distinct words L as\nargument. It should return a dictionary D that has the following structure:\nkeys: words in the list\nvalues: length of the word (key)\nSelect all correct implementations of this function. Will there be any problem if L has duplicate\nentries? (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The correct implementations assign len(word) directly. Reading D[word] before initializing that key raises KeyError in the other alternatives."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "def length_analysis(L):\n   D = dict()\n   for word in L:\n       D[word] = len(word)\n   return D",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def length_analysis(L):\n   D = { }\n   for word in L:\n       D[word] = len(word)\n   return D",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def length_analysis(L):\n   D = dict()\n   for word in L:\n       D[word] = D[word] + len(word)\n   return D",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def length_analysis(L):\n   D = { }\n   for word in L:\n       D[word] = D[word] + len(word)\n   return D",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How to determine the number of keys in a dictionary?\nWe wish to find the number of keys present in the dictionary D and store it in a variable named\nnum_keys . Select all snippets of code that achieve this. (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "num_keys = len(D)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "num_keys = 0\nfor key in D:\n   num_keys += 1",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [ ]\nfor key in D:\n   L.append(key)\nnum_keys = len(L)",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Keys of a dictionary and immutability\nWhich of the following can be the keys of a dictionary? (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Though this is not entirely accurate, keys of a dictionary should be immutable. For a more detailed\ntreatment of this topic, refer the ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "(1, 2)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "[1, 2]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "'1 2'",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "{1, 2}",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1.2"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "{1: 2, 3: 4}",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        4,
+        5
+      ]
+    }
+  ]
+}

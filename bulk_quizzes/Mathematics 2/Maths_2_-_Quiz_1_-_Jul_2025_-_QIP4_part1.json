@@ -1,0 +1,321 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Jul 2025 · QIP4 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function $T : \\mathbb{R}^2 \\to \\mathbb{R}$ defined by $T(x, y) = 2x + y + 1$ for all $(x, y) \\in \\mathbb{R}^2$.\nStatement P: $T$ is a linear transformation.\nStatement Q: $T$ is a one-to-one (injective) map.\nChoose the correct option:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Both P and Q are true."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "P is true and Q is false."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "P is false and Q is true."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both P and Q are false."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$T(0, 0) = 1 \\neq 0$, so $T$ is not linear (P is false). Furthermore, $T(0, 0) = 1$ and $T(1, -2) = 1$, so $T$ is not one-to-one (Q is false). Both P and Q are false."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is a basis for $V = \\{A \\in M_{2\\times 2}(\\mathbb{R}) : A^T = A\\}$, the vector space of $2 \\times 2$ symmetric matrices?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\left\\{ \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}, \\begin{bmatrix} 0 & 0 \\\\ 0 & 1 \\end{bmatrix} \\right\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\left\\{ \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}, \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix} \\right\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\left\\{ \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}, \\begin{bmatrix} 0 & 0 \\\\ 0 & 1 \\end{bmatrix}, \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix} \\right\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\left\\{ \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix} \\right\\}$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A $2 \\times 2$ symmetric matrix has 3 independent entries (two on the diagonal, one off-diagonal). The standard basis consists of the three matrices in option C."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the matrix which satisfies the characteristic equation $\\det(A - cI) = c^2 - 5c + 6$:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$A = \\begin{bmatrix} 5 & 3 \\\\ 0 & 2 \\end{bmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A = \\begin{bmatrix} 0 & -3 \\\\ 2 & 5 \\end{bmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A = \\begin{bmatrix} 2 & 0 \\\\ 1 & 3 \\end{bmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A = \\begin{bmatrix} 1 & 3 \\\\ 2 & 4 \\end{bmatrix}$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The equation implies $\\text{tr}(A) = 5$ and $\\det(A) = 6$. For $A = \\begin{bmatrix} 2 & 0 \\\\ 1 & 3 \\end{bmatrix}$, $\\text{tr}(A) = 2 + 3 = 5$ and $\\det(A) = 2 \\times 3 - 0 = 6$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given a vector space $V$, which of the following statements are equivalent to the statement that a set $\\mathcal{B} \\subseteq V$ is a basis?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}$ is a maximal linearly independent set of $V$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}$ is a minimal linearly independent set of $V$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}$ is a maximal spanning set of $V$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathcal{B}$ is a minimal spanning set of $V$."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By definition, a basis is both a maximal linearly independent set and a minimal spanning set."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A$ be a $3 \\times 3$ matrix such that $\\det(A) = -3$. For which of the options below is the matrix $B$ such that $\\det(B) = 12$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$B$ is obtained by swapping the first two rows and then multiplying the third row by 4."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$B$ is obtained by swapping the first and third row and then multiplying the second row by -4."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$B$ is obtained by multiplying the second row by -4."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$B$ is obtained by multiplying the first row by 2 and the third row by -2."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option A: $(-1) \\times 4 \\times (-3) = 12$. Option C: $(-4) \\times (-3) = 12$. Option D: $2 \\times (-2) \\times (-3) = 12$. Option B gives $(-1) \\times (-4) \\times (-3) = -12$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Each option contains a set $V$ with operations $+$ and $\\cdot$. Choose all options for which there is an additive identity in $V$ with respect to $+$:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$V = \\{x \\in \\mathbb{R} : x > 0\\}, x + y = xy, c \\cdot x = x^c$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$V = \\{(x, 1) : x \\in \\mathbb{R}\\}, (x, 1) + (y, 1) = (x + y, 1), c \\cdot (x, 1) = (cx, 1)$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For an $m \\times n$ matrix $A$ and a non-zero vector $b$ in its column space, $V = \\{x \\in \\mathbb{R}^n : Ax = b\\}$ with usual operations."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$V = \\{A \\in M_{n\\times n}(\\mathbb{R}) : A^T = -A\\}$ with usual matrix operations."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In (A), $x + 1 = x \\cdot 1 = x$, so $1$ is the identity. In (B), $(x, 1) + (0, 1) = (x, 1)$, so $(0, 1)$ is the identity. In (D), the zero matrix is skew-symmetric. In (C), $Ax = b$ does not contain the zero vector since $b \\neq 0$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A = \\begin{bmatrix} 1 & -1 & 1 & -1 \\end{bmatrix} \\in M_{1\\times 4}(\\mathbb{R})$ be a non-zero row matrix. Find the rank of $A$."
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Any non-zero row matrix has rank 1."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A = \\begin{bmatrix} 1 & -1 & 1 & -1 \\end{bmatrix} \\in M_{1\\times 4}(\\mathbb{R})$ and $M$ denote the reduced row echelon form of $A^T A$. Find the number of zero rows of $M$."
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$A^T A$ is a $4 \\times 4$ matrix of rank 1. In its RREF $M$, exactly 1 row is non-zero, so there are $4 - 1 = 3$ zero rows."
+        }
+      ]
+    }
+  ]
+}

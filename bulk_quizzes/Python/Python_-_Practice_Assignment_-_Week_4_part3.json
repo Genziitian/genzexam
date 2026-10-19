@@ -1,0 +1,374 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Practice Assignment · Week 4 · Part 3",
+  "subject": "Python",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "L = ['one', 'two', 'one', 'three', 'one']\nfreq = {word: L.count(word) for word in L}\nprint(freq)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "{'one': 3, 'two': 1, 'three': 1}",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "[('one', 3), ('two', 1), ('three', 1)]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "{'one': 1, 'two': 1, 'three': 1}",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "P = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5}\nP_r = {P[key]: key for key in P}\nprint(P_r)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In some sense, we are reversing the key-value mapping."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "{1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five'}",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "{'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5}",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume that is_prime is a function that accepts a positive integer as argument and returns True\nif it is a prime and False otherwise. Create a dictionary named P whose keys are all integers from\n[2,100]\n[2,100] endpoints inclusive. Value corresponding to a key should be True if the key is a prime and\nFalse otherwise. Select all correct implementations of this code. [MSQ]"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "P = {x: is_prime(x) for x in range(2, 101)}",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "P = dict()\nfor x in range(2, 101):\n   P[x] = is_prime(x)",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Write a function named copy that accepts a list P as argument and returns a copy of P . (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option-(a) is wrong as it doesn't have a return statement. ● Option-(b) is wrong because of line-4.\nwill append to the list ● in-place. It won't return anything. So, a statement like is incorrect. Just would suffice and\nthat is the right thing to do. Option-(d) is wrong because of line-4 again. is incorrect because we are ● trying to\nadd objects of two different types: is a list while need not be a list. But what happens if is a list of lists? This\nfunction would not get caught up in a run-time error. Though it is \"error-free\" in that sense, still, it doesn't return\na copy of . Do you see why? Try to call the function with and see what value it returns."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "def copy(P):\n   Q = [ ]\n   for elem in P:\n       Q = Q + [elem]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def copy(P):\n   Q = [ ]\n   for elem in P:\n       Q = Q.append(elem)\n   return Q",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def copy(P):\n   Q = [ ]\n   for elem in P:\n       Q.append(elem)\n   return Q",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def copy(P):\n   Q = [ ]\n   for elem in P:\n       Q = Q + elem\n   return Q",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def copy(P):\n   Q = [ ]\n   for elem in P:\n       Q = Q + [elem]\n   return Q",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        4
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The Euclidean distance of (x, y) from the origin is sqrt(x²+y²), and the Manhattan distance is |x|+|y|. Select the function distance(x, y, metric) that returns the requested distance and defaults to metric=\"manhattan\" when it is omitted. abs returns an absolute value."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option-(a) def distance(x, y, metric): if metric == 'euclidean': return (x ** 2 + y ** 2) ** 0.5 elif metric\n== 'manhattan': return abs(x) + abs(y) Here, is not a default argument. The definition of a default argument is a\nparameter in the function definition that is assigned a value. Here, is not assigned any value in the function's\nsignature. So, it is not a default argument. Another way to see this is to call . It will throw an error. Option-(d) def\ndistance(x, y, metric = 'euclidean'): if metric == 'euclidean': return (x ** 2 + y ** 2) ** 0.5 elif metric ==\n'manhattan': return abs(x) + abs(y) Though is a default argument here, its default value is , whereas the question\nstates that it should be . Option-(e) def distance(metric = 'manhattan', x, y): if metric == 'euclidean': return (x ** 2\n+ y ** 2) ** 0.5 elif metric == 'manhattan': return abs(x) + abs(y) This is wrong because, in Python, default\narguments should always come at the end. In other words, positional arguments should come before default\narguments. Try executing this and you will see that the interpreter throws a ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "def distance(x, y, metric):\n   if metric == 'euclidean':\n       return (x ** 2 + y ** 2) ** 0.5\n   elif metric == 'manhattan':\n       return abs(x) + abs(y)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def distance(x, y, 'manhattan'):\n   if metric == 'euclidean':\n       return (x ** 2 + y ** 2) ** 0.5\n   elif metric == 'manhattan':\n       return abs(x) + abs(y)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def distance(x, y, metric = 'manhattan'):\n   if metric == 'euclidean':\n       return (x ** 2 + y ** 2) ** 0.5\n   elif metric == 'manhattan':\n       return abs(x) + abs(y)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def distance(x, y, metric = 'euclidean'):\n   if metric == 'euclidean':\n       return (x ** 2 + y ** 2) ** 0.5\n   elif metric == 'manhattan':\n       return abs(x) + abs(y)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def distance(metric = 'manhattan', x, y):\n   if metric == 'euclidean':\n       return (x ** 2 + y ** 2) ** 0.5\n   elif metric == 'manhattan':\n       return abs(x) + abs(y)",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "def first():\n   second()\n   print('first')\ndef second():\n   third()\n   print('second')\ndef third():\n   print('third')\nfirst()",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A detailed explanation of this problem is provided as a part of the . If you are not able to access\nthe link, click this: https://pypod.github.io/chapter-4/lesson-4.4.html"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "first\nsecond\nthird",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "third\nfirst\nsecond",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "second\nthird\nfirst",
+            "language": "text"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "third\nsecond\nfirst",
+            "language": "text"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume this is a standalone program and add has not already been defined."
+        },
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "add(1, 2)\ndef add(a, b):\n   return a + b",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The first line calls add before its definition has executed, so Python raises NameError."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No output as there is no print statement."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The code will throw a NameError error as the function call cannot precede the function definition."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "def some_math_function(x):\n   return x ** 2\ndef some_math_function(x):\n   return x ** 3\nprint(some_math_function(2))",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Two functions with the same name can be defined. The interpreter will go with the most recent\ndefinition of the function, ignoring all other definitions that come before it. Remember that the interpreter\nprocesses the code from top to bottom."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The code will throw an error as we can't define two functions with the same name."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

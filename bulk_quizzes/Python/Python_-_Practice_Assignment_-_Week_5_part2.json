@@ -1,0 +1,390 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Practice Assignment · Week 5 · Part 2",
+  "subject": "Python",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Initializing a set and the potential confusion with an empty dictionary\nThe variable S is a set in which of the following options? (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "is the empty dictionary. Never mistake this for a set. Of course, notationally, we are referring to the\nPythonic set and not the mathematical set here, though both have a lot in common."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "S = set()",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "S = { }",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "S = {1, 2, 3}",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "S = set([1, 2, 3, 4, 3, 2, 1])",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Lists, tuples and dictionaries, all in one problem\nConsider the following snippet of code. The list L has information about some cricketers from the\nIndian team. Each element of the list is a tuple of size 3 and is of this form:\nEach element of the list corresponds to the runs scored by a batsman against some opposition\nin a match.\nSelect all possible values the input for which this code prints Star Batsman as output. (MSQ)"
+        },
+        {
+          "kind": "code",
+          "value": "L = [('Sachin', 'AUS', 240), ('Laxman', 'AUS', 289),\n    ('Sachin', 'WI', 78), ('Dravid', 'WI', 210),\n    ('Dravid', 'AUS', 200), ('Dravid', 'WI', 210),\n    ('Sachin', 'AUS', 50), ('Dravid', 'WI', 50),\n    ('Laxman', 'AUS', 30), ('Laxman', 'WI', 10)]\nD = { }\nfor item in L:\n   player, opp, runs = item\n   key = (player, opp)\n   if key not in D:\n       D[key] = 0\n   D[key] += runs\nplayer = input()\nopp = input()\nif D[(player, opp)] >= 300:\n   print('Star Batsman')",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Laxman scores 289+30 = 319 against AUS. Dravid scores 210+210+50 = 470 against WI. These are the only listed player/opposition totals of at least 300."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "Laxman\nAUS",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Sachin\nWI",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Dravid\nWI",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Sachin\nAUS",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Dravid\nAUS",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "Laxman\nWI",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Back to the keys of a dictionary\nIf D is some arbitrary dictionary, what can you say about the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "value": "S = set()\nL = list()\nfor key in D:\n   S.add(key)\n   L.append(key)\nprint(len(D) == len(S) == len(L))",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Keys of a dictionary are unique."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It is always True."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is always False."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It depends on the actual contents of the dictionary D ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This statement is True only if the dictionary D is non-empty."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "matrix is a square matrix that is given to you. Select all correct implementations of a program that\ncopies the last column of the matrix into a list named last_col . (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Take the last element of each row, either directly with matrix[i][-1] or by testing j == n−1 in nested loops."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "n = len(matrix)\nlast_col = [ ]\nfor i in range(n):\n   for j in range(n):\n       last_col.append(matrix[i][j])",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "n = len(matrix)\nlast_col = [ ]\nfor i in range(n):\n   last_col.append(matrix[i][-1])",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "n = len(matrix)\nlast_col = [ ]\nfor i in range(n):\n   last_col.append(matrix[-1][i])",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "n = len(matrix)\nlast_col = [ ]\nfor i in range(n):\n   for j in range(n):\n       if j == n - 1:\n          last_col.append(matrix[i][j])",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "L is a non-empty list of integers and x is an integer. Assume that both L and x have already been\ndefined. The following code does not throw any error when executed. Lines 1 and 6 will be used to\nrefer to the state of the variables before and after key sections of the code are executed.\nIf the value of count is 10 at the end of execution of the code (line-6), which of the following\nstatements are true? (MSQ)"
+        },
+        {
+          "kind": "code",
+          "value": "pass# before\ncount = 0\nwhile len(L) > 0:\n   L.remove(x)\n   count += 1\npass# after",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each successful iteration removes one x. With 10 iterations and no exception, the original list consists of ten copies of x and the final list is empty."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "x is an element of L at line-1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "L has at least two different (unequal) elements in it at line-1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Length of L is 10 at line-1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Length of L is 0 at line-6"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "P is a non-empty list of distinct integers that has already been defined. Which of the following\nstatements are true at the end of execution of the code given below?"
+        },
+        {
+          "kind": "code",
+          "value": "Q, R = [ ], [ ]\nfor x in P:\n   Q.append(-x)\nQ.sort()\nfor x in Q:\n   R.append(-x)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Negating, sorting ascending, and negating again gives the elements of P sorted in descending order. The multiset is preserved, but P need not originally have that order."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "P is always equal to R , i.e., P == R returns the value True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Every element in P is present in R , but not necessarily in the same sequence."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "R is a list of integers sorted in descending order."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "R is a list of integers sorted in ascending order."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume M is a non-empty square matrix."
+        },
+        {
+          "kind": "text",
+          "value": "Let M be a matrix of numbers that has already been defined and populated. We wish to find the sum\nof the elements in each row and store all such row-sums in a list called rsum . For the\nith\ni\nth\nrow, rsum[i] should be the sum of all elements in that row. Select the correct code snippets that\nachieve this. (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The first and fourth alternatives accumulate row i into rsum[i]. The second discards previous rows, and the third accumulates column sums."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "dim = len(M)\nrsum = [ ]\nfor i in range(dim):\n   rsum.append(0)\n   for j in range(dim):\n       rsum[-1] += M[i][j]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "dim = len(M)\nfor i in range(dim):\n   rsum = [ ]\n   rsum.append(0)\n   for j in range(dim):\n       rsum[-1] += M[i][j]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "dim = len(M)\nrsum = [ ]\nfor i in range(dim):\n   rsum.append(0)\nfor i in range(dim):\n   for j in range(dim):\n       rsum[j] += M[i][j]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "dim = len(M)\nrsum = [ ]\nfor i in range(dim):\n   rsum.append(0)\nfor i in range(dim):\n   for j in range(dim):\n       rsum[i] += M[i][j]",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ]
+    }
+  ]
+}
