@@ -38,9 +38,11 @@
 #ep-app #pr-timer-dot:not([style*="#ef4444"]){background:var(--pr-brand)!important}
 #ep-app #ep-countdown:not([style*="#ef4444"]):not(.pr-low){color:var(--pr-ink)!important}
 #ep-app .pr-live-tools>div:has(#ep-countdown.pr-low),#ep-app .pr-live-tools>div:has(#ep-countdown[style*="#ef4444"]){background:var(--pr-red-soft)!important}
-#ep-app #btn-student-submit{background:var(--pr-brand)!important;border-radius:999px!important;padding:9px 20px!important;box-shadow:0 8px 20px -10px var(--pr-brand)!important;transition:background .15s,transform .12s!important}
-#ep-app #btn-student-submit:hover{background:var(--pr-brand-hover)!important}
-#ep-app #btn-student-submit:active{transform:translateY(1px)}
+#ep-app #btn-student-submit{background:linear-gradient(135deg,var(--pr-brand) 0%,#6b6ff5 100%)!important;border-radius:12px!important;padding:8px 20px 8px 10px!important;gap:10px!important;font-size:13px!important;font-weight:800!important;letter-spacing:.01em;box-shadow:0 10px 24px -12px var(--pr-brand),inset 0 1px 0 rgba(255,255,255,.28)!important;transition:transform .14s,box-shadow .14s,filter .14s!important}
+#ep-app #btn-student-submit svg{box-sizing:content-box;width:14px;height:14px;padding:5px;border-radius:50%;background:rgba(255,255,255,.22)}
+#ep-app #btn-student-submit:hover{transform:translateY(-1px);filter:brightness(1.07);box-shadow:0 14px 28px -12px var(--pr-brand),inset 0 1px 0 rgba(255,255,255,.28)!important}
+#ep-app #btn-student-submit:active{transform:translateY(1px);filter:brightness(.97)}
+#ep-app #btn-student-submit:focus-visible{outline:3px solid rgba(107,111,245,.45);outline-offset:2px}
 
 /* ---------- sidebar ---------- */
 #ep-app .pr-live-aside{background:var(--pr-surface)!important;border-right:1px solid var(--pr-line)!important}
