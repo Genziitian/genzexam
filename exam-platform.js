@@ -211,7 +211,10 @@
     const video = document.getElementById("ep-cam-stream");
     const canvas = document.getElementById("ep-cam-canvas");
     if (!video || !canvas) return;
-    if (app.webcamStream) return;
+    if (app.webcamStream) {
+      if (video.srcObject !== app.webcamStream) video.srcObject = app.webcamStream;
+      return;
+    }
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({ video: { width: 320, height: 240 } })
         .then((stream) => {
@@ -1489,7 +1492,9 @@
     const e = app.exam || {},
       sess = app.state?.session || {},
       published = !!e.results_published;
-    return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-card ep-result-card"><p class="ep-eyebrow">SUBMISSION RECEIVED</p><h1>${esc(e.title)}</h1><p>Your submission was recorded at ${esc(formatDate(sess.submitted_at))}.</p>${published && sess.score != null ? `<div class="ep-result-score"><b>${Number(sess.score)}</b><span>/ ${Number(sess.total_marks || 0)} marks</span></div>` : '<div class="ep-alert">Your score and answer review will appear here after the exam manager publishes results.</div>'}</div>${published ? `<div class="ep-card"><h2>Answer review</h2>${(e.questions || []).map((q, i) => `<article class="ep-preview-q"><b>${i + 1}. ${esc(q.type)} · ${Number(q.marks || 0)} marks</b><div>${contentHtml(q.prompt)}</div>${q.type === "comprehension" ? "" : `<p class="ep-muted">Your answer</p><div>${answerHtml(q, sess.answers?.[q.id])}</div><p class="ep-muted">Accepted answer</p><div>${answerHtml(q, q.correct_answer ?? q.correct_answers ?? q.numerical_answer ?? q.acceptable_answers)}</div>`}${q.explanation ? `<div>${contentHtml(q.explanation)}</div>` : ""}</article>`).join("")}</div>` : ""}</section>`;
+    const total = Number(e.questions?.length || e.question_count || 0);
+    const answered = Object.values(sess.answers || {}).filter((v) => v != null && v !== "" && !(Array.isArray(v) && !v.length)).length;
+    return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-card ep-result-card"><div class="ep-res-hero"><div class="ep-res-ico">${I("check", 34, "#fff")}</div><p class="ep-eyebrow">SUBMISSION RECEIVED</p><h1>${esc(e.title)}</h1><p class="ep-res-time">${I("clock", 14, "#2b30b8")} Recorded at ${esc(formatDate(sess.submitted_at))}</p></div><div class="ep-res-stats"><div><span>Answered</span><b>${answered}</b></div><div><span>Questions</span><b>${total || "—"}</b></div><div><span>Warnings</span><b>${Number(sess.warnings || 0)}</b></div><div><span>Status</span><b>Submitted</b></div></div>${published && sess.score != null ? `<div class="ep-result-score"><b>${Number(sess.score)}</b><span>/ ${Number(sess.total_marks || 0)} marks</span></div>` : `<div class="ep-res-wait">${I("clock", 20, "#8a5a00")}<div><b>Results not published yet</b><span>Your score and answer review will appear here once the exam manager publishes results. You can safely close this page.</span></div></div>`}<div class="ep-res-actions"><button class="ep-btn ep-btn-primary" data-action="back">Back to exams</button></div></div>${published ? `<div class="ep-card"><h2>Answer review</h2>${(e.questions || []).map((q, i) => `<article class="ep-preview-q"><b>${i + 1}. ${esc(q.type)} · ${Number(q.marks || 0)} marks</b><div>${contentHtml(q.prompt)}</div>${q.type === "comprehension" ? "" : `<p class="ep-muted">Your answer</p><div>${answerHtml(q, sess.answers?.[q.id])}</div><p class="ep-muted">Accepted answer</p><div>${answerHtml(q, q.correct_answer ?? q.correct_answers ?? q.numerical_answer ?? q.acceptable_answers)}</div>`}${q.explanation ? `<div>${contentHtml(q.explanation)}</div>` : ""}</article>`).join("")}</div>` : ""}</section>`;
   }
   function sessionTable(sessions) {
     const list = Array.isArray(sessions)
@@ -1588,7 +1593,7 @@
           <div class="ep-cam-viewfinder">
             <video id="ep-cam-stream" class="ep-cam-video" autoplay playsinline muted></video>
             <canvas id="ep-cam-canvas" width="320" height="240" style="display:none;"></canvas>
-            <img id="ep-cam-snapshot" class="ep-cam-preview-img" style="display:${app.photoDataUrl ? "block" : "none"};" ${app.photoDataUrl ? `src="${app.photoDataUrl}"` : ""} />
+            <img id="ep-cam-snapshot" class="ep-cam-preview-img" onerror="this.style.display='none';var v=document.getElementById('ep-cam-stream');if(v)v.style.display='block'" style="display:${app.photoDataUrl ? "block" : "none"};" ${app.photoDataUrl ? `src="${app.photoDataUrl}"` : ""} />
             <div id="ep-cam-fallback-tag" style="display:none;position:absolute;bottom:8px;left:8px;font-size:10px;background:rgba(0,0,0,0.6);color:#fff;padding:2px 6px;border-radius:4px;">
               Live Viewfinder
             </div>
@@ -2931,7 +2936,11 @@
           } else {
             simulateCanvasCamera(canvas, video);
           }
-          app.photoDataUrl = canvas.toDataURL("image/jpeg");
+          app.photoDataUrl = canvas.toDataURL("image/jpeg", 0.9);
+          if (!/^data:image\/jpeg;base64,.{500,}/.test(app.photoDataUrl)) {
+            simulateCanvasCamera(canvas, video);
+            app.photoDataUrl = canvas.toDataURL("image/jpeg", 0.9);
+          }
           if (snapshotImg) {
             snapshotImg.src = app.photoDataUrl;
             snapshotImg.style.display = "block";
@@ -3079,10 +3088,10 @@
     );
     const items = Array.isArray(d) ? d : d.messages || [];
     const dialog = document.createElement("dialog");
-    dialog.className = "ep-dialog";
+    dialog.className = "ep-dialog ep-msgpanel";
     dialog.innerHTML = `<form method="dialog"><header><h2>Exam messages</h2><button class="ep-btn ep-btn-quiet">Close</button></header><div class="ep-message-list">${items.map((m) => `<article><b>${esc(m.sender_name || m.name || m.role || "Participant")}</b><small>${esc(formatDate(m.created_at))}</small><p>${esc(m.text)}</p></article>`).join("") || '<p class="ep-muted">No messages yet.</p>'}</div><div class="ep-message-compose"><textarea name="text" maxlength="2000" placeholder="Write a message to the exam room…"></textarea><button type="button" class="ep-btn ep-btn-primary" data-send-message>Send</button></div></form>`;
     document.body.appendChild(dialog);
-    dialog.showModal();
+    dialog.show();
     dialog.querySelector("[data-send-message]").onclick = async () => {
       const text = dialog.querySelector("textarea").value.trim();
       if (!text) return;
