@@ -33,6 +33,12 @@ class CodeExecutionServiceTest extends TestCase
         $this->assertTrue($this->judge(self::SOLUTION, "0\n0", '(0, 0)')['passed']);
     }
 
+    public function test_input_of_just_zero_reaches_the_program(): void
+    {
+        $p = new IDEProblem(['suffix_code' => "num = int(input())\nprint(num == 0)"]);
+        $this->assertTrue($this->judge('', '0', 'True', $p)['passed']);
+    }
+
     public function test_starter_code_alone_fails_with_a_visible_error(): void
     {
         $r = $this->judge($this->problem()->starter_code, "3\n4", '(25, 7)');

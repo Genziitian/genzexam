@@ -365,6 +365,7 @@
   function lineCount(t) { return t ? t.replace(/\r\n/g, "\n").replace(/\n+$/, "").split("\n").length : 0; }
   function clean(t) { return (t || "").replace(/\r\n/g, "\n").replace(/^\n+|\n+$/g, ""); }
   // Drafts live in this browser only, so key them by account: one student's code must never open in another's editor.
+  var dirty = false;   // edited since the last submit (the draft itself is auto-saved on every change)
   function draftKey(p) { var u = ""; try { u = (JSON.parse(localStorage.getItem("lab_user") || "{}") || {}).id || ""; } catch (e) {} return "ide.draft." + u + "." + p.id; }
   function initialMiddle(p) {
     var saved = null; try { saved = localStorage.getItem(draftKey(p)); } catch (e) {}
@@ -391,17 +392,16 @@
       var last = inst.lineCount() - F - S - 1;
       if (ch.from.line < P || ch.to.line > last) ch.cancel();
     });
+    dirty = false;
     cm.on("change", function () {
-      paintLocked();
+      dirty = true; paintLocked();
       try { localStorage.setItem(draftKey(p), studentCode()); } catch (e) {}
     });
-    // Clicking (or arrowing into) a numbered blank line past the end opens up the lines down to it.
+    // Clicking a numbered blank line below the code must not shove the locked lines down; park the caret at the end of the editable part instead.
     cm.on("cursorActivity", function (inst) {
       var ln = inst.getCursor().line, total = inst.lineCount(), lastMid = total - F - S - 1;
-      if (ext || ln < total - F) return;
-      ext = true;
-      inst.operation(function () { inst.replaceRange(new Array(ln - lastMid + 1).join("\n"), { line: lastMid, ch: inst.getLine(lastMid).length }); inst.setCursor({ line: ln, ch: 0 }); });
-      ext = false; paintLocked();
+      if (ext || ln <= lastMid) return;
+      ext = true; inst.setCursor({ line: lastMid, ch: inst.getLine(lastMid).length }); ext = false;
     });
     paintLocked();
     // put caret in the editable area
@@ -462,7 +462,7 @@
         var box = el("div"), results = res.test_results || [];
         var passed = results.filter(function (c) { return c.passed; }).length;
         if (kind === "submit") {
-          var ok = res.status === "accepted"; if (ok) markSolved(current.id);
+          dirty = false; var ok = res.status === "accepted"; if (ok) markSolved(current.id);
           box.appendChild(el("div", "verdict " + (ok ? "ok" : "bad"), (ok ? "Accepted" : String(res.status || "").replace(/_/g, " ")) + " — " + res.passed_cases + "/" + res.total_cases + " cases passed"));
           loadSubmissionsSoon();
         } else {
@@ -521,8 +521,11 @@
         row.appendChild(el("span", "", s.submitted_at ? new Date(s.submitted_at).toLocaleString() : ""));
         var b = el("button", "btn", "Load code");
         b.addEventListener("click", function () {
-          api("/ide-problems/" + current.id + "?submission_id=" + s.id).then(function (r) {
-            if (r.selected_submission) buildEditor(current, middleFrom(r.selected_submission.code));
+          ask("Load this submission?", "This replaces the code in the editor with the code from this submission. Your current code will be lost.", "Load code").then(function (ok) {
+            if (!ok) return;
+            api("/ide-problems/" + current.id + "?submission_id=" + s.id).then(function (r) {
+              if (r.selected_submission) buildEditor(current, middleFrom(r.selected_submission.code));
+            });
           });
         });
         row.appendChild(b); box.appendChild(row);
@@ -615,7 +618,7 @@
       side.appendChild(g);
     });
     var foot = el("div", "foot"), rb = el("button", "", ""); rb.type = "button"; rb.title = "Report a problem with this question";
-    rb.innerHTML = icon("flag") + " Report"; rb.addEventListener("click", openReport); foot.appendChild(rb); side.appendChild(foot);
+    rb.innerHTML = icon("flag") + " Report question"; rb.addEventListener("click", openReport); foot.appendChild(rb); side.appendChild(foot);
   }
   function startPaper(paper, id) {
     problems = paper.problems;
@@ -623,9 +626,14 @@
   }
   // Back returns to the course practice page with the coding tab of this paper open.
   function leave() {
+    if (dirty && cm && studentCode().trim() !== (current.starter_code || "").trim()) {
+      return ask("Go back without submitting?", "Your code is auto-saved on this device, but it has not been submitted. Stay here to submit first, or go back and keep it as a draft.", "Go back").then(function (ok) { if (ok) { dirty = false; leave(); } });
+    }
     var t = problems.length ? typeOf(split(problems[0]).paper) : null;
     location.assign("/practice/" + encodeURIComponent(courseSlug) + (t ? "?ide=" + encodeURIComponent(t) : ""));
   }
+
+  window.addEventListener("beforeunload", function (e) { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
 
   function boot() {
     if (isMobileView()) return location.replace("/practice/" + encodeURIComponent(courseSlug));
