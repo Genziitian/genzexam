@@ -111,8 +111,8 @@ class StorefrontController extends Controller
             if ($rows->isEmpty() && ! $purchased && ! $paid) {
                 return null;
             }
-            // A free paper that has been withdrawn leaves nothing to open.
-            if (! $available && ! $purchased && ! ($paid && $entitlement)) {
+            // A withdrawn free paper the student never touched leaves nothing to show; one they attempted stays in their record (shown as Unavailable).
+            if (! $available && $rows->isEmpty() && ! $purchased && ! ($paid && $entitlement)) {
                 return null;
             }
 

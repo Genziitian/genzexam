@@ -42,6 +42,8 @@ class CodeExecutionService
 
     public function execute(string $language, string $code, string $input = '', int $timeLimit = 5): array
     {
+        // Laravel's Process skips stdin when the input is falsy, so a lone "0" never reached the program. A trailing newline is also what a terminal sends.
+        $input = rtrim($input, "\r\n")."\n";
         $result = $this->dispatch($language, $code, $input, $timeLimit);
         $result['exit_code'] = (int) ($result['exit_code'] ?? 1);
         $result['stdout'] = (string) ($result['stdout'] ?? '');
