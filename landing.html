@@ -65,6 +65,8 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   img{display:block}
   a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
   .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+  @media(min-width:1500px){.wrap{max-width:1480px}}
+  @media(min-width:1800px){.wrap{max-width:1680px}}
   .display{font-family:var(--display);letter-spacing:-.03em}
   .eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-text)}
   .h2{margin-top:10px;font-family:var(--display);font-weight:800;font-size:clamp(32px,4.4vw,48px);line-height:1.08;letter-spacing:-.03em;text-wrap:balance}

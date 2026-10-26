@@ -145,6 +145,8 @@
 #ep-app .pr-pt-btn.primary{background:var(--pr-brand);border-color:var(--pr-brand);color:#fff}
 #ep-app .pr-reveal-btn{background:var(--pr-green-soft);border:1px solid var(--pr-green);color:var(--pr-green);padding:9px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer}
 #ep-app .pr-correct{border-color:var(--pr-green)!important;background:var(--pr-green-soft)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--pr-green) 22%,transparent)}
+#ep-app [id^="pr-q-"] label.pr-correct,#ep-app [id^="pr-q-"] label.pr-correct:has(input:checked){border-color:var(--pr-green)!important;background:var(--pr-green-soft)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--pr-green) 30%,transparent)}
+#ep-app [id^="pr-q-"] label.pr-correct::before,#ep-app [id^="pr-q-"] label.pr-correct:has(input:checked)::before{background:var(--pr-green);color:#fff}
 #ep-app .pr-key{margin-top:12px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--pr-green);background:var(--pr-green-soft);color:var(--pr-green);font-weight:700;font-size:14px}
 #ep-app .pr-explain{margin:-10px 0 22px}
 #ep-app .pr-explain-btn{padding:8px 14px;border-radius:8px;border:1px solid var(--pr-brand);background:var(--pr-brand-soft);color:var(--pr-brand-text);font:700 13px inherit;cursor:pointer}

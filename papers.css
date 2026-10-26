@@ -33,6 +33,8 @@ img{display:block}
 [hidden]{display:none!important}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
 .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+@media(min-width:1500px){.wrap{max-width:1480px}}
+@media(min-width:1800px){.wrap{max-width:1680px}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-text)}
 

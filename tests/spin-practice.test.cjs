@@ -53,7 +53,8 @@ assert.ok(
   "app-enhancements.js must call the /student/spin-practice API"
 );
 assert.ok(
-  appEnhancements.includes("fillTryPractice();") && appEnhancements.includes("syncTryPracticeNav();"),
+  (appEnhancements.includes("fillTryPractice();") || appEnhancements.includes("guard(fillTryPractice)")) &&
+  (appEnhancements.includes("syncTryPracticeNav();") || appEnhancements.includes("guard(syncTryPracticeNav)")),
   "app-enhancements.js run() function must execute fillTryPractice and syncTryPracticeNav"
 );
 

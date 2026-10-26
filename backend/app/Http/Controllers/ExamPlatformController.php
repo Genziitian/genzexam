@@ -136,6 +136,14 @@ class ExamPlatformController extends Controller
         return response()->json(['exam' => $this->managerExam($record->fresh(), true)]);
     }
 
+    public function destroy(Request $request, string $exam): JsonResponse
+    {
+        $record = $this->ownedExam($request->user(), $exam);
+        $record->delete(); // sessions, enrollments, events, messages and audit logs cascade
+
+        return response()->json(['deleted' => true]);
+    }
+
     public function importQuestions(Request $request, string $exam): JsonResponse
     {
         $record = $this->ownedExam($request->user(), $exam);

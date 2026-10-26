@@ -290,6 +290,7 @@ Route::prefix('exam-platform')->group(function () {
         Route::middleware('is_manager')->group(function () {
             Route::post('/exams', [ExamPlatformController::class, 'store'])->middleware('throttle:10,1,exam-post-exams-');
             Route::patch('/exams/{exam}', [ExamPlatformController::class, 'update'])->whereUuid('exam')->middleware('throttle:30,1,exam-patch-exams-exam-');
+            Route::delete('/exams/{exam}', [ExamPlatformController::class, 'destroy'])->whereUuid('exam')->middleware('throttle:10,1,exam-delete-exams-exam-');
             Route::post('/exams/{exam}/import', [ExamPlatformController::class, 'importQuestions'])->whereUuid('exam')->middleware('throttle:10,1,exam-post-exams-exam-import-');
             Route::put('/exams/{exam}/enrollments', [ExamPlatformController::class, 'replaceEnrollments'])->whereUuid('exam')->middleware('throttle:10,1,exam-put-exams-exam-enrollments-');
             Route::post('/exams/{exam}/actions', [ExamPlatformController::class, 'action'])->whereUuid('exam')->middleware('throttle:30,1,exam-post-exams-exam-actions-');

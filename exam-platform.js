@@ -128,6 +128,24 @@
         return "";
     }
   }
+  function askConfirm(title, message, ok = "Confirm", danger = false) {
+    return new Promise((resolve) => {
+      const modal = document.createElement("div");
+      modal.className = "ep-modal-backdrop";
+      modal.innerHTML = `<div class="ep-onboarding-card ep-ask" role="alertdialog" aria-modal="true"><div class="ep-ask-ico${danger ? " danger" : ""}">${I(danger ? "alert" : "check", 22, "#fff")}</div><h2>${esc(title)}</h2><p>${message}</p><div class="ep-ask-btns"><button class="ep-btn" data-x="no">Cancel</button><button class="ep-btn ${danger ? "ep-btn-danger" : "ep-btn-primary"}" data-x="yes">${esc(ok)}</button></div></div>`;
+      const done = (v) => { modal.remove(); document.removeEventListener("keydown", onKey); resolve(v); };
+      const onKey = (e) => e.key === "Escape" && done(false);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target.dataset.x === "no") done(false);
+        else if (e.target.dataset.x === "yes") done(true);
+      });
+      document.addEventListener("keydown", onKey);
+      document.body.appendChild(modal);
+      modal.querySelector('[data-x="yes"]').focus();
+    });
+  }
+  const confirmDelete = (title) =>
+    askConfirm("Delete this exam?", `<b>${esc(title)}</b> and all its questions, enrollments, student attempts and results will be permanently deleted. This cannot be undone.`, "Delete exam", true);
   function showCocModal() {
     let modal = document.getElementById("ep-coc-modal");
     if (modal) modal.remove();
@@ -518,6 +536,9 @@
     app.selected = id;
     const d = await request(`/exam-platform/exams/${encodeURIComponent(id)}`);
     app.exam = examFrom(d);
+    app.qIdx = 0;
+    app.mgrMessages = null;
+    app.msgDraft = "";
     app.screen = app.exam?.status === "draft" ? "edit" : "detail";
     render();
   }
@@ -592,7 +613,7 @@
     const preview = studentPreview();
     const manager = isManager() && !preview;
     const list = preview ? app.exams.filter((e) => e.status && e.status !== "draft") : app.exams;
-    return `<section class="ep-page"><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "EXAM MANAGEMENT" : "ONLINE EXAMS"}</p><h1>${manager ? "Online proctoring" : "Your exams"}</h1></div>${manager ? '<button class="ep-btn ep-btn-primary" data-action="new">Create exam</button>' : '<button class="ep-btn" data-action="refresh-list">Refresh</button>'}</div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}${app.notice ? `<div class="ep-alert">${esc(app.notice)}</div>` : ""}${systemPanel()}${preview ? '<div class="ep-alert">Student preview. This is what enrolled students see for your published exams. You are signed in as a manager, so exams cannot be taken from here. <a class="ep-link" href="/exams">Go to exam management</a></div>' : ""}${manager ? `<div class="ep-card"><div class="ep-card-head"><h2>Exams</h2><button class="ep-btn ep-btn-quiet" data-action="refresh-list">Refresh</button></div>${list.length ? `<div class="ep-table-wrap"><table><thead><tr><th>Exam</th><th>Status</th><th>Schedule</th><th>Questions</th><th></th></tr></thead><tbody>${list.map((e) => `<tr><td><b>${esc(e.title)}</b><small>${esc(e.subject || "—")}</small></td><td><span class="ep-status ${esc(e.closed ? "ended" : e.status)}">${esc(e.closed ? "closed" : e.status || "draft")}</span></td><td>${esc(formatDate(e.scheduled_at))}${e.closes_at ? `<small>Ends ${esc(formatDate(e.closes_at))}</small>` : ""}</td><td>${Number(e.question_count ?? e.questions_count ?? e.questions?.length ?? 0)}</td><td><button class="ep-btn ep-btn-small" data-action="open" data-id="${esc(e.id)}" ${(e.closed && !manager) || preview ? "disabled" : ""}>${manager ? "Manage" : e.closed ? "Closed" : preview ? "Preview" : "Open"}</button></td></tr>`).join("")}</tbody></table></div>` : `<div class="ep-empty"><div class="ep-empty-icon">${manager ? "＋" : "◷"}</div><h3>${manager ? "No exams yet" : "No exams available"}</h3><p>${manager ? "Create a draft exam to begin setting up questions and enrollment." : preview ? "Students see exams here once you publish them and enrol their email." : "Ask your exam manager to enroll your account."}</p></div>`}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}</div>` : `${studentExams(list, preview)}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}`}</section>`;
+    return `<section class="ep-page"><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "EXAM MANAGEMENT" : "ONLINE EXAMS"}</p><h1>${manager ? "Online proctoring" : "Your exams"}</h1></div>${manager ? '<button class="ep-btn ep-btn-primary" data-action="new">Create exam</button>' : '<button class="ep-btn" data-action="refresh-list">Refresh</button>'}</div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}${app.notice ? `<div class="ep-alert">${esc(app.notice)}</div>` : ""}${systemPanel()}${preview ? '<div class="ep-alert">Student preview. This is what enrolled students see for your published exams. You are signed in as a manager, so exams cannot be taken from here. <a class="ep-link" href="/exams">Go to exam management</a></div>' : ""}${manager ? `<div class="ep-card"><div class="ep-card-head"><h2>Exams</h2><button class="ep-btn ep-btn-quiet" data-action="refresh-list">Refresh</button></div>${list.length ? `<div class="ep-table-wrap"><table><thead><tr><th>Exam</th><th>Status</th><th>Schedule</th><th>Questions</th><th></th></tr></thead><tbody>${list.map((e) => `<tr><td><b>${esc(e.title)}</b><small>${esc(e.subject || "—")}</small></td><td><span class="ep-status ${esc(e.closed ? "ended" : e.status)}">${esc(e.closed ? "closed" : e.status || "draft")}</span></td><td>${esc(formatDate(e.scheduled_at))}${e.closes_at ? `<small>Ends ${esc(formatDate(e.closes_at))}</small>` : ""}</td><td>${Number(e.question_count ?? e.questions_count ?? e.questions?.length ?? 0)}</td><td><button class="ep-btn ep-btn-small" data-action="open" data-id="${esc(e.id)}" ${(e.closed && !manager) || preview ? "disabled" : ""}>${manager ? "Manage" : e.closed ? "Closed" : preview ? "Preview" : "Open"}</button>${manager && !preview ? ` <button class="ep-btn ep-btn-small ep-btn-danger" data-action="delete-exam" data-id="${esc(e.id)}" data-title="${esc(e.title)}">Delete</button>` : ""}</td></tr>`).join("")}</tbody></table></div>` : `<div class="ep-empty"><div class="ep-empty-icon">${manager ? "＋" : "◷"}</div><h3>${manager ? "No exams yet" : "No exams available"}</h3><p>${manager ? "Create a draft exam to begin setting up questions and enrollment." : preview ? "Students see exams here once you publish them and enrol their email." : "Ask your exam manager to enroll your account."}</p></div>`}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}</div>` : `${studentExams(list, preview)}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}`}</section>`;
   }
   /* The student's exam list: one card per exam, with the next thing they can do. */
   const STUDENT_STATUS = {
@@ -1090,6 +1111,9 @@
           <button class="saas-tab-btn ${currentTab === "whitelist" ? "active" : ""}" data-action="mgr-tab" data-tab="whitelist">
             ${I("users", 14)} Whitelist &amp; Enrollment <span class="saas-tab-badge">${enrolledCount}</span>
           </button>
+          <button class="saas-tab-btn ${currentTab === "messages" ? "active" : ""}" data-action="mgr-tab" data-tab="messages">
+            ${I("message", 14)} Doubts &amp; Messages ${app.mgrMessages?.length ? `<span class="saas-tab-badge">${app.mgrMessages.length}</span>` : ""}
+          </button>
         </div>
 
         <!-- Tab Content -->
@@ -1344,10 +1368,31 @@
       return `
         <div>
           <div style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">
-            <div style="font-size:14px;font-weight:700;color:#f9fafb;">Questions Bank (${e.questions?.length || 0})</div>
+            <div style="font-size:14px;font-weight:700;color:#1c1f8f;">Questions Bank (${e.questions?.length || 0})</div>
             ${e.status === "draft" ? '<button class="saas-btn saas-btn-primary" data-action="edit-json">Edit Imported JSON</button>' : ""}
           </div>
           ${managerQuestions(e.questions || [])}
+        </div>
+      `;
+    }
+
+    if (tab === "messages") {
+      const items = app.mgrMessages || [];
+      return `
+        <div class="saas-card">
+          <div class="saas-table-toolbar">
+            <div style="font-weight:700;color:#1c1f8f;display:flex;align-items:center;gap:8px;">${I("message", 16, "#3a3fd8")} Doubts &amp; Messages (${items.length})</div>
+            <button class="saas-btn" data-action="msg-refresh">${I("refresh", 12)} Refresh</button>
+          </div>
+          <div class="ep-msgtab-list">${
+            items.length
+              ? items.map((m) => `<article><div><b>${esc(m.sender_name || m.name || m.role || "Participant")}</b><small>${esc(formatDate(m.created_at))}</small></div><p>${esc(m.text)}</p></article>`).join("")
+              : '<p class="ep-muted" style="padding:8px 4px;">No messages yet.</p>'
+          }</div>
+          <div class="ep-msgtab-compose">
+            <textarea id="ep-msg-input" maxlength="2000" placeholder="Write a message to the exam room…">${esc(app.msgDraft || "")}</textarea>
+            <button class="saas-btn saas-btn-primary" data-action="msg-send">Send</button>
+          </div>
         </div>
       `;
     }
@@ -1455,7 +1500,12 @@
       : '<div class="ep-empty compact"><p>No candidate sessions yet.</p></div>';
   }
   function managerQuestions(qs) {
-    return `<div class="ep-card"><h2>Questions · ${qs.length}</h2>${qs.length ? qs.map((q, i) => `<article class="ep-preview-q"><b>${i + 1}. ${esc(q.type)} · ${Number(q.marks || 0)} marks · ${Number(q.negative || 0)} penalty for a wrong answer</b><div>${contentHtml(q.prompt)}</div>${(q.options || []).map((o, j) => `<div class="ep-preview-option">${String.fromCharCode(65 + j)}. ${contentHtml(o)}</div>`).join("")}${q.type === "comprehension" ? "" : `<p class="ep-muted">Accepted answer</p><div>${answerHtml(q, q.correct_answer ?? q.correct_answers ?? q.numerical_answer ?? q.acceptable_answers)}</div>`}${q.explanation ? `<div>${contentHtml(q.explanation)}</div>` : ""}</article>`).join("") : '<p class="ep-muted">No questions imported.</p>'}</div>`;
+    if (!qs.length) return '<div class="ep-card"><h2>Questions · 0</h2><p class="ep-muted">No questions imported.</p></div>';
+    const n = Math.min(Math.max(Number(app.qIdx) || 0, 0), qs.length - 1);
+    const q = qs[n];
+    const nav = (label, to, off) => `<button class="ep-btn" data-action="q-nav" data-i="${to}" ${off ? "disabled" : ""}>${label}</button>`;
+    const dots = qs.map((_, k) => `<button class="ep-qdot${k === n ? " on" : ""}" data-action="q-nav" data-i="${k}">${k + 1}</button>`).join("");
+    return `<div class="ep-card ep-qviewer"><h2>Questions · ${qs.length}</h2><div class="ep-qdots">${dots}</div><article class="ep-preview-q"><b>${n + 1}. ${esc(q.type)} · ${Number(q.marks || 0)} marks · ${Number(q.negative || 0)} penalty for a wrong answer</b><div>${contentHtml(q.prompt)}</div>${(q.options || []).map((o, j) => `<div class="ep-preview-option">${String.fromCharCode(65 + j)}. ${contentHtml(o)}</div>`).join("")}${q.type === "comprehension" ? "" : `<p class="ep-muted">Accepted answer</p><div>${answerHtml(q, q.correct_answer ?? q.correct_answers ?? q.numerical_answer ?? q.acceptable_answers)}</div>`}${q.explanation ? `<div>${contentHtml(q.explanation)}</div>` : ""}</article><div class="ep-qnav">${nav("← Prev", n - 1, n === 0)}<span class="ep-muted">Question ${n + 1} of ${qs.length}</span>${nav("Next →", n + 1, n === qs.length - 1)}</div></div>`;
   }
   function rulesView() {
     const e = app.exam || {};
@@ -2515,6 +2565,13 @@
         await updateList();
         return;
       }
+      if (action === "delete-exam") {
+        if (!(await confirmDelete(b.dataset.title))) return;
+        await request(`/exam-platform/exams/${b.dataset.id}`, { method: "DELETE" });
+        await updateList();
+        flash("Exam deleted.");
+        return;
+      }
       if (action === "open") {
         await loadExam(b.dataset.id);
         if (app.exam.status !== "draft") {
@@ -2577,9 +2634,17 @@
       if (action === "edit-enrollments") {
         const dialog = document.createElement("dialog");
         dialog.className = "ep-dialog";
-        dialog.innerHTML = `<h2>Candidate enrollment</h2><p>One email per line. Replace the full roster before starting.</p><textarea rows="10">${esc((app.exam.enrollments || []).map((x) => x.email).join("\n"))}</textarea><div class="ep-actions"><button class="ep-btn" data-close>Cancel</button><button class="ep-btn ep-btn-primary" data-save>Save enrollment</button></div><p role="alert"></p>`;
+        dialog.classList.add("ep-enroll");
+        dialog.innerHTML = `<div class="ep-enroll-head"><span class="ep-enroll-ico">${I("users", 22, "#fff")}</span><div><h2>Candidate enrollment</h2><p>One email per line. Saving replaces the full roster.</p></div></div><div class="ep-enroll-body"><label>Student emails <span class="ep-enroll-count" data-count>0 emails</span></label><textarea rows="9" placeholder="student1@gmail.com&#10;student2@gmail.com" spellcheck="false">${esc((app.exam.enrollments || []).map((x) => x.email).join("\n"))}</textarea><p role="alert"></p></div><div class="ep-enroll-foot"><button class="ep-btn" data-close>Cancel</button><button class="ep-btn ep-btn-primary" data-save>Save enrollment</button></div>`;
+        const ta = dialog.querySelector("textarea");
+        const upd = () => {
+          const n = ta.value.split(/[\n,;]/).filter((x) => x.trim()).length;
+          dialog.querySelector("[data-count]").textContent = `${n} email${n === 1 ? "" : "s"}`;
+        };
+        ta.addEventListener("input", upd);
         document.body.append(dialog);
         dialog.showModal();
+        upd();
         dialog.onclose = () => dialog.remove();
         dialog.querySelector("[data-close]").onclick = () => dialog.close();
         dialog.querySelector("[data-save]").onclick = async () => {
@@ -2716,12 +2781,7 @@
             }),
           );
         }
-        if (
-          !confirm(
-            "Publish this exam to enrolled candidates? You can no longer edit its questions after publishing.",
-          )
-        )
-          return;
+        if (!(await askConfirm("Publish this exam?", "It becomes available to enrolled candidates. You can no longer edit its questions after publishing.", "Publish exam"))) return;
         await act("publish");
         await loadExam(app.exam.id);
         flash("Exam published.");
@@ -2743,7 +2803,9 @@
           end: "End this exam now? Candidates will no longer be able to continue.",
           publish_results: "Publish results and answer review to candidates?",
         };
-        if (!confirm(prompts[actionName])) return;
+        const labels = { start: "Start exam", pause: "Pause exam", resume: "Resume exam", end: "End exam", publish_results: "Publish results" };
+        const bad = actionName === "end";
+        if (!(await askConfirm(labels[actionName] + "?", esc(prompts[actionName]), labels[actionName], bad))) return;
         await act(actionName);
         await loadExam(app.exam.id);
         await loadState();
@@ -2768,8 +2830,25 @@
         flash("Exam time extended by 15 minutes.");
         return;
       }
+      if (action === "q-nav") {
+        app.qIdx = Number(b.dataset.i);
+        render();
+        return;
+      }
+      if (action === "msg-send" || action === "msg-refresh") {
+        const text = (app.msgDraft || "").trim();
+        if (action === "msg-send") {
+          if (!text) return;
+          await request(`/exam-platform/exams/${encodeURIComponent(app.exam.id)}/messages`, { method: "POST", body: { text } });
+          app.msgDraft = "";
+        }
+        await loadMgrMessages();
+        render();
+        return;
+      }
       if (action === "mgr-tab") {
         app.mgrTab = b.dataset.tab;
+        if (b.dataset.tab === "messages") await loadMgrMessages();
         if (b.dataset.tab === "leave_log" && !app.auditEvents) {
           try {
             const d = await request(
@@ -2798,12 +2877,7 @@
         return;
       }
       if (action === "archive") {
-        if (
-          !confirm(
-            "Archive this ended exam? It will be removed from the active exam list.",
-          )
-        )
-          return;
+        if (!(await askConfirm("Archive this exam?", "It will be removed from the active exam list.", "Archive"))) return;
         await act("archive");
         await loadList();
         flash("Exam archived.");
@@ -2924,12 +2998,7 @@
             (app.draftAnswers[q.id] === undefined ||
               app.draftAnswers[q.id] === ""),
         ).length;
-        if (
-          !confirm(
-            `Submit your exam now? ${unanswered ? `${unanswered} question(s) are unanswered. ` : ""}You cannot change answers after submission.`,
-          )
-        )
-          return;
+        if (!(await askConfirm("Submit your exam?", `${unanswered ? `${unanswered} question(s) are unanswered. ` : ""}You cannot change answers after submission.`, "Submit exam", !!unanswered))) return;
         const d = await request(
           `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/submit`,
           { method: "POST", body: { revision: app.revision } },
@@ -2997,6 +3066,12 @@
       `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/actions`,
       { method: "POST", body: { action, ...extra } },
     );
+  }
+  async function loadMgrMessages() {
+    try {
+      const d = await request(`/exam-platform/exams/${encodeURIComponent(app.exam.id)}/messages`);
+      app.mgrMessages = Array.isArray(d) ? d : d.messages || [];
+    } catch (_) {}
   }
   async function messagesPanel() {
     const d = await request(
@@ -3080,6 +3155,7 @@
   }
   function onInput(ev) {
     const t = ev.target;
+    if (t.matches("#ep-msg-input")) app.msgDraft = t.value;
     if (t.matches("#ep-candidate-search")) {
       app.candidateSearch = t.value;
       const root = $("#ep-content");
