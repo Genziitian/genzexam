@@ -364,7 +364,8 @@
   // ---- editor with locked grey prefix / suffix
   function lineCount(t) { return t ? t.replace(/\r\n/g, "\n").replace(/\n+$/, "").split("\n").length : 0; }
   function clean(t) { return (t || "").replace(/\r\n/g, "\n").replace(/^\n+|\n+$/g, ""); }
-  function draftKey(p) { return "ide.draft." + p.id; }
+  // Drafts live in this browser only, so key them by account: one student's code must never open in another's editor.
+  function draftKey(p) { var u = ""; try { u = (JSON.parse(localStorage.getItem("lab_user") || "{}") || {}).id || ""; } catch (e) {} return "ide.draft." + u + "." + p.id; }
   function initialMiddle(p) {
     var saved = null; try { saved = localStorage.getItem(draftKey(p)); } catch (e) {}
     if (saved != null) return saved;

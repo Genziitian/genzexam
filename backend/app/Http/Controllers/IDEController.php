@@ -121,24 +121,15 @@ class IDEController extends Controller
             $normalizedInput = $this->normalizeProblemText((string) $case->input);
             $normalizedExpected = $this->normalizeProblemText((string) $case->expected_output);
 
-            $execution = $this->executionService->execute(
+            $judged = $this->executionService->judge(
                 $validated['language'],
                 $problem->composeCode($validated['code']),
                 $normalizedInput,
+                $normalizedExpected,
                 (int) ($problem->time_limit_seconds ?: 5)
             );
 
-            $got = trim((string) ($execution['stdout'] ?? ''));
-            $expected = trim($normalizedExpected);
-
-            $results[] = [
-                'case_number' => $index + 1,
-                'input' => $normalizedInput,
-                'expected' => $normalizedExpected,
-                'got' => $got,
-                'error' => trim((string) ($execution['stderr'] ?? '')),
-                'passed' => $got === $expected,
-            ];
+            $results[] = ['case_number' => $index + 1] + $judged;
         }
 
         return response()->json([
@@ -166,29 +157,23 @@ class IDEController extends Controller
             $normalizedInput = $this->normalizeProblemText((string) $case->input);
             $normalizedExpected = $this->normalizeProblemText((string) $case->expected_output);
 
-            $execution = $this->executionService->execute(
+            $judged = $this->executionService->judge(
                 $validated['language'],
                 $problem->composeCode($validated['code']),
                 $normalizedInput,
+                $normalizedExpected,
                 (int) ($problem->time_limit_seconds ?: 5)
             );
-
-            $stderr = trim((string) ($execution['stderr'] ?? ''));
-            $got = trim((string) ($execution['stdout'] ?? ''));
-            $expected = trim($normalizedExpected);
-
-            $isTimeout = str_contains(strtolower($stderr), 'time')
-                && str_contains(strtolower($stderr), 'out');
-            $passed = $got === $expected && $stderr === '';
+            $passed = $judged['passed'];
 
             if ($passed) {
                 $passedCases++;
             }
 
             if (! $passed && $status === 'accepted') {
-                if ($isTimeout) {
+                if ($judged['timed_out']) {
                     $status = 'time_limit_exceeded';
-                } elseif ($stderr !== '') {
+                } elseif ($judged['exit_code'] !== 0) {
                     $status = 'runtime_error';
                 } else {
                     $status = 'wrong_answer';
@@ -204,13 +189,9 @@ class IDEController extends Controller
             } else {
                 $results[] = [
                     'case_number' => $index + 1,
-                    'input' => $normalizedInput,
-                    'expected' => $normalizedExpected,
-                    'got' => $got,
-                    'error' => $stderr,
                     'passed' => $passed,
                     'is_hidden' => false,
-                ];
+                ] + $judged;
             }
         }
 

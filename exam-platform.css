@@ -2379,3 +2379,10 @@ img.ep-mark {
 .ep-result-card .ep-result-score { margin: 20px 28px 0; padding: 18px 22px; border-radius: 12px; background: #e9f8f0; color: #17794a; }
 .ep-res-actions { padding: 22px 28px 28px; text-align: center; }
 @media (max-width: 700px) { .ep-res-stats { grid-template-columns: repeat(2, 1fr); padding: 18px 16px 0; } .ep-res-wait { margin: 16px 16px 0; } }
+
+/* whitelist chips */
+.ep-wl-chip { background: #f1f2ff; border: 1px solid #d6d9ff; border-radius: 10px; padding: 10px 14px; font-size: 13px; display: flex; align-items: center; gap: 10px; }
+.ep-wl-chip span { color: #1c1f8f !important; font-weight: 600; }
+.ep-wl-chip svg { stroke: #1f9d5c; }
+:root[data-theme="dark"] .ep-wl-chip { background: #141414; border-color: #222; }
+:root[data-theme="dark"] .ep-wl-chip span { color: #f9fafb !important; }

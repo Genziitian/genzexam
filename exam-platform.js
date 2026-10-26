@@ -1225,10 +1225,10 @@
                                          ${I("unlock", 12)} Approve Re-entry
                                        </button>`
                                     : s.status === "in_exam"
-                                      ? `<button class="saas-btn saas-btn-danger" data-action="lock" data-user="${esc(s.user_id)}" style="padding:5px 11px;font-size:11px;">
-                                           ${I("lock", 12)} Lock Window
+                                      ? `<button class="saas-btn saas-btn-danger" data-action="lock" data-user="${esc(s.user_id)}" data-name="${esc(s.name || s.email || "this candidate")}" title="Pause this candidate's exam. Their timer keeps running; you can re-admit them with Approve Re-entry." style="padding:5px 11px;font-size:11px;">
+                                           ${I("lock", 12)} Pause / Block
                                          </button>`
-                                      : '<span style="color:#4b5563;font-size:11px;">—</span>'
+                                      : `<span style="color:#6b7894;font-size:11px;" title="Only candidates currently taking the exam can be paused">${s.status === "submitted" ? "Submitted" : "—"}</span>`
                                 }
                               </td>
                             </tr>
@@ -1420,7 +1420,7 @@
                     ${enrollments
                       .map(
                         (en) => `
-                          <div style="background:#141414;border:1px solid #222;border-radius:8px;padding:10px 14px;font-size:13px;display:flex;align-items:center;gap:10px;">
+                          <div class="ep-wl-chip">
                             ${I("check", 14, "#2b30b8")}
                             <span style="color:#f9fafb;font-family:ui-monospace,monospace;">${esc(en.email || en)}</span>
                           </div>
@@ -2889,6 +2889,7 @@
         return;
       }
       if (action === "lock" || action === "unlock") {
+        if (action === "lock" && !(await askConfirm("Pause this candidate?", `<b>${esc(b.dataset.name || "This candidate")}</b> will be locked out of the exam right away. Their timer keeps running. You can let them back in with Approve Re-entry.`, "Pause / Block", true))) return;
         await request(
           `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/sessions/${encodeURIComponent(b.dataset.user)}/action`,
           { method: "POST", body: { action } },

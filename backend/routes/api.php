@@ -123,6 +123,7 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::get('/storefront/my-papers', [StorefrontController::class, 'myPapers']);
     Route::post('/storefront/papers/{quizId}/claim', [StorefrontController::class, 'claimFree'])->whereNumber('quizId');
     Route::post('/storefront/papers/{quizId}/orders', [StorefrontController::class, 'createOrder'])->whereNumber('quizId')->middleware('throttle:10,1');
+    Route::post('/storefront/papers/{quizId}/google-play', [StorefrontController::class, 'verifyGooglePlay'])->whereNumber('quizId')->middleware('throttle:20,1');
     Route::post('/storefront/payments/verify', [StorefrontController::class, 'verifyPayment'])->middleware('throttle:20,1');
 
     // Video solutions

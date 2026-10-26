@@ -70,6 +70,8 @@ return [
     'google_play' => [
         'package_name' => env('GOOGLE_PLAY_PACKAGE_NAME'),
         'subscription_product_id' => env('GOOGLE_PLAY_PRO_PRODUCT_ID'),
+        // One-time in-app products priced per whole rupee: paper_49 sells a Rs 49 paper.
+        'paper_product_prefix' => env('GOOGLE_PLAY_PAPER_PRODUCT_PREFIX', 'paper_'),
         'annual_base_plan_id' => env('GOOGLE_PLAY_PRO_ANNUAL_BASE_PLAN_ID', 'annual'),
         'subscription_base_plan_id' => env('GOOGLE_PLAY_PRO_BASE_PLAN_ID'),
         'regions_version' => env('GOOGLE_PLAY_REGIONS_VERSION', '2022/02'),

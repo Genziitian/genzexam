@@ -36,6 +36,19 @@ class StorefrontService {
     return response.data?['entitled'] == true;
   }
 
+  /// Ask the server to verify a Google Play purchase and grant access.
+  Future<bool> verifyGooglePlay({
+    required int quizId,
+    required String purchaseToken,
+    required String productId,
+  }) async {
+    final response = await _client.post(
+      '/storefront/papers/$quizId/google-play',
+      data: {'purchase_token': purchaseToken, 'product_id': productId},
+    );
+    return response.data?['entitled'] == true;
+  }
+
   /// Create Razorpay checkout order for a paid paper.
   Future<StorefrontOrderResponse> createOrder(int quizId) async {
     final response = await _client.post('/storefront/papers/$quizId/orders');
