@@ -5,11 +5,57 @@ namespace App\Services;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Process;
+use Illuminate\Process\Exceptions\ProcessTimedOutException;
 use Illuminate\Support\Str;
+use Symfony\Component\Process\ExecutableFinder;
 
 class CodeExecutionService
 {
+    /** Run one test case and compare. Shared by Run and Submit so both always agree. */
+    public function judge(string $language, string $code, string $input, string $expected, int $timeLimit = 5): array
+    {
+        $run = $this->execute($language, $code, $input, $timeLimit);
+        $got = $this->normalizeOutput((string) $run['stdout']);
+        $expected = $this->normalizeOutput($expected);
+        $error = trim((string) $run['stderr']);
+
+        if ($error === '' && $got === '' && $expected !== '') {
+            $error = 'Your program printed nothing. Check that every line of your code is complete and that the function returns a value.';
+        }
+
+        return [
+            'input' => $input,
+            'expected' => $expected,
+            'got' => $got,
+            'error' => $error,
+            'timed_out' => (bool) ($run['timed_out'] ?? false),
+            'exit_code' => $run['exit_code'],
+            'passed' => $run['exit_code'] === 0 && $got === $expected,
+        ];
+    }
+
+    /** Line endings and trailing spaces never decide a verdict; inner spacing still does. */
+    public function normalizeOutput(string $text): string
+    {
+        return trim(implode("\n", array_map('rtrim', preg_split('/\R/', $text))));
+    }
+
     public function execute(string $language, string $code, string $input = '', int $timeLimit = 5): array
+    {
+        $result = $this->dispatch($language, $code, $input, $timeLimit);
+        $result['exit_code'] = (int) ($result['exit_code'] ?? 1);
+        $result['stdout'] = (string) ($result['stdout'] ?? '');
+        $result['stderr'] = trim((string) ($result['stderr'] ?? ''));
+
+        // A failed run must always say why; never let it look like "blank output".
+        if ($result['exit_code'] !== 0 && $result['stderr'] === '') {
+            $result['stderr'] = 'Program exited with code '.$result['exit_code'].' without any error message.';
+        }
+
+        return $result;
+    }
+
+    private function dispatch(string $language, string $code, string $input, int $timeLimit): array
     {
         $executor = strtolower((string) env('CODE_EXECUTOR', 'local'));
         if ($executor === 'local') {
@@ -77,12 +123,31 @@ class CodeExecutionService
             ];
         }
 
+        $compile = $response->json('compile');
+        if (is_array($compile) && (int) ($compile['code'] ?? 0) !== 0) {
+            return [
+                'stdout' => '',
+                'stderr' => $compile['stderr'] ?? $compile['output'] ?? 'Compilation failed',
+                'exit_code' => (int) $compile['code'],
+            ];
+        }
+
         $run = $response->json('run');
+        if (! is_array($run)) {
+            return [
+                'stdout' => '',
+                'stderr' => (string) ($response->json('message') ?: 'Execution service returned no result'),
+                'exit_code' => 1,
+            ];
+        }
+
+        $timedOut = ($run['signal'] ?? null) === 'SIGKILL';
 
         return [
             'stdout' => $run['stdout'] ?? '',
-            'stderr' => $run['stderr'] ?? '',
-            'exit_code' => $run['code'] ?? 0,
+            'stderr' => $timedOut ? 'Time limit exceeded' : ($run['stderr'] ?? ''),
+            'exit_code' => $timedOut ? 124 : (int) ($run['code'] ?? 0),
+            'timed_out' => $timedOut,
         ];
     }
 
@@ -103,15 +168,23 @@ class CodeExecutionService
                     'exit_code' => 1,
                 ],
             };
-        } catch (\Throwable) {
+        } catch (ProcessTimedOutException) {
+            return ['stdout' => '', 'stderr' => 'Time limit exceeded', 'exit_code' => 124, 'timed_out' => true];
+        } catch (\Throwable $e) {
             return [
                 'stdout' => '',
-                'stderr' => 'Local execution failed',
+                'stderr' => 'Local execution failed: '.$e->getMessage(),
                 'exit_code' => 1,
             ];
         } finally {
             File::deleteDirectory($workDir);
         }
+    }
+
+    private function pythonBinary(): string
+    {
+        // Most Linux hosts ship only `python3`; a bare `python` then fails before any code runs.
+        return (string) (env('PYTHON_BIN') ?: (new ExecutableFinder)->find('python3', 'python'));
     }
 
     private function runPython(string $workDir, string $code, string $input, int $timeLimit): array
@@ -121,7 +194,7 @@ class CodeExecutionService
         $run = Process::path($workDir)
             ->timeout($timeLimit + 2)
             ->input($input)
-            ->run(['python', 'solution.py']);
+            ->run([$this->pythonBinary(), 'solution.py']);
 
         return [
             'stdout' => $run->output(),

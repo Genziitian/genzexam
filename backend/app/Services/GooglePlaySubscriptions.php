@@ -56,6 +56,27 @@ class GooglePlaySubscriptions
         return $response->json();
     }
 
+    /** One-time in-app product purchase (used for paid papers). */
+    public function product(string $productId, string $purchaseToken): array
+    {
+        $package = (string) config('services.google_play.package_name');
+        if ($package === '') throw new RuntimeException('Google Play package name is not configured.');
+        $url = 'https://androidpublisher.googleapis.com/androidpublisher/v3/applications/'.rawurlencode($package).'/purchases/products/'.rawurlencode($productId).'/tokens/'.rawurlencode($purchaseToken);
+        $response = Http::withToken($this->accessToken())->connectTimeout(5)->timeout(15)->get($url);
+        if (! $response->successful()) throw new RuntimeException('Google Play could not verify this purchase.');
+        return $response->json();
+    }
+
+    /** Consuming also acknowledges, and lets the student buy the same paper again to renew. */
+    public function consumeProduct(string $productId, string $purchaseToken): void
+    {
+        $package = (string) config('services.google_play.package_name');
+        if ($package === '') throw new RuntimeException('Google Play package name is not configured.');
+        $url = 'https://androidpublisher.googleapis.com/androidpublisher/v3/applications/'.rawurlencode($package).'/purchases/products/'.rawurlencode($productId).'/tokens/'.rawurlencode($purchaseToken).':consume';
+        $response = Http::withToken($this->accessToken())->connectTimeout(5)->timeout(15)->post($url, []);
+        if (! $response->successful()) throw new RuntimeException('Google Play could not finalize this purchase.');
+    }
+
     public function order(string $orderId): array
     {
         $package = (string) config('services.google_play.package_name');

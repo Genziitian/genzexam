@@ -11,6 +11,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../api/api.dart';
 import '../../api/offline_paper_store.dart';
+import '../../api/paper_play_purchase.dart';
 import '../../api/pro_access_guard.dart';
 import '../../state/app_activity.dart';
 import '../../widgets/feature_load_error_card.dart';
@@ -5711,6 +5712,28 @@ class _QuizzesTabState extends State<_QuizzesTab> {
     }
   }
 
+  Future<void> _buyPaper(StorefrontPaper paper) async {
+    AppHaptics.light();
+    try {
+      final bought = await PaperPlayPurchase.buy(paper, widget.storefrontService);
+      if (bought && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Paper unlocked. Find it in your library.'),
+            backgroundColor: Color(0xFF16A34A),
+          ),
+        );
+        _loadPapers();
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Purchase failed: $e'), backgroundColor: Colors.red),
+        );
+      }
+    }
+  }
+
   Future<void> _claimFree(int quizId) async {
     AppHaptics.light();
     try {
@@ -5955,6 +5978,20 @@ class _QuizzesTabState extends State<_QuizzesTab> {
                   child: const Text(
                     'Claim Free',
                     style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+                  ),
+                )
+              else if (!isFree && !isMyPaper)
+                ElevatedButton(
+                  onPressed: () => _buyPaper(paper),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF2563EB),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                  ),
+                  child: Text(
+                    'Buy ₹${paper.priceRupees}',
+                    style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
                   ),
                 )
               else

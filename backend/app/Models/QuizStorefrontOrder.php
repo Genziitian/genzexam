@@ -16,6 +16,9 @@ class QuizStorefrontOrder extends Model
         'access_days',
         'currency',
         'status',
+        'provider',
+        'google_token_hash',
+        'google_order_id',
         'paid_at',
     ];
 

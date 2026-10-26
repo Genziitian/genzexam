@@ -389,6 +389,67 @@ class StorefrontController extends Controller
         }, 3);
     }
 
+    /** Whole-rupee prices map to a Play one-time product such as paper_49; other prices cannot be sold in the app. */
+    private function playProductId(Quiz $quiz): ?string
+    {
+        $price = (int) $quiz->price_paise;
+        return $price >= 100 && $price % 100 === 0 ? config('services.google_play.paper_product_prefix', 'paper_').intdiv($price, 100) : null;
+    }
+
+    public function verifyGooglePlay(Request $request, int $quizId): JsonResponse
+    {
+        $data = $request->validate([
+            'purchase_token' => ['required', 'string', 'min:20', 'max:4096'],
+            'product_id' => ['required', 'string', 'max:200'],
+        ]);
+        $quiz = $this->publishedQuiz($quizId);
+        $expected = $this->playProductId($quiz);
+        abort_if($expected === null || ! hash_equals($expected, $data['product_id']), 422, 'This paper cannot be bought with Google Play.');
+        $hash = hash('sha256', $data['purchase_token']);
+
+        $existing = QuizStorefrontOrder::query()->where('google_token_hash', $hash)->first();
+        if ($existing) {
+            abort_unless((int) $existing->user_id === (int) $request->user()->id && (int) $existing->quiz_id === $quiz->id, 409, 'This purchase is already linked to another paper or account.');
+            return response()->json(['entitled' => true, 'quiz_id' => $quiz->id]);
+        }
+
+        try {
+            $play = app(\App\Services\GooglePlaySubscriptions::class);
+            $purchase = $play->product($expected, $data['purchase_token']);
+        } catch (\Throwable $error) {
+            return response()->json(['error' => $error->getMessage()], 503);
+        }
+        abort_unless((int) ($purchase['purchaseState'] ?? -1) === 0, 422, 'This Google Play purchase is not completed.');
+
+        DB::transaction(function () use ($request, $quiz, $hash, $purchase) {
+            User::query()->whereKey($request->user()->id)->lockForUpdate()->firstOrFail();
+            $entitlement = QuizEntitlement::query()->where('user_id', $request->user()->id)->where('quiz_id', $quiz->id)->first();
+            $startsAt = $entitlement?->expires_at?->isFuture() ? $entitlement->expires_at->copy() : now();
+            $expiresAt = $quiz->access_days && ! ($entitlement && $entitlement->expires_at === null) ? $startsAt->addDays((int) $quiz->access_days) : null;
+            $order = QuizStorefrontOrder::query()->create([
+                'user_id' => $request->user()->id,
+                'quiz_id' => $quiz->id,
+                'amount_paise' => (int) $quiz->price_paise,
+                'access_days' => $quiz->access_days,
+                'currency' => 'INR',
+                'status' => 'paid',
+                'provider' => 'google_play',
+                'google_token_hash' => $hash,
+                'google_order_id' => $purchase['orderId'] ?? null,
+                'paid_at' => now(),
+            ]);
+            QuizEntitlement::query()->updateOrCreate(
+                ['user_id' => $request->user()->id, 'quiz_id' => $quiz->id],
+                ['order_id' => $order->id, 'source' => 'purchase', 'expires_at' => $expiresAt]
+            );
+        }, 3);
+
+        // Access is already saved; a failed consume is retried on the next verify call from the app.
+        try { $play->consumeProduct($expected, $data['purchase_token']); } catch (\Throwable $e) { report($e); }
+
+        return response()->json(['entitled' => true, 'quiz_id' => $quiz->id]);
+    }
+
     private function publishedQuiz(int $quizId, bool $lock = false): Quiz
     {
         return Quiz::query()
@@ -417,6 +478,7 @@ class StorefrontController extends Controller
                 'title' => $quiz->week->title,
             ] : null,
             'price_paise' => (int) $quiz->price_paise,
+            'play_product_id' => $this->playProductId($quiz),
             'access_days' => $quiz->access_days,
             'course' => $quiz->course ? [
                 'name' => $quiz->course->name,
