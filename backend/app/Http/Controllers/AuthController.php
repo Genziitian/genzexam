@@ -511,7 +511,8 @@ class AuthController extends Controller
             $encodedToken = urlencode($token);
             $encodedUser = urlencode(json_encode($userPayload));
 
-            return redirect($frontendUrl.'/auth/callback?token='.$encodedToken.'&user='.$encodedUser);
+            // Deliver token in URL fragment to prevent exposure in server logs and Referer headers.
+            return redirect($frontendUrl.'/auth/callback#token='.$encodedToken.'&user='.$encodedUser);
         } catch (Throwable $e) {
             $frontendUrl = rtrim((string) env('FRONTEND_URL', 'http://localhost:5173'), '/');
             Log::error('Google OAuth callback failed', [

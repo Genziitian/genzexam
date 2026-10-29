@@ -93,13 +93,14 @@ class VideoSolutionController extends Controller
             ? $this->youtubeEmbedHtml($video->youtube_id, $video->title)
             : $this->driveEmbedHtml($embedUrl, $video->title);
 
+        $frontend = rtrim((string) env('FRONTEND_URL', 'https://exam.genziitian.in'), '/');
+        $frameAncestors = "'self' {$frontend} https://quiz.genziitian.in http://localhost:5173";
+
         return response($html, 200)
             ->header('Content-Type', 'text/html; charset=UTF-8')
             ->header('Cache-Control', 'no-store, max-age=0')
             ->header('Referrer-Policy', 'no-referrer')
-            // Allow the SPA (any origin) to frame this player; access is gated by
-            // the signed URL, not by origin.
-            ->header('Content-Security-Policy', 'frame-ancestors *');
+            ->header('Content-Security-Policy', "frame-ancestors {$frameAncestors}");
     }
 
     private function youtubeEmbedHtml(string $youtubeId, string $title): string

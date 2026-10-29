@@ -3817,6 +3817,7 @@
             '<div class="ql-claim-term-row"><strong>7-Day Expiry:</strong> Auto-disables in 7 days counting from day scratched or spinned.</div>' +
             '<div class="ql-claim-term-row"><strong>No Payment:</strong> No payment required to get this coupon.</div>' +
             '<div class="ql-claim-term-row"><strong>Minimum Purchase:</strong> Minimum order amount is ₹350.</div>' +
+            '<div class="ql-claim-term-row"><strong>Same Email:</strong> Log in on GenZ IITian with the same email as this account and enter the code at checkout.</div>' +
             '<div class="ql-claim-term-row"><strong>Discount Cap:</strong> Max discount on any percentage is ₹100.</div>' +
             '<div class="ql-claim-term-row"><strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
           '</div>' +
@@ -4218,6 +4219,7 @@
             '<div class="ql-claim-term-row"><strong>1. Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener">Genziitian.in/courses</a> &amp; pick any course.</div>' +
             '<div class="ql-claim-term-row"><strong>2. Apply Code:</strong> <strong>' + (isExpired ? 'Masked (Expired)' : escapeHtml(reward.code || 'Scratch card above')) + '</strong></div>' +
             '<div class="ql-claim-term-row"><strong>Min Order:</strong> Minimum amount purchase is ₹350.</div>' +
+            '<div class="ql-claim-term-row"><strong>Same Email:</strong> Log in on GenZ IITian with the same email as this account and enter the code at checkout.</div>' +
             '<div class="ql-claim-term-row"><strong>Discount Cap:</strong> Max discount you get on any percentage is 100 rupees.</div>' +
             '<div class="ql-claim-term-row"><strong>Expiry:</strong> Auto-disables in 7 days counting from day scratched or spinned.</div>' +
             '<div class="ql-claim-term-row"><strong>Free:</strong> No payment required to get this coupon.</div>' +

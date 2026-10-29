@@ -84,4 +84,13 @@ class CodeExecutionServiceTest extends TestCase
         }
         $this->assertGreaterThan(0, $count);
     }
+
+    public function test_production_forbids_local_execution(): void
+    {
+        $this->app['env'] = 'production';
+        putenv('CODE_EXECUTOR=local');
+        $res = (new CodeExecutionService)->execute('python', 'print(1)');
+        $this->assertSame(1, $res['exit_code']);
+        $this->assertStringContainsString('disabled in production', $res['stderr']);
+    }
 }

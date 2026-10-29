@@ -78,8 +78,8 @@ class StudentUploadedPaperController extends Controller
                 'quota' => $quota,
             ], 429);
         }
-        @set_time_limit(0);
-        @ini_set('max_execution_time', '0');
+        @set_time_limit(120);
+        @ini_set('max_execution_time', '120');
 
         $validated = $request->validate([
             'paper' => ['required', 'file', 'mimes:pdf,json', 'max:10240'],
@@ -192,6 +192,15 @@ class StudentUploadedPaperController extends Controller
                 'owner_user_id' => $user->id,
             ]);
             $importer->persist($quiz->id, $normalized['rows']);
+
+            // Consume one granted bonus upload when exceeding standard window allowance.
+            $baseLimit = $user->hasProAccess()
+                ? max(1, (int) config('services.student_paper_uploads.limit', 5))
+                : max(1, (int) config('services.student_paper_uploads.free_limit', 1));
+            if ($quota['used'] >= $baseLimit && (int) Cache::get('user_bonus_uploads_'.$user->id, 0) > 0) {
+                Cache::decrement('user_bonus_uploads_'.$user->id);
+            }
+
             return $quiz;
         });
 

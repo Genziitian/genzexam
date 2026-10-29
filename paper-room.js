@@ -1000,17 +1000,17 @@
     const idx = Math.min(Math.max(0, st.reviewIndex || 0), Math.max(0, answers.length - 1));
     const currentAnswer = answers[idx];
     return (
-      '<section class="ep-page"><div class="ep-card ep-result-card"><p class="ep-eyebrow">PAPER SUBMITTED</p><h1>' +
+      '<section class="ep-page"><div class="ep-card pr-res">' +
+      '<div class="pr-res-hero"><p class="ep-eyebrow">PAPER SUBMITTED</p><h1>' +
       esc((r.quiz && r.quiz.title) || (st.quiz && st.quiz.title) || "Your result") +
-      '</h1><div class="ep-result-score"><b>' +
-      Number(attempt.score || 0) +
-      "</b><span>/ " +
-      Number(attempt.total_marks || 0) +
-      " marks · " +
+      '</h1><div class="pr-res-ring" style="--p:' + Math.min(100, Math.max(0, Math.round(Number(attempt.percentage || 0)))) + '"><div><b>' +
       Math.round(Number(attempt.percentage || 0)) +
-      "%</span></div>" +
-      (answers.length ? "<p>" + correct + " of " + answers.length + " questions correct.</p>" : "") +
-      (xp ? '<div class="ep-alert">+' + xp + " XP earned.</div>" : "") +
+      '%</b><span>score</span></div></div></div>' +
+      '<div class="pr-res-stats">' +
+      '<div><span>Marks</span><b>' + Number(attempt.score || 0) + " / " + Number(attempt.total_marks || 0) + "</b></div>" +
+      (answers.length ? "<div><span>Correct</span><b>" + correct + " of " + answers.length + "</b></div>" : "") +
+      (xp ? "<div><span>XP earned</span><b>+" + xp + "</b></div>" : "") +
+      "</div>" +
       (st.error ? '<div class="ep-alert error" role="alert">' + esc(st.error) + "</div>" : "") +
       '<div class="ep-actions pr-result-actions">' +
       '<a class="ep-btn pr-btn-link" data-back href="' + esc(backHref()) + '">Back</a>' +

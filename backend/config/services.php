@@ -83,4 +83,9 @@ return [
         'rtdn_service_account_email' => env('GOOGLE_PLAY_RTDN_SERVICE_ACCOUNT_EMAIL'),
     ],
 
+    'genz' => [
+        'url' => env('GENZ_API_URL'),
+        'key' => env('GENZ_API_KEY'),
+    ],
+
 ];

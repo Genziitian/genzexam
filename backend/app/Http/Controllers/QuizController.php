@@ -154,7 +154,7 @@ class QuizController extends Controller
             ->orderBy('submitted_at')
             ->get();
 
-        $rankedRows = $attempts->values()->map(function (Attempt $attempt, int $index) {
+        $rankedRows = $attempts->values()->map(function (Attempt $attempt, int $index) use ($user) {
             $nameParts = preg_split('/\s+/', trim((string) $attempt->user?->name));
             $first = $nameParts[0] ?? 'Student';
             $lastInitial = '';
@@ -166,21 +166,23 @@ class QuizController extends Controller
             $totalMarks = (float) ($attempt->total_marks ?? 0);
             $score = (float) ($attempt->score ?? 0);
             $percentage = $totalMarks > 0 ? round(($score / $totalMarks) * 100, 2) : 0;
+            $isSelf = $user && (int) $attempt->user_id === (int) $user->id;
 
             return [
                 'rank' => $index + 1,
-                'user_id' => $attempt->user?->id,
-                'name' => (string) ($attempt->user?->name ?? 'Student'),
+                'user_id' => $isSelf ? $attempt->user?->id : null,
+                'name' => $isSelf ? (string) ($attempt->user?->name ?? 'Student') : $displayName,
                 'display_name' => $displayName,
                 'score' => $score,
                 'total_marks' => $totalMarks,
                 'percentage' => $percentage,
                 'submitted_at' => $attempt->submitted_at,
+                'is_self' => $isSelf,
             ];
         });
 
         $top = $rankedRows->take(10)->values();
-        $me = $rankedRows->firstWhere('user_id', $user?->id);
+        $me = $user ? $rankedRows->firstWhere('is_self', true) : null;
 
         return response()->json([
             'top' => $top,

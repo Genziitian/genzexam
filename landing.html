@@ -515,6 +515,8 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   .nav-youtube svg{display:block;flex:none}
   .nav-youtube span{font-size:9px;font-weight:600;line-height:1.2;letter-spacing:.06em}
   @media (max-width:1180px){.links{display:none!important}.menu-btn{display:grid!important}}
+  /* Centre the menu on the page; logo stays left, buttons right. */
+  @media (min-width:1181px){.nav{display:grid;grid-template-columns:1fr auto 1fr}.nav .links{margin-left:0!important}.nav-end{justify-self:end}}
   @media (min-width:1181px){.mnav{display:none!important}}
   
 

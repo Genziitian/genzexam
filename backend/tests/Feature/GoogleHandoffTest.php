@@ -103,7 +103,7 @@ class GoogleHandoffTest extends TestCase
         $this->fakeGoogle();
         $response = $this->get('/public/api/auth/google/callback?code=x');
         $response->assertRedirect();
-        $this->assertStringStartsWith('https://quiz.example/auth/callback?token=', $response->headers->get('Location'));
+        $this->assertStringStartsWith('https://quiz.example/auth/callback#token=', $response->headers->get('Location'));
         $this->assertNull(Cache::get('google_handoff:'.self::ID));
     }
 }

@@ -1495,3 +1495,58 @@ body:has(#ql-try-practice) .lg\:hidden.bottom-0:not(.ql-spin-action-dock){
   [data-ql-course-tabrow]>p{display:none!important}
   .ql-paper-filter{display:none!important}
 }
+
+/* ===== Rewards page polish (final layer) ===== */
+.ql-rewards-page{--rw-card:#fff;--rw-soft:#f4f5ff;--rw-line:#e3e6f3;--rw-text:#172033;--rw-muted:#6b7894;--rw-brand:#4f46e5;--rw-brand2:#7c3aed;max-width:1080px;padding:28px 24px 72px}
+:root[data-theme=dark] .ql-rewards-page{--rw-card:#161b2e;--rw-soft:#1d2440;--rw-line:#2a3354;--rw-text:#eef0ff;--rw-muted:#9aa5c8}
+.ql-rewards-top-bar{margin-bottom:18px}
+.ql-corner-btn{background:var(--rw-card);color:var(--rw-text);border:1px solid var(--rw-line);box-shadow:none;border-radius:12px;padding:10px 16px;font-weight:700}
+.ql-corner-btn:hover{border-color:var(--rw-brand);color:var(--rw-brand)}
+.ql-corner-btn.primary{background:linear-gradient(135deg,var(--rw-brand),var(--rw-brand2));color:#fff;border-color:transparent;box-shadow:0 10px 20px -10px var(--rw-brand)}
+.ql-corner-btn.primary:hover{color:#fff;filter:brightness(1.08)}
+
+/* filter tabs as one segmented control */
+.ql-rewards-filter-bar{display:inline-flex;flex-wrap:wrap;gap:4px;padding:5px;margin-bottom:22px;background:var(--rw-soft);border:1px solid var(--rw-line);border-radius:14px}
+.ql-filter-pill{background:transparent;border:0;color:var(--rw-muted);padding:9px 16px;border-radius:10px;font-size:13px;font-weight:700}
+.ql-filter-pill:hover{color:var(--rw-text)}
+.ql-filter-pill[aria-selected="true"]{background:var(--rw-card);color:var(--rw-brand);box-shadow:0 4px 12px -6px rgba(79,70,229,.6)}
+:root[data-theme=dark] .ql-filter-pill[aria-selected="true"]{background:var(--rw-brand);color:#fff}
+
+/* cards */
+.ql-reward-cards-grid{grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px;align-items:stretch}
+.ql-user-reward-card{background:var(--rw-card);border:1px solid var(--rw-line);border-radius:20px;padding:22px;gap:16px;box-shadow:0 18px 34px -26px rgba(79,70,229,.55);overflow:hidden;transition:transform .15s,box-shadow .15s}
+.ql-user-reward-card:hover{transform:translateY(-2px);box-shadow:0 24px 38px -24px rgba(79,70,229,.6)}
+.ql-user-reward-card::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--rw-brand),var(--rw-brand2),#f59e0b)}
+.ql-user-reward-card.pro::before{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.ql-user-reward-card.expired::before{background:var(--rw-line)}
+.ql-user-reward-card.expired{opacity:.7}
+.ql-card-top-row{align-items:flex-start}
+.ql-card-title-row{gap:14px;align-items:center}
+.ql-card-title-row .ql-card-icon{width:48px!important;height:48px!important;border-radius:14px!important;background:linear-gradient(135deg,var(--rw-brand),var(--rw-brand2))!important;color:#fff!important;box-shadow:0 10px 18px -10px var(--rw-brand)}
+.ql-card-title-row .ql-card-icon svg{width:24px;height:24px;stroke:#fff}
+.ql-user-reward-card.pro .ql-card-icon{background:linear-gradient(135deg,#f59e0b,#d97706)!important}
+.ql-card-title-row strong{font-size:18px;color:var(--rw-text);line-height:1.25}
+.ql-card-title-row small{color:var(--rw-muted);font-size:12px;margin-top:4px}
+.ql-tag-active,.ql-tag-unscratched,.ql-tag-expired,.ql-tag-claimed{border-radius:999px;padding:6px 12px;font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+.ql-tag-unscratched{background:#fff3d1;color:#8a5a00}
+.ql-tag-active{background:#e3f6ec;color:#17794a}
+:root[data-theme=dark] .ql-tag-unscratched{background:rgba(245,158,11,.18);color:#fbbf24}
+:root[data-theme=dark] .ql-tag-active{background:rgba(34,197,94,.16);color:#4ade80}
+.ql-user-reward-card .ql-copy-code-btn{background:linear-gradient(135deg,var(--rw-brand),var(--rw-brand2))!important;border-radius:14px;padding:14px 18px!important;font-size:14px!important;letter-spacing:.01em;box-shadow:0 12px 20px -12px var(--rw-brand)}
+.ql-user-reward-card .ql-copy-code-btn:hover{filter:brightness(1.08)}
+.ql-card-code-row{background:var(--rw-soft);border:1.5px dashed var(--rw-brand);border-radius:14px;padding:14px 16px}
+.ql-card-code-text{color:var(--rw-text);font-size:18px}
+.ql-card-copy-btn{background:var(--rw-card);color:var(--rw-brand);border:1px solid var(--rw-line);border-radius:10px;padding:8px 14px}
+.ql-card-terms-toggle{align-self:stretch;justify-content:center;padding:11px 14px;border:1px solid var(--rw-line);border-radius:12px;background:transparent;color:var(--rw-muted);font-size:12.5px;font-weight:700}
+.ql-card-terms-toggle:hover{background:var(--rw-soft);color:var(--rw-brand);border-color:var(--rw-brand)}
+.ql-claim-terms-box{background:var(--rw-soft);border:1px solid var(--rw-line);color:var(--rw-muted);border-radius:14px;padding:14px 16px;font-size:12.5px;line-height:1.55}
+.ql-claim-terms-box strong{color:var(--rw-text)}
+.ql-card-footer{border-top:1px solid var(--rw-line);color:var(--rw-muted);padding-top:14px;font-size:12px}
+
+/* rules accordion */
+.ql-rewards-page .ql-rules-dropdown{max-width:none;margin-top:30px;border:1px solid var(--rw-line);border-radius:16px;background:var(--rw-card);box-shadow:none}
+.ql-rewards-page .ql-rules-summary{padding:16px 20px;font-size:15px;color:var(--rw-text)}
+.ql-rewards-page .ql-rules-summary:hover,.ql-rewards-page .ql-rules-dropdown[open] .ql-rules-summary{background:var(--rw-soft)}
+.ql-rewards-page .ql-rules-summary-left svg{background:linear-gradient(135deg,var(--rw-brand),var(--rw-brand2));color:#fff;border-radius:10px}
+.ql-rewards-page .ql-rules-list,.ql-rewards-page .ql-rules-list li{color:var(--rw-muted)}
+.ql-rewards-page .ql-rules-list strong{color:var(--rw-text)}

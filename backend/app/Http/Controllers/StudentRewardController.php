@@ -8,12 +8,21 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 class StudentRewardController extends Controller
 {
     private const SECTOR_COUNT = 10;
     private const EXPIRY_DAYS = 7;
+
+    // Wheel segment => GenZ IITian partner-coupon params. Percentage caps match the terms shown to students.
+    private const COUPONS = [
+        0 => ['discountType' => 'percentage', 'discountValue' => 5, 'maxDiscountAmount' => 50],
+        2 => ['discountType' => 'fixed', 'discountValue' => 50],
+        4 => ['discountType' => 'percentage', 'discountValue' => 25, 'maxDiscountAmount' => 100],
+        6 => ['discountType' => 'fixed', 'discountValue' => 100],
+    ];
 
     public function index(Request $request): JsonResponse
     {
@@ -58,16 +67,16 @@ class StudentRewardController extends Controller
         // 8: Free 1 Test Yourself (10%)
         // 9: Free 1 Paper Upload (10%)
         $prizes = [
-            0 => ['type' => 'coupon_pct',          'title' => '5% OFF (Upto ₹50)',      'value' => '5% OFF (Upto ₹50)', 'prefix' => 'GENZ5-'],
-            1 => ['type' => 'free_pro',            'title' => '30 Days Free Pro',       'value' => '30 Days Pro',       'prefix' => ''],
-            2 => ['type' => 'coupon_flat',         'title' => '₹50 OFF Coupon',         'value' => '₹50 OFF',           'prefix' => 'GENZ50-'],
-            3 => ['type' => 'try_again',           'title' => 'Better Luck Next Time',  'value' => 'Try Tomorrow',      'prefix' => ''],
-            4 => ['type' => 'coupon_pct',          'title' => '25% OFF Coupon',         'value' => '25% OFF',           'prefix' => 'GENZ25-'],
-            5 => ['type' => 'free_spin',           'title' => '1 Free Extra Spin',      'value' => '1 Extra Spin',      'prefix' => ''],
-            6 => ['type' => 'coupon_flat',         'title' => '₹100 OFF Coupon',        'value' => '₹100 OFF',          'prefix' => 'GENZ100-'],
-            7 => ['type' => 'bonus_xp',            'title' => '+50 Study XP',           'value' => '50 XP',             'prefix' => ''],
-            8 => ['type' => 'free_test',           'title' => 'Free 1 Test Yourself',   'value' => '1 Free Test',       'prefix' => ''],
-            9 => ['type' => 'free_paper_upload',   'title' => 'Free 1 Paper Upload',   'value' => '1 Free Upload',     'prefix' => ''],
+            0 => ['type' => 'coupon_pct',          'title' => '5% OFF (Upto ₹50)',      'value' => '5% OFF (Upto ₹50)'],
+            1 => ['type' => 'free_pro',            'title' => '30 Days Free Pro',       'value' => '30 Days Pro'],
+            2 => ['type' => 'coupon_flat',         'title' => '₹50 OFF Coupon',         'value' => '₹50 OFF'],
+            3 => ['type' => 'try_again',           'title' => 'Better Luck Next Time',  'value' => 'Try Tomorrow'],
+            4 => ['type' => 'coupon_pct',          'title' => '25% OFF Coupon',         'value' => '25% OFF'],
+            5 => ['type' => 'free_spin',           'title' => '1 Free Extra Spin',      'value' => '1 Extra Spin'],
+            6 => ['type' => 'coupon_flat',         'title' => '₹100 OFF Coupon',        'value' => '₹100 OFF'],
+            7 => ['type' => 'bonus_xp',            'title' => '+50 Study XP',           'value' => '50 XP'],
+            8 => ['type' => 'free_test',           'title' => 'Free 1 Test Yourself',   'value' => '1 Free Test'],
+            9 => ['type' => 'free_paper_upload',   'title' => 'Free 1 Paper Upload',   'value' => '1 Free Upload'],
         ];
 
         // Weighted probabilities (Sum = 100%):
@@ -99,19 +108,24 @@ class StudentRewardController extends Controller
         $now = now();
         $reward = null;
 
+        // Mint the email-locked coupon first so a failed API call costs the student nothing; same email + discount returns the same code, so retrying is safe.
+        $coupon = null;
+        if (isset(self::COUPONS[$segment])) {
+            $coupon = $this->createPartnerCoupon($user, self::COUPONS[$segment]);
+            if (! $coupon) {
+                return response()->json(['error' => 'Could not create your coupon right now. Your spin was not used, please try again.'], 502);
+            }
+        }
+
         if ($prizeData['type'] !== 'try_again') {
-            $isInApp = in_array($prizeData['type'], ['free_test', 'free_paper_upload', 'free_pro', 'free_spin', 'bonus_xp'], true);
-            $code = (!$isInApp && $prizeData['prefix']) ? $prizeData['prefix'] . strtoupper(Str::random(4)) : null;
             $reward = [
                 'id' => (string) Str::uuid(),
                 'type' => $prizeData['type'],
                 'title' => $prizeData['title'],
                 'value' => $prizeData['value'],
-                'code' => $code,
+                'code' => $coupon['code'] ?? null,
                 'created_at' => $now->toIso8601String(),
-                'expires_at' => in_array($prizeData['type'], ['coupon_pct', 'coupon_flat'], true)
-                    ? $now->copy()->addDays(self::EXPIRY_DAYS)->toIso8601String()
-                    : null,
+                'expires_at' => $coupon['expiresAt'] ?? null,
                 'is_scratched' => false,
                 'is_claimed' => in_array($prizeData['type'], ['free_spin', 'bonus_xp', 'free_test', 'free_paper_upload'], true),
             ];
@@ -150,6 +164,29 @@ class StudentRewardController extends Controller
             'prize' => $prizeData,
             'quota' => $this->dailyQuota($user),
         ]);
+    }
+
+    private function createPartnerCoupon(User $user, array $params): ?array
+    {
+        try {
+            $response = Http::timeout(10)
+                ->withHeaders(['x-api-key' => (string) config('services.genz.key')])
+                ->acceptJson()
+                ->post(rtrim((string) config('services.genz.url'), '/').'/api/partner-coupons', $params + [
+                    'email' => $user->email,
+                    'validDays' => self::EXPIRY_DAYS,
+                ]);
+        } catch (\Throwable $e) {
+            report($e);
+            return null;
+        }
+
+        if (! $response->successful() || ! $response->json('code')) {
+            report(new \RuntimeException('GenZ partner-coupons failed: '.$response->status().' '.$response->body()));
+            return null;
+        }
+
+        return $response->json();
     }
 
     public function claimPro(Request $request): JsonResponse
