@@ -173,6 +173,12 @@ class StudentSpinPracticeController extends Controller
                 'owner_user_id' => $user->id,
             ]);
 
+            // Consume one granted bonus spin when exceeding the standard daily allowance.
+            $baseLimit = $quota['is_pro'] ? 7 : 1;
+            if ($quota['used'] >= $baseLimit && (int) Cache::get('user_bonus_spins_'.$lockedUser->id, 0) > 0) {
+                Cache::decrement('user_bonus_spins_'.$lockedUser->id);
+            }
+
             $position = 1;
             foreach ($questions as $q) {
                 $newQuestion = Question::query()->create([

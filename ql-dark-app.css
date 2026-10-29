@@ -1238,3 +1238,8 @@
 :root[data-theme=dark] .ql-upload-quota.free{background:linear-gradient(135deg,#1b1c34,#33270c);border-color:#2b2d57}
 :root[data-theme=dark] .ql-upload-quota-actions a.ql-upload-upgrade{color:#9a9dff;border-color:#3a3b66}
 :root[data-theme=dark] .ql-upload-tag{background:#33270c;color:#f5b83d}
+
+/* Test yourself page: #ql-try-practice only defined light --spin-* values, so in dark mode the card stayed white and the title was dark-on-dark. */
+:root[data-theme=dark] #ql-try-practice{--spin-ink:#ecebf8;--spin-muted:#9a9cb8;--spin-card:#1a2030;--spin-field:#151a25;--spin-line:#292f47;--spin-accent:#8f8bf0;--spin-track:#2c3350}
+:root[data-theme=dark] #ql-try-practice .ql-spin-custom-card{box-shadow:0 18px 40px -24px rgba(0,0,0,.8)}
+:root[data-theme=dark] #ql-try-practice .ql-spin-action-dock{background:transparent;border-top-color:transparent}

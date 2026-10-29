@@ -94,3 +94,16 @@ html:has([data-ql-login-trimmed]) .relative.flex.flex-1.overflow-y-auto{backgrou
   [data-ql-login-trimmed] h2{font-size:32px!important}
 }
 @media (prefers-reduced-motion:reduce){.ql-login-banner *,.ql-login-banner::before,[data-ql-login-trimmed]>*,[data-ql-login-trimmed] form>button:last-child::after{animation:none!important}.ql-lg-copy mark{background-size:100% 100%}.ql-lg-toast.t1{opacity:1}}
+
+/* Hide the compiled mock dashboard from first paint; simplifyLogin() only removes it after JS runs, which flashed it for ~2s. */
+.lg\:w-\[62\%\]:has(.login-preview-scroll){background:#0B0E1F}
+.lg\:w-\[62\%\]:has(.login-preview-scroll)>:not(.ql-login-banner){display:none!important}
+
+/* Signup hidden for now (re-enable by deleting this rule). The /register route itself is untouched. */
+.max-w-\[400px\] p:has(>a[href="/register"]){display:none!important}
+
+/* Wide screens: let the left scene use the whole banner instead of a 520px strip pinned to the left. */
+.ql-lg-scene{max-width:none;width:100%}
+.ql-lg-card{width:min(380px,46%)}
+.ql-lg-pal{right:8%;width:min(250px,34%)}
+@media (min-width:1500px){.ql-lg-scene{zoom:1.2}.ql-lg-copy h2{font-size:clamp(50px,3.4vw,68px)!important}}

@@ -896,14 +896,17 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
             'Reveal the reward, tap Copy code, then paste it into the coupon field at checkout before paying.',
           ),
           _ruleItem(
+            'Same email',
+            'This coupon is locked to your account email. Log in on GenZ IITian with the same email to use it.',
+          ),
+          _ruleItem(
             'Minimum order',
             '₹350. Receiving this coupon is free; buying a course requires payment.',
           ),
           if (reward.type == 'coupon_pct')
             _ruleItem(
               'Discount limit',
-              reward.title.startsWith('5%') ||
-                      (reward.code?.startsWith('GENZ5-') ?? false)
+              reward.title.startsWith('5%')
                   ? 'Up to ₹50, as shown on this coupon.'
                   : 'Up to ₹100 per purchase.',
             ),

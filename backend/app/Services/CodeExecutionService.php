@@ -59,7 +59,8 @@ class CodeExecutionService
 
     private function dispatch(string $language, string $code, string $input, int $timeLimit): array
     {
-        $executor = strtolower((string) env('CODE_EXECUTOR', 'local'));
+        $defaultExecutor = app()->isProduction() ? 'piston' : 'local';
+        $executor = strtolower((string) env('CODE_EXECUTOR', $defaultExecutor));
         if ($executor === 'local') {
             return $this->executeLocally($language, $code, $input, $timeLimit);
         }
@@ -74,6 +75,11 @@ class CodeExecutionService
 
     private function shouldFallbackToLocal(array $remote): bool
     {
+        // Never fall back to host execution in production.
+        if (app()->isProduction()) {
+            return false;
+        }
+
         $stderr = trim((string) ($remote['stderr'] ?? ''));
         if ($stderr === 'Execution service unavailable') {
             return true;
@@ -155,6 +161,10 @@ class CodeExecutionService
 
     private function executeLocally(string $language, string $code, string $input, int $timeLimit): array
     {
+        if (app()->isProduction()) {
+            return ['stdout' => '', 'stderr' => 'Local execution is disabled in production.', 'exit_code' => 1];
+        }
+
         $lang = strtolower($language);
         $workDir = storage_path('app/code-runner/'.Str::uuid()->toString());
         File::ensureDirectoryExists($workDir);
