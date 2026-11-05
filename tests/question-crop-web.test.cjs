@@ -44,6 +44,8 @@ const procedure = 'Before\n```pseudocode\nStep 1: Read A\nStep 2: Stop\n```\n![M
 const prompt = sandbox.stemHtml({ stem: procedure });
 assert.ok(prompt.indexOf('language-pseudocode') < prompt.indexOf('<img '));
 assert.ok(prompt.indexOf('<img ') < prompt.indexOf('What is A?'), "Question outro stays after the crop.");
+const promptWithBoth = sandbox.stemHtml({ stem: procedure, stem_image: '/uploads/a.png' });
+assert.equal((promptWithBoth.match(/<img /g) || []).length, 1, "Question stem with markdown image does not duplicate stem_image.");
 
 const exams = read("exam-platform.js");
 const paperText = exams.slice(exams.indexOf("  function paperText("), exams.indexOf("  function paperImage("));

@@ -840,7 +840,7 @@
         image = paperImage("/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png");
       }
     }
-    if (image) prompt.push({ kind: "image", url: image, alt: "Question figure" });
+    if (image && !/!\[[^\n]*?\]\(/.test(String(stem || ""))) prompt.push({ kind: "image", url: image, alt: "Question figure" });
     const out = { id: `q${q.id}`, type, prompt, marks: Number(q.marks) || 1, negative: 0 };
     if (["easy", "medium", "hard"].includes(q.difficulty)) out.difficulty = q.difficulty;
     const explanation = paperText(q.explanation);

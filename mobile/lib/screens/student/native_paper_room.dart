@@ -1296,6 +1296,9 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                       ),
                     ..._richWidgets(question.stem),
                     () {
+                      if (RegExp(r'!\[[^\n]*?\]\(').hasMatch(question.stem)) {
+                        return const SizedBox.shrink();
+                      }
                       final img = (question.stemImage != null &&
                               question.stemImage!.isNotEmpty)
                           ? question.stemImage!

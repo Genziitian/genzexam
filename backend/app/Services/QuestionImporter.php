@@ -258,7 +258,7 @@ class QuestionImporter
         return [[
             'type' => $type,
             'stem' => $stem !== '' ? $stem : 'Refer to image/figure.',
-            'stem_image' => $row['stem_image'] ?? $promptParts['image'] ?? null,
+            'stem_image' => $row['stem_image'] ?? ($imagePrompt !== null ? null : ($promptParts['image'] ?? null)),
             'stem_code' => $stemCode !== '' ? $stemCode : null,
             'stem_code_language' => $stemCodeLanguage !== '' ? $stemCodeLanguage : 'pseudocode',
             'stem_table' => $stemTable,
