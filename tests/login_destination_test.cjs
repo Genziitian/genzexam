@@ -39,6 +39,18 @@ async function checkLogin(role, kind) {
   };
   if (kind === 'email') await vm.runInNewContext(`(${emailHandler})`, context)({preventDefault() {}});
   if (kind === 'otp') await vm.runInNewContext(`(${otpHandler})`, {...context, c() {}})('123456');
+  if (kind === 'google-error') {
+    let capturedToast = null;
+    const errContext = {
+      ...context,
+      n: new URLSearchParams({error: 'access_denied', message: 'Google sign-in was cancelled.'}),
+      j: {error(msg) { capturedToast = msg; }, success() {}},
+    };
+    await vm.runInNewContext(`(async()=>{${googleHandler}})()`, errContext);
+    assert.equal(capturedToast, 'Google sign-in was cancelled.');
+    assert.deepEqual(nav, ['/login'], 'Cancelled Google sign-in must redirect to /login');
+    return;
+  }
   if (kind.startsWith('google')) {
     context.n = new URLSearchParams({token: 'test-token', user: 'encoded-profile'});
     context.Zc = () => kind === 'google-profile' ? user : null;
@@ -69,7 +81,7 @@ async function checkHandoff(role) {
 
 (async () => {
   for (const role of ['student', 'admin', 'manager']) {
-    for (const kind of ['email', 'otp', 'google-profile', 'google-fetch']) await checkLogin(role, kind);
+    for (const kind of ['email', 'otp', 'google-profile', 'google-fetch', 'google-error']) await checkLogin(role, kind);
     await checkHandoff(role);
   }
   const landing = fs.readFileSync(path.join(root, 'landing.html'), 'utf8');

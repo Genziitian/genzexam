@@ -450,18 +450,31 @@ class AuthController extends Controller
         }
     }
 
-    public function googleCallback(): RedirectResponse|Response
+    public function googleCallback(Request $request): RedirectResponse|Response
     {
+        $frontendUrl = rtrim((string) env('FRONTEND_URL', 'http://localhost:5173'), '/');
+
+        if ($request->has('error')) {
+            $err = (string) $request->query('error');
+            $desc = (string) $request->query('error_description', '');
+            $msg = $err === 'access_denied' ? 'Google sign-in was cancelled.' : ($desc ?: 'Google sign-in error: '.$err);
+            Log::warning('Google OAuth callback returned error parameter', [
+                'error' => $err,
+                'description' => $desc,
+            ]);
+
+            return redirect($frontendUrl.'/auth/callback?error='.urlencode($err).'&message='.urlencode($msg));
+        }
+
         try {
             $googleUser = Socialite::driver('google')->stateless()->user();
-            $frontendUrl = rtrim((string) env('FRONTEND_URL', 'http://localhost:5173'), '/');
 
             $user = User::where('google_id', $googleUser->getId())
                 ->orWhere('email', $googleUser->getEmail())
                 ->first();
 
             if ($user && ! $user->is_active) {
-                return redirect($frontendUrl.'/auth/callback?error=account_deactivated');
+                return redirect($frontendUrl.'/auth/callback?error=account_deactivated&message='.urlencode('Your account has been deactivated. Please contact support.'));
             }
 
             if ($user) {
@@ -521,7 +534,8 @@ class AuthController extends Controller
                 'line' => $e->getLine(),
             ]);
 
-            return redirect($frontendUrl.'/auth/callback?error=google_auth_failed');
+            $friendlyMsg = 'Google sign-in failed: '.substr($e->getMessage(), 0, 120);
+            return redirect($frontendUrl.'/auth/callback?error=google_auth_failed&message='.urlencode($friendlyMsg));
         }
     }
 
