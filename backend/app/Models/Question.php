@@ -32,6 +32,15 @@ class Question extends Model
         'stem_table' => 'array',
     ];
 
+    public function getStemImageAttribute($value): ?string
+    {
+        if ($value && preg_match('/!\[[^\n]*?\]\(/', (string) ($this->attributes['stem'] ?? ''))) {
+            return null;
+        }
+
+        return $value;
+    }
+
     public function quiz(): BelongsTo
     {
         return $this->belongsTo(Quiz::class);

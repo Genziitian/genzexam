@@ -76,7 +76,7 @@ class QuizController extends Controller
             'questions' => $quiz->questions->map(function ($question) use ($quiz) {
                 $stem = (string) $question->stem;
                 $stemImage = $question->stem_image;
-                if (empty($stemImage)) {
+                if (empty($stemImage) && !preg_match('/!\[[^\n]*?\]\(/', $stem)) {
                     if (str_contains($stem, 'oct2022_q1_figure1.png')) {
                         $stemImage = '/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png';
                     } elseif (

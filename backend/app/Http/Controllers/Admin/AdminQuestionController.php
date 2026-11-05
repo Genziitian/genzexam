@@ -28,7 +28,12 @@ class AdminQuestionController extends Controller
                 'shortAnswerAcceptables',
             ])
             ->orderBy('position')
-            ->get();
+            ->get()
+            ->each(function (Question $question) {
+                if ($question->stem_image && preg_match('/!\[[^\n]*?\]\(/', (string) $question->stem)) {
+                    $question->stem_image = null;
+                }
+            });
 
         return response()->json($questions);
     }
@@ -105,14 +110,15 @@ class AdminQuestionController extends Controller
                 $payload['stem_table'] = $removeStemTable ? null : $stemTable;
             }
 
-            if ($request->boolean('remove_stem_image') && $question->stem_image) {
-                $this->deleteStemImage($question->stem_image);
+            $rawStemImage = $question->getRawOriginal('stem_image') ?? $question->stem_image;
+            if ($request->boolean('remove_stem_image') && $rawStemImage) {
+                $this->deleteStemImage($rawStemImage);
                 $payload['stem_image'] = null;
             }
 
             if ($request->hasFile('stem_image')) {
-                if ($question->stem_image) {
-                    $this->deleteStemImage($question->stem_image);
+                if ($rawStemImage) {
+                    $this->deleteStemImage($rawStemImage);
                 }
                 $path = $request->file('stem_image')->store('question-images', 'public');
                 $payload['stem_image'] = Storage::url($path);
