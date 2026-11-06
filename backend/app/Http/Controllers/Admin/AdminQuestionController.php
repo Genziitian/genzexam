@@ -30,9 +30,7 @@ class AdminQuestionController extends Controller
             ->orderBy('position')
             ->get()
             ->each(function (Question $question) {
-                if ($question->stem_image && preg_match('/!\[[^\n]*?\]\(/', (string) $question->stem)) {
-                    $question->stem_image = null;
-                }
+                $question->stem_image = null;
             });
 
         return response()->json($questions);
@@ -48,19 +46,13 @@ class AdminQuestionController extends Controller
         $stemTable = $this->parseStemTable($request);
 
         $created = DB::transaction(function () use ($validated, $request, $quizId, $options, $acceptableAnswers, $stemTable) {
-            $stemImageUrl = null;
-            if ($request->hasFile('stem_image')) {
-                $path = $request->file('stem_image')->store('question-images', 'public');
-                $stemImageUrl = Storage::url($path);
-            }
-
             $position = (int) Question::query()->where('quiz_id', $quizId)->max('position') + 1;
 
             $question = Question::query()->create([
                 'quiz_id' => $quizId,
                 'type' => $validated['type'],
                 'stem' => $validated['stem'],
-                'stem_image' => $stemImageUrl,
+                'stem_image' => null,
                 'stem_code' => $validated['stem_code'] ?? null,
                 'stem_code_language' => $validated['stem_code_language'] ?? null,
                 'stem_table' => $stemTable,
@@ -111,18 +103,10 @@ class AdminQuestionController extends Controller
             }
 
             $rawStemImage = $question->getRawOriginal('stem_image') ?? $question->stem_image;
-            if ($request->boolean('remove_stem_image') && $rawStemImage) {
+            if ($rawStemImage) {
                 $this->deleteStemImage($rawStemImage);
-                $payload['stem_image'] = null;
             }
-
-            if ($request->hasFile('stem_image')) {
-                if ($rawStemImage) {
-                    $this->deleteStemImage($rawStemImage);
-                }
-                $path = $request->file('stem_image')->store('question-images', 'public');
-                $payload['stem_image'] = Storage::url($path);
-            }
+            $payload['stem_image'] = null;
 
             $effectiveType = $payload['type'] ?? $question->type;
 

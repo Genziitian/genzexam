@@ -243,7 +243,7 @@ class AttemptController extends Controller
                 'question_id' => $question->id,
                 'question_stem' => $question->stem,
                 'question_type' => $question->type,
-                'stem_image' => $question->stem_image,
+                'stem_image' => null,
                 'stem_code' => $question->stem_code,
                 'stem_code_language' => $question->stem_code_language,
                 'stem_table' => $question->stem_table,

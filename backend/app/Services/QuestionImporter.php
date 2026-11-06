@@ -49,7 +49,7 @@ class QuestionImporter
                     'quiz_id' => $quizId,
                     'type' => $row['type'],
                     'stem' => $row['stem'],
-                    'stem_image' => $row['stem_image'] ?? null,
+                    'stem_image' => null,
                     'stem_code' => $row['stem_code'],
                     'stem_code_language' => $row['stem_code_language'],
                     'stem_table' => $row['stem_table'],
@@ -258,7 +258,7 @@ class QuestionImporter
         return [[
             'type' => $type,
             'stem' => $stem !== '' ? $stem : 'Refer to image/figure.',
-            'stem_image' => $row['stem_image'] ?? ($imagePrompt !== null ? null : ($promptParts['image'] ?? null)),
+            'stem_image' => null,
             'stem_code' => $stemCode !== '' ? $stemCode : null,
             'stem_code_language' => $stemCodeLanguage !== '' ? $stemCodeLanguage : 'pseudocode',
             'stem_table' => $stemTable,

@@ -185,7 +185,7 @@ class StudentSpinPracticeController extends Controller
                     'quiz_id' => $newQuiz->id,
                     'type' => $q->type,
                     'stem' => $q->stem,
-                    'stem_image' => $q->stem_image,
+                    'stem_image' => null,
                     'stem_code' => $q->stem_code,
                     'stem_code_language' => $q->stem_code_language,
                     'stem_table' => $q->stem_table,

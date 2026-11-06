@@ -91,7 +91,7 @@ class QuizController extends Controller
                     'id' => $question->id,
                     'type' => $question->type,
                     'stem' => $stem,
-                    'stem_image' => $stemImage,
+                    'stem_image' => null,
                     'stem_code' => $question->stem_code,
                     'stem_code_language' => $question->stem_code_language,
                     'stem_table' => $question->stem_table,

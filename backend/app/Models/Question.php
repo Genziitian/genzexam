@@ -32,13 +32,9 @@ class Question extends Model
         'stem_table' => 'array',
     ];
 
-    public function getStemImageAttribute($value): ?string
+    public function getStemImageAttribute(): ?string
     {
-        if ($value && preg_match('/!\[[^\n]*?\]\(/', (string) ($this->attributes['stem'] ?? ''))) {
-            return null;
-        }
-
-        return $value;
+        return null;
     }
 
     public function quiz(): BelongsTo
