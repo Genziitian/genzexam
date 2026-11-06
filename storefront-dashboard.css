@@ -1027,7 +1027,8 @@ body:has(#ql-try-practice) .lg\:hidden.bottom-0:not(.ql-spin-action-dock){
 
 
 /* Test yourself is a Pro benefit with one free daily spin for every account. */
-.ql-spin-pro-badge{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;padding:4px 7px;border:1px solid #edc36e;border-radius:6px;background:linear-gradient(135deg,#fff0c2,#ffc963);color:#714308!important;font-size:10px;font-weight:800;line-height:1;letter-spacing:.04em;vertical-align:middle}
+.ql-spin-pro-badge, .ql-qa-pro-badge, .ql-up-pro-badge { display: none !important; }
+.ql-spin-pro-badge{display:none!important}
 .ql-spin-heading-row h1{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .ql-spin-heading-row h1 .ql-spin-pro-badge{font-size:11px;padding:5px 8px;letter-spacing:.04em}
 #root aside nav a[href="/try-practice"]>.ql-spin-pro-badge{margin-left:auto;padding:1.5px 6px;border:0;border-radius:4px;background:linear-gradient(135deg,#ffd36e,#f59e0b)!important;color:#0f172a!important;font-size:9px;font-weight:900;line-height:normal;letter-spacing:.08em}

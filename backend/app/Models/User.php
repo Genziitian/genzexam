@@ -95,29 +95,8 @@ class User extends Authenticatable
 
     public function hasProAccess(): bool
     {
-        // Keep legacy manager grants working until they are migrated into the
-        // subscription ledger. During a rolling deployment, the API may receive
-        // traffic before the ledger migration has run; preserve the old flag then.
-        if (! Schema::hasTable('pro_subscriptions')) {
-            return (bool) $this->is_pro;
-        }
-
-        // Once a ledger row exists, it is authoritative.
-        if ($this->proSubscriptions()->exists()) {
-            return $this->proSubscriptions()->where(function ($query) {
-                $query->where(function ($active) {
-                    $active->whereIn('status', ['trialing', 'active'])
-                        ->where(fn ($period) => $period->whereNull('current_period_ends_at')->orWhere('current_period_ends_at', '>', now()));
-                })->orWhere(function ($cancelled) {
-                    // Provider cancellation stops renewal; access remains through
-                    // the already-paid period. Immediate revocation uses `revoked`.
-                    $cancelled->where('status', 'cancelled')
-                        ->whereNotNull('current_period_ends_at')
-                        ->where('current_period_ends_at', '>', now());
-                });
-            })->exists();
-        }
-        return (bool) $this->is_pro;
+        // Pro features are unlimited and unlocked for all users while Pro launch is deferred.
+        return true;
     }
 
     public function assignedCourses(): BelongsToMany

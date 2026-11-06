@@ -688,7 +688,6 @@
           '<button type="button" class="ql-qa-card ql-qa-half ql-qa-downloads" aria-label="Downloads">' +
             '<div class="ql-qa-icon-wrap" style="background:#DBEAFE">' +
               '<svg class="ql-qa-icon" style="color:#2563EB" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14l-4-4h3V8h2v4h3l-4 4z"/></svg>' +
-              '<span class="ql-qa-pro-badge icon-corner">PRO</span>' +
             '</div>' +
             '<div class="ql-qa-info">' +
               '<span class="ql-qa-label">Downloads</span>' +
@@ -708,13 +707,14 @@
         '<a href="/upload-paper" class="ql-qa-card ql-qa-wide ql-qa-upload" aria-label="Upload a paper">' +
           '<div class="ql-qa-icon-wrap" style="background:#DCFCE7">' +
             '<svg class="ql-qa-icon" style="color:#16A34A" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>' +
+            '<span class="ql-qa-soon-badge icon-corner" style="position:absolute;right:-5px;bottom:-4px;font-size:7.5px;padding:1.5px 4px;border-radius:5px;background:#e0e7ff;color:#4338ca;font-weight:900;border:1.5px solid #fff">SOON</span>' +
           '</div>' +
           '<div class="ql-qa-info">' +
             '<div class="ql-qa-title-row">' +
               '<span class="ql-qa-label">Upload a paper</span>' +
-              '<span class="ql-qa-pro-badge inline">PRO</span>' +
+              '<span class="ql-qa-soon-badge inline" style="background:#e0e7ff;color:#4338ca;font-size:8px;font-weight:900;padding:2px 5px;border-radius:6px;letter-spacing:.3px;display:inline-block">SOON</span>' +
             '</div>' +
-            '<span class="ql-qa-sub">Turn your PDF into a practice test</span>' +
+            '<span class="ql-qa-sub">Turn your PDF into a practice test · Coming soon</span>' +
           '</div>' +
           '<svg class="ql-qa-arrow" style="color:#16A34A" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
         '</a>' +
@@ -725,9 +725,8 @@
           '<div class="ql-qa-info">' +
             '<div class="ql-qa-title-row">' +
               '<span class="ql-qa-label">Test yourself</span>' +
-              '<span class="ql-qa-pro-badge inline">PRO</span>' +
             '</div>' +
-            '<span class="ql-qa-sub">Spin a custom practice paper</span>' +
+            '<span class="ql-qa-sub">Spin a custom practice paper · Unlimited</span>' +
           '</div>' +
           '<svg class="ql-qa-arrow" style="color:#7C3AED" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
         '</a>';
@@ -1454,10 +1453,23 @@
           '<div class="ql-up-title-wrap">' +
             '<h1 class="ql-up-title">Upload a paper.</h1>' +
           '</div>' +
-          '<span class="ql-up-pro-badge">PRO</span>' +
+          '<span class="ql-up-soon-badge" style="display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;background:#e0e7ff;color:#4338ca;font-size:11px;font-weight:800;letter-spacing:.06em">COMING SOON</span>' +
         '</div>' +
-        '<p class="ql-up-subtitle">Upload a study PDF or structured JSON to convert it into a full practice test in your account.</p>' +
+        '<p class="ql-up-subtitle">Turn your study PDFs and question papers into interactive practice exams.</p>' +
       '</div>' +
+      '<section class="ql-up-card" style="text-align:center;padding:56px 24px;border-radius:24px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 12px 30px rgba(15,23,42,0.04);margin-top:20px">' +
+        '<div style="font-size:48px;margin-bottom:16px">📄</div>' +
+        '<h2 style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px">Coming Soon!</h2>' +
+        '<p style="font-size:14px;color:#64748b;max-width:480px;margin:0 auto 24px;line-height:1.6">' +
+          'We are fine-tuning the paper converter to extract questions, formulas, and diagrams with high accuracy. Upload a paper will be available soon!' +
+        '</p>' +
+        '<div style="display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center">' +
+          '<a href="/practice" style="display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:12px;background:#4f46e5;color:#fff;text-decoration:none;font-size:13.5px;font-weight:700">Browse Practice Papers →</a>' +
+          '<a href="/try-practice" style="display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:12px;border:1px solid #e2e8f0;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13.5px;font-weight:700">Test Yourself Now</a>' +
+        '</div>' +
+      '</section>';
+    host.appendChild(container);
+    return;
 
       '<section class="ql-up-card ql-up-steps-card">' +
         '<div class="ql-up-card-header">' +
@@ -1891,13 +1903,8 @@
           existing.classList.add("text-[#9ca3af]");
         }
       }
-      if (!existing.querySelector('.ql-spin-pro-badge')) {
-        var badge = document.createElement('span');
-        badge.className = 'ql-spin-pro-badge';
-        badge.textContent = 'PRO';
-        badge.title = 'Pro: up to 7 spins daily. Free: 1 daily.';
-        existing.appendChild(badge);
-      }
+      var oldBadge = existing.querySelector('.ql-spin-pro-badge');
+      if (oldBadge) oldBadge.remove();
     });
   }
 
@@ -1921,7 +1928,7 @@
           '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>' +
           '</span>' +
           '<span class="flex-1 text-left tracking-[-0.01em]">Upload a paper</span>' +
-          '<span class="ql-upload-tag">PRO</span>';
+          '<span class="ql-upload-tag" style="background:#e0e7ff;color:#4338ca;font-weight:700">SOON</span>';
         link.addEventListener("click", function (e) {
           if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
           e.preventDefault();
@@ -1994,7 +2001,7 @@
               '<span>Back</span>',
             '</a>',
           '</div>',
-          '<div class="ql-spin-heading-row"><h1>Test yourself <span class="ql-spin-pro-badge" title="Pro: up to 7 spins daily. Free: 1 daily.">PRO</span></h1><button type="button" class="ql-spin-help-button" id="ql-spin-help" aria-haspopup="dialog">How it works</button></div><p>Generate 10 random question</p></header>',
+          '<div class="ql-spin-heading-row"><h1>Test yourself</h1><button type="button" class="ql-spin-help-button" id="ql-spin-help" aria-haspopup="dialog">How it works</button></div><p>Generate 10 random question</p></header>',
         '<div class="ql-spin-grid">',
           '<div class="ql-spin-wheel-card">',
             '<div class="ql-wheel-stage" aria-hidden="true"><canvas id="ql-spin-canvas" width="680" height="680"></canvas>',
@@ -2046,7 +2053,7 @@
         '<div class="ql-spin-help-top"><span><img src="/assets/quiz-lab-icon.png" alt="" width="32" height="32">Quiz LAB</span><button type="button" class="ql-spin-help-close" aria-label="Close explanation" autofocus><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>' +
         '<h2 id="ql-spin-help-title">How it works</h2><p>A fresh mix of questions from existing papers.</p>' +
         '<ol><li><strong>Choose your course.</strong> Set the weeks you want to practise.</li><li><strong>Pick paper types.</strong> Select one, several, or all types. A paper name is optional.</li><li><strong>Spin the wheel.</strong> Get up to 10 random matching questions. The wheel animation does not change your filters.</li><li><strong>Open your paper.</strong> Choose your time limit and start. Find the paper again in My Papers.</li></ol>' +
-        '<p class="ql-spin-help-free">1 free spin daily, or up to 7 daily with Pro. Resets at midnight IST. Papers auto-delete after 30 days. No upload tokens used. Your papers are private and cannot be shared.</p>' +
+        '<p class="ql-spin-help-free">Unlimited practice spins are enabled for all students! Resets at midnight IST. Papers auto-delete after 30 days. No upload tokens used. Your papers are private and cannot be shared.</p>' +
         '<button type="button" class="ql-spin-help-done">Got it</button></div>';
       host.appendChild(dialog);
       dialog.querySelector(".ql-spin-help-close").addEventListener("click", function () { dialog.close(); });
@@ -2131,35 +2138,10 @@
         mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Creating paper…';
         return;
       }
-      if (!spinQuota) {
-        mainBtn.disabled = courseSelect.disabled;
-        mainBtn.classList.remove("ql-spin-upgrade-btn");
-        mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel';
-        return;
-      }
-      if (!spinQuota.is_pro) {
-        if (spinQuota.remaining > 0) {
-          mainBtn.type = "submit";
-          mainBtn.disabled = courseSelect.disabled;
-          mainBtn.classList.remove("ql-spin-upgrade-btn");
-          mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel · 1 free spin left';
-        } else {
-          mainBtn.type = "button";
-          mainBtn.disabled = false;
-          mainBtn.classList.add("ql-spin-upgrade-btn");
-          mainBtn.innerHTML = '★ Unlock 7 spins/day with Pro';
-        }
-      } else {
-        mainBtn.type = "submit";
-        mainBtn.classList.remove("ql-spin-upgrade-btn");
-        if (spinQuota.remaining > 0) {
-          mainBtn.disabled = courseSelect.disabled;
-          mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel · ' + spinQuota.remaining + '/' + spinQuota.limit + ' spins left';
-        } else {
-          mainBtn.disabled = true;
-          mainBtn.innerHTML = '0/' + spinQuota.limit + ' spins left today';
-        }
-      }
+      mainBtn.type = "submit";
+      mainBtn.disabled = courseSelect.disabled;
+      mainBtn.classList.remove("ql-spin-upgrade-btn");
+      mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel';
     }
     fetch(runtime.apiBase + "/student/spin-practice/quota", {headers: {Accept: "application/json", Authorization: "Bearer " + runtime.token()}})
       .then(function (res) { if (!res.ok) throw Error("Quota unavailable"); return res.json(); })
@@ -2312,16 +2294,7 @@
       if (typeof window.openProPaywall === "function") window.openProPaywall();
       else window.location.assign("/pro");
     }
-    mainBtn.addEventListener("click", function (event) {
-      if (mainBtn.classList.contains("ql-spin-upgrade-btn") || (spinQuota && !spinQuota.is_pro && spinQuota.remaining === 0)) {
-        openProUpgrade(event);
-      }
-    });
     form.addEventListener("submit", function (event) {
-      if (mainBtn.classList.contains("ql-spin-upgrade-btn") || (spinQuota && !spinQuota.is_pro && spinQuota.remaining === 0)) {
-        openProUpgrade(event);
-        return;
-      }
       spinWheel(event);
     });
   }
