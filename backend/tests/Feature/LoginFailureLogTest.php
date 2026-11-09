@@ -7,6 +7,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Laravel\Sanctum\Sanctum;
+use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Two\User as GoogleUser;
+use Mockery;
 use Tests\TestCase;
 
 /** Every failed sign-in is written to login_failures with a reason managers can read. */
@@ -124,5 +127,55 @@ class LoginFailureLogTest extends TestCase
         $this->assertSame(1, $res->json('by_reason.network_error'));
         $this->assertSame('network_error', $res->json('failures.1.reason'));
         $this->assertSame(1, count($this->getJson('/public/api/manager/login-failures?reason=network_error')->json('failures')));
+    }
+
+    private function fakeGoogle(string $id, string $email, ?string $name = 'Raj Singh'): void
+    {
+        $google = (new GoogleUser())->map(['id' => $id, 'name' => $name, 'email' => $email, 'avatar' => null]);
+        $driver = Mockery::mock();
+        $driver->shouldReceive('stateless')->andReturnSelf();
+        $driver->shouldReceive('user')->andReturn($google);
+        Socialite::shouldReceive('driver')->with('google')->andReturn($driver);
+    }
+
+    public function test_a_new_person_can_join_with_google(): void
+    {
+        $this->fakeGoogle('g-new', 'Fresh.Student@Gmail.com');
+        $res = $this->get('/public/api/auth/google/callback?code=x');
+        $this->assertStringContainsString('/auth/callback#token=', (string) $res->headers->get('Location'));
+        $u = User::where('email', 'fresh.student@gmail.com')->first();
+        $this->assertNotNull($u);
+        $this->assertNotNull($u->email_verified_at);
+        $this->assertSame('g-new', $u->google_id);
+    }
+
+    public function test_google_signs_in_an_email_account_that_never_finished_the_otp(): void
+    {
+        $this->user(['email' => 'half@example.com', 'email_verified_at' => null, 'otp' => bcrypt('111111'), 'otp_expires_at' => now()->addMinutes(5)]);
+        $this->fakeGoogle('g-half', 'half@example.com');
+        $res = $this->get('/public/api/auth/google/callback?code=x');
+        $this->assertStringContainsString('/auth/callback#token=', (string) $res->headers->get('Location'));
+        $u = User::where('email', 'half@example.com')->first();
+        $this->assertNotNull($u->email_verified_at);
+        $this->assertSame('g-half', $u->google_id);
+        $this->assertNull($u->password, 'a password chosen before the inbox was proven is dropped');
+        $this->assertSame(1, User::count());
+    }
+
+    public function test_google_signs_in_an_existing_verified_password_account_and_keeps_its_password(): void
+    {
+        $this->user();
+        $this->fakeGoogle('g-asha', 'asha@example.com');
+        $res = $this->get('/public/api/auth/google/callback?code=x');
+        $this->assertStringContainsString('/auth/callback#token=', (string) $res->headers->get('Location'));
+        $this->login('asha@example.com', 'right-pass')->assertOk();
+    }
+
+    public function test_password_login_on_a_google_account_says_to_use_google(): void
+    {
+        $this->user(['email' => 'g@example.com', 'password' => null, 'google_id' => 'g1']);
+        $res = $this->login('g@example.com', 'whatever')->assertStatus(401);
+        $this->assertTrue($res->json('use_google'));
+        $this->assertStringContainsString('Continue with Google', $res->json('error'));
     }
 }

@@ -36,6 +36,34 @@ class AuthController extends Controller
         return $token;
     }
 
+    /**
+     * Google has confirmed this person owns the email, so a Google sign-in always lets them in:
+     * link the Google id and mark the email verified. If the account was never verified (someone
+     * typed this email at sign-up but never entered the OTP), the password set then is dropped,
+     * because nobody proved they owned the inbox when it was chosen.
+     */
+    private function linkGoogle(User $user, string $googleId, ?string $avatar): void
+    {
+        $changes = [];
+        if (! $user->google_id && $googleId !== '') {
+            $changes['google_id'] = $googleId;
+        }
+        if (! $user->avatar && $avatar) {
+            $changes['avatar'] = $avatar;
+        }
+        if (! $user->email_verified_at) {
+            $changes['email_verified_at'] = now();
+            $changes['password'] = null;
+            if ($user->otp !== null || $user->otp_expires_at !== null) {
+                $changes['otp'] = null;
+                $changes['otp_expires_at'] = null;
+            }
+        }
+        if ($changes) {
+            $user->forceFill($changes)->save();
+        }
+    }
+
     public function __construct(private readonly OtpService $otpService)
     {
     }
@@ -48,7 +76,9 @@ class AuthController extends Controller
 
         if ($existingUser && $existingUser->email_verified_at) {
             return response()->json([
-                'error' => 'Email already registered',
+                'error' => $existingUser->password
+                    ? 'This email is already registered. Please sign in.'
+                    : 'This email is already registered with Google. Tap “Continue with Google” to sign in.',
             ], 422);
         }
 
@@ -151,7 +181,7 @@ class AuthController extends Controller
         if (! $user->email_verified_at) {
             LoginFailure::record('email', 'not_verified', $validated['email'], $user, 'Email not verified (OTP never completed).');
             return response()->json([
-                'error' => 'Please verify your email first.',
+                'error' => 'Please verify your email first, or tap “Continue with Google” to sign in instantly.',
                 'needs_verification' => true,
                 'email' => $user->email,
             ], 403);
@@ -168,6 +198,12 @@ class AuthController extends Controller
             $googleOnly = ! $user->password;
             LoginFailure::record('email', $googleOnly ? 'google_only_account' : 'wrong_password', $validated['email'], $user,
                 $googleOnly ? 'Tried a password, but this account was made with Google and has no password.' : 'Wrong password.');
+            if ($googleOnly) {
+                return response()->json([
+                    'error' => 'This account uses Google sign-in. Tap “Continue with Google” (or use Forgot password to set a password).',
+                    'use_google' => true,
+                ], 401);
+            }
             return response()->json(['error' => 'Invalid credentials'], 401);
         }
 
@@ -410,7 +446,7 @@ class AuthController extends Controller
         $email = strtolower((string) $claims['email']);
         $avatar = isset($claims['picture']) ? (string) $claims['picture'] : null;
 
-        $user = User::where('google_id', $googleId)->orWhere('email', $email)->first();
+        $user = User::where('google_id', $googleId)->first() ?? User::where('email', $email)->first();
 
         if ($user && ! $user->is_active) {
             LoginFailure::record('google_app', 'deactivated', $email, $user, 'Account is deactivated.');
@@ -418,9 +454,7 @@ class AuthController extends Controller
         }
 
         if ($user) {
-            if (! $user->google_id) {
-                $user->update(['google_id' => $googleId, 'avatar' => $avatar]);
-            }
+            $this->linkGoogle($user, $googleId, $avatar);
         } else {
             $user = User::create([
                 'name' => trim((string) ($claims['name'] ?? '')) ?: 'Google User',
@@ -504,10 +538,15 @@ class AuthController extends Controller
 
         try {
             $googleUser = Socialite::driver('google')->stateless()->user();
+            $googleEmail = strtolower(trim((string) $googleUser->getEmail()));
 
-            $user = User::where('google_id', $googleUser->getId())
-                ->orWhere('email', $googleUser->getEmail())
-                ->first();
+            if ($googleEmail === '' || ! filter_var($googleEmail, FILTER_VALIDATE_EMAIL)) {
+                LoginFailure::record('google', 'google_error', null, null, 'Google did not share an email address.');
+                return redirect($frontendUrl.'/auth/callback?error=google_no_email&message='.urlencode('Google did not share your email address. Please try again and allow email access.'));
+            }
+
+            $user = User::where('google_id', $googleUser->getId())->first()
+                ?? User::where('email', $googleEmail)->first();
 
             if ($user && ! $user->is_active) {
                 LoginFailure::record('google', 'deactivated', $googleUser->getEmail(), $user, 'Account is deactivated.');
@@ -515,16 +554,11 @@ class AuthController extends Controller
             }
 
             if ($user) {
-                if (! $user->google_id && $googleUser->getId()) {
-                    $user->update([
-                        'google_id' => $googleUser->getId(),
-                        'avatar' => $googleUser->getAvatar(),
-                    ]);
-                }
+                $this->linkGoogle($user, (string) $googleUser->getId(), $googleUser->getAvatar());
             } else {
                 $user = User::create([
-                    'name' => $googleUser->getName() ?? $googleUser->getNickname() ?? 'Google User',
-                    'email' => $googleUser->getEmail(),
+                    'name' => trim((string) ($googleUser->getName() ?? $googleUser->getNickname() ?? '')) ?: 'Google User',
+                    'email' => $googleEmail,
                     'password' => null,
                     'email_verified_at' => now(),
                     'google_id' => $googleUser->getId(),

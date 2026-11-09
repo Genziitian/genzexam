@@ -45,9 +45,9 @@ Route::post('/auth/resend-otp', [AuthController::class, 'resendOtp'])->middlewar
 Route::post('/auth/password/forgot', [AuthController::class, 'forgotPassword'])->middleware('throttle:6,10,auth-forgot-');
 Route::post('/auth/password/reset', [AuthController::class, 'resetPassword'])->middleware('throttle:10,10,auth-reset-');
 Route::get('/auth/google', [AuthController::class, 'googleRedirect']);
-Route::get('/auth/google/callback', [AuthController::class, 'googleCallback'])->middleware('throttle:30,1,auth-gcb-');
+Route::get('/auth/google/callback', [AuthController::class, 'googleCallback'])->middleware('throttle:60,1,auth-gcb-');
 Route::post('/auth/google/handoff', [AuthController::class, 'googleHandoff'])->middleware('throttle:60,1,auth-handoff-');
-Route::post('/auth/google/mobile', [AuthController::class, 'googleMobile'])->middleware('throttle:30,1,auth-gapp-');
+Route::post('/auth/google/mobile', [AuthController::class, 'googleMobile'])->middleware('throttle:60,1,auth-gapp-');
 Route::post('/auth/login-failure', [\App\Http\Controllers\LoginFailureController::class, 'store'])->middleware('throttle:30,1,auth-failrep-');
 
 // Hardened video player page. Reached only via a short-lived signed URL issued by
