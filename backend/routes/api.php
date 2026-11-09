@@ -38,16 +38,17 @@ use App\Http\Controllers\GooglePlayNotificationController;
 use Illuminate\Support\Facades\Route;
 
 // Public auth routes
-Route::post('/auth/register', [AuthController::class, 'register'])->middleware('throttle:5,1');
-Route::post('/auth/verify-otp', [AuthController::class, 'verifyOtp'])->middleware('throttle:5,1');
-Route::post('/auth/login', [AuthController::class, 'login'])->middleware('throttle:10,1');
-Route::post('/auth/resend-otp', [AuthController::class, 'resendOtp'])->middleware('throttle:3,10');
-Route::post('/auth/password/forgot', [AuthController::class, 'forgotPassword'])->middleware('throttle:3,10');
-Route::post('/auth/password/reset', [AuthController::class, 'resetPassword'])->middleware('throttle:5,10');
+Route::post('/auth/register', [AuthController::class, 'register'])->middleware('throttle:10,1,auth-register-');
+Route::post('/auth/verify-otp', [AuthController::class, 'verifyOtp'])->middleware('throttle:15,1,auth-otp-');
+Route::post('/auth/login', [AuthController::class, 'login'])->middleware('throttle:30,1,auth-login-');
+Route::post('/auth/resend-otp', [AuthController::class, 'resendOtp'])->middleware('throttle:6,10,auth-resend-');
+Route::post('/auth/password/forgot', [AuthController::class, 'forgotPassword'])->middleware('throttle:6,10,auth-forgot-');
+Route::post('/auth/password/reset', [AuthController::class, 'resetPassword'])->middleware('throttle:10,10,auth-reset-');
 Route::get('/auth/google', [AuthController::class, 'googleRedirect']);
-Route::get('/auth/google/callback', [AuthController::class, 'googleCallback'])->middleware('throttle:10,1');
-Route::post('/auth/google/handoff', [AuthController::class, 'googleHandoff'])->middleware('throttle:60,1');
-Route::post('/auth/google/mobile', [AuthController::class, 'googleMobile'])->middleware('throttle:10,1');
+Route::get('/auth/google/callback', [AuthController::class, 'googleCallback'])->middleware('throttle:30,1,auth-gcb-');
+Route::post('/auth/google/handoff', [AuthController::class, 'googleHandoff'])->middleware('throttle:60,1,auth-handoff-');
+Route::post('/auth/google/mobile', [AuthController::class, 'googleMobile'])->middleware('throttle:30,1,auth-gapp-');
+Route::post('/auth/login-failure', [\App\Http\Controllers\LoginFailureController::class, 'store'])->middleware('throttle:30,1,auth-failrep-');
 
 // Hardened video player page. Reached only via a short-lived signed URL issued by
 // the gated /video-solutions/{id}/play endpoint, and framed by the SPA.
@@ -228,6 +229,7 @@ Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager
     Route::post('/uploaded-papers/{id}/publish', [ManagerUploadedPaperController::class, 'publish'])->whereNumber('id');
     Route::post('/uploaded-papers/{id}/unpublish', [ManagerUploadedPaperController::class, 'unpublish'])->whereNumber('id');
     Route::get('/question-reports', [QuestionReportController::class, 'index']);
+    Route::get('/login-failures', [\App\Http\Controllers\LoginFailureController::class, 'index']);
     Route::patch('/question-reports/{id}', [QuestionReportController::class, 'update'])->whereNumber('id');
     Route::get('/announcements', [AnnouncementController::class, 'index']);
     Route::post('/announcements', [AnnouncementController::class, 'store']);

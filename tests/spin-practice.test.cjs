@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const bundle = fs.readFileSync(path.join(root, "assets", "index-fad00dd6r.js"), "utf8");
+const bundle = fs.readFileSync(path.join(root, "assets", "index-fad00dd6s.js"), "utf8");
 const appEnhancements = fs.readFileSync(path.join(root, "app-enhancements.js"), "utf8");
 const indexHtml = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const servePy = fs.readFileSync(path.join(root, "serve.py"), "utf8");
@@ -96,11 +96,11 @@ assert.ok(
 
 // 6. Cache busters
 assert.ok(
-  /\/assets\/index-fad00dd6r\.js\?v=202610[0-9]{2}[a-z0-9_-]*/.test(indexHtml),
+  /\/assets\/index-fad00dd6s\.js\?v=2026(10|11)[0-9]{2}[a-z0-9_-]*/.test(indexHtml),
   "index.html must reference refreshed bundle query parameter"
 );
 assert.ok(
-  /\/app-enhancements\.js\?v=202610[0-9]{2}[a-z0-9_-]*/.test(indexHtml),
+  /\/app-enhancements\.js\?v=2026(10|11)[0-9]{2}[a-z0-9_-]*/.test(indexHtml),
   "index.html must reference refreshed app-enhancements.js query parameter"
 );
 

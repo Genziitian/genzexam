@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
-const bundle = fs.readFileSync(path.join(root, 'assets/index-fad00dd6r.js'), 'utf8');
+const bundle = fs.readFileSync(path.join(root, 'assets/index-fad00dd6s.js'), 'utf8');
 const component = bundle.slice(bundle.indexOf('function Nl(){'), bundle.indexOf('var Pl=', bundle.indexOf('function Nl(){')));
 const flush = async () => { for (let i=0; i<12; i++) await Promise.resolve(); };
 const dashboard = {streak:{days:4},accuracy:{value:75},rank:{current:12}};

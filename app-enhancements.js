@@ -3052,7 +3052,7 @@
       event.preventDefault();
       event.stopPropagation();
       window.location.assign("/exams?preview=student");
-    } else if (/^\/(exams?(\/|$)|manager\/(discussions|sales|announcements|reports|uploads)\/?$|paper-pricing\/?$)/.test(link.pathname)) {
+    } else if (/^\/(exams?(\/|$)|manager\/(discussions|sales|announcements|reports|uploads|login-failures)\/?$|paper-pricing\/?$)/.test(link.pathname)) {
       event.stopPropagation();
     }
   }, true);

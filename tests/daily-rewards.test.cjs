@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const bundle = fs.readFileSync(path.join(root, "assets", "index-fad00dd6r.js"), "utf8");
+const bundle = fs.readFileSync(path.join(root, "assets", "index-fad00dd6s.js"), "utf8");
 const appEnhancements = fs.readFileSync(path.join(root, "app-enhancements.js"), "utf8");
 const dashboardCss = fs.readFileSync(path.join(root, "storefront-dashboard.css"), "utf8");
 const moreWeb = fs.readFileSync(path.join(root, "more-web.js"), "utf8");

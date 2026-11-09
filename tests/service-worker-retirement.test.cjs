@@ -76,7 +76,7 @@ async function page({ script = 'https://quiz.genziitian.in/sw.js?v=2', standalon
     const html = fs.readFileSync(path.join(root, name), 'utf8');
     if (!html.includes('/storefront-runtime.js?v=')) continue;
     entries++;
-    assert.ok(html.includes('/storefront-runtime.js?v=20261018swfix'), name+' must request the updated runtime');
+    assert.ok(html.includes('/storefront-runtime.js?v=20261109a'), name+' must request the updated runtime');
   }
   assert.ok(entries >= 12);
   console.log('PASS: 10 migration/lifecycle cases; session preservation, no forced navigation, no new guard registration, and '+entries+' updated entry points.');
