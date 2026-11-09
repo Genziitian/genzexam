@@ -117,7 +117,19 @@
       return new RegExp('(^|[^a-z0-9])' + token, 'i').test(fullText);
     });
   }
+  // Course list follows the chosen level: Foundation shows only Foundation courses.
+  function fillSubjects() {
+    const keep = subject.value;
+    const names = [...new Set(papers.filter(p => p.available !== false && (!level.value || String(p.course?.level || '') === level.value)).map(p => p.course?.name).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    const current = [...subject.options].slice(1).map(o => o.value).join('\n');
+    if (current !== names.join('\n')) {
+      subject.innerHTML = '<option value="">All courses</option>';
+      names.forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = value; subject.appendChild(option); });
+    }
+    subject.value = names.includes(keep) ? keep : '';
+  }
   function renderCatalog() {
+    fillSubjects();
     const query = search.value.trim().toLowerCase();
     const rows = papers.filter(p => p.available !== false && paperMatches(p, query) && (!level.value || String(p.course?.level || '') === level.value) && (!type.value || p.section === type.value) && (!subject.value || String(p.course?.name || '') === subject.value));
     grid.innerHTML = rows.length ? rows.map(card).join('') : '<div class="empty">No papers match these filters. Try another level or paper type.<br><button class="btn" data-reset>Clear filters</button></div>';
@@ -130,13 +142,12 @@
       const levelOrder = ['foundation', 'diploma', 'degree'];
       const levelRank = value => { const rank = levelOrder.indexOf(value.trim().toLowerCase()); return rank < 0 ? levelOrder.length : rank; };
       [...new Set(papers.map(p => p.course?.level).filter(Boolean))].sort((a, b) => levelRank(a) - levelRank(b) || a.localeCompare(b)).forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = value; level.appendChild(option); });
-      subject.innerHTML = '<option value="">All courses</option>';
-      [...new Set(papers.map(p => p.course?.name).filter(Boolean))].sort((a, b) => a.localeCompare(b)).forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = value; subject.appendChild(option); });
       // Links from the home page: /papers?q=<text> and /papers?level=<level>.
       const params = new URLSearchParams(location.search), wantLevel = (params.get('level') || '').trim().toLowerCase();
       if (params.get('q') && !search.value) search.value = params.get('q');
-      if (params.get('subject')) { const want = params.get('subject').toLowerCase(); const match = [...subject.options].find(o => o.value && o.value.toLowerCase() === want); if (match) subject.value = match.value; }
       if (wantLevel) { const match = [...level.options].find(o => o.value && o.value.toLowerCase().includes(wantLevel)); if (match) level.value = match.value; else if (!search.value) search.value = params.get('level'); }
+      fillSubjects();
+      if (params.get('subject')) { const want = params.get('subject').toLowerCase(); const match = [...subject.options].find(o => o.value && o.value.toLowerCase() === want); if (match) subject.value = match.value; }
       if (token()) { try { const library = await api('/storefront/my-papers'); ownedIds = new Set((library.papers || []).filter(p => Number(p.price_paise || 0) > 0 && p.has_access !== false && !p.expired && p.available !== false).map(p => String(p.id))); (library.papers || []).forEach(p => { const index = papers.findIndex(row => String(row.id) === String(p.id)); if (index >= 0) papers[index] = {...papers[index], ...p}; }); } catch { /* Catalog remains available if library cannot load. */ } }
       renderCatalog();
       const requested = new URLSearchParams(location.search).get('paper');
