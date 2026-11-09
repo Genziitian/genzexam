@@ -8,9 +8,9 @@
   const st = { data: null, reason: "", timer: null, toastTimer: null };
   const METHOD = { email: "Email + password", google: "Google (website)", google_app: "Google (app)", otp: "Signup OTP", register: "Sign up", password_reset: "Password reset", client: "Browser" };
   const FIX = {
-    google_only_account: "Tell them to use “Continue with Google”, or set a password via Forgot password.",
-    not_verified: "They never finished the OTP. Ask them to sign up again with the same email to get a new OTP (check spam).",
-    wrong_password: "Ask them to use Forgot password.",
+    google_only_account: "Tell them to tap “Continue with Google” with the same email.",
+    not_verified: "Old record from before OTP was removed.",
+    wrong_password: "Forgot it? Tell them to tap “Continue with Google” with the same email: it signs them in.",
     no_account: "Typo in the email, or they signed up with a different email / Google.",
     rate_limited: "Many attempts from one IP (college Wi-Fi / mobile data share IPs). Wait a minute and retry.",
     network_error: "The phone could not reach the server: weak network, VPN/ad-blocker, or the host dropped the connection.",

@@ -70,14 +70,14 @@ class LoginFailureLogTest extends TestCase
 
         $this->login('asha@example.com', 'wrong')->assertStatus(401);
         $this->login('google@example.com', 'anything')->assertStatus(401);
-        $this->login('new@example.com', 'right-pass')->assertStatus(403);
+        $this->login('new@example.com', 'right-pass')->assertOk(); // no OTP any more: first correct password verifies it
         $this->login('off@example.com', 'right-pass')->assertStatus(403);
         $this->login('nobody@example.com', 'x')->assertStatus(401);
         $this->login('not-an-email', 'x')->assertStatus(422);
         $this->login('asha@example.com', 'right-pass')->assertOk();
 
         $this->assertSame(
-            ['wrong_password', 'google_only_account', 'not_verified', 'deactivated', 'no_account', 'validation'],
+            ['wrong_password', 'google_only_account', 'deactivated', 'no_account', 'validation'],
             DB::table('login_failures')->orderBy('id')->pluck('reason')->all()
         );
         $this->assertSame('google@example.com', DB::table('login_failures')->where('reason', 'google_only_account')->value('email'));
@@ -177,5 +177,17 @@ class LoginFailureLogTest extends TestCase
         $res = $this->login('g@example.com', 'whatever')->assertStatus(401);
         $this->assertTrue($res->json('use_google'));
         $this->assertStringContainsString('Continue with Google', $res->json('error'));
+    }
+
+    public function test_sign_up_logs_the_student_straight_in_without_otp(): void
+    {
+        $res = $this->postJson('/public/api/auth/register', [
+            'name' => 'Meera', 'email' => 'meera@example.com', 'password' => 'Strong-pass-123', 'password_confirmation' => 'Strong-pass-123',
+        ]);
+        $res->assertStatus(201);
+        $this->assertNotEmpty($res->json('token'));
+        $this->assertSame('meera@example.com', $res->json('user.email'));
+        $this->assertNotNull(User::where('email', 'meera@example.com')->value('email_verified_at'));
+        $this->login('meera@example.com', 'Strong-pass-123')->assertOk();
     }
 }

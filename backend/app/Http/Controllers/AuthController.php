@@ -82,46 +82,47 @@ class AuthController extends Controller
             ], 422);
         }
 
-        if ($existingUser && ! $existingUser->email_verified_at) {
-            $existingUser->update([
+        // No OTP: sign-up signs the student straight in. An old half-finished sign-up
+        // (never verified) with this email is taken over by this one.
+        if ($existingUser) {
+            $existingUser->forceFill([
                 'name' => $validated['name'],
                 'password' => bcrypt($validated['password']),
-            ]);
-
-            $otp = $this->otpService->generate();
-            $this->otpService->store($existingUser, $otp);
-            try {
-                Mail::to($existingUser->email)->send(new OtpMail($otp, $existingUser->name));
-            } catch (Throwable $e) {
-                LoginFailure::record('register', 'otp_email_failed', $existingUser->email, $existingUser, 'Could not resend the signup OTP email.', $e->getMessage());
-                throw $e;
-            }
-
-            return response()->json([
-                'message' => 'Account exists but is unverified. OTP resent successfully.',
-                'email' => $existingUser->email,
+                'email_verified_at' => now(),
+                'otp' => null,
+                'otp_expires_at' => null,
+            ])->save();
+            $user = $existingUser;
+        } else {
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => bcrypt($validated['password']),
+                'email_verified_at' => now(),
             ]);
         }
 
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
-            'email_verified_at' => null,
+        $token = $this->issueToken($user);
+
+        LoginLog::create([
+            'user_id'      => $user->id,
+            'user_agent'   => substr((string) request()->userAgent(), 0, 300),
+            'auth_method'  => 'register',
+            'logged_in_at' => now(),
         ]);
 
-        $otp = $this->otpService->generate();
-        $this->otpService->store($user, $otp);
-        try {
-            Mail::to($user->email)->send(new OtpMail($otp, $user->name));
-        } catch (Throwable $e) {
-            LoginFailure::record('register', 'otp_email_failed', $user->email, $user, 'Could not send the signup OTP email.', $e->getMessage());
-            throw $e;
-        }
-
         return response()->json([
-            'message' => 'Registration successful. Please check your email for the OTP.',
+            'message' => 'Account created. Welcome!',
             'email' => $user->email,
+            'token' => $token,
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'is_admin' => $user->is_admin,
+                'role' => $user->role,
+                'avatar' => $user->avatar,
+            ],
         ], 201);
     }
 
@@ -178,15 +179,6 @@ class AuthController extends Controller
             return response()->json(['error' => 'Invalid credentials'], 401);
         }
 
-        if (! $user->email_verified_at) {
-            LoginFailure::record('email', 'not_verified', $validated['email'], $user, 'Email not verified (OTP never completed).');
-            return response()->json([
-                'error' => 'Please verify your email first, or tap “Continue with Google” to sign in instantly.',
-                'needs_verification' => true,
-                'email' => $user->email,
-            ], 403);
-        }
-
         if (! $user->is_active) {
             LoginFailure::record('email', 'deactivated', $validated['email'], $user, 'Account is deactivated.');
             return response()->json([
@@ -200,11 +192,16 @@ class AuthController extends Controller
                 $googleOnly ? 'Tried a password, but this account was made with Google and has no password.' : 'Wrong password.');
             if ($googleOnly) {
                 return response()->json([
-                    'error' => 'This account uses Google sign-in. Tap “Continue with Google” (or use Forgot password to set a password).',
+                    'error' => 'This account uses Google sign-in. Tap “Continue with Google”.',
                     'use_google' => true,
                 ], 401);
             }
             return response()->json(['error' => 'Invalid credentials'], 401);
+        }
+
+        if (! $user->email_verified_at) {
+            // OTP is gone: an older account that never entered its code is verified on its first correct password.
+            $user->forceFill(['email_verified_at' => now(), 'otp' => null, 'otp_expires_at' => null])->save();
         }
 
         $token = $this->issueToken($user);
