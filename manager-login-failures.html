@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https:; connect-src 'self' https://labapi.genziitian.in; object-src 'none'; base-uri 'self'; form-action 'self'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Login failures · Manager · Quiz LAB</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/manager-discussions.css?v=20261017b" />
+    <link rel="stylesheet" href="/ql-dark-discussions.css?v=20261010a" />
+    <link rel="stylesheet" href="/manager-login-failures.css?v=20261109a" />
+    <link id="ql-loading-styles" rel="stylesheet" href="/ql-loading.css?v=20261017b">
+<script src="/ql-loading.js?v=20261017a"></script>
+<script src="/ql-theme.js?v=20261010a"></script>
+  <link rel="stylesheet" href="/manager-shell.css?v=20261017a">
+<script src="/manager-shell.js?v=20261109a" defer></script>
+</head>
+  <body>
+    <span id="me" hidden></span>
+    <main>
+      <div class="heading">
+        <div>
+          <h1>Login failures</h1><p class="lf-sub">Every failed sign-in, sign-up or OTP, with the reason. Phone/network failures are sent by the browser.</p>
+        </div>
+        <button type="button" id="refresh">Refresh</button>
+      </div>
+      <div id="gate" class="notice" role="status">Checking your manager account…</div>
+      <div id="workspace" hidden>
+        <div class="lf-bar">
+          <select id="days" aria-label="Period"><option value="1">Last 24 hours</option><option value="7" selected>Last 7 days</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option></select>
+          <select id="method" aria-label="Sign-in type"><option value="">All types</option><option value="email">Email + password</option><option value="google">Google (website)</option><option value="google_app">Google (Android app)</option><option value="otp">Signup OTP</option><option value="register">Sign up</option><option value="password_reset">Password reset</option></select>
+          <input type="search" id="search" placeholder="Search email, IP or message" autocomplete="off" />
+        </div>
+        <div id="summary" class="lf-summary"></div>
+        <div id="list" class="lf-list"></div>
+      </div>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="/storefront-runtime.js?v=20261109a"></script>
+    <script src="/manager-login-failures.js?v=20261109b"></script>
+  </body>
+</html>

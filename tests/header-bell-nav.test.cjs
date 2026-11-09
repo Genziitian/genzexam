@@ -4,12 +4,12 @@ const path = require("path");
 const { spawnSync } = require("child_process");
 
 const root = path.resolve(__dirname, "..");
-const bundle = fs.readFileSync(path.join(root, "assets", "index-fad00dd6r.js"), "utf8");
+const bundle = fs.readFileSync(path.join(root, "assets", "index-fad00dd6t.js"), "utf8");
 const appEnhancements = fs.readFileSync(path.join(root, "app-enhancements.js"), "utf8");
 const indexHtml = fs.readFileSync(path.join(root, "index.html"), "utf8");
 
 // Parse the shipped module before checking the notification markup.
-const syntax = spawnSync(process.execPath, ["--check", path.join(root, "assets", "index-fad00dd6r.js")], { encoding: "utf8" });
+const syntax = spawnSync(process.execPath, ["--check", path.join(root, "assets", "index-fad00dd6t.js")], { encoding: "utf8" });
 assert.strictEqual(syntax.status, 0, "The main app bundle must parse successfully before the dashboard can load");
 
 // 1. Bundle verification
@@ -42,11 +42,11 @@ assert.ok(
 
 // 3. Cache busters
 assert.ok(
-  /\/assets\/index-fad00dd6r\.js\?v=202610[0-9]{2}[a-z0-9_-]*/.test(indexHtml),
+  /\/assets\/index-fad00dd6t\.js\?v=2026(10|11)[0-9]{2}[a-z0-9_-]*/.test(indexHtml),
   "index.html must reference refreshed bundle query parameter"
 );
 assert.ok(
-  /\/app-enhancements\.js\?v=202610[0-9]{2}[a-z0-9_-]*/.test(indexHtml),
+  /\/app-enhancements\.js\?v=2026(10|11)[0-9]{2}[a-z0-9_-]*/.test(indexHtml),
   "index.html must reference refreshed app-enhancements.js query parameter"
 );
 

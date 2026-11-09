@@ -153,6 +153,71 @@
   window.addEventListener('focus', collectHandoff);
   window.addEventListener('pageshow', collectHandoff);
   setInterval(function () { if (pendingHandoff()) collectHandoff(); }, 2500);
+
+  // Login failure reporter: tells the server about sign-in failures it never saw
+  // (phone could not reach the API, 5xx, the Google return page failing to load the profile).
+  // Managers see them at /manager/login-failures. Reports that cannot be sent wait in localStorage.
+  var failQueueKey = 'ql_login_fail_queue';
+  function sendFailure(item) {
+    try {
+      return fetch(apiBase + '/auth/login-failure', {
+        method: 'POST', keepalive: true,
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(item)
+      }).then(function (r) { return r.ok || r.status === 422 || r.status === 429; }, function () { return false; });
+    } catch (_) { return Promise.resolve(false); }
+  }
+  function queueFailure(item) {
+    try {
+      var q = JSON.parse(localStorage.getItem(failQueueKey) || '[]');
+      q.push(item); localStorage.setItem(failQueueKey, JSON.stringify(q.slice(-10)));
+    } catch (_) {}
+  }
+  function flushFailures() {
+    var q; try { q = JSON.parse(localStorage.getItem(failQueueKey) || '[]'); } catch (_) { q = []; }
+    if (!q.length || navigator.onLine === false) return;
+    try { localStorage.removeItem(failQueueKey); } catch (_) {}
+    q.forEach(function (item) { sendFailure(item).then(function (ok) { if (!ok) queueFailure(item); }); });
+  }
+  function reportLoginFailure(item) {
+    item.page = location.pathname;
+    item.detail = (item.detail ? item.detail + ' · ' : '') + 'online=' + navigator.onLine + ' · standalone=' + !!(window.matchMedia && matchMedia('(display-mode: standalone)').matches || navigator.standalone);
+    if (navigator.onLine === false) { item.detail += ' · queued offline at ' + new Date().toISOString(); queueFailure(item); return; }
+    sendFailure(item).then(function (ok) { if (!ok) { item.detail += ' · first send failed ' + new Date().toISOString(); queueFailure(item); } });
+  }
+  window.QLReportLoginFailure = reportLoginFailure;
+  (function watchAuthRequests() {
+    if (!window.XMLHttpRequest || XMLHttpRequest.prototype.__qlFailWatch) return;
+    XMLHttpRequest.prototype.__qlFailWatch = true;
+    var authRe = /\/public\/api\/auth\/(login|register|verify-otp|resend-otp|password\/forgot|password\/reset|google\/mobile|me)(\?|$)/;
+    var open = XMLHttpRequest.prototype.open, send = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.open = function (method, url) { this.__qlUrl = String(url || ''); return open.apply(this, arguments); };
+    XMLHttpRequest.prototype.send = function (body) {
+      var xhr = this, m = authRe.exec(xhr.__qlUrl || '');
+      if (m) {
+        var started = Date.now();
+        xhr.addEventListener('loadend', function () {
+          var path = m[1], st = xhr.status;
+          var onCallback = /^\/auth\/callback/.test(location.pathname);
+          if (path === 'me' && !onCallback) return; // only the Google return page's profile load counts
+          if (st >= 200 && st < 500 && !(path === 'me' && st >= 400)) return; // 4xx are logged by the server itself
+          var email = null; try { email = (JSON.parse(body || '{}') || {}).email || null; } catch (_) {}
+          if (!email) { try { email = (JSON.parse(localStorage.getItem('lab_user') || '{}') || {}).email || null; } catch (_) {} }
+          reportLoginFailure({
+            email: email,
+            method: path === 'me' ? 'google' : path === 'google/mobile' ? 'google_app' : /otp/.test(path) ? 'otp' : path === 'register' ? 'register' : /password/.test(path) ? 'password_reset' : 'email',
+            reason: path === 'me' ? 'profile_failed' : st === 0 ? 'network_error' : 'server_error',
+            message: st === 0 ? 'No response from the server for /auth/' + path + ' (connection dropped, blocked or timed out).' : 'Server answered ' + st + ' for /auth/' + path + '.',
+            detail: 'status=' + st + ' · ' + (Date.now() - started) + 'ms'
+          });
+        });
+      }
+      return send.apply(this, arguments);
+    };
+  })();
+  flushFailures();
+  window.addEventListener('online', flushFailures);
+
   collectHandoff();
 
   // Papers open in the self-paced paper room, not the old in-app quiz player.

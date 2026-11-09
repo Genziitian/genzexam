@@ -78,7 +78,7 @@ class PasswordAuthenticationTest extends TestCase
         });
     }
 
-    public function test_registration_hashes_password_and_requires_email_verification(): void
+    public function test_registration_hashes_password_and_signs_in_without_otp(): void
     {
         Mail::fake();
 
@@ -93,8 +93,9 @@ class PasswordAuthenticationTest extends TestCase
         $storedPassword = DB::table('users')->where('email', 'student@example.test')->value('password');
         $this->assertNotSame('correct horse battery staple', $storedPassword);
         $this->assertTrue(Hash::check('correct horse battery staple', $storedPassword));
-        $this->assertSame(1, DB::table('users')->whereNull('email_verified_at')->count());
-        Mail::assertSent(OtpMail::class);
+        $this->assertSame(0, DB::table('users')->whereNull('email_verified_at')->count());
+        $this->assertNotEmpty($response->json('token'));
+        Mail::assertNotSent(OtpMail::class);
     }
 
     public function test_verified_user_can_sign_in_with_email_and_password(): void
@@ -139,7 +140,7 @@ class PasswordAuthenticationTest extends TestCase
         $this->assertSame(3, DB::table('personal_access_tokens')->where('tokenable_id', $id)->count());
     }
 
-    public function test_wrong_password_is_rejected_and_unverified_user_cannot_sign_in(): void
+    public function test_wrong_password_is_rejected_and_old_unverified_user_can_sign_in(): void
     {
         DB::table('users')->insert([
             'name' => 'Test Student',
@@ -164,7 +165,8 @@ class PasswordAuthenticationTest extends TestCase
 
         $this->postJson('/public/api/auth/login', [
             'email' => 'pending@example.test', 'password' => 'correct horse battery staple',
-        ])->assertForbidden()->assertJsonPath('needs_verification', true);
+        ])->assertOk();
+        $this->assertNotNull(DB::table('users')->where('email', 'pending@example.test')->value('email_verified_at'));
     }
 
     public function test_personal_access_tokens_expire_after_the_configured_lifetime(): void

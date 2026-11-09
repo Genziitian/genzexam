@@ -4,13 +4,14 @@
   if (window.QLManagerShell) return;
   var sidebar, toggle, scrim, verifiedUser;
   var examPage = /^\/exams?(?:\/|$)/.test(location.pathname);
-  var managerPage = /^\/manager\/(sales|discussions|announcements|reports|uploads)\/?$/.test(location.pathname);
+  var managerPage = /^\/manager\/(sales|discussions|announcements|reports|uploads|login-failures)\/?$/.test(location.pathname);
   var links = [
     ['/manager','Dashboard','home'], ['/manager/analytics','Analytics','trend'],
     ['/manager/users','Users','users'], ['/manager/courses','Courses','book'],
     ['/manager/quizzes','Quizzes','paper'], ['/exams','Online Exams','test'],
     ['/manager/discussions','Discussions','chat'], ['/manager/sales','Paper Sales','inbox'],
     ['/manager/announcements','Announcements','bell'], ['/manager/reports','Reported questions','flag'],
+    ['/manager/login-failures','Login failures','users'],
     ['/manager/uploads','Student uploads','inbox'], ['/manager/ide-problems','IDE Problems','code'],
     ['/manager/video-solutions','Video Solutions','book'], ['/manager/settings','Settings','settings']
   ];

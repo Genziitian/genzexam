@@ -26,7 +26,7 @@ if (process.env.CROP_API_FIXTURE) {
   question = { ...(api.quiz || api).questions[0], explanation: question.explanation };
 }
 const initial = JSON.stringify(question).replace(/</g, "\\u003c");
-let bundle = fs.readFileSync(path.join(root, "assets/index-fad00dd6r.js"), "utf8");
+let bundle = fs.readFileSync(path.join(root, "assets/index-fad00dd6t.js"), "utf8");
 const start = "(0,y.createRoot)(document.getElementById(`root`)).render(";
 const position = bundle.lastIndexOf(start);
 assert.ok(position > 0, "Shipped React entry point is present.");

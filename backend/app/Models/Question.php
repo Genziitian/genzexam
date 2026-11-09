@@ -32,6 +32,11 @@ class Question extends Model
         'stem_table' => 'array',
     ];
 
+    public function getStemImageAttribute(): ?string
+    {
+        return null;
+    }
+
     public function quiz(): BelongsTo
     {
         return $this->belongsTo(Quiz::class);

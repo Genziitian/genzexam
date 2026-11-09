@@ -25,21 +25,16 @@ class StudentSpinPracticeController extends Controller
 
     private function dailyQuota(User $user): array
     {
-        // One calendar-day allowance for both clients, resetting at midnight in India.
+        // Practice spins are unlimited to all while Pro launch is deferred.
         $day = now('Asia/Kolkata')->startOfDay();
-        $start = $day->copy()->setTimezone(config('app.timezone', 'UTC'));
-        $end = $day->copy()->addDay()->setTimezone(config('app.timezone', 'UTC'));
-        $pro = $user->hasProAccess();
-        $bonus = (int) Cache::get('user_bonus_spins_'.$user->id, 0);
-        $limit = ($pro ? 7 : 1) + $bonus;
-        $used = Quiz::withoutGlobalScope('exclude_personal_uploads')
-            ->where('is_personal', true)->where('owner_user_id', $user->id)
-            ->where('description', 'like', Quiz::SPIN_PRACTICE_PREFIX.'%')
-            ->where('created_at', '>=', $start)->where('created_at', '<', $end)->count();
-
-        return ['is_pro' => $pro, 'limit' => $limit, 'used' => $used,
-            'remaining' => max(0, $limit - $used), 'resets_at' => $day->copy()->addDay()->toIso8601String(),
-            'timezone' => 'Asia/Kolkata'];
+        return [
+            'is_pro' => true,
+            'limit' => 9999,
+            'used' => 0,
+            'remaining' => 9999,
+            'resets_at' => $day->copy()->addDay()->toIso8601String(),
+            'timezone' => 'Asia/Kolkata',
+        ];
     }
 
     public function generate(Request $request): JsonResponse
@@ -185,7 +180,7 @@ class StudentSpinPracticeController extends Controller
                     'quiz_id' => $newQuiz->id,
                     'type' => $q->type,
                     'stem' => $q->stem,
-                    'stem_image' => $q->stem_image,
+                    'stem_image' => null,
                     'stem_code' => $q->stem_code,
                     'stem_code_language' => $q->stem_code_language,
                     'stem_table' => $q->stem_table,

@@ -284,9 +284,10 @@
     };
   }
   function resolveQuestionImage(q, stemText) {
+    const s = String(stemText || (q && (q.stem || q.question_stem)) || "");
+    if (/!\[[^\n]*?\]\(/.test(s)) return "";
     const img = imageUrl(q && q.stem_image);
     if (img) return img;
-    const s = String(stemText || (q && (q.stem || q.question_stem)) || "");
     if (
       (s.includes("Figure 1") || s.includes("figure 1")) &&
       (s.includes("quadratic functions") || s.includes("p(x)") || s.includes("oct2022_q1_figure1"))

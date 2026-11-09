@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Mail\OtpMail;
+use App\Models\LoginFailure;
 use App\Models\LoginLog;
 use App\Models\User;
 use App\Services\OtpService;
@@ -35,6 +36,34 @@ class AuthController extends Controller
         return $token;
     }
 
+    /**
+     * Google has confirmed this person owns the email, so a Google sign-in always lets them in:
+     * link the Google id and mark the email verified. If the account was never verified (someone
+     * typed this email at sign-up but never entered the OTP), the password set then is dropped,
+     * because nobody proved they owned the inbox when it was chosen.
+     */
+    private function linkGoogle(User $user, string $googleId, ?string $avatar): void
+    {
+        $changes = [];
+        if (! $user->google_id && $googleId !== '') {
+            $changes['google_id'] = $googleId;
+        }
+        if (! $user->avatar && $avatar) {
+            $changes['avatar'] = $avatar;
+        }
+        if (! $user->email_verified_at) {
+            $changes['email_verified_at'] = now();
+            $changes['password'] = null;
+            if ($user->otp !== null || $user->otp_expires_at !== null) {
+                $changes['otp'] = null;
+                $changes['otp_expires_at'] = null;
+            }
+        }
+        if ($changes) {
+            $user->forceFill($changes)->save();
+        }
+    }
+
     public function __construct(private readonly OtpService $otpService)
     {
     }
@@ -47,40 +76,53 @@ class AuthController extends Controller
 
         if ($existingUser && $existingUser->email_verified_at) {
             return response()->json([
-                'error' => 'Email already registered',
+                'error' => $existingUser->password
+                    ? 'This email is already registered. Please sign in.'
+                    : 'This email is already registered with Google. Tap “Continue with Google” to sign in.',
             ], 422);
         }
 
-        if ($existingUser && ! $existingUser->email_verified_at) {
-            $existingUser->update([
+        // No OTP: sign-up signs the student straight in. An old half-finished sign-up
+        // (never verified) with this email is taken over by this one.
+        if ($existingUser) {
+            $existingUser->forceFill([
                 'name' => $validated['name'],
                 'password' => bcrypt($validated['password']),
-            ]);
-
-            $otp = $this->otpService->generate();
-            $this->otpService->store($existingUser, $otp);
-            Mail::to($existingUser->email)->send(new OtpMail($otp, $existingUser->name));
-
-            return response()->json([
-                'message' => 'Account exists but is unverified. OTP resent successfully.',
-                'email' => $existingUser->email,
+                'email_verified_at' => now(),
+                'otp' => null,
+                'otp_expires_at' => null,
+            ])->save();
+            $user = $existingUser;
+        } else {
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => bcrypt($validated['password']),
+                'email_verified_at' => now(),
             ]);
         }
 
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
-            'email_verified_at' => null,
+        $token = $this->issueToken($user);
+
+        LoginLog::create([
+            'user_id'      => $user->id,
+            'user_agent'   => substr((string) request()->userAgent(), 0, 300),
+            'auth_method'  => 'register',
+            'logged_in_at' => now(),
         ]);
 
-        $otp = $this->otpService->generate();
-        $this->otpService->store($user, $otp);
-        Mail::to($user->email)->send(new OtpMail($otp, $user->name));
-
         return response()->json([
-            'message' => 'Registration successful. Please check your email for the OTP.',
+            'message' => 'Account created. Welcome!',
             'email' => $user->email,
+            'token' => $token,
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'is_admin' => $user->is_admin,
+                'role' => $user->role,
+                'avatar' => $user->avatar,
+            ],
         ], 201);
     }
 
@@ -94,10 +136,14 @@ class AuthController extends Controller
         $user = User::where('email', $validated['email'])->first();
 
         if (! $user) {
+            LoginFailure::record('otp', 'no_account', $validated['email'], null, 'OTP entered for an email with no account.');
             return response()->json(['error' => 'User not found'], 404);
         }
 
         if (! $this->otpService->verify($user, $validated['otp'])) {
+            $expired = $user->otp_expires_at && now()->isAfter($user->otp_expires_at);
+            LoginFailure::record('otp', $expired ? 'otp_expired' : 'otp_wrong', $validated['email'], $user,
+                $expired ? 'Signup OTP expired (older than 10 minutes).' : 'Wrong signup OTP.');
             return response()->json(['error' => 'Invalid or expired OTP'], 422);
         }
 
@@ -129,25 +175,33 @@ class AuthController extends Controller
         $user = User::where('email', $validated['email'])->first();
 
         if (! $user) {
+            LoginFailure::record('email', 'no_account', $validated['email'], null, 'No account with this email.');
             return response()->json(['error' => 'Invalid credentials'], 401);
         }
 
-        if (! $user->email_verified_at) {
-            return response()->json([
-                'error' => 'Please verify your email first.',
-                'needs_verification' => true,
-                'email' => $user->email,
-            ], 403);
-        }
-
         if (! $user->is_active) {
+            LoginFailure::record('email', 'deactivated', $validated['email'], $user, 'Account is deactivated.');
             return response()->json([
                 'error' => 'Your account has been deactivated.',
             ], 403);
         }
 
         if (! Hash::check($validated['password'], (string) $user->password)) {
+            $googleOnly = ! $user->password;
+            LoginFailure::record('email', $googleOnly ? 'google_only_account' : 'wrong_password', $validated['email'], $user,
+                $googleOnly ? 'Tried a password, but this account was made with Google and has no password.' : 'Wrong password.');
+            if ($googleOnly) {
+                return response()->json([
+                    'error' => 'This account uses Google sign-in. Tap “Continue with Google”.',
+                    'use_google' => true,
+                ], 401);
+            }
             return response()->json(['error' => 'Invalid credentials'], 401);
+        }
+
+        if (! $user->email_verified_at) {
+            // OTP is gone: an older account that never entered its code is verified on its first correct password.
+            $user->forceFill(['email_verified_at' => now(), 'otp' => null, 'otp_expires_at' => null])->save();
         }
 
         $token = $this->issueToken($user);
@@ -210,14 +264,17 @@ class AuthController extends Controller
         $user = User::where('email', $validated['email'])->first();
 
         if (! $user) {
+            LoginFailure::record('password_reset', 'no_account', $validated['email'] ?? $request->input('email'), null, 'Forgot password for an email with no account.');
             return response()->json(['error' => 'User not found'], 404);
         }
 
         if (! $user->email_verified_at) {
+            LoginFailure::record('password_reset', 'not_verified', $user->email, $user, 'Forgot password, but email was never verified.');
             return response()->json(['error' => 'Please verify your email first'], 422);
         }
 
         if (! $user->is_active) {
+            LoginFailure::record('password_reset', 'deactivated', $user->email, $user, 'Forgot password on a deactivated account.');
             return response()->json(['error' => 'Your account has been deactivated.'], 403);
         }
 
@@ -244,10 +301,12 @@ class AuthController extends Controller
         $user = User::where('email', $validated['email'])->first();
 
         if (! $user) {
+            LoginFailure::record('password_reset', 'no_account', $request->input('email'), null, 'Reset OTP entered for an email with no account.');
             return response()->json(['error' => 'User not found'], 404);
         }
 
         if (! $this->otpService->verify($user, $validated['otp'])) {
+            LoginFailure::record('password_reset', 'otp_wrong', $user->email, $user, 'Wrong or expired password-reset OTP.');
             return response()->json(['error' => 'Invalid or expired OTP'], 422);
         }
 
@@ -340,12 +399,14 @@ class AuthController extends Controller
     {
         $idToken = (string) $request->input('id_token', '');
         if ($idToken === '' || strlen($idToken) > 4096 || substr_count($idToken, '.') !== 2) {
+            LoginFailure::record('google_app', 'bad_id_token', null, null, 'App sent a missing or malformed Google token.');
             return response()->json(['error' => 'Google sign-in failed. Please try again.'], 422);
         }
 
         $clientId = (string) config('services.google.client_id');
         if ($clientId === '') {
             Log::error('Google mobile sign-in: GOOGLE_CLIENT_ID is not configured');
+            LoginFailure::record('google_app', 'server_config', null, null, 'GOOGLE_CLIENT_ID is not set on the server.');
 
             return response()->json(['error' => 'Google sign-in is not available right now.'], 500);
         }
@@ -354,6 +415,7 @@ class AuthController extends Controller
             $check = Http::timeout(10)->acceptJson()->get('https://oauth2.googleapis.com/tokeninfo', ['id_token' => $idToken]);
         } catch (Throwable $e) {
             Log::error('Google mobile sign-in: token check unreachable', ['message' => $e->getMessage()]);
+            LoginFailure::record('google_app', 'google_unreachable', null, null, 'Server could not reach Google to check the token.', $e->getMessage());
 
             return response()->json(['error' => 'Could not reach Google. Please try again.'], 503);
         }
@@ -369,6 +431,11 @@ class AuthController extends Controller
             && filter_var($claims['email'] ?? '', FILTER_VALIDATE_EMAIL);
 
         if (! $valid) {
+            $why = ! is_array($claims) ? 'Google rejected the token (HTTP '.$check->status().')'
+                : (! hash_equals($clientId, (string) ($claims['aud'] ?? '')) ? 'Token was issued for a different OAuth client: '.($claims['aud'] ?? '?')
+                : ((int) ($claims['exp'] ?? 0) <= time() ? 'Token expired'
+                : (! filter_var($claims['email_verified'] ?? false, FILTER_VALIDATE_BOOLEAN) ? 'Google email not verified' : 'Token claims invalid')));
+            LoginFailure::record('google_app', 'token_invalid', is_array($claims) ? ($claims['email'] ?? null) : null, null, $why, is_array($claims) ? null : mb_substr((string) $check->body(), 0, 500));
             return response()->json(['error' => 'Google sign-in could not be verified. Please try again.'], 401);
         }
 
@@ -376,16 +443,15 @@ class AuthController extends Controller
         $email = strtolower((string) $claims['email']);
         $avatar = isset($claims['picture']) ? (string) $claims['picture'] : null;
 
-        $user = User::where('google_id', $googleId)->orWhere('email', $email)->first();
+        $user = User::where('google_id', $googleId)->first() ?? User::where('email', $email)->first();
 
         if ($user && ! $user->is_active) {
+            LoginFailure::record('google_app', 'deactivated', $email, $user, 'Account is deactivated.');
             return response()->json(['error' => 'Your account has been deactivated.'], 403);
         }
 
         if ($user) {
-            if (! $user->google_id) {
-                $user->update(['google_id' => $googleId, 'avatar' => $avatar]);
-            }
+            $this->linkGoogle($user, $googleId, $avatar);
         } else {
             $user = User::create([
                 'name' => trim((string) ($claims['name'] ?? '')) ?: 'Google User',
@@ -450,31 +516,46 @@ class AuthController extends Controller
         }
     }
 
-    public function googleCallback(): RedirectResponse|Response
+    public function googleCallback(Request $request): RedirectResponse|Response
     {
+        $frontendUrl = rtrim((string) env('FRONTEND_URL', 'http://localhost:5173'), '/');
+
+        if ($request->has('error')) {
+            $err = (string) $request->query('error');
+            $desc = (string) $request->query('error_description', '');
+            $msg = $err === 'access_denied' ? 'Google sign-in was cancelled.' : ($desc ?: 'Google sign-in error: '.$err);
+            Log::warning('Google OAuth callback returned error parameter', [
+                'error' => $err,
+                'description' => $desc,
+            ]);
+            LoginFailure::record('google', $err === 'access_denied' ? 'google_cancelled' : 'google_error', null, null, $msg, $desc ?: $err);
+
+            return redirect($frontendUrl.'/auth/callback?error='.urlencode($err).'&message='.urlencode($msg));
+        }
+
         try {
             $googleUser = Socialite::driver('google')->stateless()->user();
-            $frontendUrl = rtrim((string) env('FRONTEND_URL', 'http://localhost:5173'), '/');
+            $googleEmail = strtolower(trim((string) $googleUser->getEmail()));
 
-            $user = User::where('google_id', $googleUser->getId())
-                ->orWhere('email', $googleUser->getEmail())
-                ->first();
+            if ($googleEmail === '' || ! filter_var($googleEmail, FILTER_VALIDATE_EMAIL)) {
+                LoginFailure::record('google', 'google_error', null, null, 'Google did not share an email address.');
+                return redirect($frontendUrl.'/auth/callback?error=google_no_email&message='.urlencode('Google did not share your email address. Please try again and allow email access.'));
+            }
+
+            $user = User::where('google_id', $googleUser->getId())->first()
+                ?? User::where('email', $googleEmail)->first();
 
             if ($user && ! $user->is_active) {
-                return redirect($frontendUrl.'/auth/callback?error=account_deactivated');
+                LoginFailure::record('google', 'deactivated', $googleUser->getEmail(), $user, 'Account is deactivated.');
+                return redirect($frontendUrl.'/auth/callback?error=account_deactivated&message='.urlencode('Your account has been deactivated. Please contact support.'));
             }
 
             if ($user) {
-                if (! $user->google_id && $googleUser->getId()) {
-                    $user->update([
-                        'google_id' => $googleUser->getId(),
-                        'avatar' => $googleUser->getAvatar(),
-                    ]);
-                }
+                $this->linkGoogle($user, (string) $googleUser->getId(), $googleUser->getAvatar());
             } else {
                 $user = User::create([
-                    'name' => $googleUser->getName() ?? $googleUser->getNickname() ?? 'Google User',
-                    'email' => $googleUser->getEmail(),
+                    'name' => trim((string) ($googleUser->getName() ?? $googleUser->getNickname() ?? '')) ?: 'Google User',
+                    'email' => $googleEmail,
                     'password' => null,
                     'email_verified_at' => now(),
                     'google_id' => $googleUser->getId(),
@@ -521,7 +602,9 @@ class AuthController extends Controller
                 'line' => $e->getLine(),
             ]);
 
-            return redirect($frontendUrl.'/auth/callback?error=google_auth_failed');
+            $friendlyMsg = 'Google sign-in failed: '.substr($e->getMessage(), 0, 120);
+            LoginFailure::record('google', 'google_exception', null, null, 'Google sign-in crashed on the server.', class_basename($e).': '.$e->getMessage().' @ '.basename($e->getFile()).':'.$e->getLine());
+            return redirect($frontendUrl.'/auth/callback?error=google_auth_failed&message='.urlencode($friendlyMsg));
         }
     }
 

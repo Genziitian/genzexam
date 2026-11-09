@@ -672,6 +672,7 @@
 :root[data-theme=dark] .ql-up-back-btn:hover{background-color:#253244;color:#d6dae5}
 :root[data-theme=dark] .ql-up-title{color:#d6dae5}
 :root[data-theme=dark] .ql-up-subtitle{color:#9ea9b9}
+:root[data-theme=dark] .ql-up-pro-badge, :root[data-theme=dark] .ql-spin-pro-badge, :root[data-theme=dark] .ql-qa-pro-badge{display:none!important}
 :root[data-theme=dark] .ql-up-pro-badge{background-image:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a}
 :root[data-theme=dark] .ql-up-card{border-color:#2e3b4c;background-color:#151a25}
 :root[data-theme=dark] .ql-up-card-title{color:#d6dae5}
