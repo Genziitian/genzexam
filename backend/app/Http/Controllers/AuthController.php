@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 use Throwable;
@@ -42,8 +43,31 @@ class AuthController extends Controller
      * typed this email at sign-up but never entered the OTP), the password set then is dropped,
      * because nobody proved they owned the inbox when it was chosen.
      */
+    /**
+     * Some Google profile-picture links are longer than 255 characters. Until the avatar column
+     * is widened (migration 2026_11_09_000002) such a link crashed the whole sign-in, so it is
+     * dropped instead: a missing picture must never block a login.
+     */
+    private function safeAvatar(?string $avatar): ?string
+    {
+        $avatar = trim((string) $avatar);
+        if ($avatar === '' || ! preg_match('#^https://#i', $avatar)) {
+            return null;
+        }
+        $limit = Cache::remember('users_avatar_limit', 600, function () {
+            try {
+                return in_array(strtolower(Schema::getColumnType('users', 'avatar')), ['text', 'mediumtext', 'longtext'], true) ? 2048 : 255;
+            } catch (Throwable) {
+                return 255;
+            }
+        });
+
+        return strlen($avatar) <= $limit ? $avatar : null;
+    }
+
     private function linkGoogle(User $user, string $googleId, ?string $avatar): void
     {
+        $avatar = $this->safeAvatar($avatar);
         $changes = [];
         if (! $user->google_id && $googleId !== '') {
             $changes['google_id'] = $googleId;
@@ -441,7 +465,7 @@ class AuthController extends Controller
 
         $googleId = (string) $claims['sub'];
         $email = strtolower((string) $claims['email']);
-        $avatar = isset($claims['picture']) ? (string) $claims['picture'] : null;
+        $avatar = $this->safeAvatar(isset($claims['picture']) ? (string) $claims['picture'] : null);
 
         $user = User::where('google_id', $googleId)->first() ?? User::where('email', $email)->first();
 
@@ -559,7 +583,7 @@ class AuthController extends Controller
                     'password' => null,
                     'email_verified_at' => now(),
                     'google_id' => $googleUser->getId(),
-                    'avatar' => $googleUser->getAvatar(),
+                    'avatar' => $this->safeAvatar($googleUser->getAvatar()),
                     'is_active' => true,
                 ]);
             }
@@ -602,7 +626,8 @@ class AuthController extends Controller
                 'line' => $e->getLine(),
             ]);
 
-            $friendlyMsg = 'Google sign-in failed: '.substr($e->getMessage(), 0, 120);
+            // The full error goes to the manager's Login failures page, never to the student's screen.
+            $friendlyMsg = 'Something went wrong on our side. Please try again in a minute.';
             LoginFailure::record('google', 'google_exception', null, null, 'Google sign-in crashed on the server.', class_basename($e).': '.$e->getMessage().' @ '.basename($e->getFile()).':'.$e->getLine());
             return redirect($frontendUrl.'/auth/callback?error=google_auth_failed&message='.urlencode($friendlyMsg));
         }

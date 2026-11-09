@@ -129,9 +129,9 @@ class LoginFailureLogTest extends TestCase
         $this->assertSame(1, count($this->getJson('/public/api/manager/login-failures?reason=network_error')->json('failures')));
     }
 
-    private function fakeGoogle(string $id, string $email, ?string $name = 'Raj Singh'): void
+    private function fakeGoogle(string $id, string $email, ?string $name = 'Raj Singh', ?string $avatar = null): void
     {
-        $google = (new GoogleUser())->map(['id' => $id, 'name' => $name, 'email' => $email, 'avatar' => null]);
+        $google = (new GoogleUser())->map(['id' => $id, 'name' => $name, 'email' => $email, 'avatar' => $avatar]);
         $driver = Mockery::mock();
         $driver->shouldReceive('stateless')->andReturnSelf();
         $driver->shouldReceive('user')->andReturn($google);
@@ -189,5 +189,22 @@ class LoginFailureLogTest extends TestCase
         $this->assertSame('meera@example.com', $res->json('user.email'));
         $this->assertNotNull(User::where('email', 'meera@example.com')->value('email_verified_at'));
         $this->login('meera@example.com', 'Strong-pass-123')->assertOk();
+    }
+
+    public function test_a_very_long_google_picture_link_never_blocks_sign_in(): void
+    {
+        $long = 'https://lh3.googleusercontent.com/a/'.str_repeat('A', 400).'=s96-c';
+        $this->fakeGoogle('g-long', 'longpic@example.com', 'Long Pic', $long);
+        $res = $this->get('/public/api/auth/google/callback?code=x');
+        $this->assertStringContainsString('/auth/callback#token=', (string) $res->headers->get('Location'));
+        $this->assertNull(User::where('email', 'longpic@example.com')->value('avatar'));
+    }
+
+    public function test_a_normal_google_picture_link_is_kept(): void
+    {
+        $short = 'https://lh3.googleusercontent.com/a/short=s96-c';
+        $this->fakeGoogle('g-short', 'shortpic@example.com', 'Short Pic', $short);
+        $this->get('/public/api/auth/google/callback?code=x');
+        $this->assertSame($short, User::where('email', 'shortpic@example.com')->value('avatar'));
     }
 }
