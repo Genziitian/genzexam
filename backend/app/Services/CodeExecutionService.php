@@ -66,6 +66,13 @@ class CodeExecutionService
         }
 
         $remote = $this->executeViaPiston($language, $code, $input, $timeLimit);
+        // Free public runner when Piston is down/blocked; works in production too.
+        if (trim((string) ($remote['stderr'] ?? '')) === 'Execution service unavailable') {
+            $remote = $this->executeViaWandbox($language, $code, $input);
+            if (trim((string) $remote['stderr']) !== 'Execution service unavailable') {
+                return $remote;
+            }
+        }
         if (! $this->shouldFallbackToLocal($remote)) {
             return $remote;
         }
@@ -94,6 +101,45 @@ class CodeExecutionService
         }
 
         return false;
+    }
+
+    /** shortcut: free public API with no key or SLA and a fixed timeout; move to our own runner if traffic grows. */
+    private function executeViaWandbox(string $language, string $code, string $input): array
+    {
+        $unavailable = ['stdout' => '', 'stderr' => 'Execution service unavailable', 'exit_code' => 1];
+        $compiler = match (strtolower($language)) {
+            'java' => 'openjdk-jdk-21+35',
+            'cpp', 'c++' => 'gcc-13.2.0',
+            default => 'cpython-3.12.7',
+        };
+        // Wandbox saves Java as prog.java, so a public class name would not match the file.
+        if ($compiler === 'openjdk-jdk-21+35') {
+            $code = preg_replace('/\bpublic\s+(class|interface|enum)\b/', '$1', $code);
+        }
+
+        try {
+            $res = Http::timeout(20)->post('https://wandbox.org/api/compile.json', [
+                'compiler' => $compiler,
+                'code' => $code,
+                'stdin' => $input,
+            ]);
+        } catch (\Throwable) {
+            return $unavailable;
+        }
+        if ($res->failed() || ! is_array($res->json())) {
+            return $unavailable;
+        }
+
+        $status = (int) $res->json('status', 0);
+        $stderr = trim((string) $res->json('compiler_error').' '.(string) $res->json('program_error'));
+        $killed = $res->json('signal') === 'Killed';
+
+        return [
+            'stdout' => (string) $res->json('program_output'),
+            'stderr' => $killed ? 'Time limit exceeded' : $stderr,
+            'exit_code' => $killed ? 124 : $status,
+            'timed_out' => $killed,
+        ];
     }
 
     private function executeViaPiston(string $language, string $code, string $input, int $timeLimit): array
